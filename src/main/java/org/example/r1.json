@@ -8,7 +8,7 @@
           "field": {
             "namespace": "customer",
             "name": "age",
-            "datasource": "CAS",
+            "datasource": "DB1",
             "evaluation_group": "1"
           },
           "comp": "age",

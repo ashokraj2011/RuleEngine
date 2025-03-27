@@ -5,7 +5,7 @@
       "field": {
         "name": "age",
         "namespace": "customer",
-        "datasource": "CAS",
+        "datasource": "DB1",
         "evaluation_group": "1"
       },
       "comp": "equal to",
@@ -14,7 +14,7 @@
      {
       "field": {
         "name": "salary",
-        "datasource": "CAS",
+        "datasource": "DB1",
         "namespace": "customer",
         "evaluation_group": "1"
       },
@@ -37,7 +37,7 @@
         {
           "field": {
             "name": "balance",
-            "datasource": "CAS",
+            "datasource": "DB1",
             "namespace": "customer.accounts",
             "evaluation_group": "3"
           },
@@ -46,7 +46,7 @@
         },
         {
           "field": {
-            "datasource": "CAS",
+            "datasource": "DB1",
             "name": "registrationDate",
             "namespace": "customer",
             "evaluation_group": "3"
