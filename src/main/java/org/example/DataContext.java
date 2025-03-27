@@ -304,166 +304,11 @@ public class DataContext {
             System.out.println(result1);
         }
 
-
+        RuleEngine1 ruleEngine1 = new RuleEngine1(Path + "config1.json");
+       ruleEngine1.printDataTypeMap();
     }
 }
-class RuleEngine1 {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private final Map<String, String> dataTypeMap = new HashMap<>();
-    private final List<String> missingAttributesLog = new ArrayList<>();
-
-    public RuleEngine1(String dataTypeFilePath) throws IOException {
-        loadDataTypes(dataTypeFilePath);
-    }
-
-    private void loadDataTypes(String filePath) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get(filePath));
-        for (String line : lines) {
-            String[] parts = line.split(":");
-            if (parts.length == 2) {
-                dataTypeMap.put(parts[0].trim(), parts[1].trim());
-            }
-        }
-    }
-
-    public boolean evaluateRule(JsonNode mainData, JsonNode rule) {
-        missingAttributesLog.clear();  // Clear previous logs before running a new rule evaluation
-
-        String operator = rule.path("op").asText();
-        JsonNode terms = rule.path("terms");
-
-        Map<String, List<JsonNode>> groupedConditions = new HashMap<>();
-
-        for (JsonNode term : terms) {
-            if (term.has("op")) {
-                if (evaluateRule(mainData, term)) {
-                    if (operator.equalsIgnoreCase("or")) return true;
-                } else {
-                    if (operator.equalsIgnoreCase("and")) return false;
-                }
-            } else {
-                String evaluationGroup = term.path("field").path("evaluation_group").asText();
-                if (evaluationGroup.isEmpty()) {
-                    evaluationGroup = "default";
-                }
-                groupedConditions.computeIfAbsent(evaluationGroup, k -> new ArrayList<>()).add(term);
-            }
-        }
-
-        boolean result = operator.equalsIgnoreCase("and");
-
-        for (Map.Entry<String, List<JsonNode>> group : groupedConditions.entrySet()) {
-            boolean groupResult = evaluateGroup(mainData, group.getValue());
-
-            if (operator.equalsIgnoreCase("and") && !groupResult) {
-                return false;
-            }
-            if (operator.equalsIgnoreCase("or") && groupResult) {
-                return true;
-            }
-        }
-
-        return result;
-    }
-
-    private boolean evaluateGroup(JsonNode mainData, List<JsonNode> conditions) {
-        for (JsonNode condition : conditions) {
-            if (!evaluateCondition(mainData, condition)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean evaluateCondition(JsonNode mainData, JsonNode condition) {
-        String namespace = condition.path("field").path("namespace").asText();
-        String fieldName = condition.path("field").path("name").asText();
-        String comparison = condition.path("comp").asText();
-        String value = condition.path("value").asText();
-
-        JsonNode targetNode = mainData.at(parseJsonPath(namespace));
-
-        if (targetNode.isArray()) {
-            for (JsonNode element : targetNode) {
-                if (evaluateSingleCondition(element, fieldName, value, comparison)) {
-                    return true;
-                }
-            }
-            return false;
-        } else {
-            boolean result = evaluateSingleCondition(targetNode, fieldName, value, comparison);
-            if (!result) {
-                logMissingAttribute(namespace, fieldName);
-            }
-            return result;
-        }
-    }
-
-    private boolean evaluateSingleCondition(JsonNode targetNode, String fieldName, String value, String comparison) {
-        JsonNode fieldNode = targetNode.get(fieldName);
-        if (fieldNode == null || fieldNode.isMissingNode()) {
-            return false;
-        }
-
-        String fullPath = targetNode.toString();
-        String expectedType = dataTypeMap.getOrDefault(fullPath, "String");
-
-        return compareValues(fieldNode, value, comparison, expectedType);
-    }
-
-    private String parseJsonPath(String namespace) {
-        return "/" + namespace.replaceAll("\\.", "/");
-    }
-
-    private boolean compareValues(JsonNode targetNode, String value, String comparison, String expectedType) {
-        try {
-            switch (expectedType.toLowerCase()) {
-                case "integer":
-                    int intValue = Integer.parseInt(value);
-                    int targetInt = targetNode.asInt();
-                    return evaluateComparison(targetInt, intValue, comparison);
-
-                case "double":
-                    double doubleValue = Double.parseDouble(value);
-                    double targetDouble = targetNode.asDouble();
-                    return evaluateComparison(targetDouble, doubleValue, comparison);
-
-                case "datetime":
-                    LocalDateTime dateValue = LocalDateTime.parse(value, DateTimeFormatter.ISO_DATE_TIME);
-                    LocalDateTime targetDate = LocalDateTime.parse(targetNode.asText(), DateTimeFormatter.ISO_DATE_TIME);
-                    return evaluateComparison(targetDate, dateValue, comparison);
-
-                default:
-                    String targetText = targetNode.asText();
-                    return evaluateComparison(targetText, value, comparison);
-            }
-        } catch (Exception e) {
-            return false;
-        }
-    }
-    private <T extends Comparable<T>> boolean evaluateComparison(T targetValue, T comparisonValue, String comparison) {
-        return switch (comparison.toLowerCase()) {
-            case "equal to" -> targetValue.compareTo(comparisonValue) == 0;
-            case "greater than" -> targetValue.compareTo(comparisonValue) > 0;
-            case "less than" -> targetValue.compareTo(comparisonValue) < 0;
-            case "not equal to" -> targetValue.compareTo(comparisonValue) != 0;
-            case "greater than or equal to" -> targetValue.compareTo(comparisonValue) >= 0;
-            case "less than or equal to" -> targetValue.compareTo(comparisonValue) <= 0;
-            default -> false;
-        };
-    }
-    private void logMissingAttribute(String namespace, String fieldName) {
-        missingAttributesLog.add("Missing attribute: " + namespace + "." + fieldName);
-    }
-
-    public void printMissingAttributesLog() {
-        if (!missingAttributesLog.isEmpty()) {
-            System.out.println("\nMissing Attributes Log:");
-            missingAttributesLog.forEach(System.out::println);
-        }
-    }
-}
 
 class RuleEngine {
 
@@ -705,5 +550,96 @@ class JsonFileFlattener {
         // Replace original results with new flattened results
         results.clear();
         results.addAll(newResults);
+    }
+}
+
+class RuleEngine1 {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+    private final List<String> missingAttributesLog = new ArrayList<>();
+
+    public RuleEngine1(String dataTypeFilePath) throws IOException {
+        loadDataTypes(dataTypeFilePath);
+    }
+
+    public void loadDataTypes(String filePath) throws IOException {
+        if (filePath.endsWith(".json")) {
+            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+            parseJsonNode(rootNode);
+        } else {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    String key = parts[0].trim();
+                    String dataType = parts[1].trim();
+                    dataTypeMap.put(key, dataType);
+                }
+            }
+        }
+    }
+
+    private void parseJsonNode(JsonNode rootNode) {
+        if (rootNode.isArray()) {
+            for (JsonNode node : rootNode) {
+                parseJsonNode(node);
+            }
+        } else if (rootNode.isObject()) {
+            String datasource = rootNode.path("dataSourceName").asText();
+            JsonNode registeredAttributes = rootNode.path("registeredAttributes");
+
+            for (JsonNode attributeGroup : registeredAttributes) {
+                String namespace = attributeGroup.path("namespace").asText();
+                processAttributes(datasource, namespace, attributeGroup);
+            }
+        }
+    }
+
+    private void processAttributes(String datasource, String namespace, JsonNode attributeGroup) {
+        JsonNode propertyGroups = attributeGroup.path("propertygroups");
+        JsonNode attributeList = attributeGroup.path("attributeList");
+
+        if (propertyGroups.isArray() && !propertyGroups.isEmpty()) {
+            for (JsonNode propertyGroup : propertyGroups) {
+                String propertyGroupName = propertyGroup.path("name").asText();
+                JsonNode attributeListInGroup = propertyGroup.path("attributelist");
+
+                if (attributeListInGroup.isArray()) {
+                    for (JsonNode attribute : attributeListInGroup) {
+                        addDataTypeMapping(datasource, namespace, propertyGroupName, attribute);
+                    }
+                }
+            }
+        }
+
+        if (attributeList.isArray() && !attributeList.isEmpty()) {
+            for (JsonNode attribute : attributeList) {
+                addDataTypeMapping(datasource, namespace, null, attribute);
+            }
+        }
+    }
+
+    private void addDataTypeMapping(String datasource, String namespace, String propertyGroupName, JsonNode attribute) {
+        String attributeName = attribute.path("attributeName").asText();
+        String dataType = attribute.path("dataType").asText();
+        String jsonPath = attribute.path("JsonPath").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace;
+        if (propertyGroupName != null) {
+            fullPath += "." + propertyGroupName;
+        }
+        fullPath += "." + attributeName;
+
+        String mappingValue = dataType + ",jsonPath:" + jsonPath;
+        dataTypeMap.put(fullPath, mappingValue);
+    }
+
+    public void printDataTypeMap() {
+        dataTypeMap.forEach((key, value) -> System.out.println(key + " : " + value));
+    }
+
+    public Map<String, String> getDataTypeMap() {
+        return dataTypeMap;
     }
 }

@@ -1,0 +1,78 @@
+{
+  "dataSourceName": "session",
+  "rootQuery": "",
+  "registeredAttributes": [
+    {
+      "namespace": "portsum",
+      "propertygroups": [
+        {
+          "attributelist": [
+            {
+              "attributeName": "acctNew",
+              "dataType": "Boolean",
+              "JsonPath": "s.session.acctNew"
+            },
+            {
+              "attributeName": "regTypeDesc",
+              "dataType": "String",
+              "JsonPath": "s.session.regTypeDesc"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dataSourceName": "DB1",
+  "rootQuery": "cas(Spersona_id, spersona_id_type)",
+  "registeredAttributes": [
+    {
+      "namespace": "customer",
+      "attributeList": [
+        {
+          "attributeName": "salary",
+          "dataType": "Int",
+          "JsonPath": "s.data.cas.customer.salary",
+          "queryPath": "cas($persona_id, $persona_id_type).customer.salary"
+        },
+        {
+          "attributeName": "age",
+          "dataType": "Float",
+          "JsonPath": "s.data.cas.customer.age",
+          "queryPath": "cas($persona_id, $persona_id_type).customer.age"
+        },
+        {
+          "attributeName": "bat",
+          "dataType": "String",
+          "jsonPath": "$.data.cas.customer.bat",
+          "queryPath": "cas(Spersona_id, $persona_id_type).customer.bat"
+        }
+      ]
+    },
+    {
+      "namespace": "bloomAccounts",
+      "propertygroups": [
+        {
+          "name": "BloomAccount",
+          "jsonPath": "$.data.cas.bloomAccounts[+]",
+          "queryPath": "cas($persona_id, $persona_id_type).bloomAccounts"
+        }
+      ],
+      "attributeList": [
+        {
+          "attributeName": "mid",
+          "propertygroup": "BloomAccount",
+          "dataType": "String",
+          "jsonPath": "$.mid",
+          "queryPath": "cas(Spersona_id, $persona_id_type).bloomAccounts.mid"
+        },
+        {
+          "attributeName": "bloom_account_nbr",
+          "propertygroup": "BloomAccount",
+          "dataType": "String",
+          "JsonPath": "$.bloom_account_nbr",
+          "queryPath": "cas($persona_id, $persona_id_type).bloomAccounts.bloom_account_nbr"
+        }
+      ]
+    }
+  ]
+}

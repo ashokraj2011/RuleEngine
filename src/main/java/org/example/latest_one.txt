@@ -1,0 +1,158 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+public class RuleEngine {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+    private final List<String> missingAttributesLog = new ArrayList<>();
+
+    public RuleEngine(String dataTypeFilePath) throws IOException {
+        loadDataTypes(dataTypeFilePath);
+    }
+
+    public void loadDataTypes(String filePath) throws IOException {
+        if (filePath.endsWith(".json")) {
+            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+            parseJsonNode(rootNode);
+        } else {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    String key = parts[0].trim();
+                    String dataType = parts[1].trim();
+                    dataTypeMap.put(key, dataType);
+                }
+            }
+        }
+    }
+
+    private void parseJsonNode(JsonNode rootNode) {
+        if (rootNode.isArray()) {
+            for (JsonNode node : rootNode) {
+                parseJsonNode(node);
+            }
+        } else if (rootNode.isObject()) {
+            String datasource = rootNode.path("dataSourceName").asText();
+            JsonNode registeredAttributes = rootNode.path("registeredAttributes");
+
+            for (JsonNode attributeGroup : registeredAttributes) {
+                String namespace = attributeGroup.path("namespace").asText();
+                processAttributes(datasource, namespace, attributeGroup);
+            }
+        }
+    }
+
+    private void processAttributes(String datasource, String namespace, JsonNode attributeGroup) {
+        JsonNode propertyGroups = attributeGroup.path("propertygroups");
+        JsonNode attributeList = attributeGroup.path("attributeList");
+
+        if (propertyGroups.isArray() && !propertyGroups.isEmpty()) {
+            for (JsonNode propertyGroup : propertyGroups) {
+                String propertyGroupName = propertyGroup.path("name").asText();
+                JsonNode attributeListInGroup = propertyGroup.path("attributelist");
+
+                if (attributeListInGroup.isArray()) {
+                    for (JsonNode attribute : attributeListInGroup) {
+                        addDataTypeMapping(datasource, namespace, propertyGroupName, attribute);
+                    }
+                }
+            }
+        }
+
+        if (attributeList.isArray() && !attributeList.isEmpty()) {
+            for (JsonNode attribute : attributeList) {
+                addDataTypeMapping(datasource, namespace, null, attribute);
+            }
+        }
+    }
+
+    private void addDataTypeMapping(String datasource, String namespace, String propertyGroupName, JsonNode attribute) {
+        String attributeName = attribute.path("attributeName").asText();
+        String dataType = attribute.path("dataType").asText();
+        String jsonPath = attribute.path("JsonPath").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace;
+        if (propertyGroupName != null) {
+            fullPath += "." + propertyGroupName;
+        }
+        fullPath += "." + attributeName;
+
+        String mappingValue = dataType + ",jsonPath:" + jsonPath;
+        dataTypeMap.put(fullPath, mappingValue);
+    }
+
+    public boolean evaluateRule(JsonNode mainData, JsonNode rule) {
+        missingAttributesLog.clear();
+
+        String operator = rule.path("op").asText();
+        JsonNode terms = rule.path("terms");
+
+        boolean result = operator.equalsIgnoreCase("and");
+
+        for (JsonNode term : terms) {
+            if (term.has("op")) {
+                boolean nestedResult = evaluateRule(mainData, term);
+                if (operator.equalsIgnoreCase("and") && !nestedResult) return false;
+                if (operator.equalsIgnoreCase("or") && nestedResult) return true;
+            } else {
+                boolean conditionResult = evaluateCondition(mainData, term);
+                if (operator.equalsIgnoreCase("and") && !conditionResult) return false;
+                if (operator.equalsIgnoreCase("or") && conditionResult) return true;
+            }
+        }
+        return result;
+    }
+
+    private boolean evaluateCondition(JsonNode mainData, JsonNode condition) {
+        String datasource = condition.path("field").path("datasource").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+        String dataType = dataTypeMap.getOrDefault(fullPath, "String");
+
+        JsonNode targetNode = mainData.at(parseJsonPath(namespace));
+        if (targetNode.isMissingNode()) {
+            logMissingAttribute(datasource, namespace, fieldName);
+            return false;
+        }
+
+        return compareValues(targetNode, value, comparison, dataType);
+    }
+
+    private void logMissingAttribute(String datasource, String namespace, String fieldName) {
+        missingAttributesLog.add("Missing attribute: " + datasource + ", " + namespace + "." + fieldName);
+    }
+
+    private String parseJsonPath(String namespace) {
+        return "/" + namespace.replaceAll("\\.", "/");
+    }
+
+    public void printMissingAttributesLog() {
+        if (!missingAttributesLog.isEmpty()) {
+            System.out.println("\nMissing Attributes Log:");
+            missingAttributesLog.forEach(System.out::println);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        RuleEngine ruleEngine = new RuleEngine("src/main/java/org/example/config.json");
+        ruleEngine.printDataTypeMap();
+    }
+}
