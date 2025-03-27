@@ -1,0 +1,7 @@
+datasource:CAS , customer.age: Integer
+datasource:CAS,customer.salary: Double
+datasource:CAS ,customer.location: String
+datasource:CAS,customer.registrationDate: DateTime
+datasource:CAS , customer.accounts.balance: Double
+datasource:CAS,branch.location: String
+datasource:session,branch.location: String

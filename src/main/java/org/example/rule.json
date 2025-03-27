@@ -1,0 +1,60 @@
+{
+  "op": "or",
+  "terms": [
+    {
+      "field": {
+        "name": "age",
+        "namespace": "customer",
+        "datasource": "CAS",
+        "evaluation_group": "1"
+      },
+      "comp": "equal to",
+      "value": "3544"
+    },
+     {
+      "field": {
+        "name": "salary",
+        "datasource": "CAS",
+        "namespace": "customer",
+        "evaluation_group": "1"
+      },
+      "comp": "greater than",
+      "value": "5000"
+    },
+    {
+      "field": {
+        "name": "location",
+        "datasource": "WI",
+        "namespace": "branch",
+        "evaluation_group": "2"
+      },
+      "comp": "equal to",
+      "value": "Mumbai"
+    },
+    {
+      "op": "or",
+      "terms": [
+        {
+          "field": {
+            "name": "balance",
+            "datasource": "CAS",
+            "namespace": "customer.accounts",
+            "evaluation_group": "3"
+          },
+          "comp": "greater than",
+          "value": "50000"
+        },
+        {
+          "field": {
+            "datasource": "CAS",
+            "name": "registrationDate",
+            "namespace": "customer",
+            "evaluation_group": "3"
+          },
+          "comp": "greater than",
+          "value": "2000-03-26T00:00:00"
+        }
+      ]
+    }
+  ]
+}

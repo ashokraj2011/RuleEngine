@@ -1,0 +1,50 @@
+{
+  "registeredAttributes": [
+    {
+      "namespace": "session",
+      "propertygroups": [],
+      "attributeList": [
+        {
+          "attributeName": "acctNew",
+          "dataType": "Boolean",
+          "jsonPath": "$.session.acctNew"
+        },
+        {
+          "attributeName": "regTypeDesc",
+          "dataType": "String",
+          "jsonPath": "$.session.regTypeDesc"
+        }
+      ]
+    },
+
+    {
+      "namespace": "commonIdentifiers",
+      "propertygroups": [
+        {
+          "name": "params",
+          "jsonPath": "$.params[*]"
+        }
+      ],
+      "attributeList": [
+        {
+          "attributeName": "paramType",
+          "dataType": "String",
+          "propertygroup": "params",
+          "jsonPath": "$.paramType"
+        },
+        {
+          "attributeName": "paramValue",
+          "dataType": "String",
+          "propertygroup": "params",
+          "jsonPath": "$.paramValue"
+        },
+        {
+          "attributeName": "name",
+          "dataType": "String",
+          "propertygroup": "params",
+          "jsonPath": "$.application.name"
+        }
+      ]
+    }
+  ]
+}

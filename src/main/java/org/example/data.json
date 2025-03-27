@@ -1,0 +1,30 @@
+{
+  "data": {
+    "customer": {
+      "id": "cust_001",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "age": 35,
+      "registrationDate":"2020-01-01",
+      "salary": 60000,
+      "accounts": [
+        {
+          "accountId": "acc_001",
+          "accountType": "savings",
+          "balance": 1520.75,
+          "currency": "USD"
+        },
+        {
+          "accountId": "acc_002",
+          "accountType": "checking",
+          "balance": 430.00,
+          "currency": "USD"
+        }
+      ]
+    },
+    "branch": {
+      "name": "kerala",
+      "email": "h@h.com"
+    }
+  }
+}

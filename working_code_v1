@@ -1,0 +1,91 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
+
+import java.io.File;
+import java.io.IOException;
+public class DataContext {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectNode mainData;
+
+    public DataContext(String mainDataFilePath) throws IOException {
+        this.mainData = (ObjectNode) objectMapper.readTree(new File(mainDataFilePath)).get("data");
+    }
+
+    public void mergeAdditionalData(String additionalDataFilePath, String configFilePath) throws IOException {
+        JsonNode additionalData = objectMapper.readTree(new File(additionalDataFilePath));
+        JsonNode config = objectMapper.readTree(new File(configFilePath));
+
+        String dataSourceName = config.path("dataSourceName").asText();
+        if (dataSourceName.isEmpty()) {
+            dataSourceName = "session"; // Default to "session"
+        }
+
+        ObjectNode sessionNode = (ObjectNode) mainData.get(dataSourceName);
+        if (sessionNode == null || sessionNode.isMissingNode() || !(sessionNode instanceof ObjectNode)) {
+            sessionNode = objectMapper.createObjectNode();
+            mainData.set(dataSourceName, sessionNode);
+        }
+
+        JsonNode registeredAttributes = config.path("registeredAttributes");
+        for (JsonNode attributeGroup : registeredAttributes) {
+            String namespace = attributeGroup.path("namespace").asText();
+            JsonNode propertyGroups = attributeGroup.path("propertygroups");
+
+            ObjectNode targetNode = namespace.equals(dataSourceName) ? sessionNode : (ObjectNode) sessionNode.get(namespace);
+            if (targetNode == null || targetNode.isMissingNode() || !(targetNode instanceof ObjectNode)) {
+                targetNode = objectMapper.createObjectNode();
+                sessionNode.set(namespace, targetNode);
+            }
+
+            if (propertyGroups.isArray() && !propertyGroups.isEmpty()) {
+                for (JsonNode group : propertyGroups) {
+                    String groupName = group.path("name").asText();
+                    String groupJsonPath = group.path("jsonPath").asText();
+
+                    try {
+                        JSONArray jsonArray = JsonPath.read(additionalData.toString(), groupJsonPath);
+                        ArrayNode arrayNode = objectMapper.createArrayNode();
+                        jsonArray.forEach(item -> arrayNode.add(objectMapper.valueToTree(item)));
+                        targetNode.set(groupName, arrayNode);
+                    } catch (Exception e) {
+                        System.err.println("Error reading array from path: " + groupJsonPath);
+                    }
+                }
+            }
+
+            for (JsonNode attribute : attributeGroup.path("attributeList")) {
+                String attributeName = attribute.path("attributeName").asText();
+                String jsonPath = attribute.path("jsonPath").asText();
+
+                try {
+                    Object result = JsonPath.read(additionalData.toString(), jsonPath);
+                    if (result != null) {
+                        targetNode.set(attributeName, objectMapper.valueToTree(result));
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error reading attribute from path: " + jsonPath);
+                }
+            }
+        }
+    }
+
+    public JsonNode getMergedData() {
+        return mainData;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        String Path="/Users/ashokraj/Downloads/learn/spring/DataContext/src/main/java/org/example/";
+
+        DataContext context = new DataContext(Path + "data.json");
+        context.mergeAdditionalData(Path+"other_data.json", Path+"config.json");
+        System.out.println("Merged Data: \n" + context.getMergedData().toPrettyString());
+    }
+}

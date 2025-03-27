@@ -1,0 +1,24 @@
+{
+  "application": {
+    "name": "app_name",
+    "id": "app_id",
+    "version": "3.9.0"
+  },
+  "session": {
+    "acctNew": true,
+    "regTypeDesc": [
+      "B",
+      "c"
+    ]
+  },
+  "params": [
+    {
+      "paramValue": "iphone",
+      "paramType": "phoneType"
+    },
+    {
+      "paramValue": "andrio",
+      "paramType": "phoneType"
+    }
+  ]
+}

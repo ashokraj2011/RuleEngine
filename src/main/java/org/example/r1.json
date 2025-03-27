@@ -1,0 +1,38 @@
+{
+  "op": "and",
+  "terms": [
+    {
+      "op": "and",
+      "terms": [
+        {
+          "field": {
+            "namespace": "customer",
+            "name": "age",
+            "datasource": "CAS",
+            "evaluation_group": "1"
+          },
+          "comp": "age",
+          "value": [
+            35,59
+          ]
+        }
+      ]
+    },
+    {
+      "op": "and",
+      "terms": [
+        {
+          "field": {
+            "name": "location",
+            "datasource": "session",
+            "namespace": "session",
+            "evaluation_group": "2"
+          },
+          "comp": "equal to",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "version": "2"
+}
