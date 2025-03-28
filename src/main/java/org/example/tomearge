@@ -616,3 +616,259 @@ private boolean compareValues(JsonNode targetNode, String value, String comparis
                 } catch (Exception e) {
                     return false;
                 }
+
+
+
+
+
+                public JsonNode getEntityData(String entityName) {
+                        return dataContext.getEntityData(entityName);  // Use DataContext for data fetching
+                    }
+
+                    public boolean evaluateCondition(String entityName, JsonNode condition) {
+                        JsonNode entityData = getEntityData(entityName);
+                        if (entityData == null) {
+                            missingAttributesLog.add("Entity not found: " + entityName);
+                            return false;
+                        }
+
+                        String datasource = condition.path("field").path("datasource").asText();
+                        String namespace = condition.path("field").path("namespace").asText();
+                        String fieldName = condition.path("field").path("name").asText();
+                        String comparison = condition.path("comp").asText();
+                        String value = condition.path("value").asText();
+
+                        String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+                        String dataTypeMapping = dataTypeMap.get(fullPath);
+
+                        if (dataTypeMapping == null) {
+                            missingAttributesLog.add("Missing attribute: " + fullPath);
+                            return false;
+                        }
+
+                        String[] parts = dataTypeMapping.split(",jsonPath:");
+                        String dataType = parts[0];
+                        String jsonPath = parts.length > 1 ? parts[1] : "";
+
+                        JsonNode targetNode = (jsonPath.isEmpty()) ? entityData.at(parseJsonPath(namespace)) : JsonPath.read(entityData.toString(), jsonPath);
+
+                        if (targetNode == null || targetNode.isMissingNode()) {
+                            missingAttributesLog.add("Target node missing: " + fullPath);
+                            return false;
+                        }
+
+                        return compareValues(targetNode, value, comparison, dataType);
+                    }
+
+                    private String parseJsonPath(String namespace) {
+                        return "/" + namespace.replaceAll("\\.", "/");
+                    }
+
+                    public void printDataTypeMap() {
+                        System.out.println("\nLoaded Data Types:");
+                        dataTypeMap.forEach((key, value) -> System.out.println(key + " -> " + value));
+                    }
+                }
+000000
+
+public JsonNode getEntityData(String entityName) {
+        return dataContext.getEntityData(entityName);  // Use DataContext for data fetching
+    }
+
+    public boolean evaluateCondition(String entityName, JsonNode condition) {
+        JsonNode entityData = getEntityData(entityName);
+        if (entityData == null) {
+            missingAttributesLog.add("Entity not found: " + entityName);
+            return false;
+        }
+
+        String datasource = condition.path("field").path("datasource").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+        String dataTypeMapping = dataTypeMap.get(fullPath);
+
+        if (dataTypeMapping == null) {
+            missingAttributesLog.add("Missing attribute: " + fullPath);
+            return false;
+        }
+
+        String[] parts = dataTypeMapping.split(",jsonPath:");
+        String dataType = parts[0];
+        String jsonPath = parts.length > 1 ? parts[1] : "";
+
+        JsonNode targetNode = (jsonPath.isEmpty()) ? entityData.at(parseJsonPath(namespace)) : JsonPath.read(entityData.toString(), jsonPath);
+
+        if (targetNode == null || targetNode.isMissingNode()) {
+            missingAttributesLog.add("Target node missing: " + fullPath);
+            return false;
+        }
+
+        return compareValues(targetNode, value, comparison, dataType);
+    }
+
+    private String parseJsonPath(String namespace) {
+        return "/" + namespace.replaceAll("\\.", "/");
+    }
+
+    public void printDataTypeMap() {
+        System.out.println("\nLoaded Data Types:");
+        dataTypeMap.forEach((key, value) -> System.out.println(key + " -> " + value));
+    }
+}
+
+---111
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+public class RuleEngine {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+    private final List<String> missingAttributesLog = new ArrayList<>();
+    private final DataContext dataContext;  // DataContext instance
+
+    public RuleEngine(String dataTypeFilePath, DataContext dataContext) throws IOException {
+        this.dataContext = dataContext;
+        loadDataTypes(dataTypeFilePath);
+    }
+
+    public void loadDataTypes(String filePath) throws IOException {
+        if (filePath.endsWith(".json")) {
+            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+            parseJsonNode(rootNode);
+        } else {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                if (parts.length >= 2) {
+                    String dataSourceInfo = parts[0].trim();
+                    String[] dsParts = dataSourceInfo.split(":");
+                    if (dsParts.length == 2) {
+                        String datasource = dsParts[0].trim();
+                        String attributeInfo = dsParts[1].trim();
+                        String dataType = parts[1].trim();
+                        String fullPath = "datasource:" + datasource + "," + attributeInfo;
+                        dataTypeMap.put(fullPath, dataType); // Store only dataType without jsonPath
+                    }
+                }
+            }
+        }
+    }
+
+    private void parseJsonNode(JsonNode rootNode) {
+        if (rootNode.isArray()) {
+            for (JsonNode node : rootNode) {
+                parseJsonNode(node);
+            }
+        } else if (rootNode.isObject()) {
+            String datasource = rootNode.path("dataSourceName").asText();
+            JsonNode registeredAttributes = rootNode.path("registeredAttributes");
+
+            for (JsonNode attributeGroup : registeredAttributes) {
+                String namespace = attributeGroup.path("namespace").asText();
+                processAttributes(datasource, namespace, attributeGroup);
+            }
+        }
+    }
+
+    private void processAttributes(String datasource, String namespace, JsonNode attributeGroup) {
+        JsonNode propertyGroups = attributeGroup.path("propertygroups");
+        JsonNode attributeList = attributeGroup.path("attributeList");
+
+        if (propertyGroups.isArray() && !propertyGroups.isEmpty()) {
+            for (JsonNode propertyGroup : propertyGroups) {
+                String propertyGroupName = propertyGroup.path("name").asText();
+                JsonNode attributeListInGroup = propertyGroup.path("attributelist");
+
+                if (attributeListInGroup.isArray()) {
+                    for (JsonNode attribute : attributeListInGroup) {
+                        addDataTypeMapping(datasource, namespace, propertyGroupName, attribute);
+                    }
+                }
+            }
+        }
+
+        if (attributeList.isArray() && !attributeList.isEmpty()) {
+            for (JsonNode attribute : attributeList) {
+                addDataTypeMapping(datasource, namespace, null, attribute);
+            }
+        }
+    }
+
+    private void addDataTypeMapping(String datasource, String namespace, String propertyGroupName, JsonNode attribute) {
+        String attributeName = attribute.path("attributeName").asText();
+        String dataType = attribute.path("dataType").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace;
+        if (propertyGroupName != null && !propertyGroupName.isEmpty()) {
+            fullPath += "." + propertyGroupName;
+        }
+        fullPath += "." + attributeName;
+
+        dataTypeMap.put(fullPath, dataType); // Store only dataType without jsonPath
+    }
+
+    public JsonNode getEntityData(String entityName) {
+        return dataContext.getEntityData(entityName);  // Use DataContext for data fetching
+    }
+
+    public boolean evaluateCondition(String entityName, JsonNode condition) {
+        JsonNode entityData = getEntityData(entityName);
+        if (entityData == null) {
+            missingAttributesLog.add("Entity not found: " + entityName);
+            return false;
+        }
+
+        String datasource = condition.path("field").path("datasource").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+        String dataType = dataTypeMap.get(fullPath);
+
+        if (dataType == null) {
+            missingAttributesLog.add("Missing attribute: " + fullPath);
+            return false;
+        }
+
+        JsonNode targetNode = entityData.at(parseJsonPath(namespace));
+
+        if (targetNode == null || targetNode.isMissingNode()) {
+            missingAttributesLog.add("Target node missing: " + fullPath);
+            return false;
+        }
+
+        return compareValues(targetNode, value, comparison, dataType);
+    }
+
+    private String parseJsonPath(String namespace) {
+        return "/" + namespace.replaceAll("\\.", "/");
+    }
+
+    public void printDataTypeMap() {
+        System.out.println("\nLoaded Data Types:");
+        dataTypeMap.forEach((key, value) -> System.out.println(key + " -> " + value));
+    }
+}
+
+---111 end
