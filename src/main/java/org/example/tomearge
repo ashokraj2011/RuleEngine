@@ -899,3 +899,40 @@ public boolean evaluateRule(JsonNode rule) {
         return result;
     }
     -2222
+
+    -0333333
+
+
+       public boolean evaluateRule(JsonNode rule) {
+            Map<String, List<JsonNode>> groupedConditions = new HashMap<>();
+            JsonNode terms = rule.path("terms");
+            String operator = rule.path("op").asText();
+            boolean result = operator.equalsIgnoreCase("and");
+
+            for (JsonNode term : terms) {
+                if (term.has("op")) {
+                    boolean nestedResult = evaluateRule(term);
+                    if (operator.equalsIgnoreCase("and") && !nestedResult) return false;
+                    if (operator.equalsIgnoreCase("or") && nestedResult) return true;
+                } else {
+                    String evaluationGroup = term.path("field").path("evaluation_group").asText();
+                    if (evaluationGroup.isEmpty()) evaluationGroup = "default";
+                    groupedConditions.computeIfAbsent(evaluationGroup, k -> new ArrayList<>()).add(term);
+                }
+            }
+
+            for (Map.Entry<String, List<JsonNode>> group : groupedConditions.entrySet()) {
+                boolean groupResult = evaluateGroup(group.getValue());
+                if (operator.equalsIgnoreCase("and") && !groupResult) return false;
+                if (operator.equalsIgnoreCase("or") && groupResult) return true;
+            }
+            return result;
+        }
+
+        private boolean evaluateGroup(List<JsonNode> conditions) {
+            for (JsonNode condition : conditions) {
+                String entityName = condition.path("field").path("namespace").asText();
+                if (!evaluateCondition(entityName, condition)) return false;
+            }
+            return true;
+        }
