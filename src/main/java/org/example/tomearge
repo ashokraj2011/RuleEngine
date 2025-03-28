@@ -872,3 +872,30 @@ public class RuleEngine {
 }
 
 ---111 end
+
+-22222
+
+public boolean evaluateRule(JsonNode rule) {
+        String operator = rule.path("op").asText();
+        JsonNode terms = rule.path("terms");
+        boolean result = operator.equalsIgnoreCase("and");
+
+        for (JsonNode term : terms) {
+            if (term.has("op")) {
+                // Recursively evaluate nested rules
+                boolean nestedResult = evaluateRule(term);
+                if (operator.equalsIgnoreCase("and") && !nestedResult) return false;
+                if (operator.equalsIgnoreCase("or") && nestedResult) return true;
+            } else {
+                // Evaluate single condition
+                String entityName = term.path("field").path("namespace").asText();
+                boolean conditionResult = evaluateCondition(entityName, term);
+
+                if (operator.equalsIgnoreCase("and") && !conditionResult) return false;
+                if (operator.equalsIgnoreCase("or") && conditionResult) return true;
+            }
+        }
+
+        return result;
+    }
+    -2222
