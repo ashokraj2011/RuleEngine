@@ -577,3 +577,42 @@ private boolean compareValues(JsonNode targetNode, String value, String comparis
         String[] parts = dataTypeMapping.split(",jsonPath:");
         String dataType = parts[0];
         String jsonPath = parts.length > 1 ? parts[1] : "";
+
+
+
+        -----
+
+
+        String datasource = condition.path("field").path("datasource").asText();
+                String namespace = condition.path("field").path("namespace").asText();
+                String fieldName = condition.path("field").path("name").asText();
+                String comparison = condition.path("comp").asText();
+                String value = condition.path("value").asText();
+
+                String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+                String dataTypeMapping = dataTypeMap.get(fullPath);
+
+                if (dataTypeMapping == null) {
+                    missingAttributesLog.add("Missing attribute: " + fullPath);
+                    return false;
+                }
+
+                String[] parts = dataTypeMapping.split(",jsonPath:");
+                String dataType = parts[0];
+                String jsonPath = parts.length > 1 ? parts[1] : "";
+
+                JsonNode targetNode;
+                try {
+                    if (jsonPath != null && !jsonPath.isEmpty()) {
+                        Object result = JsonPath.read(mainData.toString(), jsonPath);
+                        if (result instanceof JSONArray) {
+                            targetNode = objectMapper.readTree(result.toString());
+                        } else {
+                            targetNode = objectMapper.valueToTree(result);
+                        }
+                    } else {
+                        targetNode = mainData.at(parseJsonPath(namespace));
+                    }
+                } catch (Exception e) {
+                    return false;
+                }
