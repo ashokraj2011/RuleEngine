@@ -505,3 +505,62 @@ private boolean compareValues(JsonNode targetNode, String value, String comparis
 
 
 
+------apr
+    private boolean compareValues(JsonNode targetNode, String value, String comparison, String dataType) {
+        if (targetNode == null || targetNode.isMissingNode()) {
+            if (comparison.equalsIgnoreCase("exists")) return false;
+            if (comparison.equalsIgnoreCase("not exists")) return true;
+            if (comparison.equalsIgnoreCase("is null")) return true;
+            if (comparison.equalsIgnoreCase("is empty")) return true;
+            return false;
+        }
+
+        if (comparison.equalsIgnoreCase("exists")) return true;
+        if (comparison.equalsIgnoreCase("not exists")) return false;
+        if (comparison.equalsIgnoreCase("is null")) return targetNode.isNull();
+        if (comparison.equalsIgnoreCase("is empty")) {
+            if (targetNode.isTextual()) return targetNode.asText().isEmpty();
+            if (targetNode.isArray()) return targetNode.size() == 0;
+            if (targetNode.isObject()) return targetNode.size() == 0;
+        }
+
+        if (targetNode.isArray()) {
+            for (JsonNode element : targetNode) {
+                if (compareValues(element, value, comparison, dataType)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        if (targetNode.isObject() && targetNode.has(value)) {
+            targetNode = targetNode.get(value); // Drilling down nested objects
+        }
+
+        try {
+            if (dataType.equalsIgnoreCase("DateTime")) {
+                LocalDateTime targetDate = LocalDateTime.parse(targetNode.asText(), DateTimeFormatter.ISO_DATE_TIME);
+                LocalDateTime comparisonDate = parseDateTimeValue(value);
+                return evaluateComparison(targetDate, comparisonDate, comparison);
+            }
+            switch (comparison.toLowerCase()) {
+                case "equal to":
+                    return targetNode.asText().equals(value);
+                case "greater than":
+                    return Double.compare(targetNode.asDouble(), Double.parseDouble(value)) > 0;
+                case "less than":
+                    return Double.compare(targetNode.asDouble(), Double.parseDouble(value)) < 0;
+                case "greater than or equal to":
+                    return Double.compare(targetNode.asDouble(), Double.parseDouble(value)) >= 0;
+                case "less than or equal to":
+                    return Double.compare(targetNode.asDouble(), Double.parseDouble(value)) <= 0;
+                default:
+                    return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+
