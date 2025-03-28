@@ -564,3 +564,16 @@ private boolean compareValues(JsonNode targetNode, String value, String comparis
 
 
 
+----
+
+        String fullPath = "datasource:" + datasource + "," + namespace + "." + fieldName;
+        String dataTypeMapping = dataTypeMap.get(fullPath);
+
+        if (dataTypeMapping == null) {
+            missingAttributesLog.add("Missing attribute: " + fullPath);
+            return false;
+        }
+
+        String[] parts = dataTypeMapping.split(",jsonPath:");
+        String dataType = parts[0];
+        String jsonPath = parts.length > 1 ? parts[1] : "";
