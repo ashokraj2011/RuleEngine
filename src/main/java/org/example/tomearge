@@ -936,3 +936,46 @@ public boolean evaluateRule(JsonNode rule) {
             }
             return true;
         }
+--444444
+
+
+
+
+    public JsonNode getEntityData(String entityName) {
+        String[] parts = entityName.split("\\.");
+
+        if (parts.length == 1) {
+            // Direct entity fetch
+            return mainData.path(parts[0]);
+        }
+
+        JsonNode currentNode = mainData;
+
+        for (int i = 0; i < parts.length; i++) {
+            if (currentNode == null || currentNode.isMissingNode()) {
+                return null;
+            }
+
+            String part = parts[i];
+            if (currentNode.isArray()) {
+                ArrayNode arrayNode = (ArrayNode) currentNode;
+                ArrayNode resultArray = objectMapper.createArrayNode();
+
+                for (JsonNode element : arrayNode) {
+                    JsonNode childNode = element.path(part);
+                    if (!childNode.isMissingNode()) {
+                        if (i == parts.length - 1) {
+                            resultArray.add(childNode); // Add final element
+                        } else {
+                            currentNode = childNode;
+                        }
+                    }
+                }
+                return resultArray.size() > 0 ? resultArray : null;
+            } else {
+                currentNode = currentNode.path(part);
+            }
+        }
+
+        return currentNode;
+    }
