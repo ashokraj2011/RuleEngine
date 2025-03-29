@@ -306,10 +306,75 @@ public class DataContext {
 
         RuleEngine1 ruleEngine1 = new RuleEngine1(Path + "config1.json");
        ruleEngine1.printDataTypeMap();
+
+        JsonPathGenerator generator = new JsonPathGenerator();
+        JsonNode rootNode = generator.readJsonFile(Path + "data.json");  // Using the returned rootNode
+
+        JsonNode result2 = generator.getEntity("accounts", rootNode);
+        if (result2 != null) {
+            System.out.println(result2.toPrettyString());
+        }
+
+
+}}
+
+
+
+
+class JsonPathGenerator {
+    private final Map<String, String> jsonPathMap = new HashMap<>();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public void generatePaths(JsonNode node, String currentPath) {
+        if (node.isObject()) {
+            Iterator<Map.Entry<String, JsonNode>> fields = node.fields();
+            while (fields.hasNext()) {
+                Map.Entry<String, JsonNode> field = fields.next();
+                String newPath = currentPath.isEmpty() ? field.getKey() : currentPath + "." + field.getKey();
+                jsonPathMap.put(field.getKey(), newPath);
+                generatePaths(field.getValue(), newPath);
+            }
+        } else if (node.isArray()) {
+            for (int i = 0; i < node.size(); i++) {
+                String newPath = currentPath + "[" + i + "]";
+                generatePaths(node.get(i), newPath);
+            }
+        }
+    }
+
+    public JsonNode readJsonFile(String filePath) throws IOException {
+        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+        generatePaths(rootNode, "");
+        return rootNode;
+    }
+
+    public JsonNode getEntity(String entityName, JsonNode rootNode) {
+        String jsonPath = jsonPathMap.get(entityName);
+        if (jsonPath == null) {
+            System.out.println("Entity not found in the JSON file.");
+            return null;
+        }
+
+        String[] parts = jsonPath.split("\\.");
+        JsonNode currentNode = rootNode;
+        for (String part : parts) {
+            if (part.matches(".*\\[\\d+].*")) {
+                String key = part.substring(0, part.indexOf("["));
+                int index = Integer.parseInt(part.substring(part.indexOf("[") + 1, part.indexOf("]")));
+                currentNode = currentNode.get(key).get(index);
+            } else {
+                currentNode = currentNode.get(part);
+            }
+
+            if (currentNode == null) {
+                System.out.println("Invalid path for the entity.");
+                return null;
+            }
+        }
+
+        return currentNode;
     }
 }
-
-
 class RuleEngine {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -765,4 +830,5 @@ class RuleEngine1 {
         }
     }
 }
+
 
