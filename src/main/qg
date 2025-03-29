@@ -320,3 +320,36 @@ public class GraphQLQueryGenerator {
         }
     }
 }
+
+------enitity
+
+
+    public JsonNode getEntity(String entityPath) {
+        String[] parts = entityPath.split("\\.");
+        return getEntityRecursive(mainData, parts, 0);
+    }
+
+    private JsonNode getEntityRecursive(JsonNode currentNode, String[] parts, int index) {
+        if (index >= parts.length || currentNode == null || currentNode.isMissingNode()) {
+            return currentNode; // Base case, return what is found
+        }
+
+        String part = parts[index];
+
+        if (currentNode.isArray()) {
+            for (JsonNode arrayElement : currentNode) {
+                JsonNode foundNode = getEntityRecursive(arrayElement, parts, index);
+                if (foundNode != null && !foundNode.isMissingNode()) {
+                    return foundNode;
+                }
+            }
+            return null; // No match found in array elements
+        } else if (currentNode.has(part)) {
+            return getEntityRecursive(currentNode.get(part), parts, index + 1);
+        } else if (currentNode.isObject() && ((ObjectNode) currentNode).has(part)) {
+            return getEntityRecursive(((ObjectNode) currentNode).get(part), parts, index + 1);
+        }
+
+        return null; // Not found
+    }
+    ---entity ends
