@@ -1,0 +1,322 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
+public class GraphQLQueryGenerator {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final TreeNode glossaryNode = new TreeNode("glossary");
+
+    public GraphQLQueryGenerator(String schemaFilePath) throws IOException {
+        loadSchema(schemaFilePath);
+    }
+
+    private void loadSchema(String filePath) throws IOException {
+        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+        JsonNode glossary = rootNode.path("glossary");
+
+        if (glossary.isArray()) {
+            for (JsonNode dataSourceNode : glossary) {
+                String dataSource = dataSourceNode.path("dataSourceName").asText();
+                String rootQuery = dataSourceNode.path("rootQuery").asText();
+                TreeNode dataSourceNodeTree = new TreeNode(dataSource, rootQuery);
+                glossaryNode.addChild(dataSourceNodeTree);
+
+                JsonNode registeredAttributes = dataSourceNode.path("registeredAttributes");
+
+                for (JsonNode attributeGroup : registeredAttributes) {
+                    String namespace = attributeGroup.path("namespace").asText();
+                    TreeNode namespaceNode = dataSourceNodeTree.getOrCreateChild(namespace);
+
+                    JsonNode attributeList = attributeGroup.path("attributeList");
+                    if (attributeList.isArray()) {
+                        for (JsonNode attribute : attributeList) {
+                            String attributeName = attribute.path("attributeName").asText();
+                            namespaceNode.addChild(new TreeNode(attributeName));
+                        }
+                    }
+
+                    JsonNode propertyGroups = attributeGroup.path("propertygroups");
+                    if (propertyGroups.isArray()) {
+                        for (JsonNode propertyGroup : propertyGroups) {
+                            String propertyGroupName = propertyGroup.path("name").asText();
+                            TreeNode propertyGroupNode = namespaceNode.getOrCreateChild(propertyGroupName);
+
+                            JsonNode propertyAttributes = propertyGroup.path("attributelist");
+                            if (propertyAttributes.isArray()) {
+                                for (JsonNode attribute : propertyAttributes) {
+                                    String attributeName = attribute.path("attributeName").asText();
+                                    propertyGroupNode.addChild(new TreeNode(attributeName));
+                                }
+                            }
+                        }
+                    }
+
+                    // Handle filters
+                    JsonNode filters = attributeGroup.path("filters");
+                    if (filters.isArray()) {
+                        for (JsonNode filter : filters) {
+                            String filterName = filter.fieldNames().next();
+                            String isMandatory = filter.path("isMandatory").asText();
+
+                            if (isMandatory.equalsIgnoreCase("true")) {
+                                namespaceNode.setMandatoryFilter(filterName);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public String generateQuery(Map<String, Map<String, List<String>>> requestedAttributes) {
+        StringBuilder queryBuilder = new StringBuilder("query {");
+
+        for (TreeNode dataSource : glossaryNode.children.values()) {
+            if (requestedAttributes.containsKey(dataSource.name)) {
+                queryBuilder.append("\n  ").append(dataSource.rootQuery).append(" {");
+                buildQuery(dataSource, requestedAttributes.get(dataSource.name), queryBuilder, 2);
+                queryBuilder.append("\n  }");
+            }
+        }
+
+        queryBuilder.append("\n}");
+        return queryBuilder.toString();
+    }
+
+    private void buildQuery(TreeNode node, Map<String, List<String>> requestedAttributes, StringBuilder queryBuilder, int level) {
+        if (requestedAttributes.containsKey(node.name)) {
+            queryBuilder.append("\n").append("  ".repeat(level)).append(node.name);
+
+            if (node.mandatoryFilter != null) {
+                queryBuilder.append("($").append(node.mandatoryFilter).append(")");
+            }
+            queryBuilder.append(" {");
+
+            List<String> attributes = requestedAttributes.get(node.name);
+            for (String attribute : attributes) {
+                queryBuilder.append(" ").append(attribute);
+            }
+            queryBuilder.append(" }");
+        }
+
+        for (TreeNode child : node.children.values()) {
+            buildQuery(child, requestedAttributes, queryBuilder, level);
+        }
+    }
+
+    public void printSchemaTree() {
+        glossaryNode.print(0);
+    }
+
+    public static void main(String[] args) {
+        try {
+            GraphQLQueryGenerator generator = new GraphQLQueryGenerator("src/main/resources/schema.json");
+            generator.printSchemaTree();
+
+            // Example usage for query generation
+            Map<String, Map<String, List<String>>> attributes = new HashMap<>();
+            Map<String, List<String>> casAttributes = new HashMap<>();
+            casAttributes.put("customer", Arrays.asList("salary", "age"));
+            casAttributes.put("bloomAccounts.BloomAccount", Arrays.asList("mid", "bloom_account_nbr"));
+            attributes.put("CASGraphQL", casAttributes);
+
+            String query = generator.generateQuery(attributes);
+            System.out.println("\nGenerated GraphQL Query:\n" + query);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class TreeNode {
+    public final String name;
+    public final Map<String, TreeNode> children = new HashMap<>();
+    public String mandatoryFilter;
+    public String rootQuery;
+
+    public TreeNode(String name, String rootQuery) {
+        this.name = name;
+        this.rootQuery = rootQuery;
+    }
+
+    public TreeNode(String name) {
+        this.name = name;
+    }
+
+    public TreeNode getOrCreateChild(String name) {
+        return children.computeIfAbsent(name, TreeNode::new);
+    }
+
+    public void addChild(TreeNode child) {
+        children.put(child.name, child);
+    }
+
+    public void setMandatoryFilter(String filterName) {
+        this.mandatoryFilter = filterName;
+    }
+
+    public void print(int level) {
+        System.out.print("  ".repeat(level) + name);
+        if (rootQuery != null && !rootQuery.isEmpty()) {
+            System.out.print(" [Root Query: " + rootQuery + "]");
+        }
+        if (mandatoryFilter != null) {
+            System.out.print(" (Mandatory Filter: " + mandatoryFilter + ")");
+        }
+        System.out.println();
+
+        for (TreeNode child : children.values()) {
+            child.print(level + 1);
+        }
+    }
+}
+Map<String, Map<String, List<String>>> attributes = new HashMap<>();
+Map<String, List<String>> casAttributes = new HashMap<>();
+casAttributes.put("customer", Arrays.asList("salary", "age"));
+casAttributes.put("bloomAccounts.BloomAccount", Arrays.asList("mid", "bloom_account_nbr"));
+attributes.put("CASGraphQL", casAttributes);
+
+String query = generator.generateQuery(attributes);
+System.out.println("\nGenerated GraphQL Query:\n" + query);
+
+
+
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
+public class GraphQLQueryGenerator {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final TreeNode glossaryNode = new TreeNode("glossary");
+
+    public GraphQLQueryGenerator(String schemaFilePath) throws IOException {
+        loadSchema(schemaFilePath);
+    }
+
+    private void loadSchema(String filePath) throws IOException {
+        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+        JsonNode glossary = rootNode.path("glossary");
+
+        if (glossary.isArray()) {
+            for (JsonNode dataSourceNode : glossary) {
+                String dataSource = dataSourceNode.path("dataSourceName").asText();
+                String rootQuery = dataSourceNode.path("rootQuery").asText();
+                TreeNode dataSourceNodeTree = new TreeNode(dataSource, rootQuery);
+                glossaryNode.addChild(dataSourceNodeTree);
+
+                JsonNode registeredAttributes = dataSourceNode.path("registeredAttributes");
+
+                for (JsonNode attributeGroup : registeredAttributes) {
+                    String namespace = attributeGroup.path("namespace").asText();
+                    TreeNode namespaceNode = dataSourceNodeTree.getOrCreateChild(namespace);
+
+                    JsonNode attributeList = attributeGroup.path("attributeList");
+                    if (attributeList.isArray()) {
+                        for (JsonNode attribute : attributeList) {
+                            String attributeName = attribute.path("attributeName").asText();
+                            namespaceNode.addChild(new TreeNode(attributeName));
+                        }
+                    }
+
+                    JsonNode propertyGroups = attributeGroup.path("propertygroups");
+                    if (propertyGroups.isArray()) {
+                        for (JsonNode propertyGroup : propertyGroups) {
+                            String propertyGroupName = propertyGroup.path("name").asText();
+                            TreeNode propertyGroupNode = namespaceNode.getOrCreateChild(propertyGroupName);
+
+                            JsonNode propertyAttributes = propertyGroup.path("attributelist");
+                            if (propertyAttributes.isArray()) {
+                                for (JsonNode attribute : propertyAttributes) {
+                                    String attributeName = attribute.path("attributeName").asText();
+                                    propertyGroupNode.addChild(new TreeNode(attributeName));
+                                }
+                            }
+                        }
+                    }
+
+                    // Handle filters
+                    JsonNode filters = attributeGroup.path("filters");
+                    if (filters.isArray()) {
+                        for (JsonNode filter : filters) {
+                            String filterName = filter.fieldNames().next();
+                            String isMandatory = filter.path("isMandatory").asText();
+
+                            if (isMandatory.equalsIgnoreCase("true")) {
+                                namespaceNode.setMandatoryFilter(filterName);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public String generateQuery(Map<String, Map<String, List<String>>> requestedAttributes) {
+        StringBuilder queryBuilder = new StringBuilder("query {");
+
+        for (TreeNode dataSource : glossaryNode.children.values()) {
+            if (requestedAttributes.containsKey(dataSource.name)) {
+                queryBuilder.append("\n  ").append(dataSource.rootQuery).append(" {");
+                buildQuery(dataSource, requestedAttributes.get(dataSource.name), queryBuilder, 2);
+                queryBuilder.append("\n  }");
+            }
+        }
+
+        queryBuilder.append("\n}");
+        return queryBuilder.toString();
+    }
+
+    private void buildQuery(TreeNode node, Map<String, List<String>> requestedAttributes, StringBuilder queryBuilder, int level) {
+        if (requestedAttributes.containsKey(node.name)) {
+            queryBuilder.append("\n").append("  ".repeat(level)).append(node.name);
+
+            if (node.mandatoryFilter != null) {
+                queryBuilder.append("($").append(node.mandatoryFilter).append(")");
+            }
+            queryBuilder.append(" {");
+
+            List<String> attributes = requestedAttributes.get(node.name);
+            for (String attribute : attributes) {
+                queryBuilder.append(" ").append(attribute);
+            }
+            queryBuilder.append(" }");
+        }
+
+        for (TreeNode child : node.children.values()) {
+            buildQuery(child, requestedAttributes, queryBuilder, level);
+        }
+    }
+
+    public void printSchemaTree() {
+        glossaryNode.print(0);
+    }
+
+    public static void main(String[] args) {
+        try {
+            GraphQLQueryGenerator generator = new GraphQLQueryGenerator("src/main/resources/schema.json");
+            generator.printSchemaTree();
+
+            // Example usage for query generation
+            Map<String, Map<String, List<String>>> attributes = new HashMap<>();
+            Map<String, List<String>> casAttributes = new HashMap<>();
+            casAttributes.put("customer", Arrays.asList("salary", "age"));
+            casAttributes.put("bloomAccounts.BloomAccount", Arrays.asList("mid", "bloom_account_nbr"));
+            attributes.put("CASGraphQL", casAttributes);
+
+            String query = generator.generateQuery(attributes);
+            System.out.println("\nGenerated GraphQL Query:\n" + query);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

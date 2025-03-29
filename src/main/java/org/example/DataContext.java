@@ -643,3 +643,126 @@ class RuleEngine1 {
         return dataTypeMap;
     }
 }
+
+
+ class GraphQLQueryGenerator {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, Map<String, List<String>>> queryPaths = new HashMap<>();
+    private final Map<String, String> rootQueries = new HashMap<>();
+
+    public GraphQLQueryGenerator(String schemaFilePath) throws IOException {
+        loadSchema(schemaFilePath);
+    }
+
+    private void loadSchema(String filePath) throws IOException {
+        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+        JsonNode glossary = rootNode.path("glossary");
+
+        if (glossary.isArray()) {
+            for (JsonNode dataSourceNode : glossary) {
+                String dataSource = dataSourceNode.path("dataSourceName").asText();
+                String rootQuery = dataSourceNode.path("rootQuery").asText();
+                rootQueries.put(dataSource, rootQuery);  // Store root query
+
+                JsonNode registeredAttributes = dataSourceNode.path("registeredAttributes");
+
+                for (JsonNode attributeGroup : registeredAttributes) {
+                    String namespace = attributeGroup.path("namespace").asText();
+                    JsonNode attributeList = attributeGroup.path("attributeList");
+
+                    if (attributeList.isArray()) {
+                        for (JsonNode attribute : attributeList) {
+                            String attributeName = attribute.path("attributeName").asText();
+                            addQueryPath(dataSource, namespace, attributeName);
+                        }
+                    }
+
+                    JsonNode propertyGroups = attributeGroup.path("propertygroups");
+                    if (propertyGroups.isArray()) {
+                        for (JsonNode propertyGroup : propertyGroups) {
+                            String propertyGroupName = propertyGroup.path("name").asText();
+                            JsonNode propertyAttributes = propertyGroup.path("attributelist");
+
+                            if (propertyAttributes.isArray()) {
+                                for (JsonNode attribute : propertyAttributes) {
+                                    String attributeName = attribute.path("attributeName").asText();
+                                    addQueryPath(dataSource, namespace + "." + propertyGroupName, attributeName);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void addQueryPath(String dataSource, String namespace, String attributeName) {
+        queryPaths.computeIfAbsent(dataSource, k -> new HashMap<>())
+                .computeIfAbsent(namespace, k -> new ArrayList<>())
+                .add(attributeName);
+    }
+
+    public String generateQuery(String dataSource, List<String> entityAttributes) {
+        if (!queryPaths.containsKey(dataSource)) {
+            return "Data source not found.";
+        }
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("query {");
+
+        String rootQuery = rootQueries.getOrDefault(dataSource, "");
+        if (!rootQuery.isEmpty()) {
+            queryBuilder.append("\n  ").append(rootQuery).append(" {");
+        }
+
+        Map<String, List<String>> entityMap = queryPaths.get(dataSource);
+        Map<String, List<String>> selectedEntities = new HashMap<>();
+
+        for (String attribute : entityAttributes) {
+            String[] parts = attribute.split("\\.");
+            String namespace = parts.length > 1 ? parts[0] + "." + parts[1] : parts[0];
+            String attributeName = parts.length > 2 ? parts[2] : parts[1];
+
+            selectedEntities.computeIfAbsent(namespace, k -> new ArrayList<>()).add(attributeName);
+        }
+
+        for (Map.Entry<String, List<String>> entry : selectedEntities.entrySet()) {
+            String namespace = entry.getKey();
+            List<String> attributes = entry.getValue();
+
+            queryBuilder.append("\n    ").append(namespace).append(" {");
+            for (String attribute : attributes) {
+                queryBuilder.append(" ").append(attribute);
+            }
+            queryBuilder.append(" }");
+        }
+
+        if (!rootQuery.isEmpty()) {
+            queryBuilder.append("\n  }");
+        }
+        queryBuilder.append("\n}");
+
+        return queryBuilder.toString();
+    }
+
+    public static void main(String[] args) {
+        try {
+            GraphQLQueryGenerator generator = new GraphQLQueryGenerator("src/main/resources/schema.json");
+
+            // Example: Generating query
+            List<String> attributes = Arrays.asList(
+                    "CASGraphQL.customer.salary",
+                    "CASGraphQL.customer.age",
+                    "CASGraphQL.bloomAccounts.BloomAccount.bloom_account_nbr"
+            );
+
+            String query = generator.generateQuery("CASGraphQL", attributes);
+            System.out.println("Generated GraphQL Query:\n" + query);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+

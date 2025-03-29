@@ -1,0 +1,56 @@
+  private boolean evaluateCondition(JsonNode mainData, JsonNode condition) {
+        String entityType = condition.path("field").path("entityType").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        // Check if it's a nested rule evaluation
+        if ("rule".equalsIgnoreCase(entityType)) {
+            JsonNode nestedRule = retrieveNestedRule(fieldName, namespace);
+            if (nestedRule != null) {
+                boolean result = evaluateRule(mainData, nestedRule);
+                return compareRuleResult(result, comparison, value);
+            } else {
+                System.out.println("Nested rule not found: " + namespace + "." + fieldName);
+                return false;
+            }
+        }
+
+        String datasource = condition.path("field").path("datasource").asText();
+        Map<String, Map<String, List<String>>> requestAttributes = new HashMap<>();
+        Map<String, List<String>> entityAttributes = new HashMap<>();
+        entityAttributes.put(namespace, List.of(fieldName));
+        requestAttributes.put(datasource, entityAttributes);
+
+        String graphqlQuery = dataContext.fetchData(requestAttributes);
+        System.out.println("Generated GraphQL Query for Evaluation:\n" + graphqlQuery);
+
+        // Placeholder logic: Always returns true for now
+        return true;
+    }
+
+    private boolean compareRuleResult(boolean result, String comparison, String value) {
+        if (comparison.equalsIgnoreCase("equal to")) {
+            return result == Boolean.parseBoolean(value);
+        } else if (comparison.equalsIgnoreCase("not equal to")) {
+            return result != Boolean.parseBoolean(value);
+        }
+        return false;
+    }
+
+    private JsonNode retrieveNestedRule(String ruleName, String namespace) {
+        // Mock method to simulate fetching nested rules from a rule repository
+        // Replace with actual fetching logic as per your application structure
+        String ruleJson = "{" +
+                "\"op\": \"and\", " +
+                "\"terms\": [" +
+                "{\"field\": {\"name\": \"age\", \"namespace\": \"customer\", \"datasource\": \"CASGraphQL\"}, \"comp\": \"equal to\", \"value\": \"35\"}" +
+                "]}";
+        try {
+            return objectMapper.readTree(ruleJson);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
