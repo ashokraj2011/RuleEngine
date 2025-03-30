@@ -1,0 +1,96 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class InsightNavigator {
+    public static void main(String[] args) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        // Load JSON file
+        JsonNode root = mapper.readTree(new File("/Users/ashokraj/Downloads/learn/spring/JsonObjectTest/src/main/java/org/example/input.json"));
+
+        // Example usage
+
+        String path = "portsum";
+        //path = "customerInsights.insight_attributes";
+       // JsonNode result = getNodeByPath(root, path);
+        JsonNode result = findNodeByPartialPath(root, path);
+        if (result != null) {
+            System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
+        } else {
+            System.out.println("No match found.");
+        }
+    }
+
+
+
+        public static JsonNode getNodeByPath(JsonNode root, String path) {
+            String[] tokens = path.split("\\.");
+            return traverse(root, tokens, 0);
+        }
+
+        private static JsonNode traverse(JsonNode current, String[] tokens, int index) {
+            if (index >= tokens.length) return current;
+            String token = tokens[index];
+
+            if (current.isArray()) {
+                ObjectMapper mapper = new ObjectMapper();
+                Iterator<JsonNode> elements = current.elements();
+                ArrayNode aggregated = mapper.createArrayNode();
+                while (elements.hasNext()) {
+                    JsonNode element = elements.next();
+                    JsonNode value = traverse(element, tokens, index);
+                    if (value != null) aggregated.add(value);
+                }
+                return aggregated;
+            } else if (current.isObject() && current.has(token)) {
+                JsonNode next = current.get(token);
+
+                if (index + 1 < tokens.length && next.isArray()) {
+                    ObjectMapper mapper = new ObjectMapper();
+                    ArrayNode flattened = mapper.createArrayNode();
+                    for (JsonNode item : next) {
+                        JsonNode value = item.get(tokens[index + 1]);
+                        if (value != null) flattened.add(value);
+                    }
+                    return flattened;
+                }
+
+                return traverse(next, tokens, index + 1);
+            }
+
+            return null;
+        }
+
+        public static JsonNode findNodeByPartialPath(JsonNode root, String targetKey) {
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayNode matches = mapper.createArrayNode();
+            Queue<JsonNode> queue = new LinkedList<>();
+            queue.add(root);
+
+            while (!queue.isEmpty()) {
+                JsonNode current = queue.poll();
+                if (current.isObject()) {
+                    current.fieldNames().forEachRemaining(field -> {
+                        if (field.equals(targetKey)) {
+                            matches.add(current.get(field));
+                        }
+                        queue.add(current.get(field));
+                    });
+                } else if (current.isArray()) {
+                    for (JsonNode item : current) {
+                        queue.add(item);
+                    }
+                }
+            }
+
+            return !matches.isEmpty() ? matches : null;
+        }
+}
