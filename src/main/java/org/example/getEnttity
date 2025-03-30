@@ -1,0 +1,80 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class JsonPathGenerator {
+    private final Map<String, String> jsonPathMap = new HashMap<>();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public void generatePaths(JsonNode node, String currentPath) {
+        if (node.isObject()) {
+            Iterator<Map.Entry<String, JsonNode>> fields = node.fields();
+            while (fields.hasNext()) {
+                Map.Entry<String, JsonNode> field = fields.next();
+                String newPath = currentPath.isEmpty() ? field.getKey() : currentPath + "." + field.getKey();
+                jsonPathMap.put(newPath, newPath);
+                generatePaths(field.getValue(), newPath);
+            }
+        } else if (node.isArray()) {
+            for (int i = 0; i < node.size(); i++) {
+                String newPath = currentPath + "[" + i + "]";
+                jsonPathMap.put(newPath, newPath);
+                generatePaths(node.get(i), newPath);
+            }
+        }
+    }
+
+    public JsonNode readJsonFile(String filePath) throws IOException {
+        JsonNode rootNode = objectMapper.readTree(new File(filePath));
+        generatePaths(rootNode, "");
+        return rootNode;
+    }
+
+    public JsonNode getEntity(String entityPath, JsonNode rootNode) {
+        String jsonPath = jsonPathMap.get(entityPath);
+        if (jsonPath == null) {
+            jsonPath = entityPath; // try to resolve path even if not indexed
+        }
+
+        String[] parts = jsonPath.split("\\.");
+        JsonNode currentNode = rootNode;
+        for (String part : parts) {
+            if (part.contains("[")) {
+                String key = part.substring(0, part.indexOf("["));
+                int index = Integer.parseInt(part.substring(part.indexOf("[") + 1, part.indexOf("]")));
+                currentNode = currentNode.get(key);
+                if (currentNode != null) {
+                    currentNode = currentNode.get(index);
+                }
+            } else {
+                currentNode = currentNode.get(part);
+            }
+
+            if (currentNode == null) {
+                System.out.println("Invalid path for the entity.");
+                return null;
+            }
+        }
+
+        return currentNode;
+    }
+
+    public static void main(String[] args) {
+        try {
+            JsonPathGenerator generator = new JsonPathGenerator();
+            JsonNode rootNode = generator.readJsonFile("example.json");
+
+            JsonNode result = generator.getEntity("commonIdentifiers.params", rootNode);
+            if (result != null) {
+                System.out.println(result.toPrettyString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
