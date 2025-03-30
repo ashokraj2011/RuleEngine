@@ -1,0 +1,207 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class DataContext {
+    private final ObjectNode mainData;
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+
+    public DataContext(String filePath) throws IOException {
+        JsonNode root = mapper.readTree(new File(filePath));
+        this.mainData = (ObjectNode) root.path("data");
+    }
+
+    public void loadDataTypes(String filePath) throws IOException {
+        List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filePath));
+        for (String line : lines) {
+            String[] parts = line.split(":");
+            if (parts.length == 2) {
+                dataTypeMap.put(parts[0].trim(), parts[1].trim());
+            }
+        }
+    }
+
+    public JsonNode getEntity(String path) {
+        if (path == null || path.isEmpty()) return null;
+
+        String[] parts = path.split("\\.");
+        JsonNode current = mainData;
+        for (String part : parts) {
+            if (current == null) return null;
+            current = current.path(part);
+        }
+        return current.isMissingNode() ? null : current;
+    }
+
+    public boolean evaluateGroupedConditions(JsonNode conditions) {
+        if (!conditions.isArray()) return false;
+
+        Map<String, List<JsonNode>> grouped = new HashMap<>();
+        for (JsonNode cond : conditions) {
+            String group = cond.path("field").path("evaluation_group").asText("default");
+            grouped.computeIfAbsent(group, k -> new ArrayList<>()).add(cond);
+        }
+
+        for (Map.Entry<String, List<JsonNode>> entry : grouped.entrySet()) {
+            String groupId = entry.getKey();
+            List<JsonNode> groupConds = entry.getValue();
+            boolean groupResult = evaluateConditionGroup(groupConds);
+            System.out.printf("Evaluation Group [%s]: Result = %b%n", groupId, groupResult);
+            if (!groupResult) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean evaluateConditionGroup(List<JsonNode> groupConds) {
+        if (groupConds.isEmpty()) return true;
+
+        String namespace = groupConds.get(0).path("field").path("namespace").asText();
+        JsonNode entity = getEntity(namespace);
+
+        if (entity == null) return false;
+
+        if (entity.isArray()) {
+            for (JsonNode item : entity) {
+                boolean allMatch = groupConds.stream().allMatch(cond ->
+                        evaluateSingleCondition(item, cond));
+                if (allMatch) return true;
+            }
+            return false;
+        } else {
+            return groupConds.stream().allMatch(cond ->
+                    evaluateSingleCondition(entity, cond));
+        }
+    }
+
+    private boolean evaluateSingleCondition(JsonNode entity, JsonNode cond) {
+        if ("rule".equalsIgnoreCase(cond.path("field").path("entityType").asText())) {
+            // Nested rule reference
+            JsonNode nestedRule = cond.path("field").path("ruleDef");
+            boolean nestedResult = evaluateGroupedConditions(nestedRule);
+            return compare(nestedResult, Boolean.parseBoolean(cond.path("value").asText()), cond.path("comp").asText());
+        }
+
+        String namespace = cond.path("field").path("namespace").asText();
+        String fieldName = cond.path("field").path("name").asText();
+        String fullPath = namespace + "." + fieldName;
+        String comp = cond.path("comp").asText();
+        String value = cond.path("value").asText();
+        String type = dataTypeMap.getOrDefault(fullPath, "String");
+        JsonNode target = entity.get(fieldName);
+
+        return target != null && evaluateCondition(target, value, comp, type);
+    }
+
+    public List<JsonNode> query(String entityPath, JsonNode conditions) {
+        JsonNode entity = getEntity(entityPath);
+        List<JsonNode> result = new ArrayList<>();
+
+        if (entity == null || !conditions.isArray()) return result;
+
+        Predicate<JsonNode> conditionPredicate = item -> {
+            for (JsonNode cond : conditions) {
+                String namespace = cond.path("field").path("namespace").asText();
+                String fieldName = cond.path("field").path("name").asText();
+                String fullPath = namespace + "." + fieldName;
+                String comp = cond.path("comp").asText();
+                String value = cond.path("value").asText();
+                String type = dataTypeMap.getOrDefault(fullPath, "String");
+                JsonNode target = item.get(fieldName);
+
+                if (target == null || !evaluateCondition(target, value, comp, type)) return false;
+            }
+            return true;
+        };
+
+        if (entity.isArray()) {
+            for (JsonNode item : entity) {
+                if (conditionPredicate.test(item)) result.add(item);
+            }
+        } else if (entity.isObject() && conditionPredicate.test(entity)) {
+            result.add(entity);
+        }
+
+        return result;
+    }
+
+    private boolean evaluateCondition(JsonNode target, String value, String comp, String type) {
+        try {
+            switch (type.toLowerCase()) {
+                case "integer":
+                    int intVal = Integer.parseInt(value);
+                    int targetInt = target.asInt();
+                    System.out.printf("Evaluating INTEGER: %d %s %d%n", targetInt, comp, intVal);
+                    return compare(targetInt, intVal, comp);
+                case "double":
+                    double dblVal = Double.parseDouble(value);
+                    double targetDbl = target.asDouble();
+                    System.out.printf("Evaluating DOUBLE: %f %s %f%n", targetDbl, comp, dblVal);
+                    return compare(targetDbl, dblVal, comp);
+                case "boolean":
+                    boolean boolVal = Boolean.parseBoolean(value);
+                    boolean targetBool = target.asBoolean();
+                    System.out.printf("Evaluating BOOLEAN: %b %s %b%n", targetBool, comp, boolVal);
+                    return compare(targetBool, boolVal, comp);
+                case "datetime":
+                    LocalDateTime dateVal = LocalDateTime.parse(value, DateTimeFormatter.ISO_DATE_TIME);
+                    LocalDateTime targetDate = LocalDateTime.parse(target.asText(), DateTimeFormatter.ISO_DATE_TIME);
+                    System.out.printf("Evaluating DATETIME: %s %s %s%n", targetDate, comp, dateVal);
+                    return compare(targetDate, dateVal, comp);
+                default:
+                    String targetText = target.asText();
+                    System.out.printf("Evaluating STRING: '%s' %s '%s'%n", targetText, comp, value);
+                    return compare(targetText, value, comp);
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to evaluate condition: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private <T extends Comparable<T>> boolean compare(T a, T b, String comp) {
+        return switch (comp.toLowerCase()) {
+            case "equal to" -> a.compareTo(b) == 0;
+            case "greater than" -> a.compareTo(b) > 0;
+            case "less than" -> a.compareTo(b) < 0;
+            case "greater than or equal to" -> a.compareTo(b) >= 0;
+            case "less than or equal to" -> a.compareTo(b) <= 0;
+            case "not equal to" -> a.compareTo(b) != 0;
+            default -> false;
+        };
+    }
+
+    private boolean compare(boolean a, boolean b, String comp) {
+        return switch (comp.toLowerCase()) {
+            case "equal to" -> a == b;
+            case "not equal to" -> a != b;
+            default -> false;
+        };
+    }
+
+    public ObjectNode getMainData() {
+        return mainData;
+    }
+
+    public void printEntity(String path) {
+        JsonNode result = getEntity(path);
+        if (result != null) {
+            System.out.println("Entity [" + path + "]: " + result.toPrettyString());
+        } else {
+            System.out.println("Entity [" + path + "] not found.");
+        }
+    }
+}
