@@ -1,0 +1,476 @@
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class RuleEngine {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+    private final List<String> missingAttributesLog = new ArrayList<>();
+    private final DataContext dataContext;
+
+    public RuleEngine(String dataTypeFilePath, String mainDataFilePath) throws IOException {
+        this.dataContext = new DataContext(mainDataFilePath);
+        loadDataTypes(dataTypeFilePath);
+    }
+
+    private void loadDataTypes(String filePath) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get(filePath));
+        for (String line : lines) {
+            String[] parts = line.split(":");
+            if (parts.length == 2) {
+                String key = parts[0].trim();
+                String dataType = parts[1].trim();
+                dataTypeMap.put(key, dataType);
+            }
+        }
+    }
+
+    public boolean evaluateRule(JsonNode rule) {
+        missingAttributesLog.clear();
+        return evaluateRuleRecursive(rule);
+    }
+
+    private boolean evaluateRuleRecursive(JsonNode rule) {
+        String operator = rule.path("op").asText();
+        JsonNode terms = rule.path("terms");
+
+        if (terms.isArray()) {
+            List<JsonNode> simpleConditions = new ArrayList<>();
+            List<JsonNode> nestedRules = new ArrayList<>();
+
+            for (JsonNode term : terms) {
+                if (term.has("op")) {
+                    nestedRules.add(term);
+                } else {
+                    simpleConditions.add(term);
+                }
+            }
+
+            Map<String, List<JsonNode>> groupedConditions = simpleConditions.stream()
+                    .collect(Collectors.groupingBy(term -> term.path("field").path("evaluation_group").asText("default")));
+
+            for (JsonNode nestedRule : nestedRules) {
+                boolean nestedResult = evaluateRuleRecursive(nestedRule);
+                if (operator.equalsIgnoreCase("or") && nestedResult) return true;
+                if (operator.equalsIgnoreCase("and") && !nestedResult) return false;
+            }
+
+            for (Map.Entry<String, List<JsonNode>> entry : groupedConditions.entrySet()) {
+                boolean groupResult = evaluateGroupedConditions(entry.getValue());
+                if (operator.equalsIgnoreCase("or") && groupResult) return true;
+                if (operator.equalsIgnoreCase("and") && !groupResult) return false;
+            }
+        }
+        return operator.equalsIgnoreCase("and");
+    }
+
+    private boolean evaluateGroupedConditions(List<JsonNode> groupConditions) {
+        if (groupConditions.isEmpty()) return true;
+
+        String namespace = groupConditions.get(0).path("field").path("namespace").asText();
+        JsonNode entityNode = dataContext.getEntity(namespace);
+
+        if (entityNode == null || (!entityNode.isArray() && !entityNode.isObject())) return false;
+
+        if (entityNode.isArray()) {
+            for (JsonNode item : entityNode) {
+                boolean allMatch = true;
+                for (JsonNode condition : groupConditions) {
+                    String fieldName = condition.path("field").path("name").asText();
+                    String comp = condition.path("comp").asText();
+                    String val = condition.path("value").asText();
+                    String typeKey = condition.path("field").path("datasource").asText() + "," + namespace + "." + fieldName;
+                    String expectedType = dataTypeMap.getOrDefault(typeKey, "String");
+                    JsonNode fieldNode = item.get(fieldName);
+                    if (fieldNode == null || !compareValues(fieldNode, val, comp, expectedType)) {
+                        allMatch = false;
+                        break;
+                    }
+                }
+                if (allMatch) return true;
+            }
+            return false;
+        } else {
+            for (JsonNode condition : groupConditions) {
+                if (!evaluateCondition(condition)) return false;
+            }
+            return true;
+        }
+    }
+
+    private boolean evaluateCondition(JsonNode condition) {
+        String datasource = condition.path("field").path("datasource").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        if (condition.path("field").has("entityType") && condition.path("field").get("entityType").asText().equalsIgnoreCase("rule")) {
+            boolean nestedRuleResult = evaluateRuleRecursive(condition);
+            return compareValues(nestedRuleResult, value, comparison);
+        }
+
+        String entityPath = namespace.isEmpty() ? fieldName : namespace + "." + fieldName;
+        JsonNode targetNode = dataContext.getEntity(entityPath);
+
+        if (targetNode == null) {
+            logMissingAttribute(datasource, namespace, fieldName);
+            return false;
+        }
+
+        String expectedType = dataTypeMap.getOrDefault(datasource + "," + entityPath, "String");
+        return compareValues(targetNode, value, comparison, expectedType);
+    }
+
+    private boolean compareValues(JsonNode targetNode, String value, String comparison, String expectedType) {
+        try {
+            switch (expectedType.toLowerCase()) {
+                case "integer":
+                    int intValue = Integer.parseInt(value);
+                    return evaluateComparison(targetNode.asInt(), intValue, comparison);
+                case "double":
+                    double doubleValue = Double.parseDouble(value);
+                    return evaluateComparison(targetNode.asDouble(), doubleValue, comparison);
+                case "boolean":
+                    boolean boolValue = Boolean.parseBoolean(value);
+                    return evaluateComparison(targetNode.asBoolean(), boolValue, comparison);
+                case "datetime":
+                    LocalDateTime dateValue = parseDateTimeValue(value);
+                    LocalDateTime targetDate = LocalDateTime.parse(targetNode.asText(), DateTimeFormatter.ISO_DATE_TIME);
+                    return evaluateComparison(targetDate, dateValue, comparison);
+                case "string":
+                    return evaluateComparison(targetNode.asText(), value, comparison);
+                default:
+                    return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private LocalDateTime parseDateTimeValue(String value) {
+        if (value.startsWith("CURRENT_DATE")) {
+            String[] parts = value.split(":");
+            LocalDateTime currentDate = LocalDateTime.now();
+
+            if (parts.length >= 4) {
+                int amount = Integer.parseInt(parts[2]);
+                String unit = parts[3].toLowerCase();
+
+                if (unit.contains("day")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusDays(amount) : currentDate.plusDays(amount);
+                if (unit.contains("month")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusMonths(amount) : currentDate.plusMonths(amount);
+                if (unit.contains("year")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusYears(amount) : currentDate.plusYears(amount);
+            }
+            return currentDate;
+        }
+
+        return LocalDateTime.parse(value, DateTimeFormatter.ISO_DATE_TIME);
+    }
+
+    private <T extends Comparable<T>> boolean evaluateComparison(T targetValue, T comparisonValue, String comparison) {
+        return switch (comparison.toLowerCase()) {
+            case "equal to" -> targetValue.compareTo(comparisonValue) == 0;
+            case "greater than" -> targetValue.compareTo(comparisonValue) > 0;
+            case "less than" -> targetValue.compareTo(comparisonValue) < 0;
+            case "greater than or equal to" -> targetValue.compareTo(comparisonValue) >= 0;
+            case "less than or equal to" -> targetValue.compareTo(comparisonValue) <= 0;
+            default -> false;
+        };
+    }
+
+    private boolean compareValues(boolean actual, String expected, String comparison) {
+        boolean expectedValue = Boolean.parseBoolean(expected);
+        return switch (comparison.toLowerCase()) {
+            case "equal to" -> actual == expectedValue;
+            case "not equal to" -> actual != expectedValue;
+            default -> false;
+        };
+    }
+
+    private void logMissingAttribute(String datasource, String namespace, String fieldName) {
+        missingAttributesLog.add("Missing attribute: " + datasource + "," + namespace + "." + fieldName);
+    }
+
+    public void printMissingAttributesLog() {
+        if (!missingAttributesLog.isEmpty()) {
+            System.out.println("\nMissing Attributes Log:");
+            missingAttributesLog.forEach(System.out::println);
+        }
+    }
+}
+Here are the methods that were **modified or added** to support grouped evaluation logic and nested structure handling:
+
+---
+
+### ✅ **Modified Methods:**
+
+1. **`evaluateRuleRecursive(JsonNode rule)`**
+   - Split terms into `nestedRules` and `simpleConditions`.
+   - Grouped `simpleConditions` by `evaluation_group`.
+   - Calls `evaluateGroupedConditions()` for each group.
+
+2. **`evaluateGroupedConditions(List<JsonNode> groupConditions)`**
+   - Supports evaluation against arrays (e.g., `audienceSegments`).
+   - Ensures that conditions in the same group are evaluated **together** on each item in array.
+
+3. **`evaluateCondition(JsonNode condition)`**
+   - Handles `entityType = "rule"` by recursively calling `evaluateRuleRecursive`.
+   - Uses full path (`namespace + "." + fieldName`) to fetch data from `DataContext`.
+
+4. **`compareValues(JsonNode, String, String, String)`**
+   - Enhanced to support different data types using `expectedType`.
+
+---
+
+### ✅ **Unchanged But Called Logic:**
+
+- `evaluateComparison(...)`
+- `parseDateTimeValue(...)`
+- `compareValues(boolean, String, String)`
+
+---
+
+Let me know if you'd like:
+**a.** Rule evaluation to return **matched rows/entities** for inspection.
+**b.** Group-by operator (e.g. `match-any`, `match-all`) for `evaluation_group`.
+
+
+---second
+
+package org.example;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class RuleEngine {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Map<String, String> dataTypeMap = new HashMap<>();
+    private final List<String> missingAttributesLog = new ArrayList<>();
+    private final DataContext dataContext;
+
+    public RuleEngine(String dataTypeFilePath, String mainDataFilePath) throws IOException {
+        this.dataContext = new DataContext(mainDataFilePath);
+        loadDataTypes(dataTypeFilePath);
+    }
+
+    private void loadDataTypes(String filePath) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get(filePath));
+        for (String line : lines) {
+            String[] parts = line.split(":");
+            if (parts.length == 2) {
+                String key = parts[0].trim();
+                String dataType = parts[1].trim();
+                dataTypeMap.put(key, dataType);
+            }
+        }
+    }
+
+    public boolean evaluateRule(JsonNode rule) {
+        missingAttributesLog.clear();
+        return evaluateRuleRecursive(rule);
+    }
+
+    private boolean evaluateRuleRecursive(JsonNode rule) {
+        String operator = rule.path("op").asText();
+        JsonNode terms = rule.path("terms");
+
+        if (terms.isArray()) {
+            List<JsonNode> simpleConditions = new ArrayList<>();
+            List<JsonNode> nestedRules = new ArrayList<>();
+
+            for (JsonNode term : terms) {
+                if (term.has("op")) {
+                    nestedRules.add(term);
+                } else {
+                    simpleConditions.add(term);
+                }
+            }
+
+            Map<String, List<JsonNode>> groupedConditions = simpleConditions.stream()
+                    .collect(Collectors.groupingBy(term -> term.path("field").path("evaluation_group").asText("default")));
+
+            for (JsonNode nestedRule : nestedRules) {
+                boolean nestedResult = evaluateRuleRecursive(nestedRule);
+                if (operator.equalsIgnoreCase("or") && nestedResult) return true;
+                if (operator.equalsIgnoreCase("and") && !nestedResult) return false;
+            }
+
+            for (Map.Entry<String, List<JsonNode>> entry : groupedConditions.entrySet()) {
+                boolean groupResult = evaluateGroupedConditions(entry.getValue());
+                if (operator.equalsIgnoreCase("or") && groupResult) return true;
+                if (operator.equalsIgnoreCase("and") && !groupResult) return false;
+            }
+        }
+        return operator.equalsIgnoreCase("and");
+    }
+
+    private boolean evaluateGroupedConditions(List<JsonNode> groupConditions) {
+        if (groupConditions.isEmpty()) return true;
+
+        String namespace = groupConditions.get(0).path("field").path("namespace").asText();
+        JsonNode entityNode = dataContext.getEntity(namespace);
+
+        if (entityNode == null || (!entityNode.isArray() && !entityNode.isObject())) return false;
+
+        if (entityNode.isArray()) {
+            for (JsonNode item : entityNode) {
+                boolean allMatch = true;
+                for (JsonNode condition : groupConditions) {
+                    String fieldName = condition.path("field").path("name").asText();
+                    String comp = condition.path("comp").asText();
+                    String val = condition.path("value").asText();
+                    String typeKey = condition.path("field").path("datasource").asText() + "," + namespace + "." + fieldName;
+                    String expectedType = dataTypeMap.getOrDefault(typeKey, "String");
+                    JsonNode fieldNode = item.get(fieldName);
+
+                    if (comp.equalsIgnoreCase("in")) {
+                        List<String> targetValues = new ArrayList<>();
+                        for (JsonNode elem : entityNode) {
+                            JsonNode v = elem.get(fieldName);
+                            if (v != null) targetValues.add(v.asText());
+                        }
+                        if (!targetValues.contains(val)) {
+                            allMatch = false;
+                            break;
+                        }
+                    } else if (fieldNode == null || !compareValues(fieldNode, val, comp, expectedType)) {
+                        allMatch = false;
+                        break;
+                    }
+                }
+                if (allMatch) return true;
+            }
+            return false;
+        } else {
+            for (JsonNode condition : groupConditions) {
+                if (!evaluateCondition(condition)) return false;
+            }
+            return true;
+        }
+    }
+
+    private boolean evaluateCondition(JsonNode condition) {
+        String datasource = condition.path("field").path("datasource").asText();
+        String namespace = condition.path("field").path("namespace").asText();
+        String fieldName = condition.path("field").path("name").asText();
+        String comparison = condition.path("comp").asText();
+        String value = condition.path("value").asText();
+
+        if (condition.path("field").has("entityType") && condition.path("field").get("entityType").asText().equalsIgnoreCase("rule")) {
+            boolean nestedRuleResult = evaluateRuleRecursive(condition);
+            return compareValues(nestedRuleResult, value, comparison);
+        }
+
+        String entityPath = namespace.isEmpty() ? fieldName : namespace + "." + fieldName;
+        JsonNode targetNode = dataContext.getEntity(entityPath);
+
+        if (targetNode == null) {
+            logMissingAttribute(datasource, namespace, fieldName);
+            return false;
+        }
+
+        String expectedType = dataTypeMap.getOrDefault(datasource + "," + entityPath, "String");
+        return compareValues(targetNode, value, comparison, expectedType);
+    }
+
+    private boolean compareValues(JsonNode targetNode, String value, String comparison, String expectedType) {
+        try {
+            switch (expectedType.toLowerCase()) {
+                case "integer":
+                    int intValue = Integer.parseInt(value);
+                    return evaluateComparison(targetNode.asInt(), intValue, comparison);
+                case "double":
+                    double doubleValue = Double.parseDouble(value);
+                    return evaluateComparison(targetNode.asDouble(), doubleValue, comparison);
+                case "boolean":
+                    boolean boolValue = Boolean.parseBoolean(value);
+                    return evaluateComparison(targetNode.asBoolean(), boolValue, comparison);
+                case "datetime":
+                    LocalDateTime dateValue = parseDateTimeValue(value);
+                    LocalDateTime targetDate = LocalDateTime.parse(targetNode.asText(), DateTimeFormatter.ISO_DATE_TIME);
+                    return evaluateComparison(targetDate, dateValue, comparison);
+                case "string":
+                    return comparison.equalsIgnoreCase("in") ?
+                            Arrays.asList(value.split(",")).contains(targetNode.asText()) :
+                            evaluateComparison(targetNode.asText(), value, comparison);
+                default:
+                    return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private LocalDateTime parseDateTimeValue(String value) {
+        if (value.startsWith("CURRENT_DATE")) {
+            String[] parts = value.split(":");
+            LocalDateTime currentDate = LocalDateTime.now();
+
+            if (parts.length >= 4) {
+                int amount = Integer.parseInt(parts[2]);
+                String unit = parts[3].toLowerCase();
+
+                if (unit.contains("day")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusDays(amount) : currentDate.plusDays(amount);
+                if (unit.contains("month")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusMonths(amount) : currentDate.plusMonths(amount);
+                if (unit.contains("year")) return parts[1].equalsIgnoreCase("ago") ? currentDate.minusYears(amount) : currentDate.plusYears(amount);
+            }
+            return currentDate;
+        }
+
+        return LocalDateTime.parse(value, DateTimeFormatter.ISO_DATE_TIME);
+    }
+
+    private <T extends Comparable<T>> boolean evaluateComparison(T targetValue, T comparisonValue, String comparison) {
+        return switch (comparison.toLowerCase()) {
+            case "equal to" -> targetValue.compareTo(comparisonValue) == 0;
+            case "greater than" -> targetValue.compareTo(comparisonValue) > 0;
+            case "less than" -> targetValue.compareTo(comparisonValue) < 0;
+            case "greater than or equal to" -> targetValue.compareTo(comparisonValue) >= 0;
+            case "less than or equal to" -> targetValue.compareTo(comparisonValue) <= 0;
+            default -> false;
+        };
+    }
+
+    private boolean compareValues(boolean actual, String expected, String comparison) {
+        boolean expectedValue = Boolean.parseBoolean(expected);
+        return switch (comparison.toLowerCase()) {
+            case "equal to" -> actual == expectedValue;
+            case "not equal to" -> actual != expectedValue;
+            default -> false;
+        };
+    }
+
+    private void logMissingAttribute(String datasource, String namespace, String fieldName) {
+        missingAttributesLog.add("Missing attribute: " + datasource + "," + namespace + "." + fieldName);
+    }
+
+    public void printMissingAttributesLog() {
+        if (!missingAttributesLog.isEmpty()) {
+            System.out.println("\nMissing Attributes Log:");
+            missingAttributesLog.forEach(System.out::println);
+        }
+    }
+}
