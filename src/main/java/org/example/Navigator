@@ -94,3 +94,40 @@ public class InsightNavigator {
             return !matches.isEmpty() ? matches : null;
         }
 }
+
+
+///
+
+
+
+    public static JsonNode findNodeByPartialPath(JsonNode root, String targetKey) {
+        ObjectMapper mapper = new ObjectMapper();
+        ArrayNode matches = mapper.createArrayNode();
+        Queue<JsonNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            JsonNode current = queue.poll();
+            if (current.isObject()) {
+                current.fieldNames().forEachRemaining(field -> {
+                    JsonNode value = current.get(field);
+                    if (field.equals(targetKey)) {
+                        if (value.isArray()) {
+                            for (JsonNode item : value) {
+                                matches.add(item);
+                            }
+                        } else {
+                            matches.add(value);
+                        }
+                    }
+                    queue.add(value);
+                });
+            } else if (current.isArray()) {
+                for (JsonNode item : current) {
+                    queue.add(item);
+                }
+            }
+        }
+
+        return matches.size() > 0 ? matches : null;
+    }
