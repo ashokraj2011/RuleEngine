@@ -1,0 +1,39 @@
+public void mergeAdditionalData(String additionalDataFilePath, String configFilePath) throws IOException {
+        JsonNode additionalData = mapper.readTree(new File(additionalDataFilePath));
+        JsonNode config = mapper.readTree(new File(configFilePath));
+
+        String dataSourceName = config.path("dataSourceName").asText();
+        if (dataSourceName.isEmpty()) {
+            dataSourceName = "session";
+        }
+
+        ObjectNode sessionNode = (ObjectNode) mainData.get(dataSourceName);
+        if (sessionNode == null || sessionNode.isMissingNode() || !(sessionNode instanceof ObjectNode)) {
+            sessionNode = mapper.createObjectNode();
+            mainData.set(dataSourceName, sessionNode);
+        }
+
+        JsonNode registeredAttributes = config.path("registeredAttributes");
+        for (JsonNode attributeGroup : registeredAttributes) {
+            String namespace = attributeGroup.path("namespace").asText();
+            ObjectNode targetNode = namespace.equals(dataSourceName) ? sessionNode : (ObjectNode) sessionNode.get(namespace);
+            if (targetNode == null || targetNode.isMissingNode() || !(targetNode instanceof ObjectNode)) {
+                targetNode = mapper.createObjectNode();
+                sessionNode.set(namespace, targetNode);
+            }
+
+            for (JsonNode attribute : attributeGroup.path("attributeList")) {
+                String attributeName = attribute.path("attributeName").asText();
+                String jsonPath = attribute.path("jsonPath").asText();
+
+                try {
+                    Object result = JsonPath.read(additionalData.toString(), jsonPath);
+                    if (result != null) {
+                        targetNode.set(attributeName, mapper.valueToTree(result));
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error reading attribute from path: " + jsonPath);
+                }
+            }
+        }
+    }

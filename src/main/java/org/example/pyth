@@ -1,0 +1,239 @@
+# file: graphql_metadata_model.py
+
+from dataclasses import dataclass, field, asdict
+from typing import List, Optional, Dict, Any
+import json
+from sqlalchemy import create_engine, Column, String, Text, Boolean, MetaData, Table
+from sqlalchemy.orm import declarative_base, Session
+
+Base = declarative_base()
+
+@dataclass
+class Attribute:
+    attributeName: str
+    dataType: str
+    jsonPath: str
+    queryPath: Optional[str] = None
+
+@dataclass
+class Filter:
+    name: str
+    dataType: str
+    isMandatory: bool
+
+@dataclass
+class RegisteredAttributeNamespace:
+    namespace: str
+    attributeList: List[Attribute] = field(default_factory=list)
+    filters: List[Filter] = field(default_factory=list)
+
+@dataclass
+class GlossaryEntry:
+    dataSourceName: str
+    rootQuery: str
+    registeredAttributes: List[RegisteredAttributeNamespace] = field(default_factory=list)
+
+@dataclass
+class SchemaDataSource:
+    dataSource: str
+    name: str
+    rootQuery: str
+    params: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class SchemaEntity:
+    dataSource: str
+    entityName: str
+    filters: Dict[str, str]
+    gquery: str
+
+@dataclass
+class SchemaEntityAttribute:
+    dataSource: str
+    entityName: str
+    attributeName: str
+    parentAttributeName: Optional[str] = None
+    source: Optional[str] = None
+    rateLimit: Optional[str] = None
+
+@dataclass
+class SchemaAttributeGrant:
+    dataSource: str
+    entityName: str
+    teamName: str
+    allow_flag: bool
+
+# ---- SQLAlchemy ORM tables ----
+class SchemaDataSourceDB(Base):
+    __tablename__ = "schema_data_source"
+    dataSource = Column(String, primary_key=True)
+    name = Column(String)
+    rootQuery = Column(Text)
+
+class SchemaEntityDB(Base):
+    __tablename__ = "schema_entity"
+    dataSource = Column(String, primary_key=True)
+    entityName = Column(String, primary_key=True)
+    filters = Column(Text)
+    gquery = Column(Text)
+
+class SchemaEntityAttributeDB(Base):
+    __tablename__ = "schema_entity_attribute"
+    dataSource = Column(String, primary_key=True)
+    entityName = Column(String, primary_key=True)
+    attributeName = Column(String, primary_key=True)
+    parentAttributeName = Column(String)
+    source = Column(String)
+    rateLimit = Column(String)
+
+# ---- PARSER ----
+def parse_json_to_models(json_str: str):
+    raw = json.loads(json_str.replace('\n', '').replace('"', '"'))
+    glossary = raw.get("glossary", [])
+
+    data_sources = []
+    entities = []
+    attributes = []
+
+    for source in glossary:
+        ds_name = source["dataSourceName"]
+        root_query = source.get("rootQuery", "")
+
+        data_sources.append(SchemaDataSource(
+            dataSource=ds_name,
+            name=ds_name,
+            rootQuery=root_query,
+            params={}
+        ))
+
+        for ns in source.get("registeredAttributes", []):
+            entity_name = ns["namespace"]
+            filters_dict = {k: v for f in ns.get("filters", []) for k, v in f.items() if k != "isMandatory"}
+
+            entities.append(SchemaEntity(
+                dataSource=ds_name,
+                entityName=entity_name,
+                filters=filters_dict,
+                gquery=root_query
+            ))
+
+            all_attrs = ns.get("attributeList", [])
+            for attr in all_attrs:
+                attributes.append(SchemaEntityAttribute(
+                    dataSource=ds_name,
+                    entityName=entity_name,
+                    attributeName=attr["attributeName"],
+                    parentAttributeName=None,
+                    source=attr.get("jsonPath", attr.get("JsonPath", "")).split(".")[1] if "." in attr.get("jsonPath", attr.get("JsonPath", "")) else None,
+                    rateLimit=None
+                ))
+
+    return data_sources, entities, attributes
+
+# ---- DB PERSISTENCE ----
+def persist_to_db(engine_url: str, data_sources, entities, attributes):
+    engine = create_engine(engine_url)
+    Base.metadata.create_all(engine)
+    with Session(engine) as session:
+        for ds in data_sources:
+            session.merge(SchemaDataSourceDB(**asdict(ds)))
+        for e in entities:
+            row = SchemaEntityDB(
+                dataSource=e.dataSource,
+                entityName=e.entityName,
+                filters=json.dumps(e.filters),
+                gquery=e.gquery
+            )
+            session.merge(row)
+        for a in attributes:
+            session.merge(SchemaEntityAttributeDB(**asdict(a)))
+        session.commit()
+
+# ---- GRAPHQL GENERATION ----
+def generate_graphql_query(namespace: str, attributes: List[str], filters: Dict[str, str] = None) -> str:
+    filter_str = f'({', '.join(f"{k}: \"{v}\"" for k, v in filters.items())})' if filters else ''
+    attr_str = "\n  ".join(attributes)
+    return f"""
+query {{
+  {namespace}{filter_str} {{
+    {attr_str}
+  }}
+}}"""
+
+# ---- BULK GRAPHQL GENERATION ----
+def generate_all_graphql_queries(entities: List[SchemaEntity], attributes: List[SchemaEntityAttribute]) -> Dict[str, str]:
+    query_map = {}
+    for entity in entities:
+        attr_names = [a.attributeName for a in attributes if a.entityName == entity.entityName and a.dataSource == entity.dataSource]
+        gql = generate_graphql_query(entity.entityName, attr_names, entity.filters)
+        query_map[entity.entityName] = gql
+    return query_map
+
+
+graphql_metadata/
+├── __init__.py
+├── models/
+│   ├── __init__.py
+│   ├── dataclasses.py         # All your @dataclass models
+│   ├── orm.py                 # SQLAlchemy ORM classes
+├── services/
+│   ├── __init__.py
+│   ├── parser.py              # parse_json_to_models logic
+│   ├── persistence.py         # persist_to_db logic
+│   ├── graphql_generator.py   # generate_graphql_query, generate_all_graphql_queries
+├── utils/
+│   ├── __init__.py
+│   ├── dataframe_utils.py     # models_to_dataframes
+├── main.py                    # Example usage and CLI integration
+└── config.py                  # (Optional) DB connection, file paths, etc.
+
+
+my-rule-engine/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── org/
+│   │   │       └── ruleengine/
+│   │   │           ├── engine/               # Core rule engine logic
+│   │   │           │   ├── RuleEngine.java
+│   │   │           │   └── RuleEvaluator.java
+│   │   │           │
+│   │   │           ├── datacontext/          # Data handling, filtering, entity abstraction
+│   │   │           │   └── DataContext.java
+│   │   │           │
+│   │   │           ├── query/                # GraphQL query generation
+│   │   │           │   └── GraphQLQueryGenerator.java
+│   │   │           │
+│   │   │           ├── model/                # JSON-mapped data models
+│   │   │           │   ├── Condition.java
+│   │   │           │   ├── Rule.java
+│   │   │           │   └── ...
+│   │   │           │
+│   │   │           └── util/                 # Common helpers
+│   │   │               └── JsonUtils.java
+│   │   │
+│   │   └── resources/
+│   │       ├── rules/                        # Store rule definition JSONs
+│   │       ├── schema/                       # Schema glossary/configs
+│   │       └── data/                         # Sample JSON input data
+│   │
+│   └── test/
+│       └── java/org/ruleengine/
+│           └── engine/
+│               └── RuleEngineTest.java
+│
+├── pom.xml / build.gradle                    # Dependency management
+└── README.md
+
+
+src/
+└── main/
+    ├── java/
+    │   └── org/
+    │       └── example/
+    │           ├── engine/          # RuleEngine, Evaluators
+    │           ├── datacontext/     # DataContext, Query Filters
+    │           ├── graphql/         # GraphQLQueryGenerator
+    │           └── util/            # ApiClient, Helpers
+    └── resources/                   # schema.json, rules.json

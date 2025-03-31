@@ -207,38 +207,33 @@ public class DataContext {
     public void mergeAdditionalData(String additionalDataFilePath, String configFilePath) throws IOException {
         JsonNode additionalData = objectMapper.readTree(new File(additionalDataFilePath));
         JsonNode config = objectMapper.readTree(new File(configFilePath));
-
         String dataSourceName = config.path("dataSourceName").asText();
-        if (dataSourceName.isEmpty()) {
-            dataSourceName = "session"; // Default to "session"
-        }
+        if (dataSourceName.isEmpty()) dataSourceName = "session";
 
         ObjectNode sessionNode = (ObjectNode) mainData.get(dataSourceName);
         if (sessionNode == null || sessionNode.isMissingNode() || !(sessionNode instanceof ObjectNode)) {
-            sessionNode = objectMapper.createObjectNode();
+            sessionNode = mapper.createObjectNode();
             mainData.set(dataSourceName, sessionNode);
         }
 
         JsonNode registeredAttributes = config.path("registeredAttributes");
         for (JsonNode attributeGroup : registeredAttributes) {
             String namespace = attributeGroup.path("namespace").asText();
-            JsonNode propertyGroups = attributeGroup.path("propertygroups");
-
             ObjectNode targetNode = namespace.equals(dataSourceName) ? sessionNode : (ObjectNode) sessionNode.get(namespace);
             if (targetNode == null || targetNode.isMissingNode() || !(targetNode instanceof ObjectNode)) {
-                targetNode = objectMapper.createObjectNode();
+                targetNode = mapper.createObjectNode();
                 sessionNode.set(namespace, targetNode);
             }
 
-            if (propertyGroups.isArray() && !propertyGroups.isEmpty()) {
+            JsonNode propertyGroups = attributeGroup.path("propertygroups");
+            if (propertyGroups.isArray()) {
                 for (JsonNode group : propertyGroups) {
                     String groupName = group.path("name").asText();
                     String groupJsonPath = group.path("jsonPath").asText();
-
                     try {
                         JSONArray jsonArray = JsonPath.read(additionalData.toString(), groupJsonPath);
-                        ArrayNode arrayNode = objectMapper.createArrayNode();
-                        jsonArray.forEach(item -> arrayNode.add(objectMapper.valueToTree(item)));
+                        ArrayNode arrayNode = mapper.createArrayNode();
+                        jsonArray.forEach(item -> arrayNode.add(mapper.valueToTree(item)));
                         targetNode.set(groupName, arrayNode);
                     } catch (Exception e) {
                         System.err.println("Error reading array from path: " + groupJsonPath);
@@ -249,11 +244,10 @@ public class DataContext {
             for (JsonNode attribute : attributeGroup.path("attributeList")) {
                 String attributeName = attribute.path("attributeName").asText();
                 String jsonPath = attribute.path("jsonPath").asText();
-
                 try {
                     Object result = JsonPath.read(additionalData.toString(), jsonPath);
                     if (result != null) {
-                        targetNode.set(attributeName, objectMapper.valueToTree(result));
+                        targetNode.set(attributeName, mapper.valueToTree(result));
                     }
                 } catch (Exception e) {
                     System.err.println("Error reading attribute from path: " + jsonPath);
