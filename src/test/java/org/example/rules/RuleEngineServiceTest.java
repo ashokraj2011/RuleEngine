@@ -129,4 +129,66 @@ public class RuleEngineServiceTest {
 
         assertTrue(service.evaluate(data, group));
     }
+
+    @Test
+    void testIsNull() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("user", new HashMap<>(Map.of("name", "Alice", "phone", (Object) null)));
+        data.put("age", 30);
+
+        // Field with explicit null value → isNull should be true
+        ObjectNode isNullPhone = mapper.createObjectNode();
+        isNullPhone.put("field", "user.phone");
+        isNullPhone.put("op", "isNull");
+        assertTrue(service.evaluate(data, isNullPhone));
+
+        // Missing field → isNull should be true
+        ObjectNode isNullMissing = mapper.createObjectNode();
+        isNullMissing.put("field", "user.email");
+        isNullMissing.put("op", "isNull");
+        assertTrue(service.evaluate(data, isNullMissing));
+
+        // Field with non-null value → isNull should be false
+        ObjectNode isNullName = mapper.createObjectNode();
+        isNullName.put("field", "user.name");
+        isNullName.put("op", "isNull");
+        assertFalse(service.evaluate(data, isNullName));
+
+        // Top-level field with non-null value → isNull should be false
+        ObjectNode isNullAge = mapper.createObjectNode();
+        isNullAge.put("field", "age");
+        isNullAge.put("op", "isNull");
+        assertFalse(service.evaluate(data, isNullAge));
+    }
+
+    @Test
+    void testIsNotNull() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("user", new HashMap<>(Map.of("name", "Alice", "phone", (Object) null)));
+        data.put("age", 30);
+
+        // Field with explicit null value → isNotNull should be false
+        ObjectNode isNotNullPhone = mapper.createObjectNode();
+        isNotNullPhone.put("field", "user.phone");
+        isNotNullPhone.put("op", "isNotNull");
+        assertFalse(service.evaluate(data, isNotNullPhone));
+
+        // Missing field → isNotNull should be false
+        ObjectNode isNotNullMissing = mapper.createObjectNode();
+        isNotNullMissing.put("field", "user.email");
+        isNotNullMissing.put("op", "isNotNull");
+        assertFalse(service.evaluate(data, isNotNullMissing));
+
+        // Field with non-null value → isNotNull should be true
+        ObjectNode isNotNullName = mapper.createObjectNode();
+        isNotNullName.put("field", "user.name");
+        isNotNullName.put("op", "isNotNull");
+        assertTrue(service.evaluate(data, isNotNullName));
+
+        // Top-level field with non-null value → isNotNull should be true
+        ObjectNode isNotNullAge = mapper.createObjectNode();
+        isNotNullAge.put("field", "age");
+        isNotNullAge.put("op", "isNotNull");
+        assertTrue(service.evaluate(data, isNotNullAge));
+    }
 }

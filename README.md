@@ -4,7 +4,7 @@ A lightweight Spring Boot service that evaluates JSON rules against arbitrary in
 
 The rule language supports:
 - Group operators: `all` (AND), `any` (OR), `not`
-- Condition operators: `eq`, `ne`, `lt`, `lte`, `gt`, `gte`, `between`, `in`, `contains`, `regex`, `exists`, `not_exists`
+- Condition operators: `eq`, `ne`, `lt`, `lte`, `gt`, `gte`, `between`, `in`, `contains`, `regex`, `exists`, `not_exists`, `isNull`, `isNotNull`
 
 This document shows how to build, run, and use the API with practical examples.
 
@@ -52,7 +52,7 @@ By default, the application starts on `http://localhost:8080`.
 
 Notes:
 - `field` is a dot‑separated path into `data` (e.g., `user.age`, `address.city`).
-- For `exists`/`not_exists`, the `field` is used and `value` is ignored.
+- For `exists`/`not_exists`/`isNull`/`isNotNull`, the `field` is used and `value` is ignored.
 - For `between`, `value` must be an array `[min, max]`.
 - For `in`, `value` must be an array of possible values.
 - For `regex`, `value` is a string pattern (Java regex).
@@ -142,10 +142,12 @@ curl -s -X POST http://localhost:8080/api/v1/rule-engine/evaluate \
 { "field": "email", "op": "regex", "value": "^[^@]+@example\\.com$" }
 ```
 
-### 4) Existence checks
+### 4) Existence and null checks
 ```
 { "field": "user.address.city", "op": "exists" }
 { "field": "user.middleName", "op": "not_exists" }
+{ "field": "user.phone", "op": "isNull" }
+{ "field": "user.email", "op": "isNotNull" }
 ```
 
 ### 5) Top‑level array (implicit AND)
@@ -167,7 +169,42 @@ curl -s -X POST http://localhost:8080/api/v1/rule-engine/evaluate \
 - Collection/String: `contains`, `in`
 - Pattern: `regex`
 - Range: `between` (must supply `[min, max]`)
-- Existence: `exists`, `not_exists`
+- Existence: `exists`, `not_exists`, `isNull`, `isNotNull`
+
+### isNull Operator
+
+Returns `true` when the field value is `null` or the field path does not exist in the data. The `value` parameter is ignored (similar to `exists` and `not_exists`).
+
+**Examples:**
+```
+// Field exists with null value → true
+{ "data": { "user": { "phone": null } }, "rule": { "field": "user.phone", "op": "isNull" } }
+
+// Field does not exist → true
+{ "data": { "user": { "name": "Alice" } }, "rule": { "field": "user.phone", "op": "isNull" } }
+
+// Field exists with non-null value → false
+{ "data": { "user": { "phone": "555-1234" } }, "rule": { "field": "user.phone", "op": "isNull" } }
+```
+
+### isNotNull Operator
+
+Returns `true` when the field value is not `null` and the field path exists in the data. The `value` parameter is ignored. This is the logical inverse of `isNull`.
+
+**Examples:**
+```
+// Field exists with non-null value → true
+{ "data": { "user": { "phone": "555-1234" } }, "rule": { "field": "user.phone", "op": "isNotNull" } }
+
+// Top-level field with non-null value → true
+{ "data": { "age": 30 }, "rule": { "field": "age", "op": "isNotNull" } }
+
+// Field exists with null value → false
+{ "data": { "user": { "phone": null } }, "rule": { "field": "user.phone", "op": "isNotNull" } }
+
+// Field does not exist → false
+{ "data": { "user": { "name": "Alice" } }, "rule": { "field": "user.phone", "op": "isNotNull" } }
+```
 
 Type coercion rules (summary of `RuleEngineService.compare`):
 - Numbers are compared as `BigDecimal` if both sides numeric.
