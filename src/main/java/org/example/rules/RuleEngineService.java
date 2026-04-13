@@ -50,10 +50,10 @@ public class RuleEngineService {
         for (JsonNode child : arr) {
             boolean childRes = evaluate(data, child);
             if (andLogic) {
-                result = result && childRes;
+                result = childRes;
                 if (!result) return false; // short-circuit
             } else {
-                result = result || childRes;
+                result = childRes;
                 if (result) return true; // short-circuit
             }
         }
@@ -81,6 +81,10 @@ public class RuleEngineService {
                 return field != null && dataContainsPath(data, field);
             case not_exists:
                 return field == null || !dataContainsPath(data, field);
+            case isNull:
+                return field != null && left == null;
+            case isNotNull:
+                return field != null && left != null;
             case between:
                 if (valueNode == null || !valueNode.isArray() || valueNode.size() != 2) {
                     throw new IllegalArgumentException("between requires array [min, max]");
@@ -165,12 +169,10 @@ public class RuleEngineService {
         return resolvePathInternal(data, path, true);
     }
 
-    @SuppressWarnings("unchecked")
     private Object resolvePathInternal(Map<String, Object> data, String path, boolean returnValue) {
         String[] parts = path.split("\\.");
         Object current = data;
-        for (int i = 0; i < parts.length; i++) {
-            String p = parts[i];
+        for (String p : parts) {
             if (current instanceof Map<?, ?> map) {
                 if (!map.containsKey(p)) return null;
                 current = map.get(p);
@@ -201,36 +203,38 @@ public class RuleEngineService {
             return ia.compareTo(ib);
         }
 
-        // Fallback string comparison
-        if (!(a instanceof Comparable) || !(b instanceof Comparable)) {
-            return String.valueOf(a).compareTo(String.valueOf(b));
-        }
-
-        // Attempt to coerce basic types for better equality
-        if (!a.getClass().isAssignableFrom(b.getClass()) && !b.getClass().isAssignableFrom(a.getClass())) {
-            return String.valueOf(a).compareTo(String.valueOf(b));
-        }
-        try {
+        // Fallback to Comparable or string comparison
+        if (a instanceof Comparable<?> && a.getClass().isInstance(b)) {
+            // Use raw Comparable to avoid wildcard capture issues when comparing with Object
             return ((Comparable) a).compareTo(b);
-        } catch (ClassCastException ex) {
-            return String.valueOf(a).compareTo(String.valueOf(b));
         }
+        return String.valueOf(a).compareTo(String.valueOf(b));
     }
 
-    private BigDecimal toBigDecimalOrNull(Object o) {
-        try {
-            if (o instanceof BigDecimal bd) return bd;
-            if (o instanceof Number n) return new BigDecimal(n.toString());
-            if (o instanceof String s) return new BigDecimal(s);
-        } catch (NumberFormatException ignored) {}
+    private BigDecimal toBigDecimalOrNull(Object obj) {
+        if (obj == null) return null;
+        if (obj instanceof BigDecimal bd) return bd;
+        if (obj instanceof Number n) return new BigDecimal(n.doubleValue());
+        if (obj instanceof String s) {
+            try {
+                return new BigDecimal(s);
+            } catch (NumberFormatException e) {
+                return null;
+            }
+        }
         return null;
     }
 
-    private Instant toInstantOrNull(Object o) {
-        try {
-            if (o instanceof Instant i) return i;
-            if (o instanceof String s) return Instant.parse(s);
-        } catch (DateTimeParseException ignored) {}
+    private Instant toInstantOrNull(Object obj) {
+        if (obj == null) return null;
+        if (obj instanceof Instant i) return i;
+        if (obj instanceof String s) {
+            try {
+                return Instant.parse(s);
+            } catch (DateTimeParseException e) {
+                return null;
+            }
+        }
         return null;
     }
 }

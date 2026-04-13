@@ -10,5 +10,5 @@ public enum Operator {
     // Range
     between,
     // Existence
-    exists, not_exists
+    exists, not_exists, isNull, isNotNull
 }
