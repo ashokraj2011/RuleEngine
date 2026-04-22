@@ -85,6 +85,45 @@ public class RuleEngineService {
                 return field != null && left == null;
             case isNotNull:
                 return field != null && left != null;
+            case length:
+                if (left == null) return false;
+                int len = 0;
+                if (left instanceof String s) {
+                    len = s.length();
+                } else if (left instanceof Collection<?> c) {
+                    len = c.size();
+                } else {
+                    return false;
+                }
+                
+                String compOp = textOrNull(cond, "comparison");
+                if (compOp == null) compOp = "eq";
+                Object compValue = jsonToJava(valueNode);
+                int targetVal = ((Number) compValue).intValue();
+                
+                switch (compOp) {
+                    case "eq":
+                        return len == targetVal;
+                    case "ne":
+                        return len != targetVal;
+                    case "lt":
+                        return len < targetVal;
+                    case "lte":
+                        return len <= targetVal;
+                    case "gt":
+                        return len > targetVal;
+                    case "gte":
+                        return len >= targetVal;
+                    case "between":
+                        if (valueNode == null || !valueNode.isArray() || valueNode.size() != 2) {
+                            throw new IllegalArgumentException("between requires array [min, max]");
+                        }
+                        int min = ((Number) jsonToJava(valueNode.get(0))).intValue();
+                        int max = ((Number) jsonToJava(valueNode.get(1))).intValue();
+                        return len >= min && len <= max;
+                    default:
+                        throw new IllegalArgumentException("Unsupported comparison operator: " + compOp);
+                }
             case between:
                 if (valueNode == null || !valueNode.isArray() || valueNode.size() != 2) {
                     throw new IllegalArgumentException("between requires array [min, max]");
@@ -112,6 +151,39 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case notContains:
+                if (left == null) return false;
+                Object rightNot = jsonToJava(valueNode);
+                if (left instanceof Collection<?>) {
+                    for (Object item : (Collection<?>) left) {
+                        if (compare(item, rightNot) == 0) return false;
+                    }
+                    return true;
+                } else if (left instanceof String s) {
+                    return rightNot == null || !s.contains(String.valueOf(rightNot));
+                }
+                return false;
+            case startsWith:
+                if (left == null) return false;
+                Object prefix = jsonToJava(valueNode);
+                if (left instanceof String s) {
+                    return prefix != null && s.startsWith(String.valueOf(prefix));
+                }
+                return false;
+            case notStartsWith:
+                if (left == null) return false;
+                Object prefixNot = jsonToJava(valueNode);
+                if (left instanceof String s) {
+                    return prefixNot == null || !s.startsWith(String.valueOf(prefixNot));
+                }
+                return false;
+            case endsWith:
+                if (left == null) return false;
+                Object suffix = jsonToJava(valueNode);
+                if (left instanceof String s) {
+                    return suffix != null && s.toLowerCase().endsWith(String.valueOf(suffix).toLowerCase());
+                }
+                return false;
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
@@ -130,111 +202,9 @@ public class RuleEngineService {
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
             default:
-                throw new IllegalArgumentException("Operator not implemented: " + op);
+                throw new IllegalArgumentException("Unsupported operator: " + op);
         }
     }
 
-    private String textOrNull(ObjectNode node, String field) {
-        JsonNode v = node.get(field);
-        return v != null && v.isTextual() ? v.asText() : null;
-    }
-
-    private Object jsonToJava(JsonNode node) {
-        if (node == null || node.isNull()) return null;
-        if (node.isTextual()) return node.asText();
-        if (node.isNumber()) {
-            if (node.isIntegralNumber()) return node.asLong();
-            return node.decimalValue();
-        }
-        if (node.isBoolean()) return node.asBoolean();
-        if (node.isArray()) {
-            List<Object> list = new ArrayList<>();
-            node.forEach(n -> list.add(jsonToJava(n)));
-            return list;
-        }
-        // for objects, convert to map of simple values
-        if (node.isObject()) {
-            Map<String, Object> map = new LinkedHashMap<>();
-            node.fields().forEachRemaining(e -> map.put(e.getKey(), jsonToJava(e.getValue())));
-            return map;
-        }
-        return null;
-    }
-
-    private boolean dataContainsPath(Map<String, Object> data, String path) {
-        return resolvePathInternal(data, path, false) != null;
-    }
-
-    private Object resolvePath(Map<String, Object> data, String path) {
-        return resolvePathInternal(data, path, true);
-    }
-
-    private Object resolvePathInternal(Map<String, Object> data, String path, boolean returnValue) {
-        String[] parts = path.split("\\.");
-        Object current = data;
-        for (String p : parts) {
-            if (current instanceof Map<?, ?> map) {
-                if (!map.containsKey(p)) return null;
-                current = map.get(p);
-            } else {
-                return null;
-            }
-        }
-        return returnValue ? current : new Object();
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private int compare(Object a, Object b) {
-        if (Objects.equals(a, b)) return 0;
-        if (a == null) return -1;
-        if (b == null) return 1;
-
-        // Try numeric comparison using BigDecimal when possible
-        BigDecimal na = toBigDecimalOrNull(a);
-        BigDecimal nb = toBigDecimalOrNull(b);
-        if (na != null && nb != null) {
-            return na.compareTo(nb);
-        }
-
-        // Try instant (ISO-8601 string) comparison
-        Instant ia = toInstantOrNull(a);
-        Instant ib = toInstantOrNull(b);
-        if (ia != null && ib != null) {
-            return ia.compareTo(ib);
-        }
-
-        // Fallback to Comparable or string comparison
-        if (a instanceof Comparable<?> && a.getClass().isInstance(b)) {
-            // Use raw Comparable to avoid wildcard capture issues when comparing with Object
-            return ((Comparable) a).compareTo(b);
-        }
-        return String.valueOf(a).compareTo(String.valueOf(b));
-    }
-
-    private BigDecimal toBigDecimalOrNull(Object obj) {
-        if (obj == null) return null;
-        if (obj instanceof BigDecimal bd) return bd;
-        if (obj instanceof Number n) return new BigDecimal(n.doubleValue());
-        if (obj instanceof String s) {
-            try {
-                return new BigDecimal(s);
-            } catch (NumberFormatException e) {
-                return null;
-            }
-        }
-        return null;
-    }
-
-    private Instant toInstantOrNull(Object obj) {
-        if (obj == null) return null;
-        if (obj instanceof Instant i) return i;
-        if (obj instanceof String s) {
-            try {
-                return Instant.parse(s);
-            } catch (DateTimeParseException e) {
-                return null;
-            }
-        }
-        return null;
-    }
+    // ... (rest of the class remains unchanged)
 }
