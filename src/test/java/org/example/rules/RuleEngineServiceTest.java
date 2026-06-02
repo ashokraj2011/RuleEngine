@@ -132,8 +132,12 @@ public class RuleEngineServiceTest {
 
     @Test
     void testIsNull() {
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("name", "Alice");
+        userData.put("phone", null);
+        
         Map<String, Object> data = new HashMap<>();
-        data.put("user", new HashMap<>(Map.of("name", "Alice", "phone", (Object) null)));
+        data.put("user", userData);
         data.put("age", 30);
 
         // Field with explicit null value → isNull should be true
@@ -163,8 +167,12 @@ public class RuleEngineServiceTest {
 
     @Test
     void testIsNotNull() {
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("name", "Alice");
+        userData.put("phone", null);
+        
         Map<String, Object> data = new HashMap<>();
-        data.put("user", new HashMap<>(Map.of("name", "Alice", "phone", (Object) null)));
+        data.put("user", userData);
         data.put("age", 30);
 
         // Field with explicit null value → isNotNull should be false

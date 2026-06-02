@@ -85,6 +85,43 @@ public class RuleEngineService {
                 return field != null && left == null;
             case isNotNull:
                 return field != null && left != null;
+            case log:
+                if (left == null) return false;
+                if (!(left instanceof Number)) {
+                    throw new IllegalArgumentException("log operator requires numeric value");
+                }
+                
+                double numVal = ((Number) left).doubleValue();
+                if (numVal <= 0) {
+                    throw new IllegalArgumentException("log requires positive value");
+                }
+                
+                double logVal = Math.log10(numVal);
+                
+                String logCompOp = textOrNull(cond, "comparison");
+                if (logCompOp == null) logCompOp = "eq";
+                Object logExpectedValue = jsonToJava(valueNode);
+                if (!(logExpectedValue instanceof Number)) {
+                    throw new IllegalArgumentException("log expected value must be numeric");
+                }
+                double logTarget = ((Number) logExpectedValue).doubleValue();
+                
+                switch (logCompOp) {
+                    case "eq":
+                        return Math.abs(logVal - logTarget) < 0.0001;
+                    case "ne":
+                        return Math.abs(logVal - logTarget) >= 0.0001;
+                    case "lt":
+                        return logVal < logTarget;
+                    case "lte":
+                        return logVal <= logTarget;
+                    case "gt":
+                        return logVal > logTarget;
+                    case "gte":
+                        return logVal >= logTarget;
+                    default:
+                        throw new IllegalArgumentException("Unsupported comparison operator for log: " + logCompOp);
+                }
             case length:
                 if (left == null) return false;
                 int len = 0;
@@ -206,5 +243,90 @@ public class RuleEngineService {
         }
     }
 
-    // ... (rest of the class remains unchanged)
+    private String textOrNull(ObjectNode obj, String key) {
+        JsonNode node = obj.get(key);
+        return (node != null && node.isTextual()) ? node.asText() : null;
+    }
+
+    private Object resolvePath(Map<String, Object> data, String path) {
+        if (path == null || path.isEmpty()) return null;
+        String[] parts = path.split("\\.");
+        Object current = data;
+        for (String part : parts) {
+            if (current instanceof Map) {
+                current = ((Map<?, ?>) current).get(part);
+            } else {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    private boolean dataContainsPath(Map<String, Object> data, String path) {
+        if (path == null || path.isEmpty()) return false;
+        String[] parts = path.split("\\.");
+        Object current = data;
+        for (String part : parts) {
+            if (current instanceof Map) {
+                if (!((Map<?, ?>) current).containsKey(part)) {
+                    return false;
+                }
+                current = ((Map<?, ?>) current).get(part);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private Object jsonToJava(JsonNode node) {
+        if (node == null || node.isNull()) return null;
+        if (node.isBoolean()) return node.asBoolean();
+        if (node.isInt()) return node.asInt();
+        if (node.isLong()) return node.asLong();
+        if (node.isDouble() || node.isFloat()) return node.asDouble();
+        if (node.isTextual()) return node.asText();
+        if (node.isArray()) {
+            List<Object> list = new ArrayList<>();
+            for (JsonNode el : node) {
+                list.add(jsonToJava(el));
+            }
+            return list;
+        }
+        if (node.isObject()) {
+            Map<String, Object> map = new HashMap<>();
+            node.fields().forEachRemaining(e -> map.put(e.getKey(), jsonToJava(e.getValue())));
+            return map;
+        }
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    private int compare(Object a, Object b) {
+        if (a == null && b == null) return 0;
+        if (a == null) return -1;
+        if (b == null) return 1;
+        
+        if (a.equals(b)) return 0;
+        
+        if (a instanceof Number && b instanceof Number) {
+            BigDecimal aD = new BigDecimal(a.toString());
+            BigDecimal bD = new BigDecimal(b.toString());
+            return aD.compareTo(bD);
+        }
+        
+        if (a instanceof String && b instanceof String) {
+            return ((String) a).compareTo((String) b);
+        }
+        
+        if (a instanceof Comparable && b instanceof Comparable) {
+            try {
+                return ((Comparable) a).compareTo(b);
+            } catch (ClassCastException e) {
+                // fall through
+            }
+        }
+        
+        return a.toString().compareTo(b.toString());
+    }
 }
