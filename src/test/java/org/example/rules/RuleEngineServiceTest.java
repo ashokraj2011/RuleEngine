@@ -199,4 +199,201 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testLogOperatorEquality() {
+        // log10(100) = 2.0
+        Map<String, Object> data = Map.of("value", 100);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 2.0);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorGreaterThan() {
+        // log10(1000) = 3.0, which is > 2.5
+        Map<String, Object> data = Map.of("value", 1000);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "gt");
+        rule.put("value", 2.5);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorLessThan() {
+        // log10(10) = 1.0, which is < 1.5
+        Map<String, Object> data = Map.of("value", 10);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "lt");
+        rule.put("value", 1.5);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorNotEqual() {
+        // log10(50) ≈ 1.699, which is != 2.0
+        Map<String, Object> data = Map.of("value", 50);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "ne");
+        rule.put("value", 2.0);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorGreaterThanOrEqual() {
+        // log10(100) = 2.0, which is >= 2.0
+        Map<String, Object> data = Map.of("value", 100);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "gte");
+        rule.put("value", 2.0);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorLessThanOrEqual() {
+        // log10(100) = 2.0, which is <= 2.0
+        Map<String, Object> data = Map.of("value", 100);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "lte");
+        rule.put("value", 2.0);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorDefaultsToEquality() {
+        // log10(1000) = 3.0 - when comparison is not specified, defaults to eq
+        Map<String, Object> data = Map.of("value", 1000);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        // No comparison field - should default to "eq"
+        rule.put("value", 3.0);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorWithZeroReturnsFalse() {
+        // log10(0) is undefined - should throw exception for non-positive values
+        Map<String, Object> data = Map.of("value", 0);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 0.0);
+        
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorWithNegativeReturnsFalse() {
+        // log10(negative) is undefined - should throw exception
+        Map<String, Object> data = Map.of("value", -10);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 1.0);
+        
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorWithNullReturnsFalse() {
+        // null value should return false
+        Map<String, Object> data = new HashMap<>();
+        data.put("value", null);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 1.0);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorWithNonNumericThrowsException() {
+        // Non-numeric value should throw exception
+        Map<String, Object> data = Map.of("value", "not a number");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 1.0);
+        
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorWithDouble() {
+        // log10(316.227766) ≈ 2.5
+        Map<String, Object> data = Map.of("value", 316.227766);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "value");
+        rule.put("op", "log");
+        rule.put("comparison", "eq");
+        rule.put("value", 2.5);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testLogOperatorInComplexRule() {
+        // Complex rule with log operator combined with other conditions
+        Map<String, Object> data = new HashMap<>();
+        data.put("value", 100);
+        data.put("status", "active");
+        
+        // log10(100) = 2.0, which is >= 2.0
+        ObjectNode logCondition = mapper.createObjectNode();
+        logCondition.put("field", "value");
+        logCondition.put("op", "log");
+        logCondition.put("comparison", "gte");
+        logCondition.put("value", 2.0);
+        
+        ObjectNode statusCondition = mapper.createObjectNode();
+        statusCondition.put("field", "status");
+        statusCondition.put("op", "eq");
+        statusCondition.put("value", "active");
+        
+        ObjectNode group = mapper.createObjectNode();
+        ArrayNode all = mapper.createArrayNode();
+        all.add(logCondition);
+        all.add(statusCondition);
+        group.set("all", all);
+        
+        assertTrue(service.evaluate(data, group));
+    }
 }
