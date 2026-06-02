@@ -197,4 +197,70 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testEndWithCaseInsensitive() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("filename", "document.PDF");
+        data.put("email", "user@EXAMPLE.COM");
+        data.put("path", "/home/user/data.txt");
+        data.put("number", 12345);
+
+        // Exact case match
+        ObjectNode endWithPdf = mapper.createObjectNode();
+        endWithPdf.put("field", "filename");
+        endWithPdf.put("op", "endWith");
+        endWithPdf.put("value", ".pdf");
+        assertTrue(service.evaluate(data, endWithPdf));
+
+        // Different case match
+        ObjectNode endWithUpperPdf = mapper.createObjectNode();
+        endWithUpperPdf.put("field", "filename");
+        endWithUpperPdf.put("op", "endWith");
+        endWithUpperPdf.put("value", ".PDF");
+        assertTrue(service.evaluate(data, endWithUpperPdf));
+
+        // Mixed case field and value
+        ObjectNode endWithCom = mapper.createObjectNode();
+        endWithCom.put("field", "email");
+        endWithCom.put("op", "endWith");
+        endWithCom.put("value", ".com");
+        assertTrue(service.evaluate(data, endWithCom));
+
+        // No match
+        ObjectNode endWithJpg = mapper.createObjectNode();
+        endWithJpg.put("field", "filename");
+        endWithJpg.put("op", "endWith");
+        endWithJpg.put("value", ".jpg");
+        assertFalse(service.evaluate(data, endWithJpg));
+
+        // ASCII lowercase extension
+        ObjectNode endWithTxt = mapper.createObjectNode();
+        endWithTxt.put("field", "path");
+        endWithTxt.put("op", "endWith");
+        endWithTxt.put("value", ".txt");
+        assertTrue(service.evaluate(data, endWithTxt));
+
+        // Non-string field should return false
+        ObjectNode endWithNumber = mapper.createObjectNode();
+        endWithNumber.put("field", "number");
+        endWithNumber.put("op", "endWith");
+        endWithNumber.put("value", "45");
+        assertFalse(service.evaluate(data, endWithNumber));
+
+        // Missing field should return false
+        ObjectNode endWithMissing = mapper.createObjectNode();
+        endWithMissing.put("field", "nonexistent");
+        endWithMissing.put("op", "endWith");
+        endWithMissing.put("value", ".doc");
+        assertFalse(service.evaluate(data, endWithMissing));
+
+        // Null value should return false
+        data.put("nullField", null);
+        ObjectNode endWithNull = mapper.createObjectNode();
+        endWithNull.put("field", "nullField");
+        endWithNull.put("op", "endWith");
+        endWithNull.put("value", ".doc");
+        assertFalse(service.evaluate(data, endWithNull));
+    }
 }

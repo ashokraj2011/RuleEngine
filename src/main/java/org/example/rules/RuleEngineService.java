@@ -112,6 +112,13 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case endWith:
+                if (!(left instanceof String)) return false;
+                Object suffix = jsonToJava(valueNode);
+                if (suffix == null) return false;
+                String leftStr = ((String) left).toLowerCase(Locale.ROOT);
+                String suffixStr = String.valueOf(suffix).toLowerCase(Locale.ROOT);
+                return leftStr.endsWith(suffixStr);
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
