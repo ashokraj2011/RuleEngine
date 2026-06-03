@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.Locale;
 
 @Service
 public class RuleEngineService {
@@ -117,6 +118,12 @@ public class RuleEngineService {
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
                 if (pattern == null) throw new IllegalArgumentException("regex requires string pattern");
                 return Pattern.compile(pattern).matcher((String) left).find();
+            case endsWith:
+                if (!(left instanceof String)) return false;
+                Object suffixObj = jsonToJava(valueNode);
+                if (suffixObj == null) return false;
+                String suffix = String.valueOf(suffixObj);
+                return ((String) left).toLowerCase(Locale.ENGLISH).endsWith(suffix.toLowerCase(Locale.ENGLISH));
             case eq:
                 return compare(left, jsonToJava(valueNode)) == 0;
             case ne:

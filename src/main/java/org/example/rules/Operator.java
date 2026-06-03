@@ -4,7 +4,7 @@ public enum Operator {
     // Comparison
     eq, ne, lt, lte, gt, gte,
     // Collection/String
-    contains, in,
+    contains, in, endsWith,
     // Pattern
     regex,
     // Range

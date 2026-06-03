@@ -197,4 +197,89 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testEndsWith_CaseInsensitive() {
+        Map<String, Object> data = Map.of("filename", "report.PDF");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "filename");
+        rule.put("op", "endsWith");
+        rule.put("value", ".pdf");
+
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_ExactCaseMatch() {
+        Map<String, Object> data = Map.of("email", "user@example.com");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "email");
+        rule.put("op", "endsWith");
+        rule.put("value", ".COM");
+
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_NoMatch() {
+        Map<String, Object> data = Map.of("filename", "document.txt");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "filename");
+        rule.put("op", "endsWith");
+        rule.put("value", ".pdf");
+
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_NonStringField() {
+        Map<String, Object> data = Map.of("age", 42);
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "age");
+        rule.put("op", "endsWith");
+        rule.put("value", "2");
+
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_NullValue() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("description", null);
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "description");
+        rule.put("op", "endsWith");
+        rule.put("value", "test");
+
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_EmptySuffix() {
+        Map<String, Object> data = Map.of("text", "hello world");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "text");
+        rule.put("op", "endsWith");
+        rule.put("value", "");
+
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testEndsWith_AsciiOnly() {
+        Map<String, Object> data = Map.of("path", "/usr/local/bin");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "path");
+        rule.put("op", "endsWith");
+        rule.put("value", "/BIN");
+
+        assertTrue(service.evaluate(data, rule));
+    }
 }
