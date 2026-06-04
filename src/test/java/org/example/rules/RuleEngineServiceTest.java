@@ -197,4 +197,140 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testHasAllOf_AllElementsPresent() {
+        Map<String, Object> data = Map.of("tags", List.of("red", "blue", "green", "yellow"));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("blue");
+        value.add("red");
+        rule.set("value", value);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_MissingElements() {
+        Map<String, Object> data = Map.of("tags", List.of("red", "blue"));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("blue");
+        value.add("green");
+        rule.set("value", value);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_WithDuplicates() {
+        // Data has duplicates
+        Map<String, Object> data = Map.of("tags", List.of("red", "blue", "red", "blue", "green"));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("blue");
+        value.add("blue"); // duplicate in value list
+        value.add("red");
+        value.add("red"); // duplicate in value list
+        rule.set("value", value);
+        
+        // Should deduplicate both lists and return true
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_EmptyValueList() {
+        Map<String, Object> data = Map.of("tags", List.of("red", "blue"));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode(); // empty array
+        rule.set("value", value);
+        
+        // Empty value list means all elements (none) are present
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_NullLeftOperand() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("tags", null);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("red");
+        rule.set("value", value);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_NonCollectionLeftOperand() {
+        Map<String, Object> data = Map.of("tags", "red,blue,green"); // string, not a collection
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("red");
+        rule.set("value", value);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_NonCollectionRightOperand() {
+        Map<String, Object> data = Map.of("tags", List.of("red", "blue"));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        rule.put("value", "red"); // string value instead of array
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_NumbersAsStrings() {
+        Map<String, Object> data = Map.of("codes", List.of(1, 2, 3, 4, 5));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "codes");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add(2);
+        value.add(4);
+        rule.set("value", value);
+        
+        // Should convert to strings and compare
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_MixedTypes() {
+        Map<String, Object> data = Map.of("items", List.of("1", 2, "three", 4.0));
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "items");
+        rule.put("op", "has_all_of");
+        ArrayNode value = mapper.createArrayNode();
+        value.add("1");
+        value.add(2);
+        rule.set("value", value);
+        
+        // Should convert all to strings and compare
+        assertTrue(service.evaluate(data, rule));
+    }
 }
