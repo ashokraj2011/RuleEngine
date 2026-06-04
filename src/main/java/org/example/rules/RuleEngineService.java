@@ -112,6 +112,27 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case has_all_of:
+                // has_all_of: checks if left list contains all elements from right list (after deduplication)
+                // Returns false if either operand is not a collection or is null
+                if (left == null || valueNode == null) return false;
+                if (!(left instanceof Collection<?>)) return false;
+                Object rightValue = jsonToJava(valueNode);
+                if (!(rightValue instanceof Collection<?>)) return false;
+                
+                // Deduplicate both lists by converting to Sets of string representations
+                Set<String> leftSet = new HashSet<>();
+                for (Object item : (Collection<?>) left) {
+                    leftSet.add(String.valueOf(item));
+                }
+                
+                Set<String> rightSet = new HashSet<>();
+                for (Object item : (Collection<?>) rightValue) {
+                    rightSet.add(String.valueOf(item));
+                }
+                
+                // Check if leftSet contains all elements from rightSet
+                return leftSet.containsAll(rightSet);
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
