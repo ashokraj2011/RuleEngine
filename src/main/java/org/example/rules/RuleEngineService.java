@@ -112,6 +112,23 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case hasAnyOf:
+                if (left == null) return false;
+                if (valueNode == null || !valueNode.isArray()) {
+                    throw new IllegalArgumentException("hasAnyOf requires array of strings");
+                }
+                String leftStr = (left instanceof String) ? (String) left : String.valueOf(left);
+                // Normalize: case-insensitive, ASCII only
+                String normalizedLeft = leftStr.replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+                for (JsonNode candidate : valueNode) {
+                    if (candidate == null || !candidate.isTextual()) continue;
+                    String candidateStr = candidate.asText();
+                    String normalizedCandidate = candidateStr.replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+                    if (normalizedLeft.equals(normalizedCandidate)) {
+                        return true;
+                    }
+                }
+                return false;
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
