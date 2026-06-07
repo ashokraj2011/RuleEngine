@@ -197,3 +197,109 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testHasAnyOfBasic() {
+        Map<String, Object> data = Map.of("status", "pending");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        values.add("active");
+        values.add("completed");
+        rule.set("value", values);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfCaseInsensitive() {
+        Map<String, Object> data = Map.of("status", "PENDING");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        values.add("active");
+        rule.set("value", values);
+        
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNotFound() {
+        Map<String, Object> data = Map.of("status", "archived");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        values.add("active");
+        values.add("completed");
+        rule.set("value", values);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNonAsciiStripped() {
+        Map<String, Object> data = Map.of("status", "pénding");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        values.add("active");
+        rule.set("value", values);
+        
+        // "pénding" becomes "pnding" after stripping non-ASCII, won't match "pending"
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfEmptyList() {
+        Map<String, Object> data = Map.of("status", "pending");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        rule.set("value", values);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNullField() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("status", null);
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        rule.set("value", values);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfMissingField() {
+        Map<String, Object> data = Map.of("other", "value");
+        
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "status");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("pending");
+        rule.set("value", values);
+        
+        assertFalse(service.evaluate(data, rule));
+    }
+}
