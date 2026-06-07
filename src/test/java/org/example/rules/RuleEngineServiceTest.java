@@ -197,4 +197,90 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testHasAnyOfExactMatch() {
+        Map<String, Object> data = Map.of("country", "USA");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "country");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("USA");
+        values.add("Canada");
+        values.add("Mexico");
+        rule.set("value", values);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfCaseInsensitive() {
+        Map<String, Object> data = Map.of("country", "UsA");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "country");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("usa");
+        values.add("canada");
+        rule.set("value", values);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNonAsciiRemoved() {
+        // Non-ASCII characters are removed, so "café" becomes "caf"
+        Map<String, Object> data = Map.of("name", "café");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "name");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("caf");  // After removing non-ASCII from "café"
+        rule.set("value", values);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNoMatch() {
+        Map<String, Object> data = Map.of("country", "Germany");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "country");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("USA");
+        values.add("Canada");
+        rule.set("value", values);
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfNonStringField() {
+        Map<String, Object> data = Map.of("age", 30);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "age");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();
+        values.add("30");
+        rule.set("value", values);
+        assertFalse(service.evaluate(data, rule));  // Field is not a string
+    }
+
+    @Test
+    void testHasAnyOfEmptyList() {
+        Map<String, Object> data = Map.of("country", "USA");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "country");
+        rule.put("op", "hasAnyOf");
+        ArrayNode values = mapper.createArrayNode();  // Empty array
+        rule.set("value", values);
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAnyOfInvalidValueType() {
+        Map<String, Object> data = Map.of("country", "USA");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "country");
+        rule.put("op", "hasAnyOf");
+        rule.put("value", "USA");  // Should be an array
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
 }

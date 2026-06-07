@@ -129,9 +129,31 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case hasAnyOf:
+                if (valueNode == null || !valueNode.isArray()) {
+                    throw new IllegalArgumentException("hasAnyOf requires array of strings");
+                }
+                if (!(left instanceof String)) {
+                    return false;
+                }
+                String leftStr = normalizeString((String) left);
+                for (JsonNode v : valueNode) {
+                    if (!v.isTextual()) continue;
+                    String candidate = normalizeString(v.asText());
+                    if (leftStr.equals(candidate)) {
+                        return true;
+                    }
+                }
+                return false;
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }
+    }
+
+    private String normalizeString(String s) {
+        if (s == null) return "";
+        // Convert to lowercase and keep only ASCII characters
+        return s.toLowerCase().replaceAll("[^\\x00-\\x7F]", "");
     }
 
     private String textOrNull(ObjectNode node, String field) {
