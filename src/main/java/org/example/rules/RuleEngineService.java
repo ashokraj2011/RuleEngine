@@ -129,6 +129,19 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case hasAnyOf:
+                if (valueNode == null || !valueNode.isArray()) {
+                    throw new IllegalArgumentException("hasAnyOf requires array of values");
+                }
+                if (left == null) return false;
+                String leftNormalized = normalizeAscii(String.valueOf(left));
+                for (JsonNode v : valueNode) {
+                    Object val = jsonToJava(v);
+                    if (val == null) continue;
+                    String valNormalized = normalizeAscii(String.valueOf(val));
+                    if (leftNormalized.equals(valNormalized)) return true;
+                }
+                return false;
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }
@@ -236,5 +249,15 @@ public class RuleEngineService {
             }
         }
         return null;
+    }
+
+    /**
+     * Normalizes a string to lowercase ASCII-only characters.
+     * Non-ASCII characters are removed.
+     */
+    private String normalizeAscii(String str) {
+        if (str == null) return "";
+        return str.toLowerCase()
+                  .replaceAll("[^\\p{ASCII}]", "");
     }
 }

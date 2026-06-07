@@ -197,4 +197,3 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
-}
