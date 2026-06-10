@@ -165,6 +165,88 @@ public class RuleEngineServiceTest {
     }
 
     @Test
+    void testHasAllOf_exactMatch() {
+        Map<String, Object> data = Map.of("tags", List.of("gold", "vip", "premium"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("gold"); val.add("vip"); val.add("premium");
+        rule.set("value", val);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_orderIndependent() {
+        Map<String, Object> data = Map.of("tags", List.of("premium", "gold", "vip"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("vip"); val.add("gold"); val.add("premium");
+        rule.set("value", val);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_trimAndDeduplication() {
+        Map<String, Object> data = Map.of("tags", List.of("  gold  ", "vip", "vip"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("gold"); val.add("  vip  ");
+        rule.set("value", val);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_caseInsensitive() {
+        Map<String, Object> data = Map.of("tags", List.of("Gold", "VIP"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("gold"); val.add("vip");
+        rule.set("value", val);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_mismatch() {
+        Map<String, Object> data = Map.of("tags", List.of("gold", "vip"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("gold"); val.add("premium");
+        rule.set("value", val);
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_subsetNotEqual() {
+        Map<String, Object> data = Map.of("tags", List.of("gold", "vip", "extra"));
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        ArrayNode val = mapper.createArrayNode();
+        val.add("gold"); val.add("vip");
+        rule.set("value", val);
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testHasAllOf_emptyBothSides() {
+        Map<String, Object> data = Map.of("tags", List.of());
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "tags");
+        rule.put("op", "has_all_of");
+        rule.set("value", mapper.createArrayNode());
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
     void testIsNotNull() {
         Map<String, Object> data = new HashMap<>();
         Map<String, Object> user = new HashMap<>();

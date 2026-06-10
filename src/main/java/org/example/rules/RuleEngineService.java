@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 @Service
@@ -129,9 +130,33 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case has_all_of:
+                if (valueNode == null || !valueNode.isArray()) {
+                    throw new IllegalArgumentException("has_all_of requires array value");
+                }
+                if (!(left instanceof Collection<?>)) {
+                    throw new IllegalArgumentException("has_all_of requires field to be a list");
+                }
+                return normalizedSet((Collection<?>) left).equals(normalizedSet((List<?>) jsonToJava(valueNode)));
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }
+    }
+
+    private Set<String> normalizedSet(Collection<?> items) {
+        Set<String> result = new LinkedHashSet<>();
+        for (Object item : items) {
+            if (item == null) continue;
+            String s = String.valueOf(item);
+            // keep only printable ASCII (0x20–0x7E), then trim and lowercase
+            StringBuilder sb = new StringBuilder();
+            for (char c : s.toCharArray()) {
+                if (c >= 0x20 && c <= 0x7E) sb.append(c);
+            }
+            String normalized = sb.toString().trim().toLowerCase(Locale.ROOT);
+            if (!normalized.isEmpty()) result.add(normalized);
+        }
+        return result;
     }
 
     private String textOrNull(ObjectNode node, String field) {
