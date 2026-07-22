@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "workId": "WORK-1234",
+  "workType": "feature",
+  "phase": "design",
+  "generation": 1,
+  "capturedAt": "2026-07-22T23:52:38.507Z",
+  "source": "copilot-otel",
+  "rawTraceCommitted": false,
+  "spanCount": 0,
+  "rawBytesRead": 0,
+  "startedAt": "2026-07-22T23:51:50.664Z",
+  "completedAt": "2026-07-22T23:52:38.501Z",
+  "warnings": [
+    "Copilot telemetry file is unavailable."
+  ],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-07-22T23:52:38.502Z",
+      "completedAt": "2026-07-22T23:52:38.502Z",
+      "persona": "product-owner",
+      "generation": 1
+    }
+  ]
+}
