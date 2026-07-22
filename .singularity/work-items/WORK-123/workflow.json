@@ -767,7 +767,7 @@
       "suggestedPersonas": [
         "developer"
       ],
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -795,7 +795,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-07-22T12:38:58.567Z",
-      "submittedAt": null,
+      "submittedAt": "2026-07-22T12:46:18.495Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -830,10 +830,10 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 4116,
-          "sha256": "c273f0ee61facd160d36486add240af3b6be8c2e50eac2a4b2fe2b21dbcfac2b",
+          "size": 4198,
+          "sha256": "b14f63dc3ab27a9ef74d00f90b66c7aa14562eb7eacc6343809972a1df7ed2bf",
           "registeredAt": "2026-07-22T12:41:03.791Z",
-          "updatedAt": "2026-07-22T12:41:03.791Z"
+          "updatedAt": "2026-07-22T12:46:18.497Z"
         },
         {
           "path": "src/main/java/org/example/rules/Operator.java",
@@ -868,7 +868,9 @@
       ],
       "checks": [],
       "remoteOutputs": [],
-      "sourceCommit": "f290c8126cd59b1df01207039f3b67fa3118be56"
+      "sourceCommit": "f290c8126cd59b1df01207039f3b67fa3118be56",
+      "generationCommit": "3fae0ffbd38324dc75b82b9c76e968d511eb0cdf",
+      "publicationCommit": "3fae0ffbd38324dc75b82b9c76e968d511eb0cdf"
     },
     "verification": {
       "id": "verification",
@@ -1183,6 +1185,14 @@
       "event": "phase_generated",
       "phase": "implementation",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-22T12:46:18.495Z",
+      "actor": "ashokraj2011",
+      "persona": "architect",
+      "event": "phase_submitted",
+      "phase": "implementation",
+      "detail": "4 artifacts"
     }
   ],
   "sequenceOverrides": []
