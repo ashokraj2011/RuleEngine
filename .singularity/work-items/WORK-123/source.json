@@ -1,0 +1,10 @@
+{
+  "type": "manual",
+  "id": "WORK-123",
+  "key": null,
+  "url": null,
+  "title": "implement tan operator",
+  "description": "implement tan math operator .It will take only numbers and give the tan of that",
+  "desiredOutcome": "",
+  "acceptanceCriteria": "all test cases should pass"
+}

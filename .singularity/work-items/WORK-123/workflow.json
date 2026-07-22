@@ -1,0 +1,759 @@
+{
+  "schemaVersion": 2,
+  "workItem": {
+    "id": "WORK-123",
+    "title": "implement tan operator",
+    "workType": "feature",
+    "workTypeLabel": "Feature",
+    "branch": "WORK-123",
+    "baseBranch": "main",
+    "createdAt": "2026-07-22T08:38:00.830Z",
+    "createdBy": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011"
+    },
+    "source": {
+      "type": "manual",
+      "key": null,
+      "url": null
+    }
+  },
+  "resolution": {
+    "configSha256": "c5e1429897a228e5eb78c395ddf91788e7cf18fc507a3622b052bb00c245174a",
+    "inputsMode": "off",
+    "templates": {
+      "intake": {
+        "path": ".singularity/templates/feature/intake.md",
+        "sha256": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab"
+      },
+      "requirements": {
+        "path": ".singularity/templates/feature/requirements.md",
+        "sha256": "92a9807dfe4a2a986823450c24caffdb07205c36e2d963db74d5b8fc9092a9eb"
+      },
+      "design": {
+        "path": ".singularity/templates/feature/design.md",
+        "sha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
+      },
+      "implementation-spec": {
+        "path": ".singularity/templates/feature/implementation-spec.md",
+        "sha256": "b76f05e99c0eceb87d1361c1dbf80fb9e84165c7426f752e2b7117cef04df29e"
+      },
+      "implementation": {
+        "path": ".singularity/templates/common/implementation.md",
+        "sha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c"
+      },
+      "verification": {
+        "path": ".singularity/templates/common/verification.md",
+        "sha256": "ced4ce8d532e509658558f5bf848bd6df1a03d6c278c84ed8512ac667095fd98"
+      },
+      "conformance": {
+        "path": ".singularity/templates/common/conformance.md",
+        "sha256": "fd9ee36f53342f21e71d408bc17141894fbb56315f7dbd14a0db53b2ea5a1b14"
+      }
+    },
+    "workType": "feature",
+    "workTypeLabel": "Feature",
+    "documents": {
+      "allowedPhases": [
+        "intake",
+        "requirements",
+        "design",
+        "implementation-spec"
+      ],
+      "maxFileBytes": 26214400,
+      "maxPreviewBytes": 1048576
+    },
+    "sourceSha256": "9fa612a3960c673acd7a07d6f387a92024f52a8d98d0265db1adeafabd71bb98",
+    "phases": [
+      {
+        "id": "intake",
+        "order": 0,
+        "label": "Intake",
+        "suggestedPersonas": [
+          "product-owner"
+        ],
+        "defaultTemplate": "common/intake.md",
+        "artifact": {
+          "path": "artifacts/intake/intake.md",
+          "kind": "intake",
+          "minimumBytes": 200
+        },
+        "worldModel": {
+          "views": [
+            "business"
+          ],
+          "depth": "quick"
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "personas": [
+            "product-owner"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "intake"
+          ]
+        },
+        "comparison": {},
+        "inputs": [],
+        "template": "feature/intake.md"
+      },
+      {
+        "id": "requirements",
+        "order": 1,
+        "label": "Requirements",
+        "suggestedPersonas": [
+          "product-owner"
+        ],
+        "defaultTemplate": "feature/requirements.md",
+        "artifact": {
+          "path": "artifacts/requirements/requirements.md",
+          "kind": "requirements",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "business"
+          ],
+          "depth": "standard"
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "personas": [
+            "product-owner"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "intake",
+            "requirements"
+          ]
+        },
+        "comparison": {},
+        "inputs": [],
+        "template": "feature/requirements.md"
+      },
+      {
+        "id": "design",
+        "order": 2,
+        "label": "Architecture and design",
+        "suggestedPersonas": [
+          "architect"
+        ],
+        "defaultTemplate": "feature/design.md",
+        "artifact": {
+          "path": "artifacts/design/design.md",
+          "kind": "design",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "security"
+          ],
+          "depth": "standard"
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "personas": [
+            "architect"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "requirements",
+            "design"
+          ]
+        },
+        "comparison": {},
+        "inputs": [],
+        "template": "feature/design.md"
+      },
+      {
+        "id": "implementation-spec",
+        "order": 3,
+        "label": "Implementation specification",
+        "suggestedPersonas": [
+          "architect",
+          "developer"
+        ],
+        "defaultTemplate": "feature/implementation-spec.md",
+        "artifact": {
+          "path": "artifacts/implementation-spec/implementation-spec.md",
+          "kind": "implementation-spec",
+          "minimumBytes": 400
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "development",
+            "testing",
+            "security"
+          ],
+          "depth": "deep"
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "personas": [
+            "architect"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "requirements",
+            "design",
+            "implementation-spec"
+          ]
+        },
+        "comparison": {},
+        "inputs": [],
+        "template": "feature/implementation-spec.md"
+      },
+      {
+        "id": "implementation",
+        "order": 4,
+        "label": "Implementation",
+        "suggestedPersonas": [
+          "developer"
+        ],
+        "defaultTemplate": "common/implementation.md",
+        "artifact": {
+          "path": "artifacts/implementation/implementation-summary.md",
+          "kind": "implementation-summary",
+          "minimumBytes": 250
+        },
+        "worldModel": {
+          "views": [
+            "development",
+            "testing"
+          ],
+          "depth": "standard"
+        },
+        "writeScope": "source-and-artifact",
+        "approval": {
+          "personas": [
+            "developer"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation"
+          ]
+        },
+        "qualityCommands": [],
+        "comparison": {},
+        "inputs": [],
+        "template": "common/implementation.md"
+      },
+      {
+        "id": "verification",
+        "order": 5,
+        "label": "Verification",
+        "suggestedPersonas": [
+          "qa"
+        ],
+        "defaultTemplate": "common/verification.md",
+        "artifact": {
+          "path": "artifacts/verification/test-evidence.md",
+          "kind": "test-evidence",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "testing",
+            "development",
+            "security"
+          ],
+          "depth": "standard",
+          "evidence": true
+        },
+        "writeScope": "source-and-artifact",
+        "approval": {
+          "personas": [
+            "qa"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation",
+            "verification"
+          ]
+        },
+        "qualityCommands": [],
+        "comparison": {},
+        "inputs": [],
+        "template": "common/verification.md"
+      },
+      {
+        "id": "conformance",
+        "order": 6,
+        "label": "Spec-to-code conformance",
+        "suggestedPersonas": [
+          "qa",
+          "architect"
+        ],
+        "defaultTemplate": "common/conformance.md",
+        "artifact": {
+          "path": "artifacts/conformance/spec-code-comparison.md",
+          "kind": "conformance-report",
+          "minimumBytes": 400
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "development",
+            "testing",
+            "security"
+          ],
+          "depth": "deep",
+          "evidence": true
+        },
+        "writeScope": "artifact-only",
+        "comparison": {
+          "identifiers": [
+            "acceptance-criteria",
+            "specification"
+          ],
+          "verdicts": [
+            "matched",
+            "partial",
+            "missing",
+            "deviated",
+            "unplanned"
+          ],
+          "exactFileLineEvidence": true
+        },
+        "approval": {
+          "personas": [
+            "qa",
+            "architect"
+          ],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation-spec",
+            "fix-spec",
+            "implementation",
+            "verification",
+            "conformance"
+          ]
+        },
+        "inputs": [],
+        "template": "common/conformance.md"
+      }
+    ]
+  },
+  "status": "in_progress",
+  "currentPhase": "intake",
+  "phaseOrder": [
+    "intake",
+    "requirements",
+    "design",
+    "implementation-spec",
+    "implementation",
+    "verification",
+    "conformance"
+  ],
+  "phases": {
+    "intake": {
+      "id": "intake",
+      "label": "Intake",
+      "order": 0,
+      "owner": "product-owner",
+      "suggestedPersonas": [
+        "product-owner"
+      ],
+      "status": "in_progress",
+      "requiredArtifact": {
+        "path": "artifacts/intake/intake.md",
+        "kind": "intake",
+        "minimumBytes": 200
+      },
+      "template": "feature/intake.md",
+      "worldModel": {
+        "views": [
+          "business"
+        ],
+        "depth": "quick"
+      },
+      "writeScope": "artifact-only",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "product-owner"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "intake"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": "2026-07-22T08:38:00.830Z",
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "requirements": {
+      "id": "requirements",
+      "label": "Requirements",
+      "order": 1,
+      "owner": "product-owner",
+      "suggestedPersonas": [
+        "product-owner"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/requirements/requirements.md",
+        "kind": "requirements",
+        "minimumBytes": 300
+      },
+      "template": "feature/requirements.md",
+      "worldModel": {
+        "views": [
+          "business"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "artifact-only",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "product-owner"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "intake",
+          "requirements"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "design": {
+      "id": "design",
+      "label": "Architecture and design",
+      "order": 2,
+      "owner": "architect",
+      "suggestedPersonas": [
+        "architect"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/design/design.md",
+        "kind": "design",
+        "minimumBytes": 300
+      },
+      "template": "feature/design.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "security"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "artifact-only",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "architect"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "requirements",
+          "design"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "implementation-spec": {
+      "id": "implementation-spec",
+      "label": "Implementation specification",
+      "order": 3,
+      "owner": "architect",
+      "suggestedPersonas": [
+        "architect",
+        "developer"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/implementation-spec/implementation-spec.md",
+        "kind": "implementation-spec",
+        "minimumBytes": 400
+      },
+      "template": "feature/implementation-spec.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ],
+        "depth": "deep"
+      },
+      "writeScope": "artifact-only",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "architect"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "requirements",
+          "design",
+          "implementation-spec"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "implementation": {
+      "id": "implementation",
+      "label": "Implementation",
+      "order": 4,
+      "owner": "developer",
+      "suggestedPersonas": [
+        "developer"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/implementation/implementation-summary.md",
+        "kind": "implementation-summary",
+        "minimumBytes": 250
+      },
+      "template": "common/implementation.md",
+      "worldModel": {
+        "views": [
+          "development",
+          "testing"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "source-and-artifact",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "developer"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "verification": {
+      "id": "verification",
+      "label": "Verification",
+      "order": 5,
+      "owner": "qa",
+      "suggestedPersonas": [
+        "qa"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/verification/test-evidence.md",
+        "kind": "test-evidence",
+        "minimumBytes": 300
+      },
+      "template": "common/verification.md",
+      "worldModel": {
+        "views": [
+          "testing",
+          "development",
+          "security"
+        ],
+        "depth": "standard",
+        "evidence": true
+      },
+      "writeScope": "source-and-artifact",
+      "comparison": {},
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "qa"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation",
+          "verification"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "conformance": {
+      "id": "conformance",
+      "label": "Spec-to-code conformance",
+      "order": 6,
+      "owner": "qa",
+      "suggestedPersonas": [
+        "qa",
+        "architect"
+      ],
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/conformance/spec-code-comparison.md",
+        "kind": "conformance-report",
+        "minimumBytes": 400
+      },
+      "template": "common/conformance.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ],
+        "depth": "deep",
+        "evidence": true
+      },
+      "writeScope": "artifact-only",
+      "comparison": {
+        "identifiers": [
+          "acceptance-criteria",
+          "specification"
+        ],
+        "verdicts": [
+          "matched",
+          "partial",
+          "missing",
+          "deviated",
+          "unplanned"
+        ],
+        "exactFileLineEvidence": true
+      },
+      "inputs": [],
+      "approvalPolicy": {
+        "personas": [
+          "qa",
+          "architect"
+        ],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation-spec",
+          "fix-spec",
+          "implementation",
+          "verification",
+          "conformance"
+        ]
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedPersona": null,
+      "usage": [],
+      "approvals": [],
+      "artifacts": [],
+      "checks": []
+    }
+  },
+  "usage": {
+    "mode": "exact-or-unavailable",
+    "totalTokens": 0,
+    "records": 0,
+    "exactRecords": 0,
+    "unavailableRecords": 0,
+    "byPhase": {},
+    "byPersona": {},
+    "byWorkType": {},
+    "byWorkItem": {}
+  },
+  "documents": {
+    "count": 0,
+    "updatedAt": null
+  },
+  "history": [
+    {
+      "at": "2026-07-22T08:38:00.830Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "work_started",
+      "phase": "intake",
+      "detail": "Created feature branch WORK-123"
+    }
+  ]
+}
