@@ -1056,22 +1056,53 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedPersona": null,
-      "usage": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "generatedPersona": "qa",
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-unavailable",
+          "provider": null,
+          "model": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "totalTokens": null,
+          "startedAt": "2026-07-22T13:05:49.288Z",
+          "completedAt": "2026-07-22T13:05:49.293Z",
+          "persona": "qa"
+        }
+      ],
       "approvals": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": ".singularity/work-items/WORK-123/artifacts/conformance/spec-code-comparison.md",
+          "kind": "conformance-report",
+          "status": "pending",
+          "exists": true,
+          "size": 4992,
+          "sha256": "9c6b5e34e148451623fa4d9715825ab1499d1c3c4626d535f5cafa2a956660c2",
+          "registeredAt": "2026-07-22T13:05:49.310Z",
+          "updatedAt": "2026-07-22T13:05:49.310Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "sourceCommit": "0e187336df6b15506a415c88790948afe33877b0",
+      "conformanceTree": "sha256:d5cdc7d4c90424eed978dacee9cbb16c7e17aac1a51bde41b04cc3c3c2de8725"
     }
   },
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 6,
+    "records": 7,
     "exactRecords": 0,
-    "unavailableRecords": 6,
+    "unavailableRecords": 7,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -1108,6 +1139,12 @@
         "exactRecords": 0,
         "unavailableRecords": 1,
         "totalTokens": 0
+      },
+      "conformance": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byPersona": {
@@ -1128,21 +1165,27 @@
         "exactRecords": 0,
         "unavailableRecords": 1,
         "totalTokens": 0
+      },
+      "qa": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 6,
+        "records": 7,
         "exactRecords": 0,
-        "unavailableRecords": 6,
+        "unavailableRecords": 7,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "WORK-123": {
-        "records": 6,
+        "records": 7,
         "exactRecords": 0,
-        "unavailableRecords": 6,
+        "unavailableRecords": 7,
         "totalTokens": 0
       }
     }
@@ -1303,6 +1346,14 @@
       "event": "phase_self_approved",
       "phase": "verification",
       "detail": "threshold reached; advanced to conformance"
+    },
+    {
+      "at": "2026-07-22T13:05:49.310Z",
+      "actor": "ashokraj2011",
+      "persona": "qa",
+      "event": "phase_generated",
+      "phase": "conformance",
+      "detail": "generation 1"
     }
   ],
   "sequenceOverrides": []
