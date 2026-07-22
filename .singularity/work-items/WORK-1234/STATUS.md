@@ -9,7 +9,7 @@
 |---:|---|---|---|---:|---:|---:|
 | 1 | Intake (`intake`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | product-owner / Ashok Raj | **warning** |  |  |  |
-| 2 | Requirements (`requirements`) | product-owner | **in_progress** | 0 | 0 | unavailable |
+| 2 | Requirements (`requirements`) | product-owner | **in_progress** | 1 | 0 | unavailable |
 | 3 | Architecture and design (`design`) | architect | **not_started** | 0 | 0 | unavailable |
 | 4 | Implementation specification (`implementation-spec`) | architect, developer | **not_started** | 0 | 0 | unavailable |
 | 5 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
@@ -18,6 +18,7 @@
 
 ## Recent history
 
+- 2026-07-22T23:49:13.558Z — **phase_generated** (requirements) by ashokraj2011 as product-owner: generation 1
 - 2026-07-22T23:47:47.262Z — **phase_self_approved** (intake) by ashokraj2011 as product-owner: threshold reached; advanced to requirements
 - 2026-07-22T23:43:00.558Z — **phase_submitted** (intake) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T23:41:15.145Z — **phase_generated** (intake) by ashokraj2011 as product-owner: generation 1
