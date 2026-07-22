@@ -1,0 +1,34 @@
+{
+  "title": "Circle area operator",
+  "user": "Everyone",
+  "problem": "Implement area operator for a circle, radius will be given and used in rules.",
+  "desiredOutcome": "Validate the area.",
+  "scope": {
+    "in": [
+      "All numbers"
+    ],
+    "out": [
+      "Strings"
+    ]
+  },
+  "stakeholders": [
+    "PZN"
+  ],
+  "urgency": "low",
+  "constraints": [
+    "None"
+  ],
+  "dependencies": [
+    "None"
+  ],
+  "acceptanceCriteria": "- Tests should pass",
+  "risks": [
+    "None"
+  ],
+  "notes": "None",
+  "type": "manual",
+  "id": "WORK-1234",
+  "key": null,
+  "url": null,
+  "description": "Implement area operator for a circle, radius will be given and used in rules."
+}
