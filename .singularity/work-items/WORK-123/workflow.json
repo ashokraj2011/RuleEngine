@@ -358,7 +358,7 @@
       "suggestedPersonas": [
         "product-owner"
       ],
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/intake/intake.md",
         "kind": "intake",
@@ -385,7 +385,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-07-22T08:38:00.830Z",
-      "submittedAt": null,
+      "submittedAt": "2026-07-22T08:47:33.300Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -420,15 +420,17 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 3628,
-          "sha256": "d97dabd84d7a8e53d603cdd913a99c074dbbafdb475c0c454714bd762177e3b1",
+          "size": 3710,
+          "sha256": "7b351815bc805af0580712f4b2db7a154c355feec1e125de39658d4c90ec46e1",
           "registeredAt": "2026-07-22T08:46:15.848Z",
-          "updatedAt": "2026-07-22T08:46:15.848Z"
+          "updatedAt": "2026-07-22T08:47:33.301Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
-      "sourceCommit": "d000d1b88d8cf409ce4637dd4d504a7cbda1ce7e"
+      "sourceCommit": "d000d1b88d8cf409ce4637dd4d504a7cbda1ce7e",
+      "generationCommit": "b006274894ae174dcad8514bf1345d67d372c3ca",
+      "publicationCommit": "b006274894ae174dcad8514bf1345d67d372c3ca"
     },
     "requirements": {
       "id": "requirements",
@@ -827,6 +829,14 @@
       "event": "phase_generated",
       "phase": "intake",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-22T08:47:33.300Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "phase_submitted",
+      "phase": "intake",
+      "detail": "1 artifacts"
     }
   ]
 }
