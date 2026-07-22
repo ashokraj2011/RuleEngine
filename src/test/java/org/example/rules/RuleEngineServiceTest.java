@@ -197,4 +197,74 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testTanWithinTolerance() {
+        Map<String, Object> data = Map.of("angle", Math.PI / 4);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", Math.tan(Math.PI / 4));
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanOutsideToleranceIsFalse() {
+        Map<String, Object> data = Map.of("angle", Math.PI / 4);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", 2.0);
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanNonNumericFieldThrows() {
+        Map<String, Object> data = Map.of("angle", "not-a-number");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", 1.0);
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanMissingFieldThrows() {
+        Map<String, Object> data = new HashMap<>();
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", 1.0);
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanNonNumericValueThrows() {
+        Map<String, Object> data = Map.of("angle", Math.PI / 4);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", "not-a-number");
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanMissingValueThrows() {
+        Map<String, Object> data = Map.of("angle", Math.PI / 4);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testTanNearHalfPiReturnsFalse() {
+        Map<String, Object> data = Map.of("angle", Math.PI / 2);
+        double computed = Math.tan(Math.PI / 2);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "angle");
+        rule.put("op", "tan");
+        rule.put("value", computed - 10.0);
+        assertFalse(service.evaluate(data, rule));
+    }
 }

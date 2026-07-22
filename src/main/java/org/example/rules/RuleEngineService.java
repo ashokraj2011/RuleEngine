@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 @Service
 public class RuleEngineService {
 
+    private static final double TAN_TOLERANCE = 1e-6;
+
     public boolean evaluate(Map<String, Object> data, JsonNode rule) {
         if (rule == null || rule.isNull()) {
             throw new IllegalArgumentException("Rule cannot be null");
@@ -129,6 +131,20 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case tan:
+                BigDecimal tanLeft = toBigDecimalOrNull(left);
+                if (tanLeft == null) {
+                    throw new IllegalArgumentException("tan requires a numeric field value");
+                }
+                BigDecimal tanTarget = toBigDecimalOrNull(jsonToJava(valueNode));
+                if (tanTarget == null) {
+                    throw new IllegalArgumentException("tan requires a numeric value");
+                }
+                double computed = Math.tan(tanLeft.doubleValue());
+                if (Double.isNaN(computed) || Double.isInfinite(computed)) {
+                    return false;
+                }
+                return Math.abs(computed - tanTarget.doubleValue()) <= TAN_TOLERANCE;
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }

@@ -2,7 +2,9 @@ package org.example.rules;
 
 public enum Operator {
     // Comparison
-    eq, ne, lt, lte, gt, gte,
+    // tan: compares Math.tan(fieldValue) (field value interpreted as radians)
+    // against value within a fixed tolerance.
+    eq, ne, lt, lte, gt, gte, tan,
     // Collection/String
     contains, in,
     // Pattern
