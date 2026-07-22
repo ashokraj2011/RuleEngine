@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "workId": "WORK-123",
+  "phase": "intake",
+  "generation": 1,
+  "persona": "product-owner",
+  "modelCommit": null,
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "files": [],
+  "injectedAt": "2026-07-22T08:45:32.784Z"
+}
