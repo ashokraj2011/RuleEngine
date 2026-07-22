@@ -3,7 +3,7 @@
 - Branch: `WORK-1234`
 - Work type: **feature**
 - Overall status: **in_progress**
-- Current phase: **design**
+- Current phase: **implementation-spec**
 
 | # | Phase | Suggested personas | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
@@ -11,14 +11,16 @@
 |  | ⚠ self-approval | product-owner / Ashok Raj | **warning** |  |  |  |
 | 2 | Requirements (`requirements`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | product-owner / Ashok Raj | **warning** |  |  |  |
-| 3 | Architecture and design (`design`) | architect | **awaiting_approval** | 1 | 0 | unavailable |
-| 4 | Implementation specification (`implementation-spec`) | architect, developer | **not_started** | 0 | 0 | unavailable |
+| 3 | Architecture and design (`design`) | architect | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | architect / Ashok Raj | **warning** |  |  |  |
+| 4 | Implementation specification (`implementation-spec`) | architect, developer | **in_progress** | 0 | 0 | unavailable |
 | 5 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
 | 6 | Verification (`verification`) | qa | **not_started** | 0 | 0 | unavailable |
 | 7 | Spec-to-code conformance (`conformance`) | qa, architect | **not_started** | 0 | 0 | unavailable |
 
 ## Recent history
 
+- 2026-07-22T23:59:12.269Z — **phase_self_approved** (design) by ashokraj2011 as architect: threshold reached; advanced to implementation-spec
 - 2026-07-22T23:53:27.934Z — **phase_submitted** (design) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T23:52:38.526Z — **phase_generated** (design) by ashokraj2011 as product-owner: generation 1
 - 2026-07-22T23:51:26.792Z — **phase_self_approved** (requirements) by ashokraj2011 as product-owner: threshold reached; advanced to design
