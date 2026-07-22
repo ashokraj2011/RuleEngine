@@ -342,8 +342,8 @@
       "default": "hard"
     }
   },
-  "status": "in_progress",
-  "currentPhase": "conformance",
+  "status": "complete",
+  "currentPhase": null,
   "phaseOrder": [
     "intake",
     "requirements",
@@ -1001,7 +1001,7 @@
         "qa",
         "architect"
       ],
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/conformance/spec-code-comparison.md",
         "kind": "conformance-report",
@@ -1051,8 +1051,8 @@
       "qualityCommands": [],
       "startedAt": "2026-07-22T13:00:11.999Z",
       "submittedAt": "2026-07-22T13:17:00.803Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-07-22T13:22:33.635Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -1078,17 +1078,34 @@
           "persona": "qa"
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "conformance",
+          "at": "2026-07-22T13:22:33.635Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011"
+          },
+          "persona": "architect",
+          "channel": "terminal",
+          "generation": 1,
+          "selfApproval": true
+        }
+      ],
       "artifacts": [
         {
           "path": ".singularity/work-items/WORK-123/artifacts/conformance/spec-code-comparison.md",
           "kind": "conformance-report",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 5074,
-          "sha256": "855e0fcada4eb34e5ab7e3878915c63c50f7dddb05f34b1d3c0ceed264eecbe9",
+          "size": 5442,
+          "sha256": "e5c00781e9eaa0497d1b0387f01e2582e0fa4d98eeda8f1150c228cb6c55be32",
           "registeredAt": "2026-07-22T13:05:49.310Z",
-          "updatedAt": "2026-07-22T13:17:00.808Z"
+          "updatedAt": "2026-07-22T13:17:00.808Z",
+          "approvedAt": "2026-07-22T13:22:33.635Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -1364,6 +1381,14 @@
       "event": "phase_submitted",
       "phase": "conformance",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-07-22T13:22:33.635Z",
+      "actor": "ashokraj2011",
+      "persona": "architect",
+      "event": "phase_self_approved",
+      "phase": "conformance",
+      "detail": "threshold reached; complete"
     }
   ],
   "sequenceOverrides": []
