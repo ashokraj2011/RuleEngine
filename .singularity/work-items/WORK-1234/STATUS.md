@@ -7,7 +7,7 @@
 
 | # | Phase | Suggested personas | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
-| 1 | Intake (`intake`) | product-owner | **in_progress** | 1 | 0 | unavailable |
+| 1 | Intake (`intake`) | product-owner | **awaiting_approval** | 1 | 0 | unavailable |
 | 2 | Requirements (`requirements`) | product-owner | **not_started** | 0 | 0 | unavailable |
 | 3 | Architecture and design (`design`) | architect | **not_started** | 0 | 0 | unavailable |
 | 4 | Implementation specification (`implementation-spec`) | architect, developer | **not_started** | 0 | 0 | unavailable |
@@ -17,5 +17,6 @@
 
 ## Recent history
 
+- 2026-07-22T23:43:00.558Z — **phase_submitted** (intake) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T23:41:15.145Z — **phase_generated** (intake) by ashokraj2011 as product-owner: generation 1
 - 2026-07-22T23:33:00.025Z — **work_started** (intake) by ashokraj2011 as product-owner: Created feature branch WORK-1234
