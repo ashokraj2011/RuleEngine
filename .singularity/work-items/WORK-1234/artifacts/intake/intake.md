@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "intake",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -55,8 +55,23 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "intake",
+      "at": "2026-07-22T23:47:47.262Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "persona": "product-owner",
+      "channel": "terminal",
+      "generation": 1,
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": null
 }
 -->
