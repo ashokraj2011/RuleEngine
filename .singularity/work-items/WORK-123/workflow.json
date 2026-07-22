@@ -343,7 +343,7 @@
     }
   },
   "status": "in_progress",
-  "currentPhase": "verification",
+  "currentPhase": "conformance",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -897,7 +897,7 @@
       "suggestedPersonas": [
         "qa"
       ],
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/verification/test-evidence.md",
         "kind": "test-evidence",
@@ -929,8 +929,8 @@
       "qualityCommands": [],
       "startedAt": "2026-07-22T12:48:52.489Z",
       "submittedAt": "2026-07-22T12:51:27.400Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-07-22T13:00:11.999Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -956,17 +956,34 @@
           "persona": "developer"
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "verification",
+          "at": "2026-07-22T13:00:11.999Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011"
+          },
+          "persona": "qa",
+          "channel": "terminal",
+          "generation": 1,
+          "selfApproval": true
+        }
+      ],
       "artifacts": [
         {
           "path": ".singularity/work-items/WORK-123/artifacts/verification/test-evidence.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 5137,
-          "sha256": "9ddd56ddd987b22b23f6832a4a2f800eeb45efa57362471628e1ab4df570f9bf",
+          "size": 5499,
+          "sha256": "88314a45cc9fa4f5877972f5d11c5e354eee7bea7ab537fd71d2cefaf96c8a3f",
           "registeredAt": "2026-07-22T12:50:23.510Z",
-          "updatedAt": "2026-07-22T12:51:27.402Z"
+          "updatedAt": "2026-07-22T12:51:27.402Z",
+          "approvedAt": "2026-07-22T13:00:11.999Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -984,7 +1001,7 @@
         "qa",
         "architect"
       ],
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/conformance/spec-code-comparison.md",
         "kind": "conformance-report",
@@ -1032,7 +1049,7 @@
         ]
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-07-22T13:00:11.999Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -1278,6 +1295,14 @@
       "event": "phase_submitted",
       "phase": "verification",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-07-22T13:00:11.999Z",
+      "actor": "ashokraj2011",
+      "persona": "qa",
+      "event": "phase_self_approved",
+      "phase": "verification",
+      "detail": "threshold reached; advanced to conformance"
     }
   ],
   "sequenceOverrides": []

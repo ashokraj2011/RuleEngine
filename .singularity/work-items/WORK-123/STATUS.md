@@ -3,7 +3,7 @@
 - Branch: `WORK-123`
 - Work type: **feature**
 - Overall status: **in_progress**
-- Current phase: **verification**
+- Current phase: **conformance**
 
 | # | Phase | Suggested personas | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
@@ -17,11 +17,13 @@
 |  | ⚠ self-approval | architect / Ashok Raj | **warning** |  |  |  |
 | 5 | Implementation (`implementation`) | developer | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | developer / Ashok Raj | **warning** |  |  |  |
-| 6 | Verification (`verification`) | qa | **awaiting_approval** | 1 | 0 | unavailable |
-| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **not_started** | 0 | 0 | unavailable |
+| 6 | Verification (`verification`) | qa | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | qa / Ashok Raj | **warning** |  |  |  |
+| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **in_progress** | 0 | 0 | unavailable |
 
 ## Recent history
 
+- 2026-07-22T13:00:11.999Z — **phase_self_approved** (verification) by ashokraj2011 as qa: threshold reached; advanced to conformance
 - 2026-07-22T12:51:27.400Z — **phase_submitted** (verification) by ashokraj2011 as developer: 1 artifacts
 - 2026-07-22T12:50:23.511Z — **phase_generated** (verification) by ashokraj2011 as developer: generation 1
 - 2026-07-22T12:48:52.489Z — **phase_self_approved** (implementation) by ashokraj2011 as developer: threshold reached; advanced to verification
@@ -36,4 +38,3 @@
 - 2026-07-22T11:22:06.973Z — **phase_self_approved** (requirements) by ashokraj2011 as product-owner: threshold reached; advanced to design
 - 2026-07-22T10:35:45.650Z — **phase_submitted** (requirements) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T10:34:45.233Z — **phase_generated** (requirements) by ashokraj2011 as product-owner: generation 1
-- 2026-07-22T08:50:44.902Z — **phase_self_approved** (intake) by ashokraj2011 as product-owner: threshold reached; advanced to requirements
