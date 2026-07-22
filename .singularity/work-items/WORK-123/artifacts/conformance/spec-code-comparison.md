@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "conformance",
   "generation": 1,
-  "status": "in_progress",
+  "status": "awaiting_approval",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -13,8 +13,8 @@
   },
   "generatedPersona": "qa",
   "sourceCommit": "0e187336df6b15506a415c88790948afe33877b0",
-  "generationCommit": null,
-  "publicationCommit": null,
+  "generationCommit": "300fa953f8cbf12676ae406f2a428efc31960958",
+  "publicationCommit": "300fa953f8cbf12676ae406f2a428efc31960958",
   "configSha256": "c5e1429897a228e5eb78c395ddf91788e7cf18fc507a3622b052bb00c245174a",
   "sourceSha256": "9fa612a3960c673acd7a07d6f387a92024f52a8d98d0265db1adeafabd71bb98",
   "template": {

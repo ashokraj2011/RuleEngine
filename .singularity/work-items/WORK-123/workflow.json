@@ -1001,7 +1001,7 @@
         "qa",
         "architect"
       ],
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/conformance/spec-code-comparison.md",
         "kind": "conformance-report",
@@ -1050,7 +1050,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-07-22T13:00:11.999Z",
-      "submittedAt": null,
+      "submittedAt": "2026-07-22T13:17:00.803Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -1085,16 +1085,18 @@
           "kind": "conformance-report",
           "status": "pending",
           "exists": true,
-          "size": 4992,
-          "sha256": "9c6b5e34e148451623fa4d9715825ab1499d1c3c4626d535f5cafa2a956660c2",
+          "size": 5074,
+          "sha256": "855e0fcada4eb34e5ab7e3878915c63c50f7dddb05f34b1d3c0ceed264eecbe9",
           "registeredAt": "2026-07-22T13:05:49.310Z",
-          "updatedAt": "2026-07-22T13:05:49.310Z"
+          "updatedAt": "2026-07-22T13:17:00.808Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
       "sourceCommit": "0e187336df6b15506a415c88790948afe33877b0",
-      "conformanceTree": "sha256:d5cdc7d4c90424eed978dacee9cbb16c7e17aac1a51bde41b04cc3c3c2de8725"
+      "conformanceTree": "sha256:d5cdc7d4c90424eed978dacee9cbb16c7e17aac1a51bde41b04cc3c3c2de8725",
+      "generationCommit": "300fa953f8cbf12676ae406f2a428efc31960958",
+      "publicationCommit": "300fa953f8cbf12676ae406f2a428efc31960958"
     }
   },
   "usage": {
@@ -1354,6 +1356,14 @@
       "event": "phase_generated",
       "phase": "conformance",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-22T13:17:00.803Z",
+      "actor": "ashokraj2011",
+      "persona": "qa",
+      "event": "phase_submitted",
+      "phase": "conformance",
+      "detail": "1 artifacts"
     }
   ],
   "sequenceOverrides": []
