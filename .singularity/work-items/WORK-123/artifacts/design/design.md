@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "design",
   "generation": 1,
-  "status": "in_progress",
+  "status": "awaiting_approval",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -13,8 +13,8 @@
   },
   "generatedPersona": "product-owner",
   "sourceCommit": "c91be4fb29fde0bc85d8415be5bf04d457cf558c",
-  "generationCommit": null,
-  "publicationCommit": null,
+  "generationCommit": "f7eaa2c2e3a62451335af1ae3246adaf987537e2",
+  "publicationCommit": "f7eaa2c2e3a62451335af1ae3246adaf987537e2",
   "configSha256": "c5e1429897a228e5eb78c395ddf91788e7cf18fc507a3622b052bb00c245174a",
   "sourceSha256": "9fa612a3960c673acd7a07d6f387a92024f52a8d98d0265db1adeafabd71bb98",
   "template": {

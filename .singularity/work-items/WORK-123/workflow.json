@@ -561,7 +561,7 @@
       "suggestedPersonas": [
         "architect"
       ],
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/design/design.md",
         "kind": "design",
@@ -590,7 +590,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-07-22T11:22:06.973Z",
-      "submittedAt": null,
+      "submittedAt": "2026-07-22T11:26:43.685Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -625,15 +625,17 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 9609,
-          "sha256": "46b199ad4391d4b23d8d0af5ac0a736d40702d15f0ab8d8f25c66eb1854b21bd",
+          "size": 9691,
+          "sha256": "89702d53d953bd915a1b17cbf25a43efc1324e7b4931a472ed81d43d59939595",
           "registeredAt": "2026-07-22T11:23:58.838Z",
-          "updatedAt": "2026-07-22T11:23:58.838Z"
+          "updatedAt": "2026-07-22T11:26:43.686Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
-      "sourceCommit": "c91be4fb29fde0bc85d8415be5bf04d457cf558c"
+      "sourceCommit": "c91be4fb29fde0bc85d8415be5bf04d457cf558c",
+      "generationCommit": "f7eaa2c2e3a62451335af1ae3246adaf987537e2",
+      "publicationCommit": "f7eaa2c2e3a62451335af1ae3246adaf987537e2"
     },
     "implementation-spec": {
       "id": "implementation-spec",
@@ -989,6 +991,14 @@
       "event": "phase_generated",
       "phase": "design",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-22T11:26:43.685Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "phase_submitted",
+      "phase": "design",
+      "detail": "1 artifacts"
     }
   ],
   "sequenceOverrides": []
