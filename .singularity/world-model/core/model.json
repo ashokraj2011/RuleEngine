@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-22T08:01:04Z",
+  "repository": {
+    "name": "rule-engine-api",
+    "root": "/Users/ashokraj/Downloads/ruleengine/RuleEngine",
+    "branch": "main",
+    "commit": "64b49487614835be2966c38dc2d5f5e629a466ef",
+    "working_tree_clean": false,
+    "repository_kind": "application",
+    "languages": ["Java"],
+    "package_roots": ["."]
+  },
+  "purpose": {
+    "summary": "A lightweight Spring Boot HTTP service that evaluates a JSON-defined rule grammar (all/any/not groups and field/op/value conditions) against an arbitrary JSON input payload and returns a boolean result.",
+    "status": "observed",
+    "confidence": "high",
+    "evidence_ids": ["ev-repo-purpose"]
+  },
+  "components": [
+    {
+      "id": "comp-api",
+      "name": "REST API layer",
+      "kind": "application",
+      "purpose": "Exposes the rule-evaluation capability over HTTP and maps domain errors to HTTP responses.",
+      "paths": ["src/main/java/org/example/api"],
+      "depends_on": ["comp-rules-engine"],
+      "entrypoint_ids": ["ep-evaluate-endpoint"],
+      "confidence": "high",
+      "evidence_ids": ["ev-entrypoint-controller", "ev-exception-handler"]
+    },
+    {
+      "id": "comp-rules-engine",
+      "name": "Rule evaluation engine",
+      "kind": "library",
+      "purpose": "Parses and recursively evaluates the JSON rule grammar (groups and conditions) against input data.",
+      "paths": ["src/main/java/org/example/rules"],
+      "depends_on": [],
+      "entrypoint_ids": [],
+      "confidence": "high",
+      "evidence_ids": ["ev-service-dispatch", "ev-service-condition", "ev-service-compare", "ev-operator-enum-gap"]
+    },
+    {
+      "id": "comp-bootstrap",
+      "name": "Spring Boot bootstrap",
+      "kind": "application",
+      "purpose": "Starts the embedded server and wires Spring component scanning/DI.",
+      "paths": ["src/main/java/org/example/RuleEngineApplication.java"],
+      "depends_on": ["comp-api", "comp-rules-engine"],
+      "entrypoint_ids": ["ep-spring-boot-main"],
+      "confidence": "high",
+      "evidence_ids": ["ev-entrypoint-app"]
+    },
+    {
+      "id": "comp-scratch-main",
+      "name": "IDE scratch class",
+      "kind": "tooling",
+      "purpose": "Leftover IntelliJ scaffold class not part of the application runtime.",
+      "paths": ["src/main/java/org/example/Main.java"],
+      "depends_on": [],
+      "entrypoint_ids": ["ep-main-scratch"],
+      "confidence": "high",
+      "evidence_ids": ["ev-main-scratch"]
+    }
+  ],
+  "entrypoints": [
+    {
+      "id": "ep-spring-boot-main",
+      "name": "RuleEngineApplication.main",
+      "kind": "server",
+      "location": "src/main/java/org/example/RuleEngineApplication.java:8-10",
+      "invocation": "mvn spring-boot:run  (or java -jar target/rule-engine-api-1.0.0-SNAPSHOT.jar)",
+      "component_id": "comp-bootstrap",
+      "evidence_ids": ["ev-entrypoint-app"]
+    },
+    {
+      "id": "ep-evaluate-endpoint",
+      "name": "POST /api/v1/rule-engine/evaluate",
+      "kind": "server",
+      "location": "src/main/java/org/example/api/RuleEngineController.java:23-27",
+      "invocation": "HTTP POST with JSON body {data, rule}",
+      "component_id": "comp-api",
+      "evidence_ids": ["ev-entrypoint-controller"]
+    },
+    {
+      "id": "ep-main-scratch",
+      "name": "Main.main",
+      "kind": "cli",
+      "location": "src/main/java/org/example/Main.java:6-16",
+      "invocation": "java org.example.Main (not wired to Spring Boot app; not used by tests or build)",
+      "component_id": "comp-scratch-main",
+      "evidence_ids": ["ev-main-scratch"]
+    }
+  ],
+  "standard_commands": [
+    {
+      "command": "mvn -q -DskipTests package",
+      "purpose": "Build the application jar without running tests.",
+      "source": "README.md:19-22"
+    },
+    {
+      "command": "mvn spring-boot:run",
+      "purpose": "Run the application locally on port 8080.",
+      "source": "README.md:24-27"
+    },
+    {
+      "command": "mvn test",
+      "purpose": "Run the JUnit test suite (controller + service tests).",
+      "source": "README.md:224-227"
+    },
+    {
+      "command": "mvn -o compile",
+      "purpose": "Verified during this analysis: compiles offline with exit code 0 against the current (uncommitted) working tree.",
+      "source": "pom.xml:1-53"
+    }
+  ],
+  "risks": [
+    "Working tree has an uncommitted change adding Operator.sin with no implementation in RuleEngineService.evalCondition's switch; invoking op=sin will throw IllegalArgumentException at runtime (ev-operator-enum-gap).",
+    "README documents 422 Unprocessable Entity for validation errors, but GlobalExceptionHandler actually returns 400 for MethodArgumentNotValidException — behavior/doc mismatch (ev-exception-handler).",
+    "Test coverage gaps: no tests for ne/lt/lte/gte in isolation, 'in' operator, 'not' group, or malformed-rule error paths (ev-tests-service, ev-tests-controller)."
+  ],
+  "unknowns": [
+    "Whether src/main/java/org/example/Main.java is intentionally kept or should be removed (no references found in build/tests).",
+    "Whether the uncommitted 'sin' operator is an in-progress feature or an accidental/experimental edit; no related tests, docs, or issue references were found.",
+    "Whether HTTP 422 was intended for validation errors per README, or the README is stale relative to GlobalExceptionHandler's actual 400 behavior."
+  ],
+  "available_views": ["core", "development"]
+}
