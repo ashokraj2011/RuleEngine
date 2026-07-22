@@ -339,7 +339,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "intake",
+  "currentPhase": "requirements",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -358,7 +358,7 @@
       "suggestedPersonas": [
         "product-owner"
       ],
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/intake/intake.md",
         "kind": "intake",
@@ -386,8 +386,8 @@
       "qualityCommands": [],
       "startedAt": "2026-07-22T08:38:00.830Z",
       "submittedAt": "2026-07-22T08:47:33.300Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-07-22T08:50:44.902Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -413,17 +413,34 @@
           "persona": "product-owner"
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "intake",
+          "at": "2026-07-22T08:50:44.902Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011"
+          },
+          "persona": "product-owner",
+          "channel": "terminal",
+          "generation": 1,
+          "selfApproval": true
+        }
+      ],
       "artifacts": [
         {
           "path": ".singularity/work-items/WORK-123/artifacts/intake/intake.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 3710,
-          "sha256": "7b351815bc805af0580712f4b2db7a154c355feec1e125de39658d4c90ec46e1",
+          "size": 4077,
+          "sha256": "f5a4aa5feb7b25f4d73b2b5bd2cf594a49accc0a8f2c158d62b7956abc02247c",
           "registeredAt": "2026-07-22T08:46:15.848Z",
-          "updatedAt": "2026-07-22T08:47:33.301Z"
+          "updatedAt": "2026-07-22T08:47:33.301Z",
+          "approvedAt": "2026-07-22T08:50:44.902Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -440,7 +457,7 @@
       "suggestedPersonas": [
         "product-owner"
       ],
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/requirements/requirements.md",
         "kind": "requirements",
@@ -467,7 +484,7 @@
         ]
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-07-22T08:50:44.902Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -837,6 +854,14 @@
       "event": "phase_submitted",
       "phase": "intake",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-07-22T08:50:44.902Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "phase_self_approved",
+      "phase": "intake",
+      "detail": "threshold reached; advanced to requirements"
     }
   ]
 }
