@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-22T08:01:04Z",
+  "generated_at": "2026-07-22T09:12:25Z",
   "repository": {
     "name": "rule-engine-api",
     "root": "/Users/ashokraj/Downloads/ruleengine/RuleEngine",
-    "branch": "main",
-    "commit": "64b49487614835be2966c38dc2d5f5e629a466ef",
-    "working_tree_clean": false,
+    "branch": "WORK-123",
+    "commit": "a007ae8277145c4ed47c1e7663b50ba45a3ab529",
+    "working_tree_clean": true,
     "repository_kind": "application",
     "languages": ["Java"],
     "package_roots": ["."]
@@ -110,19 +110,19 @@
     },
     {
       "command": "mvn -o compile",
-      "purpose": "Verified during this analysis: compiles offline with exit code 0 against the current (uncommitted) working tree.",
+      "purpose": "Verified offline compile with exit code 0 at the current commit a007ae82 (re-executed during this standard-depth pass).",
       "source": "pom.xml:1-53"
     }
   ],
   "risks": [
-    "Working tree has an uncommitted change adding Operator.sin with no implementation in RuleEngineService.evalCondition's switch; invoking op=sin will throw IllegalArgumentException at runtime (ev-operator-enum-gap).",
+    "No arithmetic/trigonometric operators (e.g. sin, tan) exist in Operator.java or RuleEngineService.evalCondition at this commit; a previously-noted uncommitted 'sin' enum edit is no longer present in the working tree — that risk is resolved/superseded (ev-operator-current-state).",
     "README documents 422 Unprocessable Entity for validation errors, but GlobalExceptionHandler actually returns 400 for MethodArgumentNotValidException — behavior/doc mismatch (ev-exception-handler).",
     "Test coverage gaps: no tests for ne/lt/lte/gte in isolation, 'in' operator, 'not' group, or malformed-rule error paths (ev-tests-service, ev-tests-controller)."
   ],
   "unknowns": [
     "Whether src/main/java/org/example/Main.java is intentionally kept or should be removed (no references found in build/tests).",
-    "Whether the uncommitted 'sin' operator is an in-progress feature or an accidental/experimental edit; no related tests, docs, or issue references were found.",
-    "Whether HTTP 422 was intended for validation errors per README, or the README is stale relative to GlobalExceptionHandler's actual 400 behavior."
+    "Whether HTTP 422 was intended for validation errors per README, or the README is stale relative to GlobalExceptionHandler's actual 400 behavior.",
+    "How a 'tan' math operator should be exposed in the JSON rule grammar (new Operator enum value evaluated as a condition vs. a value-transform applied before comparison) — no design precedent exists in the codebase for math-function operators."
   ],
-  "available_views": ["core", "development"]
+  "available_views": ["core", "development", "business"]
 }

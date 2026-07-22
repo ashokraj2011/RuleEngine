@@ -52,17 +52,19 @@ tests, or the other components.
 | `mvn test` | Run the JUnit test suite |
 
 During this analysis, `mvn -o compile` was executed against the current
-working tree and **succeeded (exit code 0)**. Tests were not executed as
-part of this analysis, so no pass/fail claim is made about `mvn test`.
+working tree (commit `a007ae82`) and **succeeded (exit code 0)**. Tests were
+not executed as part of this analysis, so no pass/fail claim is made about
+`mvn test`.
 
 ## Important risks
 
-1. **Uncommitted, unimplemented operator.** The working tree has an
-   uncommitted change (`git status` shows `M src/main/java/.../Operator.java`)
-   adding a `sin` enum constant with **no corresponding case** in
-   `RuleEngineService.evalCondition`'s switch. Using `op: "sin"` would compile
-   fine but throw `IllegalArgumentException("Operator not implemented: sin")`
-   at runtime. (`ev-operator-enum-gap`)
+1. **No math/trigonometric operators exist today.** `Operator.java` and
+   `RuleEngineService.evalCondition` at this commit define/implement only
+   the 14 comparison/collection/existence operators listed above — there is
+   **no `sin`, `tan`, or any arithmetic-function operator**. A previously
+   noted uncommitted `sin` enum edit (seen at commit `64b4948` in an earlier
+   grounding pass) is no longer present in the working tree; that risk is
+   resolved/superseded. (`ev-operator-current-state`)
 2. **Doc/code mismatch on validation error status.** README states 422 for
    validation errors, but `GlobalExceptionHandler` returns 400 for
    `MethodArgumentNotValidException`. (`ev-exception-handler`)
@@ -72,30 +74,37 @@ part of this analysis, so no pass/fail claim is made about `mvn test`.
 ## Important unknowns
 
 - Whether `Main.java` should be deleted (appears to be dead scaffold code).
-- Whether the uncommitted `sin` operator is in-progress work or accidental.
 - Whether the README's 422 claim or the code's 400 behavior reflects the
   intended contract.
+- How a `tan` math operator should be exposed in the rule grammar (new
+  `Operator` enum value evaluated as a condition vs. a value-transform
+  applied to `field` before comparison) — no precedent for math-function
+  operators exists in the codebase.
 
 ## Commit and freshness
 
-Inspected commit: **`64b49487614835be2966c38dc2d5f5e629a466ef`** (branch
-`main`, committed 2026-07-22). **Working tree is not clean** — see risk #1
-above. This grounding reflects the state including that uncommitted change;
-re-run analysis if the tree changes further.
+Inspected commit: **`a007ae8277145c4ed47c1e7663b50ba45a3ab529`** (branch
+`WORK-123`). Working tree is **clean** at this commit. This grounding
+supersedes the prior pass recorded at commit `64b4948` (which noted an
+uncommitted, unimplemented `sin` operator that is no longer present);
+re-run analysis if the branch advances further.
 
 ## Recommended next view by task
 
 | Task | Load next |
 |---|---|
 | Implement/debug/refactor/review code | `views/development.md` (generated) |
-| Understand product/business behavior | `views/business.md` (not generated — see manifest `load_when`) |
+| Understand product/business behavior | `views/business.md` (generated) |
 | Evaluate design/dependencies/scalability | `views/architecture.md` (not generated) |
 | Write/assess tests | `views/testing.md` (not generated) |
 | Build/package/deploy/rollback | `views/release.md` (not generated) |
 | Diagnose runtime/incidents | `views/operations.md` (not generated) |
 | Auth/secrets/vulnerability analysis | `views/security.md` (not generated) |
 
-This run generated **core + development** only, per auto-routing for an
-unspecified/broad task. See `manifest.json` for `load_when` triggers to
-generate other views on a future run with a concrete task or explicit view
-request.
+This run explicitly requested the **business** view (task: "implement tan
+math operator"), generated alongside the pre-existing **core + development**
+views. See `manifest.json` for `load_when` triggers to generate other views
+on a future run with a concrete task or explicit view request. Note: this
+task is primarily a *development* task (adding a new operator); the
+business view below covers only its product/business-facing implications —
+load `views/development.md` for implementation grounding.

@@ -112,14 +112,17 @@ services are used by this domain.
 
 ## Unknowns
 
-- Intended semantics of the uncommitted `sin` operator (trigonometric
-  function on a numeric field value? something else?) — no tests, docs, or
-  commit message clarify this.
+- At the current commit (`a007ae82`), no `sin`/`tan`/math operator exists in
+  `Operator.java` or `evalCondition` — a `sin` addition observed transiently
+  in an earlier grounding pass (commit `64b4948`) is no longer present
+  (`ev-operator-current-state`). Intended semantics for a future `tan`
+  operator (radians vs. degrees, comparison tolerance) are undecided — see
+  `views/business.md` §9 and `task-guides/implement-tan-math-operator.md`.
 - Whether list-indexed field paths are an intentional non-goal or an
   unaddressed gap.
 
 ## Evidence IDs
 
 `ev-repo-purpose`, `ev-service-dispatch`, `ev-service-condition`,
-`ev-service-compare`, `ev-operator-enum-gap`, `ev-tests-service`,
-`ev-tests-controller`, `ev-entrypoint-controller`
+`ev-service-compare`, `ev-operator-enum-gap`, `ev-operator-current-state`,
+`ev-tests-service`, `ev-tests-controller`, `ev-entrypoint-controller`

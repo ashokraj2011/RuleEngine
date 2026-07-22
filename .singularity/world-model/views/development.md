@@ -44,9 +44,11 @@ src/test/java/org/example/
 - `evalCondition(data, cond)` — resolves `field`/`op`/`value`, parses `op` via
   `Operator.valueOf`, then a `switch` implements each operator.
   (`RuleEngineService.java:63-135`, evidence `ev-service-condition`)
-- `Operator` enum — `eq, ne, lt, lte, gt, gte, contains, in, regex, between,
-  exists, not_exists, isNull, isNotNull, sin`. **`sin` has no switch case** —
-  see Change-impact guide below. (`Operator.java:1-16`, evidence `ev-operator-enum-gap`)
+- `Operator` enum — exactly 14 constants: `eq, ne, lt, lte, gt, gte, contains,
+  in, regex, between, exists, not_exists, isNull, isNotNull`. **No math or
+  trigonometric operator (`sin`, `tan`, etc.) exists at the current commit** —
+  an earlier, uncommitted `sin` addition seen in a prior grounding pass is not
+  present in this tree. (`Operator.java:1-14`, evidence `ev-operator-current-state`)
 - `resolvePath` / `resolvePathInternal` — dot-path traversal over nested
   `Map`s only; does not descend into `List`s. (`RuleEngineService.java:168-184`)
 - `compare(a, b)` — numeric (BigDecimal) → ISO-8601 instant → `Comparable` →
@@ -63,12 +65,16 @@ src/test/java/org/example/
 
 ## Common implementation flows
 
-**Add a new operator** (e.g. finish `sin`):
-1. `Operator` enum already has the constant (uncommitted).
-2. Add a `case sin:` branch in `RuleEngineService.evalCondition` implementing
-   the desired numeric semantics (likely via `toBigDecimalOrNull`/`Math.sin`).
+**Add a new operator** (e.g. `tan`):
+1. Add the constant to the `Operator` enum (`Operator.java`) — no such
+   constant exists today for any math/trig function.
+2. Add a matching `case tan:` branch in `RuleEngineService.evalCondition`
+   implementing the desired numeric semantics (likely via
+   `toBigDecimalOrNull`/`Math.tan`, then reuse or extend `compare(...)`).
+   Decide radians vs. degrees and tolerance for floating-point comparison —
+   undecided in the repository today (see `task-guides/implement-tan-math-operator.md`).
 3. Add unit tests in `RuleEngineServiceTest` (happy path + edge cases: non-numeric
-   field, missing value).
+   field, missing value, asymptotic input).
 4. Add an HTTP-level test in `RuleEngineControllerTest` if the operator has
    endpoint-visible edge cases.
 5. Update README "Full Operator Reference" section.
@@ -134,7 +140,7 @@ codegen directories were found under `src/`.
 
 | If you touch... | Also check |
 |---|---|
-| `Operator` enum | `RuleEngineService.evalCondition` switch must have a matching `case` for every enum value, or it silently falls to `default: throw` at runtime (compiler does not enforce exhaustiveness here). Currently **`sin` is missing its case** — this is the most immediate actionable gap. |
+| `Operator` enum | `RuleEngineService.evalCondition` switch must have a matching `case` for every enum value, or it silently falls to `default: throw` at runtime (compiler does not enforce exhaustiveness here). No enum/switch drift currently exists — keep this invariant when adding `tan` or any new operator. |
 | `compare()` | Both `eq`/`ne`/`lt`/`lte`/`gt`/`gte`/`between`/`in` semantics depend on it; re-run `RuleEngineServiceTest` fully. |
 | `resolvePathInternal` | Affects `exists`/`not_exists`/`isNull`/`isNotNull` and all field resolution; note it only traverses nested `Map`s, not `List` indices. |
 | `EvaluateRequest`/`EvaluateResponse` | Update README request/response schema section and `RuleEngineControllerTest`. |
@@ -157,20 +163,21 @@ mvn -q -DskipTests package   # build only
 mvn test                      # run JUnit tests (controller + service)
 mvn spring-boot:run            # run locally on :8080
 ```
-`mvn -o compile` was executed during this analysis and succeeded (exit 0)
-against the current working tree, including the uncommitted `Operator.java`
-change. `mvn test` was **not** executed as part of this analysis.
+`mvn -o compile` was executed against the current working tree at commit
+`a007ae82` during this pass and succeeded (exit 0). `mvn test` has not been
+executed in any grounding pass.
 
 ## Known implementation hotspots
 
 - `evalCondition`'s single large `switch` is the central place all operator
-  behavior lives — any enum drift (like the current `sin` gap) surfaces here.
+  behavior lives — this is the extension point for a `tan` operator, and any
+  future enum drift would surface here.
 - `compare()`'s implicit type-coercion chain is a common source of subtle
   bugs (e.g., numeric strings vs. numbers, date strings vs. plain strings).
 
 ## Questions this view does not answer
 
-- Business meaning/ownership of specific rules or fields (see `views/business.md`, not generated this run).
+- Business meaning/ownership of specific rules or fields (see `views/business.md`, generated this run).
 - Deployment topology, environments, or release process (see `views/release.md`, not generated).
 - Test coverage adequacy in depth or a full test inventory (see `views/testing.md`, not generated).
 - Security/authn/authz posture of the endpoint (see `views/security.md`, not generated).

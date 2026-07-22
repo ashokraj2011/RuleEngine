@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "repository_commit": "64b49487614835be2966c38dc2d5f5e629a466ef",
-  "generated_at": "2026-07-22T08:01:04Z",
+  "repository_commit": "a007ae8277145c4ed47c1e7663b50ba45a3ab529",
+  "generated_at": "2026-07-22T09:12:25Z",
   "core": {
     "summary": "core/summary.md",
     "model": "core/model.json",
@@ -10,7 +10,7 @@
   "views": {
     "business": {
       "path": "views/business.md",
-      "generated": false,
+      "generated": true,
       "load_when": [
         "business capability analysis",
         "product behavior analysis",
@@ -80,11 +80,37 @@
       "id": "rule-evaluation",
       "path": "domains/rule-evaluation.md",
       "summary": "Evaluates a JSON-defined boolean rule grammar (groups + conditions) against an arbitrary JSON data payload.",
-      "relevant_views": ["development"],
-      "keywords": ["rule", "operator", "condition", "evaluate", "all", "any", "not", "field", "compare"]
+      "relevant_views": [
+        "development",
+        "business"
+      ],
+      "keywords": [
+        "rule",
+        "operator",
+        "condition",
+        "evaluate",
+        "all",
+        "any",
+        "not",
+        "field",
+        "compare"
+      ]
     }
   ],
-  "task_guides": [],
+  "task_guides": [
+    {
+      "id": "implement-tan-math-operator",
+      "path": "task-guides/implement-tan-math-operator.md",
+      "task": "Implement a tan math operator in the rule engine condition grammar",
+      "required_views": [
+        "business",
+        "development"
+      ],
+      "required_domains": [
+        "rule-evaluation"
+      ]
+    }
+  ],
   "evidence": {
     "path": "evidence/evidence.jsonl",
     "load_only_when_verification_is_needed": true
@@ -92,27 +118,44 @@
   "recommended_loading_rules": [
     {
       "agent_type": "business",
-      "load": ["core/summary.md", "views/business.md"]
+      "load": [
+        "core/summary.md",
+        "views/business.md"
+      ]
     },
     {
       "agent_type": "architect",
-      "load": ["core/summary.md", "views/architecture.md"]
+      "load": [
+        "core/summary.md",
+        "views/architecture.md"
+      ]
     },
     {
       "agent_type": "developer",
-      "load": ["core/summary.md", "views/development.md", "domains/rule-evaluation.md"]
+      "load": [
+        "core/summary.md",
+        "views/development.md",
+        "domains/rule-evaluation.md"
+      ]
     },
     {
       "agent_type": "tester",
-      "load": ["core/summary.md", "views/testing.md"]
+      "load": [
+        "core/summary.md",
+        "views/testing.md"
+      ]
     },
     {
       "agent_type": "release",
-      "load": ["core/summary.md", "views/release.md"]
+      "load": [
+        "core/summary.md",
+        "views/release.md"
+      ]
     }
   ],
   "notes": {
-    "view_selection": "REQUESTED_VIEWS was 'auto' with no CURRENT_TASK provided; routed to 'unknown/broad task' rule => core + development only.",
-    "regenerate_other_views": "Re-run the world-model builder with an explicit REQUESTED_VIEWS list or a concrete CURRENT_TASK to generate business/architecture/testing/release/operations/security views."
+    "view_selection": "REQUESTED_VIEWS explicitly set to 'business' this run; generated core (updated) + business + retained pre-existing development. CURRENT_TASK 'implement tan math operator' is primarily a development task, but per explicit-view-selection rules only the business view (plus its relevant domain/task-guide links) was generated for it this run.",
+    "commit_refresh": "Core files were refreshed from a prior pass recorded at commit 64b4948 (which noted an uncommitted, unimplemented 'sin' operator) to current commit a007ae82, where no sin/tan operator exists in source.",
+    "regenerate_other_views": "Re-run the world-model builder with architecture/testing/release/operations/security in REQUESTED_VIEWS to generate them."
   }
 }
