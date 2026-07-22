@@ -364,7 +364,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "requirements",
+  "currentPhase": "design",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -497,7 +497,7 @@
       "suggestedPersonas": [
         "product-owner"
       ],
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/requirements/requirements.md",
         "kind": "requirements",
@@ -526,8 +526,8 @@
       "qualityCommands": [],
       "startedAt": "2026-07-22T23:47:47.262Z",
       "submittedAt": "2026-07-22T23:49:55.587Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-07-22T23:51:26.792Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -568,17 +568,34 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "requirements",
+          "at": "2026-07-22T23:51:26.792Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011"
+          },
+          "persona": "product-owner",
+          "channel": "terminal",
+          "generation": 1,
+          "selfApproval": true
+        }
+      ],
       "artifacts": [
         {
           "path": ".singularity/work-items/WORK-1234/artifacts/requirements/requirements.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 4807,
-          "sha256": "82530606ff08a5c67dcbd0ed2d69afd18ecea8195fe1c7cecd65f743ab25fed9",
+          "size": 5180,
+          "sha256": "dddce666794b18ff85578e40c85724f9fcd33ec61fa0345afd9f8b53d9809662",
           "registeredAt": "2026-07-22T23:49:13.558Z",
-          "updatedAt": "2026-07-22T23:49:55.589Z"
+          "updatedAt": "2026-07-22T23:49:55.589Z",
+          "approvedAt": "2026-07-22T23:51:26.792Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -595,7 +612,7 @@
       "suggestedPersonas": [
         "architect"
       ],
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/design/design.md",
         "kind": "design",
@@ -623,7 +640,7 @@
         ]
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-07-22T23:51:26.792Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -985,6 +1002,14 @@
       "event": "phase_submitted",
       "phase": "requirements",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-07-22T23:51:26.792Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "phase_self_approved",
+      "phase": "requirements",
+      "detail": "threshold reached; advanced to design"
     }
   ]
 }

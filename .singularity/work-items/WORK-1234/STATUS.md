@@ -3,14 +3,15 @@
 - Branch: `WORK-1234`
 - Work type: **feature**
 - Overall status: **in_progress**
-- Current phase: **requirements**
+- Current phase: **design**
 
 | # | Phase | Suggested personas | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
 | 1 | Intake (`intake`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | product-owner / Ashok Raj | **warning** |  |  |  |
-| 2 | Requirements (`requirements`) | product-owner | **awaiting_approval** | 1 | 0 | unavailable |
-| 3 | Architecture and design (`design`) | architect | **not_started** | 0 | 0 | unavailable |
+| 2 | Requirements (`requirements`) | product-owner | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | product-owner / Ashok Raj | **warning** |  |  |  |
+| 3 | Architecture and design (`design`) | architect | **in_progress** | 0 | 0 | unavailable |
 | 4 | Implementation specification (`implementation-spec`) | architect, developer | **not_started** | 0 | 0 | unavailable |
 | 5 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
 | 6 | Verification (`verification`) | qa | **not_started** | 0 | 0 | unavailable |
@@ -18,6 +19,7 @@
 
 ## Recent history
 
+- 2026-07-22T23:51:26.792Z — **phase_self_approved** (requirements) by ashokraj2011 as product-owner: threshold reached; advanced to design
 - 2026-07-22T23:49:55.587Z — **phase_submitted** (requirements) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T23:49:13.558Z — **phase_generated** (requirements) by ashokraj2011 as product-owner: generation 1
 - 2026-07-22T23:47:47.262Z — **phase_self_approved** (intake) by ashokraj2011 as product-owner: threshold reached; advanced to requirements
