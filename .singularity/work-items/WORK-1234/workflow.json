@@ -416,14 +416,59 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedPersona": null,
-      "usage": [],
-      "telemetry": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "generatedPersona": "product-owner",
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-07-22T23:41:15.121Z",
+          "completedAt": "2026-07-22T23:41:15.121Z",
+          "persona": "product-owner",
+          "generation": 1
+        }
+      ],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": ".singularity/work-items/WORK-1234/telemetry/intake-gen1.json",
+          "sha256": "78d301046e5b4bd4e6a369af8ee1bc96a17c98a3c5cd2af097af7292b181ad41",
+          "status": "unavailable",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
-      "artifacts": [],
-      "checks": []
+      "artifacts": [
+        {
+          "path": ".singularity/work-items/WORK-1234/artifacts/intake/intake.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 3227,
+          "sha256": "037a879aa5750c9f36d3405d9f3c40742ec2f77a9a7f957e2fd4f7abb277d999",
+          "registeredAt": "2026-07-22T23:41:15.145Z",
+          "updatedAt": "2026-07-22T23:41:15.145Z"
+        }
+      ],
+      "checks": [],
+      "remoteOutputs": [],
+      "sourceCommit": "2f9c9c4c592918749b76675057d679fc3f9c0e51"
     },
     "requirements": {
       "id": "requirements",
@@ -474,7 +519,8 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "design": {
       "id": "design",
@@ -526,7 +572,8 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "implementation-spec": {
       "id": "implementation-spec",
@@ -582,7 +629,8 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "implementation": {
       "id": "implementation",
@@ -633,7 +681,8 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "verification": {
       "id": "verification",
@@ -687,7 +736,8 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "conformance": {
       "id": "conformance",
@@ -760,19 +810,48 @@
       "telemetry": [],
       "approvals": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     }
   },
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 0,
+    "records": 1,
     "exactRecords": 0,
-    "unavailableRecords": 0,
-    "byPhase": {},
-    "byPersona": {},
-    "byWorkType": {},
-    "byWorkItem": {}
+    "unavailableRecords": 1,
+    "byPhase": {
+      "intake": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byPersona": {
+      "product-owner": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byWorkType": {
+      "feature": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byWorkItem": {
+      "WORK-1234": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    }
   },
   "telemetry": {
     "schemaVersion": 1,
@@ -795,6 +874,14 @@
       "event": "work_started",
       "phase": "intake",
       "detail": "Created feature branch WORK-1234"
+    },
+    {
+      "at": "2026-07-22T23:41:15.145Z",
+      "actor": "ashokraj2011",
+      "persona": "product-owner",
+      "event": "phase_generated",
+      "phase": "intake",
+      "detail": "generation 1"
     }
   ]
 }
