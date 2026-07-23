@@ -4,7 +4,7 @@
   "workId": "WORK-1234",
   "workType": "feature",
   "phase": "verification",
-  "generation": 1,
+  "generation": 2,
   "status": "in_progress",
   "generatedBy": {
     "name": "Ashok Raj",
@@ -12,7 +12,7 @@
     "login": "ashokraj2011"
   },
   "generatedPersona": "developer",
-  "sourceCommit": "1aa2c67d2b4fa03be3981c1f5ec3d768256eb32e",
+  "sourceCommit": "1a91b3796053b8942516e264e1682dac7c69ab31",
   "generationCommit": null,
   "publicationCommit": null,
   "configSha256": "c5e1429897a228e5eb78c395ddf91788e7cf18fc507a3622b052bb00c245174a",
@@ -28,6 +28,14 @@
       "generation": 1,
       "path": ".singularity/work-items/WORK-1234/telemetry/verification-gen1.json",
       "sha256": "476ad62d8d4bbe1aee67dcbbbd6d7c533b61d049edff7d6bb9f55ec1af1e773f",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    },
+    {
+      "generation": 2,
+      "path": ".singularity/work-items/WORK-1234/telemetry/verification-gen2.json",
+      "sha256": "be6fb54e5d615adfb7d95305182a83f8a319529fbc672c38791ac55b00581272",
       "status": "pending",
       "models": [],
       "providerCost": null
@@ -52,6 +60,24 @@
       "completedAt": "2026-07-23T00:37:05.710Z",
       "persona": "developer",
       "generation": 1
+    },
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-07-23T00:37:11.164Z",
+      "completedAt": "2026-07-23T00:37:11.164Z",
+      "persona": "developer",
+      "generation": 2
     }
   ],
   "sequenceOverrides": [],

@@ -1030,7 +1030,7 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 1,
+      "generation": 2,
       "generatedBy": {
         "name": "Ashok Raj",
         "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -1055,6 +1055,24 @@
           "completedAt": "2026-07-23T00:37:05.710Z",
           "persona": "developer",
           "generation": 1
+        },
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-07-23T00:37:11.164Z",
+          "completedAt": "2026-07-23T00:37:11.164Z",
+          "persona": "developer",
+          "generation": 2
         }
       ],
       "telemetry": [
@@ -1062,6 +1080,14 @@
           "generation": 1,
           "path": ".singularity/work-items/WORK-1234/telemetry/verification-gen1.json",
           "sha256": "476ad62d8d4bbe1aee67dcbbbd6d7c533b61d049edff7d6bb9f55ec1af1e773f",
+          "status": "pending",
+          "models": [],
+          "providerCost": null
+        },
+        {
+          "generation": 2,
+          "path": ".singularity/work-items/WORK-1234/telemetry/verification-gen2.json",
+          "sha256": "be6fb54e5d615adfb7d95305182a83f8a319529fbc672c38791ac55b00581272",
           "status": "pending",
           "models": [],
           "providerCost": null
@@ -1074,15 +1100,15 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 6269,
-          "sha256": "a2eefd3432414da80ae7e399b1282e1bf9ed8bf353a0f83279b4d489964b9c47",
+          "size": 7064,
+          "sha256": "7eb26d90fae24a2e41b66d915d08deb4b2ee52d6ed9db6b40b0fd5b130e74897",
           "registeredAt": "2026-07-23T00:37:05.731Z",
-          "updatedAt": "2026-07-23T00:37:05.731Z"
+          "updatedAt": "2026-07-23T00:37:11.185Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
-      "sourceCommit": "1aa2c67d2b4fa03be3981c1f5ec3d768256eb32e"
+      "sourceCommit": "1a91b3796053b8942516e264e1682dac7c69ab31"
     },
     "conformance": {
       "id": "conformance",
@@ -1162,9 +1188,9 @@
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 6,
+    "records": 7,
     "exactRecords": 0,
-    "unavailableRecords": 6,
+    "unavailableRecords": 7,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -1197,9 +1223,9 @@
         "totalTokens": 0
       },
       "verification": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       }
     },
@@ -1217,25 +1243,25 @@
         "totalTokens": 0
       },
       "developer": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 6,
+        "records": 7,
         "exactRecords": 0,
-        "unavailableRecords": 6,
+        "unavailableRecords": 7,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "WORK-1234": {
-        "records": 6,
+        "records": 7,
         "exactRecords": 0,
-        "unavailableRecords": 6,
+        "unavailableRecords": 7,
         "totalTokens": 0
       }
     }
@@ -1389,6 +1415,14 @@
       "event": "phase_generated",
       "phase": "verification",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-23T00:37:11.186Z",
+      "actor": "ashokraj2011",
+      "persona": "developer",
+      "event": "phase_generated",
+      "phase": "verification",
+      "detail": "generation 2"
     }
   ]
 }
