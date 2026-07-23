@@ -197,4 +197,44 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    void testCircleAreaPositiveRadius() {
+        Map<String, Object> data = Map.of("radius", 5);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+        rule.put("value", Math.PI * 5 * 5);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testCircleAreaZeroRadius() {
+        Map<String, Object> data = Map.of("radius", 0);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+        rule.put("value", 0);
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testCircleAreaRejectsStringRadius() {
+        Map<String, Object> data = Map.of("radius", "abc");
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+        rule.put("value", 78.53981633974483);
+        assertThrows(IllegalArgumentException.class, () -> service.evaluate(data, rule));
+    }
+
+    @Test
+    void testCircleAreaMismatch() {
+        Map<String, Object> data = Map.of("radius", 5);
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+        rule.put("value", 100);
+        assertFalse(service.evaluate(data, rule));
+    }
 }

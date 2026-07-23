@@ -882,15 +882,89 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedPersona": null,
-      "usage": [],
-      "telemetry": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "generatedPersona": "architect",
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-07-23T00:10:33.215Z",
+          "completedAt": "2026-07-23T00:10:33.215Z",
+          "persona": "architect",
+          "generation": 1
+        }
+      ],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": ".singularity/work-items/WORK-1234/telemetry/implementation-gen1.json",
+          "sha256": "c0d42ae7c6479db38dd7cbe9f5a061b7689affec1bad1d0af6e6b926f6fd5499",
+          "status": "unavailable",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": ".singularity/work-items/WORK-1234/artifacts/implementation/implementation-summary.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 5712,
+          "sha256": "640ebd6f3706981a88d742fd4f52e221e224955880b057aef2e95dd2270c46c2",
+          "registeredAt": "2026-07-23T00:10:33.237Z",
+          "updatedAt": "2026-07-23T00:10:33.237Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/Operator.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 288,
+          "sha256": "8e5ca884c0996c4ded159ed6ca980e1a48c898951f3ef77020c457b860820287",
+          "registeredAt": "2026-07-23T00:10:33.237Z",
+          "updatedAt": "2026-07-23T00:10:33.237Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/RuleEngineService.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 10261,
+          "sha256": "14267ac774ed10231d9af61e1052e5bf79041f7c726a5dece9fec39cd76c53b7",
+          "registeredAt": "2026-07-23T00:10:33.243Z",
+          "updatedAt": "2026-07-23T00:10:33.243Z"
+        },
+        {
+          "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 7925,
+          "sha256": "3133efab0b5f8e0093dc828d1d1fadcaf183ee0945c181b9e1f0c7765a99b51f",
+          "registeredAt": "2026-07-23T00:10:33.243Z",
+          "updatedAt": "2026-07-23T00:10:33.243Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "sourceCommit": "aefbad02e58643164a995855be19e9c4061ed43e"
     },
     "verification": {
       "id": "verification",
@@ -1025,9 +1099,9 @@
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 4,
+    "records": 5,
     "exactRecords": 0,
-    "unavailableRecords": 4,
+    "unavailableRecords": 5,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -1052,6 +1126,12 @@
         "exactRecords": 0,
         "unavailableRecords": 1,
         "totalTokens": 0
+      },
+      "implementation": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byPersona": {
@@ -1062,25 +1142,25 @@
         "totalTokens": 0
       },
       "architect": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 4,
+        "records": 5,
         "exactRecords": 0,
-        "unavailableRecords": 4,
+        "unavailableRecords": 5,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "WORK-1234": {
-        "records": 4,
+        "records": 5,
         "exactRecords": 0,
-        "unavailableRecords": 4,
+        "unavailableRecords": 5,
         "totalTokens": 0
       }
     }
@@ -1202,6 +1282,14 @@
       "event": "phase_self_approved",
       "phase": "implementation-spec",
       "detail": "threshold reached; advanced to implementation"
+    },
+    {
+      "at": "2026-07-23T00:10:33.244Z",
+      "actor": "ashokraj2011",
+      "persona": "architect",
+      "event": "phase_generated",
+      "phase": "implementation",
+      "detail": "generation 1"
     }
   ]
 }

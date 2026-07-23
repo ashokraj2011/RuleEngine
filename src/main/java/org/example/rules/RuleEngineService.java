@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.*;
@@ -129,6 +130,22 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case circle_area:
+                BigDecimal radius = toBigDecimalOrNull(left);
+                if (radius == null) {
+                    throw new IllegalArgumentException("circle_area requires a numeric radius");
+                }
+                BigDecimal expectedArea = toBigDecimalOrNull(jsonToJava(valueNode));
+                if (expectedArea == null) {
+                    throw new IllegalArgumentException("circle_area requires a numeric value");
+                }
+                BigDecimal area = radius.multiply(radius).multiply(BigDecimal.valueOf(Math.PI));
+                // Round to 9 decimal places to absorb floating-point representation noise
+                // (e.g. JSON doubles carrying their exact binary value) while still
+                // distinguishing genuinely different areas.
+                BigDecimal roundedArea = area.setScale(9, RoundingMode.HALF_UP);
+                BigDecimal roundedExpected = expectedArea.setScale(9, RoundingMode.HALF_UP);
+                return roundedArea.compareTo(roundedExpected) == 0;
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }

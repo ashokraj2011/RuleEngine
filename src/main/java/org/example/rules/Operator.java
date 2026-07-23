@@ -10,5 +10,7 @@ public enum Operator {
     // Range
     between,
     // Existence
-    exists, not_exists, isNull, isNotNull
+    exists, not_exists, isNull, isNotNull,
+    // Geometry
+    circle_area
 }
