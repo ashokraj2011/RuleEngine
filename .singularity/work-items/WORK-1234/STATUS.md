@@ -19,10 +19,11 @@
 |  | ⚠ self-approval | developer / Ashok Raj | **warning** |  |  |  |
 | 6 | Verification (`verification`) | qa | **approved** | 2 | 1 | unavailable |
 |  | ⚠ self-approval | qa / Ashok Raj | **warning** |  |  |  |
-| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **in_progress** | 0 | 0 | unavailable |
+| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **in_progress** | 1 | 0 | unavailable |
 
 ## Recent history
 
+- 2026-07-23T00:41:53.630Z — **phase_generated** (conformance) by ashokraj2011 as qa: generation 1
 - 2026-07-23T00:40:45.715Z — **phase_self_approved** (verification) by ashokraj2011 as qa: threshold reached; advanced to conformance
 - 2026-07-23T00:38:55.648Z — **phase_submitted** (verification) by ashokraj2011 as developer: 1 artifacts
 - 2026-07-23T00:37:11.186Z — **phase_generated** (verification) by ashokraj2011 as developer: generation 2
@@ -37,4 +38,3 @@
 - 2026-07-22T23:53:27.934Z — **phase_submitted** (design) by ashokraj2011 as product-owner: 1 artifacts
 - 2026-07-22T23:52:38.526Z — **phase_generated** (design) by ashokraj2011 as product-owner: generation 1
 - 2026-07-22T23:51:26.792Z — **phase_self_approved** (requirements) by ashokraj2011 as product-owner: threshold reached; advanced to design
-- 2026-07-22T23:49:55.587Z — **phase_submitted** (requirements) by ashokraj2011 as product-owner: 1 artifacts

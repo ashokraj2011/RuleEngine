@@ -1193,23 +1193,68 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedPersona": null,
-      "usage": [],
-      "telemetry": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "generatedPersona": "qa",
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-07-23T00:41:53.583Z",
+          "completedAt": "2026-07-23T00:41:53.583Z",
+          "persona": "qa",
+          "generation": 1
+        }
+      ],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": ".singularity/work-items/WORK-1234/telemetry/conformance-gen1.json",
+          "sha256": "fd416671869e99630b32c31aa44e0bed7bbdca841f85c5699d36912a75a617ef",
+          "status": "pending",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": ".singularity/work-items/WORK-1234/artifacts/conformance/spec-code-comparison.md",
+          "kind": "conformance-report",
+          "status": "pending",
+          "exists": true,
+          "size": 7182,
+          "sha256": "9d4a9ce5f6225e576a1112a96becba2ad5183e8a5a2eae2f0eb7ffbac47a5a60",
+          "registeredAt": "2026-07-23T00:41:53.630Z",
+          "updatedAt": "2026-07-23T00:41:53.630Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "sourceCommit": "c5235de2330eebfb8d61e85380edfe445bf09872",
+      "conformanceTree": "sha256:3b8577a4e376e8ca422ecf5b537d2fbc1a7efba301de5ab2a3f69203c499d1c4"
     }
   },
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 7,
+    "records": 8,
     "exactRecords": 0,
-    "unavailableRecords": 7,
+    "unavailableRecords": 8,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -1246,6 +1291,12 @@
         "exactRecords": 0,
         "unavailableRecords": 2,
         "totalTokens": 0
+      },
+      "conformance": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byPersona": {
@@ -1266,21 +1317,27 @@
         "exactRecords": 0,
         "unavailableRecords": 2,
         "totalTokens": 0
+      },
+      "qa": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 7,
+        "records": 8,
         "exactRecords": 0,
-        "unavailableRecords": 7,
+        "unavailableRecords": 8,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "WORK-1234": {
-        "records": 7,
+        "records": 8,
         "exactRecords": 0,
-        "unavailableRecords": 7,
+        "unavailableRecords": 8,
         "totalTokens": 0
       }
     }
@@ -1458,6 +1515,14 @@
       "event": "phase_self_approved",
       "phase": "verification",
       "detail": "threshold reached; advanced to conformance"
+    },
+    {
+      "at": "2026-07-23T00:41:53.630Z",
+      "actor": "ashokraj2011",
+      "persona": "qa",
+      "event": "phase_generated",
+      "phase": "conformance",
+      "detail": "generation 1"
     }
   ]
 }
