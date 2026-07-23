@@ -729,7 +729,7 @@
         "architect",
         "developer"
       ],
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/implementation-spec/implementation-spec.md",
         "kind": "implementation-spec",
@@ -761,7 +761,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-07-22T23:59:12.269Z",
-      "submittedAt": null,
+      "submittedAt": "2026-07-23T00:03:25.086Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -811,15 +811,17 @@
           "kind": "implementation-spec",
           "status": "pending",
           "exists": true,
-          "size": 7243,
-          "sha256": "971d5962a4968e6a0b1f7a95e59bee03b613bac7ca1b6317673d9d5188b234e9",
+          "size": 7325,
+          "sha256": "80696c2e708f86dce9a87407950096fb2a9a5a6741ceeb84f8475c2bc6d19b7f",
           "registeredAt": "2026-07-23T00:00:13.048Z",
-          "updatedAt": "2026-07-23T00:00:13.048Z"
+          "updatedAt": "2026-07-23T00:03:25.088Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
-      "sourceCommit": "b3ba49483366d6518e48b9f37193726e94e041a3"
+      "sourceCommit": "b3ba49483366d6518e48b9f37193726e94e041a3",
+      "generationCommit": "fbf357848c2cc38e92f281e6f606b36a6b8a713b",
+      "publicationCommit": "fbf357848c2cc38e92f281e6f606b36a6b8a713b"
     },
     "implementation": {
       "id": "implementation",
@@ -1167,6 +1169,14 @@
       "event": "phase_generated",
       "phase": "implementation-spec",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-07-23T00:03:25.086Z",
+      "actor": "ashokraj2011",
+      "persona": "architect",
+      "event": "phase_submitted",
+      "phase": "implementation-spec",
+      "detail": "1 artifacts"
     }
   ]
 }
