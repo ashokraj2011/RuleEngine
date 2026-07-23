@@ -364,7 +364,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "implementation",
+  "currentPhase": "verification",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -848,7 +848,7 @@
       "suggestedPersonas": [
         "developer"
       ],
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -877,8 +877,8 @@
       "qualityCommands": [],
       "startedAt": "2026-07-23T00:06:02.125Z",
       "submittedAt": "2026-07-23T00:31:57.509Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-07-23T00:35:35.661Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -919,17 +919,34 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "implementation",
+          "at": "2026-07-23T00:35:35.661Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011"
+          },
+          "persona": "developer",
+          "channel": "copilot-selection-receipt",
+          "generation": 1,
+          "selfApproval": true
+        }
+      ],
       "artifacts": [
         {
           "path": ".singularity/work-items/WORK-1234/artifacts/implementation/implementation-summary.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 5794,
-          "sha256": "08779ee6806ecca39e5c7649681b49fd703086671dc7533b56bb2e5ee46003bd",
+          "size": 6182,
+          "sha256": "4f3d87daed6a556133303087a79dd7a29d3cb31b8221a592f64e031fb7ea6308",
           "registeredAt": "2026-07-23T00:10:33.237Z",
-          "updatedAt": "2026-07-23T00:31:57.518Z"
+          "updatedAt": "2026-07-23T00:31:57.518Z",
+          "approvedAt": "2026-07-23T00:35:35.661Z",
+          "approvedBy": "ashokraj2011"
         },
         {
           "path": "src/main/java/org/example/rules/Operator.java",
@@ -976,7 +993,7 @@
       "suggestedPersonas": [
         "qa"
       ],
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/verification/test-evidence.md",
         "kind": "test-evidence",
@@ -1006,7 +1023,7 @@
         ]
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-07-23T00:35:35.661Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -1300,6 +1317,14 @@
       "event": "phase_submitted",
       "phase": "implementation",
       "detail": "4 artifacts"
+    },
+    {
+      "at": "2026-07-23T00:35:35.661Z",
+      "actor": "ashokraj2011",
+      "persona": "developer",
+      "event": "phase_self_approved",
+      "phase": "implementation",
+      "detail": "threshold reached; advanced to verification"
     }
   ]
 }
