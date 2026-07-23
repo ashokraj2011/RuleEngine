@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "conformance",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -55,8 +55,23 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "conformance",
+      "at": "2026-07-23T00:47:50.667Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011"
+      },
+      "persona": "architect",
+      "channel": "copilot-selection-receipt",
+      "generation": 1,
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": "sha256:3b8577a4e376e8ca422ecf5b537d2fbc1a7efba301de5ab2a3f69203c499d1c4"
 }
 -->

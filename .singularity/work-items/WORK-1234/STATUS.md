@@ -2,8 +2,8 @@
 
 - Branch: `WORK-1234`
 - Work type: **feature**
-- Overall status: **in_progress**
-- Current phase: **conformance**
+- Overall status: **complete**
+- Current phase: **complete**
 
 | # | Phase | Suggested personas | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
@@ -19,10 +19,12 @@
 |  | ⚠ self-approval | developer / Ashok Raj | **warning** |  |  |  |
 | 6 | Verification (`verification`) | qa | **approved** | 2 | 1 | unavailable |
 |  | ⚠ self-approval | qa / Ashok Raj | **warning** |  |  |  |
-| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **awaiting_approval** | 1 | 0 | unavailable |
+| 7 | Spec-to-code conformance (`conformance`) | qa, architect | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | architect / Ashok Raj | **warning** |  |  |  |
 
 ## Recent history
 
+- 2026-07-23T00:47:50.667Z — **phase_self_approved** (conformance) by ashokraj2011 as architect: threshold reached; complete
 - 2026-07-23T00:43:32.022Z — **phase_submitted** (conformance) by ashokraj2011 as qa: 1 artifacts
 - 2026-07-23T00:41:53.630Z — **phase_generated** (conformance) by ashokraj2011 as qa: generation 1
 - 2026-07-23T00:40:45.715Z — **phase_self_approved** (verification) by ashokraj2011 as qa: threshold reached; advanced to conformance
@@ -37,4 +39,3 @@
 - 2026-07-23T00:00:13.048Z — **phase_generated** (implementation-spec) by ashokraj2011 as architect: generation 1
 - 2026-07-22T23:59:12.269Z — **phase_self_approved** (design) by ashokraj2011 as architect: threshold reached; advanced to implementation-spec
 - 2026-07-22T23:53:27.934Z — **phase_submitted** (design) by ashokraj2011 as product-owner: 1 artifacts
-- 2026-07-22T23:52:38.526Z — **phase_generated** (design) by ashokraj2011 as product-owner: generation 1
