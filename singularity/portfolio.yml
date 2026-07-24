@@ -1,0 +1,2219 @@
+version: 1
+initiativeRoot: singularity/initiatives
+templatesRoot: singularity/templates
+git:
+  remote: origin
+  publish: required
+identity:
+  authority: jira
+  configurablePerEpic: true
+  local:
+    epicPrefix: SF-E
+    storyPrefix: SF-S
+    pad: 3
+    scopeStoriesByEpic: true
+jira:
+  enabled: true
+  connection: corporate-jira
+  deployment: cloud
+  allowedHosts:
+    - ashoknairraj.atlassian.net
+  allowedProjects:
+    - KAN
+  authentication:
+    permitted:
+      - user-token
+      - service-account
+    tokenExpiryWarningDays: 14
+  read:
+    epics: true
+    stories: true
+    attachmentPolicy: metadata-only
+    cacheMinutes: 10
+  write: true
+  writeMode: approved
+  writePolicy:
+    mode: approved
+    operations:
+      - create-epic
+      - create-story
+      - update-owned-fields
+      - attach-artifact
+    allowedFields:
+      - summary
+      - description
+      - parent
+      - labels
+      - components
+    forbiddenFields:
+      - status
+      - assignee
+      - sprint
+      - priority
+      - resolution
+  projectKey: KAN
+  epicIssueType: Epic
+  storyIssueType: Story
+approvalAuthorities:
+  initiative-owners:
+    members:
+      - name: Ashok Raj
+        email: 88361104+ashokraj2011@users.noreply.github.com
+  product-approvers:
+    members:
+      - name: Ashok Raj
+        email: 88361104+ashokraj2011@users.noreply.github.com
+  architecture-reviewers:
+    members:
+      - name: Ashok Raj
+        email: 88361104+ashokraj2011@users.noreply.github.com
+  risk-reviewers:
+    members:
+      - name: Ashok Raj
+        email: 88361104+ashokraj2011@users.noreply.github.com
+  operations-reviewers:
+    members:
+      - name: Ashok Raj
+        email: 88361104+ashokraj2011@users.noreply.github.com
+repositories:
+  ruleengine:
+    url: https://github.com/ashokraj2011/RuleEngine.git
+    defaultBranch: main
+    required: true
+    metadata:
+      name: RuleEngine
+      appId: AP12345
+    branchCompletionPolicy: pr
+    requiredChecks: []
+    jira:
+      projectKey: null
+      boardId: null
+repositoryMetadata:
+  requiredKeys: []
+  patterns:
+    appId: ^[A-Z0-9-]{3,32}$
+storage:
+  defaultProvider: jira
+  maxBytes: 104857600
+  allowedMimeTypes: []
+  providers:
+    jira:
+      type: jira-attachment
+      maxBytes: null
+      allowedMimeTypes: []
+initiativeProfiles:
+  epic-planning:
+    label: Epic planning
+    description: Intake an existing Jira Epic, synthesize requirements, approve a
+      Story plan and high-level specification, and create Jira/Git stories.
+    lifecycleMode: planning-only
+    phases:
+      - epic-intake
+      - epic-requirements
+      - epic-plan
+      - epic-spec
+      - epic-create
+  initiative-lite:
+    label: Initiative lite
+    description: Four governed phases for smaller cross-repository initiatives.
+    lifecycleMode: full-delivery
+    phases:
+      - define
+      - plan
+      - build
+      - release
+  enterprise-delivery:
+    label: Enterprise delivery
+    description: Seven phase gates for complex regulated or multi-team delivery.
+    lifecycleMode: full-delivery
+    phases:
+      - discover-define
+      - design-iterate
+      - pre-inception
+      - inception
+      - elaboration
+      - construction
+      - delivery
+initiativePhases:
+  epic-intake:
+    id: epic-intake
+    label: Intake
+    lanes:
+      - business-product
+    worldModelViews:
+      - business
+    outputs:
+      - id: source-catalog
+        label: Source catalog
+        kind: markdown
+        path: source-catalog.md
+        template: initiatives/epic/source-catalog.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: source-gaps
+        label: Source gaps and questions
+        kind: markdown
+        path: source-gaps.md
+        template: initiatives/epic/source-gaps.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: intake-summary
+        label: Epic intake summary
+        kind: markdown
+        path: intake-summary.md
+        template: initiatives/epic/intake-summary.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: epic-identity-verified
+        label: Epic identity reserved and verified
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: sources-pinned
+        label: Required source versions are accessible and hash-pinned
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  epic-requirements:
+    id: epic-requirements
+    label: Requirements
+    lanes:
+      - business-product
+      - design-architecture
+    worldModelViews:
+      - business
+      - architecture
+      - security
+    outputs:
+      - id: requirements-specification
+        label: Requirements specification
+        kind: markdown
+        path: requirements.md
+        template: initiatives/epic/requirements.md
+        consumes:
+          - epic-intake/intake-summary
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: requirements-traceability
+        label: Requirements traceability
+        kind: yaml
+        path: requirements-traceability.yml
+        template: initiatives/epic/requirements-traceability.yml
+        consumes:
+          - epic-intake/source-catalog
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: open-questions
+        label: Open questions and decisions
+        kind: markdown
+        path: open-questions.md
+        template: initiatives/epic/open-questions.md
+        consumes:
+          - epic-intake/source-gaps
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: requirements-traceable
+        label: Every REQ and AC cites a pinned source
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: material-questions-resolved
+        label: Material scope questions are resolved or explicitly accepted
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  epic-plan:
+    id: epic-plan
+    label: Plan
+    lanes:
+      - business-product
+      - design-architecture
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - development
+      - testing
+      - security
+    outputs:
+      - id: story-plan
+        label: Executable Story plan
+        kind: yaml
+        path: story-plan.yml
+        template: initiatives/epic/story-plan.yml
+        consumes:
+          - epic-requirements/requirements-specification
+          - epic-requirements/requirements-traceability
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: repository-map
+        label: Repository ownership map
+        kind: yaml
+        path: repository-map.yml
+        template: initiatives/epic/repository-map.yml
+        consumes:
+          - epic-requirements/requirements-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependency-map
+        label: Story dependency map
+        kind: markdown
+        path: dependency-map.md
+        template: initiatives/epic/dependency-map.md
+        consumes:
+          - epic-requirements/requirements-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: stories-traceable
+        label: Every Story maps to REQ and AC identifiers
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: repositories-resolved
+        label: Every Story has a configured owning repository
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependencies-acyclic
+        label: Story dependencies are valid and acyclic
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  epic-spec:
+    id: epic-spec
+    label: High-level specification
+    lanes:
+      - business-product
+      - design-architecture
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - development
+      - testing
+      - security
+      - operations
+    outputs:
+      - id: high-level-specification
+        label: High-level solution specification
+        kind: markdown
+        path: high-level-specification.md
+        template: initiatives/epic/high-level-specification.md
+        consumes:
+          - epic-requirements/requirements-specification
+          - epic-requirements/requirements-traceability
+          - epic-plan/story-plan
+          - epic-plan/repository-map
+          - epic-plan/dependency-map
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist: []
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  epic-create:
+    id: epic-create
+    label: Create Stories
+    lanes:
+      - business-product
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - development
+    outputs:
+      - id: jira-write-plan
+        label: Jira write plan
+        kind: yaml
+        path: jira-write-plan.yml
+        template: initiatives/epic/jira-write-plan.yml
+        consumes:
+          - epic-plan/story-plan
+          - epic-spec/high-level-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: materialization-report
+        label: Jira and Git materialization report
+        kind: markdown
+        path: materialization-report.md
+        template: initiatives/epic/materialization-report.md
+        consumes:
+          - epic-plan/story-plan
+          - epic-plan/repository-map
+          - epic-spec/high-level-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: jira-permission-verified
+        label: Selected identity authority can create Story records
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: stories-materialized
+        label: Jira Stories and canonical Git branches have receipts
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  define:
+    id: define
+    label: Define
+    lanes:
+      - business-product
+    worldModelViews:
+      - business
+    outputs:
+      - id: business-case
+        label: Business case
+        kind: markdown
+        path: business-case.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - product-approvers
+          minimum: 1
+          allowSelfApproval: true
+      - id: scope-and-outcomes
+        label: Scope and outcomes
+        kind: markdown
+        path: scope-and-outcomes.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: acceptance-criteria
+        label: Acceptance criteria
+        kind: markdown
+        path: acceptance-criteria.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: business-case-approved
+        label: Business case approved
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: scope-agreed
+        label: Scope and outcomes agreed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  plan:
+    id: plan
+    label: Plan
+    lanes:
+      - business-product
+      - design-architecture
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - security
+    outputs:
+      - id: architecture-summary
+        label: Architecture summary
+        kind: markdown
+        path: architecture-summary.md
+        template: initiatives/generic-output.md
+        consumes:
+          - define/scope-and-outcomes
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - architecture-reviewers
+          minimum: 1
+          allowSelfApproval: true
+      - id: story-plan
+        label: Story plan
+        kind: yaml
+        path: story-plan.yml
+        template: initiatives/generic-output.yml
+        consumes:
+          - define/acceptance-criteria
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: interface-contracts
+        label: Interface contracts
+        kind: interface-contract
+        path: interface-contracts.md
+        template: initiatives/interface-contract.md
+        consumes:
+          - define/scope-and-outcomes
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - architecture-reviewers
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: stories-ready
+        label: Repository stories estimated and sequenced
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependencies-agreed
+        label: Dependencies and contracts agreed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  build:
+    id: build
+    label: Build
+    lanes:
+      - engineering
+    worldModelViews:
+      - architecture
+      - development
+      - testing
+      - security
+      - operations
+    outputs:
+      - id: implementation-index
+        label: Implementation evidence index
+        kind: markdown
+        path: implementation-index.md
+        template: initiatives/generic-output.md
+        consumes:
+          - plan/story-plan
+          - plan/interface-contracts
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: test-and-ci-report
+        label: Test and CI report
+        kind: markdown
+        path: test-and-ci-report.md
+        template: initiatives/generic-output.md
+        consumes:
+          - plan/story-plan
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: blocking-stories-complete
+        label: All blocking stories complete and conformant
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: tests-passing
+        label: Required tests and CI checks pass
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  release:
+    id: release
+    label: Release
+    lanes:
+      - business-product
+      - engineering
+    worldModelViews:
+      - release
+      - operations
+      - testing
+    outputs:
+      - id: release-record
+        label: Release record
+        kind: markdown
+        path: release-record.md
+        template: initiatives/generic-output.md
+        consumes:
+          - build/implementation-index
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: production-validation
+        label: Production validation
+        kind: markdown
+        path: production-validation.md
+        template: initiatives/generic-output.md
+        consumes:
+          - build/test-and-ci-report
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: initiative-conformance
+        label: Initiative conformance
+        kind: markdown
+        path: initiative-conformance.md
+        template: initiatives/generic-output.md
+        consumes:
+          - build/implementation-index
+          - build/test-and-ci-report
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: deployment-complete
+        label: Production deployment completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: monitoring-healthy
+        label: Production monitoring is healthy
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: 24h
+          revalidateAt:
+            - release
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: business-accepted
+        label: Business acceptance completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  discover-define:
+    id: discover-define
+    label: Discover & Define
+    lanes:
+      - business-product
+    worldModelViews:
+      - business
+    outputs:
+      - id: business-case
+        label: Business case
+        kind: markdown
+        path: business-case.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - product-approvers
+          minimum: 1
+          allowSelfApproval: true
+      - id: opportunity-brief
+        label: Market and customer opportunity
+        kind: markdown
+        path: opportunity-brief.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: product-roadmap
+        label: Product roadmap
+        kind: markdown
+        path: product-roadmap.md
+        template: initiatives/generic-output.md
+        consumes: []
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: opportunity-defined
+        label: Opportunity and measurable outcomes defined
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  design-iterate:
+    id: design-iterate
+    label: Design & Iterate
+    lanes:
+      - business-product
+      - design-architecture
+    worldModelViews:
+      - business
+      - architecture
+    outputs:
+      - id: service-blueprint
+        label: Service blueprint and journey
+        kind: markdown
+        path: service-blueprint.md
+        template: initiatives/generic-output.md
+        consumes:
+          - discover-define/opportunity-brief
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: design-specification
+        label: Design specification and prototype index
+        kind: markdown
+        path: design-specification.md
+        template: initiatives/generic-output.md
+        consumes:
+          - discover-define/opportunity-brief
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: solution-validation
+        label: Solution validation report
+        kind: markdown
+        path: solution-validation.md
+        template: initiatives/generic-output.md
+        consumes:
+          - discover-define/business-case
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: solution-validated
+        label: Proposed solution validated with representative users and stakeholders
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - product-approvers
+      minimum: 1
+      allowSelfApproval: true
+  pre-inception:
+    id: pre-inception
+    label: Product Gate / Pre-Inception
+    lanes:
+      - business-product
+      - design-architecture
+    worldModelViews:
+      - business
+      - architecture
+      - security
+    outputs:
+      - id: initiative-scope
+        label: High-level initiative scope
+        kind: markdown
+        path: initiative-scope.md
+        template: initiatives/generic-output.md
+        consumes:
+          - discover-define/business-case
+          - design-iterate/solution-validation
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: compliance-assessment
+        label: Legal risk and compliance assessment
+        kind: markdown
+        path: compliance-assessment.md
+        template: initiatives/generic-output.md
+        consumes:
+          - discover-define/business-case
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - risk-reviewers
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: business-case-exists
+        label: Approved business case exists
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: initiative-created-and-scoped
+        label: Initiative created and scoped at a high level
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: compliance-assessment-complete
+        label: Legal risk and compliance assessment completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: 180d
+          revalidateAt:
+            - delivery
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  inception:
+    id: inception
+    label: Inception
+    lanes:
+      - business-product
+      - design-architecture
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - testing
+      - security
+    outputs:
+      - id: stakeholder-raci
+        label: Stakeholder register and RACI
+        kind: markdown
+        path: stakeholder-raci.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: intake-record
+        label: Accepted intake record
+        kind: markdown
+        path: intake-record.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: epic-record
+        label: Epic and initiative linkage
+        kind: yaml
+        path: epic-record.yml
+        template: initiatives/generic-output.yml
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: prfaq
+        label: PRFAQ
+        kind: markdown
+        path: prfaq.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - product-approvers
+          minimum: 1
+          allowSelfApproval: true
+      - id: test-data-inventory
+        label: Test data entity inventory
+        kind: markdown
+        path: test-data-inventory.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: feasibility-report
+        label: Feasibility report
+        kind: markdown
+        path: feasibility-report.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: ux-concept
+        label: UX concept design
+        kind: markdown
+        path: ux-concept.md
+        template: initiatives/generic-output.md
+        consumes:
+          - design-iterate/design-specification
+        required: false
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: poc-results
+        label: POC summary and results
+        kind: markdown
+        path: poc-results.md
+        template: initiatives/generic-output.md
+        consumes:
+          - pre-inception/initiative-scope
+        required: false
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: stakeholder-map-complete
+        label: Cross-functional stakeholder map and RACI completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: intake-accepted
+        label: Required product and engineering intake completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: epic-linked
+        label: Epic created and linked to the initiative
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: prfaq-approved
+        label: PRFAQ created and approved
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: test-data-entities-identified
+        label: Test data entities identified
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: feasibility-complete
+        label: Feasibility analysis completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: ux-concept-approved
+        label: UX concept design completed when applicable
+        requirement: conditional
+        applicability:
+          policy: ux-required
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: poc-complete
+        label: POC developed and tested
+        requirement: optional
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: warn
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  elaboration:
+    id: elaboration
+    label: Elaboration
+    lanes:
+      - business-product
+      - design-architecture
+      - engineering
+    worldModelViews:
+      - business
+      - architecture
+      - development
+      - testing
+      - security
+      - operations
+    outputs:
+      - id: functional-tests
+        label: Functional test catalog and acceptance criteria
+        kind: markdown
+        path: functional-tests.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/prfaq
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: nfr-specification
+        label: Non-functional requirements
+        kind: markdown
+        path: nfr-specification.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/feasibility-report
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: story-plan
+        label: Repository story plan
+        kind: yaml
+        path: story-plan.yml
+        template: initiatives/generic-output.yml
+        consumes:
+          - inception/epic-record
+          - inception/prfaq
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - product-approvers
+          minimum: 1
+          allowSelfApproval: true
+      - id: data-source-decision
+        label: Test data source decision
+        kind: markdown
+        path: data-source-decision.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/test-data-inventory
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: data-readiness
+        label: Test data readiness
+        kind: markdown
+        path: data-readiness.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/test-data-inventory
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: solution-architecture
+        label: Solution architecture
+        kind: markdown
+        path: solution-architecture.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/feasibility-report
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - architecture-reviewers
+          minimum: 1
+          allowSelfApproval: true
+      - id: adr-log
+        label: Architecture decision record log
+        kind: markdown
+        path: adr-log.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/feasibility-report
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependency-matrix
+        label: Dependency and communication matrix
+        kind: markdown
+        path: dependency-matrix.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/stakeholder-raci
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: eta-register
+        label: Dependency ETA register
+        kind: markdown
+        path: eta-register.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/stakeholder-raci
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: sequencing-plan
+        label: Prioritized backlog and sequencing plan
+        kind: markdown
+        path: sequencing-plan.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/epic-record
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: interface-contracts
+        label: Cross-repository interface contracts
+        kind: interface-contract
+        path: interface-contracts.md
+        template: initiatives/interface-contract.md
+        consumes:
+          - inception/feasibility-report
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - architecture-reviewers
+          minimum: 1
+          allowSelfApproval: true
+      - id: technical-poc-results
+        label: Technical POC results
+        kind: markdown
+        path: technical-poc-results.md
+        template: initiatives/generic-output.md
+        consumes:
+          - inception/feasibility-report
+        required: false
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: behavioral-tests-defined
+        label: Behavioral test cases and acceptance criteria defined
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: nfrs-defined
+        label: Security performance reliability accessibility observability and privacy
+          requirements defined
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: stories-linked
+        label: Estimated user stories documented and linked to the epic
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: data-source-identified
+        label: Test data source identified
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: test-data-ready
+        label: Test data created or available
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: 30d
+          revalidateAt:
+            - construction
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: architecture-reviewed
+        label: Solution architecture documented and reviewed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: adrs-complete
+        label: Architecture decision records complete
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependencies-consulted
+        label: Dependent teams identified and consulted
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: dependency-etas-received
+        label: ETA commitments received from dependencies
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: 30d
+          revalidateAt:
+            - construction
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: work-sequenced
+        label: Work prioritized and sequenced
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: technical-pocs-complete
+        label: Technical POCs for unresolved risks completed
+        requirement: optional
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: warn
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: ai-feasibility-approved
+        label: AI technical feasibility approved when applicable
+        requirement: conditional
+        applicability:
+          policy: ai-use-case
+        acceptedAssurance:
+          - human-approved
+          - machine-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: security-review-complete
+        label: Security review completed when required by policy
+        requirement: conditional
+        applicability:
+          policy: security-review-required
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: 90d
+          revalidateAt:
+            - delivery
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: domain-architecture-approved
+        label: Domain architecture sign-off obtained when applicable
+        requirement: conditional
+        applicability:
+          policy: domain-review-required
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: ux-design-approved
+        label: Detailed UX design approved when applicable
+        requirement: conditional
+        applicability:
+          policy: ux-required
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  construction:
+    id: construction
+    label: Construction
+    lanes:
+      - engineering
+    worldModelViews:
+      - architecture
+      - development
+      - testing
+      - security
+      - operations
+    outputs:
+      - id: implementation-index
+        label: Cross-repository implementation evidence
+        kind: markdown
+        path: implementation-index.md
+        template: initiatives/generic-output.md
+        consumes:
+          - elaboration/story-plan
+          - elaboration/interface-contracts
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: test-attestation
+        label: Testing attestation
+        kind: markdown
+        path: test-attestation.md
+        template: initiatives/generic-output.md
+        consumes:
+          - elaboration/functional-tests
+          - elaboration/nfr-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: cicd-readiness
+        label: CI/CD readiness
+        kind: markdown
+        path: cicd-readiness.md
+        template: initiatives/generic-output.md
+        consumes:
+          - elaboration/story-plan
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: nfr-assessment
+        label: NFR assessment
+        kind: markdown
+        path: nfr-assessment.md
+        template: initiatives/generic-output.md
+        consumes:
+          - elaboration/nfr-specification
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: operational-readiness
+        label: Operational readiness
+        kind: markdown
+        path: operational-readiness.md
+        template: initiatives/generic-output.md
+        consumes:
+          - elaboration/nfr-specification
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - operations-reviewers
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: stories-accepted
+        label: All blocking stories implemented accepted and conformant
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: tests-complete
+        label: Applicable test artifacts pass and meet standards
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: testing-attested
+        label: Formal testing attestation completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: cicd-functional
+        label: CI/CD build test deploy quality security and composition checks pass
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: 7d
+          revalidateAt:
+            - delivery
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: nfr-assessed
+        label: Performance security and resiliency assessed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: e2e-complete
+        label: Cross-squad end-to-end testing completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: operational-ready
+        label: Operational readiness and SRE standards approved
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: 30d
+          revalidateAt:
+            - delivery
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: field-readiness-submitted
+        label: Business or field readiness intake submitted
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: operations-ready
+        label: Operations and back-office readiness assessed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true
+  delivery:
+    id: delivery
+    label: Delivery
+    lanes:
+      - business-product
+      - engineering
+    worldModelViews:
+      - release
+      - operations
+      - testing
+      - security
+    outputs:
+      - id: deployment-record
+        label: Production deployment record
+        kind: markdown
+        path: deployment-record.md
+        template: initiatives/generic-output.md
+        consumes:
+          - construction/implementation-index
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: production-validation
+        label: Production validation
+        kind: markdown
+        path: production-validation.md
+        template: initiatives/generic-output.md
+        consumes:
+          - construction/test-attestation
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: observability-handoff
+        label: Observability and monitoring handoff
+        kind: markdown
+        path: observability-handoff.md
+        template: initiatives/generic-output.md
+        consumes:
+          - construction/operational-readiness
+        required: true
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: initiative-conformance
+        label: Initiative conformance and epic closure
+        kind: markdown
+        path: initiative-conformance.md
+        template: initiatives/generic-output.md
+        consumes:
+          - construction/implementation-index
+          - construction/test-attestation
+          - construction/nfr-assessment
+        required: true
+        approval:
+          mode: individual
+          authorities:
+            - initiative-owners
+          minimum: 1
+          allowSelfApproval: true
+    checklist:
+      - id: production-deployed
+        label: Code successfully deployed to production
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: environment-validated
+        label: Passive environment validation completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: install-window-tested
+        label: Production normal testing completed during the install window
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: monitoring-healthy
+        label: No abnormal error latency or reliability signals observed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+        freshness:
+          validFor: 24h
+          revalidateAt:
+            - delivery
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: business-validated
+        label: Business stakeholder validation completed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: change-record-closed
+        label: Change-management record closed after installation
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+      - id: epic-closure-ready
+        label: Acceptance criteria reviewed and all blocking stories and the epic closed
+        requirement: must
+        applicability: null
+        acceptedAssurance:
+          - machine-verified
+          - system-verified
+          - human-approved
+        freshness:
+          validFor: null
+          revalidateAt: []
+        gate: block
+        approval:
+          mode: bundle
+          authorities: []
+          minimum: 1
+          allowSelfApproval: true
+    bundleApproval:
+      mode: bundle
+      authorities:
+        - initiative-owners
+      minimum: 1
+      allowSelfApproval: true

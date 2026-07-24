@@ -10,6 +10,11 @@ git:
 templatesRoot: singularity/templates
 personaPromptsRoot: singularity/personas
 
+# Declares the repository world-model views the initiative portfolio phases route
+# context to. Required for `portfolio-bootstrap`; grounding stays off unless set.
+worldModel:
+  views: [business, architecture, development, testing, release, operations, security]
+
 tokens:
   mode: exact-or-unavailable
 
