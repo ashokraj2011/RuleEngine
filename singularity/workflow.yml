@@ -13,6 +13,10 @@ personaPromptsRoot: singularity/personas
 # Declares the repository world-model views the initiative portfolio phases route
 # context to. Required for `portfolio-bootstrap`; grounding stays off unless set.
 worldModel:
+  # warn: the world model is sent to Copilot when present, and a missing or stale one is reported
+  # rather than silently omitted. Without this key grounding defaults to off, which means Copilot
+  # is asked to reason about this repository having been told nothing about it.
+  grounding: warn
   views: [business, architecture, development, testing, release, operations, security]
 
 tokens:
