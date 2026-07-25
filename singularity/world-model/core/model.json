@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-25T23:33:00Z",
+  "repository": {
+    "name": "rule-engine-api",
+    "root": "/var/folders/_j/yp8zv9w91rd44ymrzfpd_kcw0000gn/T/singularity-flow-world-model-TJ1cD6/repository",
+    "branch": "HEAD (detached)",
+    "commit": "56026842b14b2f6f75a4174bf45e3f2eac5444d5",
+    "working_tree_clean": true,
+    "repository_kind": "application",
+    "languages": ["Java"],
+    "package_roots": ["src/main/java/org/example", "src/test/java/org/example"]
+  },
+  "purpose": {
+    "summary": "Spring Boot REST API that evaluates a JSON rule grammar (all/any/not groups and comparison/existence conditions) against arbitrary JSON input data and returns a boolean result.",
+    "status": "observed",
+    "confidence": "high",
+    "evidence_ids": ["ev-001", "ev-004", "ev-007", "ev-008"]
+  },
+  "components": [
+    {
+      "id": "comp-app-bootstrap",
+      "name": "Application bootstrap",
+      "kind": "application",
+      "purpose": "Starts the Spring Boot application context.",
+      "paths": ["src/main/java/org/example/RuleEngineApplication.java"],
+      "depends_on": [],
+      "entrypoint_ids": ["ep-app-main"],
+      "confidence": "high",
+      "evidence_ids": ["ev-003"]
+    },
+    {
+      "id": "comp-api",
+      "name": "REST API layer",
+      "kind": "service",
+      "purpose": "Exposes the /evaluate HTTP endpoint, validates requests, and maps errors to HTTP responses.",
+      "paths": [
+        "src/main/java/org/example/api/RuleEngineController.java",
+        "src/main/java/org/example/api/GlobalExceptionHandler.java",
+        "src/main/java/org/example/api/dto/EvaluateRequest.java",
+        "src/main/java/org/example/api/dto/EvaluateResponse.java"
+      ],
+      "depends_on": ["comp-rules-engine"],
+      "entrypoint_ids": ["ep-evaluate-endpoint"],
+      "confidence": "high",
+      "evidence_ids": ["ev-004", "ev-005", "ev-006"]
+    },
+    {
+      "id": "comp-rules-engine",
+      "name": "Rule evaluation engine",
+      "kind": "library",
+      "purpose": "Parses and evaluates the JSON rule grammar (groups all/any/not, conditions eq/ne/lt/lte/gt/gte/between/in/contains/regex/exists/not_exists/isNull/isNotNull) against a data map.",
+      "paths": [
+        "src/main/java/org/example/rules/RuleEngineService.java",
+        "src/main/java/org/example/rules/Operator.java"
+      ],
+      "depends_on": [],
+      "entrypoint_ids": [],
+      "confidence": "high",
+      "evidence_ids": ["ev-007", "ev-008", "ev-009", "ev-010"]
+    },
+    {
+      "id": "comp-scratch-main",
+      "name": "Scratch Main class",
+      "kind": "tooling",
+      "purpose": "IDE-generated demo Hello World class, unrelated to and not wired into the Spring Boot application.",
+      "paths": ["src/main/java/org/example/Main.java"],
+      "depends_on": [],
+      "entrypoint_ids": ["ep-scratch-main"],
+      "confidence": "high",
+      "evidence_ids": ["ev-011"]
+    }
+  ],
+  "entrypoints": [
+    {
+      "id": "ep-app-main",
+      "name": "RuleEngineApplication.main",
+      "kind": "server",
+      "location": "src/main/java/org/example/RuleEngineApplication.java:8-10",
+      "invocation": "mvn spring-boot:run (or java -jar target/*.jar)",
+      "component_id": "comp-app-bootstrap",
+      "evidence_ids": ["ev-003"]
+    },
+    {
+      "id": "ep-evaluate-endpoint",
+      "name": "POST /api/v1/rule-engine/evaluate",
+      "kind": "server",
+      "location": "src/main/java/org/example/api/RuleEngineController.java:23-27",
+      "invocation": "HTTP POST with {data, rule} JSON body",
+      "component_id": "comp-api",
+      "evidence_ids": ["ev-004"]
+    },
+    {
+      "id": "ep-scratch-main",
+      "name": "Main.main",
+      "kind": "cli",
+      "location": "src/main/java/org/example/Main.java:6-16",
+      "invocation": "java org.example.Main (not part of the Spring Boot application)",
+      "component_id": "comp-scratch-main",
+      "evidence_ids": ["ev-011"]
+    }
+  ],
+  "standard_commands": [
+    {
+      "command": "mvn -q -DskipTests package",
+      "purpose": "Build the application JAR without running tests",
+      "source": "README.md:16-19"
+    },
+    {
+      "command": "mvn spring-boot:run",
+      "purpose": "Run the application locally on port 8080",
+      "source": "README.md:22-24"
+    },
+    {
+      "command": "mvn test",
+      "purpose": "Run the unit and integration test suite",
+      "source": "README.md:180-183"
+    }
+  ],
+  "risks": [
+    "No authentication or authorization on the /evaluate endpoint (ev-016)",
+    "regex operator compiles user-supplied patterns with no ReDoS guard (ev-017)",
+    "README documents 422 for validation errors but code returns 400 (ev-006)",
+    "No CI/CD, Dockerfile, or deployment manifests present (ev-020)"
+  ],
+  "unknowns": [
+    "Whether/where this service is deployed and what runtime configuration it uses",
+    "Whether Main.java is intentional or leftover scaffolding",
+    "Numeric precision behavior at extreme long/double boundaries in compare()"
+  ],
+  "available_views": ["business", "architecture", "development", "testing", "security"]
+}
