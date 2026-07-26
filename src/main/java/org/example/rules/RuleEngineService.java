@@ -101,17 +101,7 @@ public class RuleEngineService {
                 }
                 return false;
             case contains:
-                if (left == null) return false;
-                Object right = jsonToJava(valueNode);
-                if (left instanceof Collection<?>) {
-                    for (Object item : (Collection<?>) left) {
-                        if (compare(item, right) == 0) return true;
-                    }
-                    return false;
-                } else if (left instanceof String s) {
-                    return right != null && s.contains(String.valueOf(right));
-                }
-                return false;
+                return evalContains(left, valueNode);
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
@@ -132,6 +122,44 @@ public class RuleEngineService {
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }
+    }
+
+    /**
+     * Evaluates the {@code contains} operator.
+     * - Collection: true if any element is equal (via {@link #compare}) to {@code value}.
+     * - String: true if it contains {@code value}'s string representation as a substring.
+     * - Map/Object: true if any top-level value equals {@code value} (keys are not matched,
+     *   nested objects/arrays are not recursively searched).
+     * - Any other left type (Number, Boolean, null): false.
+     * Throws IllegalArgumentException if {@code value} is missing/null or is an array.
+     */
+    private boolean evalContains(Object left, JsonNode valueNode) {
+        if (valueNode == null || valueNode.isNull()) {
+            throw new IllegalArgumentException("contains requires a non-null 'value'");
+        }
+        if (valueNode.isArray()) {
+            throw new IllegalArgumentException(
+                    "contains does not support an array 'value'; use 'in' for value-membership checks");
+        }
+        if (left == null) return false;
+
+        Object right = jsonToJava(valueNode);
+        if (left instanceof Map<?, ?> map) {
+            for (Object v : map.values()) {
+                if (compare(v, right) == 0) return true;
+            }
+            return false;
+        }
+        if (left instanceof Collection<?> collection) {
+            for (Object item : collection) {
+                if (compare(item, right) == 0) return true;
+            }
+            return false;
+        }
+        if (left instanceof String s) {
+            return s.contains(String.valueOf(right));
+        }
+        return false; // Number, Boolean, or any other unsupported left type
     }
 
     private String textOrNull(ObjectNode node, String field) {
