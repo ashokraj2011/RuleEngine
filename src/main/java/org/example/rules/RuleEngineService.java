@@ -117,6 +117,21 @@ public class RuleEngineService {
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;
                 if (pattern == null) throw new IllegalArgumentException("regex requires string pattern");
                 return Pattern.compile(pattern).matcher((String) left).find();
+            case startWith:
+                if (!(left instanceof String)) return false;
+                Object startValue = jsonToJava(valueNode);
+                if (startValue == null) return false;
+                
+                String leftStr = ((String) left).trim();
+                String startStr = String.valueOf(startValue).trim();
+                
+                // Validate ASCII-only characters
+                if (!isAscii(leftStr) || !isAscii(startStr)) {
+                    return false;
+                }
+                
+                // Case-insensitive startsWith comparison
+                return leftStr.toLowerCase().startsWith(startStr.toLowerCase());
             case eq:
                 return compare(left, jsonToJava(valueNode)) == 0;
             case ne:
@@ -236,5 +251,15 @@ public class RuleEngineService {
             }
         }
         return null;
+    }
+
+    private boolean isAscii(String str) {
+        if (str == null) return false;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) > 127) {
+                return false;
+            }
+        }
+        return true;
     }
 }
