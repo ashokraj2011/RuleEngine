@@ -1,0 +1,25 @@
+version: 1
+
+# Capability policy is inherited from each top-level capability toward its children.
+# Missing values inherit. Empty allowlists mean deny-all; required obligations
+# such as checks and protected paths are accumulated.
+capabilities:
+  enterprise:
+    kind: collection
+    parent: null
+    owns: [workflow, ledger]
+    policy:
+      gateSeverity: warn
+      approvalMinimum: 1
+      allowSelfApproval: true
+      requiredChecks: []
+      protectedPaths: [singularity/workflow.yml, singularity/capabilities.yml]
+
+  product:
+    kind: collection
+    parent: enterprise
+    # Optional organisation-defined attributes. Keys are free-form and values are text.
+    metadata:
+      serviceTier: standard
+    owns: [initiatives, stories]
+    policy: {}
