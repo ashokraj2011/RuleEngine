@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "implementation",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -102,8 +102,49 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "implementation",
+      "at": "2026-08-22T15:48:38.509Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "developer",
+      "authorityGroup": "engineering-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "copilot-selection-receipt",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
+          "sha256": "65cc3ffafc6d38e99e1b40d95ee57bde7afcd6b1f1cc4c5905674d0c97b609ba"
+        }
+      ],
+      "reviewPacketSha256": "fb1c95ae44caa0dfd110c534a0c9bfc66d86c4b81ca9cf9db80bb7a0290214e3",
+      "actionContext": {
+        "phase": "implementation",
+        "label": "Implementation",
+        "generation": 1,
+        "submittedAt": "2026-08-22T15:46:48.123Z",
+        "artifacts": [
+          {
+            "path": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
+            "sha256": "65cc3ffafc6d38e99e1b40d95ee57bde7afcd6b1f1cc4c5905674d0c97b609ba"
+          }
+        ],
+        "agentBriefs": [],
+        "reviewPacketSha256": "fb1c95ae44caa0dfd110c534a0c9bfc66d86c4b81ca9cf9db80bb7a0290214e3",
+        "submittedSourceCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
+        "planId": "da37ce8e85b47227becde771"
+      },
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": null
 }
 -->
