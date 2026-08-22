@@ -1,0 +1,2264 @@
+{
+  "schemaVersion": 2,
+  "mcpAuthorizations": {},
+  "workItem": {
+    "id": "ANU-STORY",
+    "title": "implement intrest calcuation",
+    "workType": "feature",
+    "workTypeLabel": "Feature",
+    "branch": "ANU-STORY",
+    "baseBranch": "WRK-2028",
+    "baseCommit": "e8cf8c4b9423592f93119b01d81ecb7b1b2f4dc4",
+    "baseRemote": "origin",
+    "createdAt": "2026-08-22T12:27:51.654Z",
+    "createdBy": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "source": {
+      "type": "manual",
+      "stableId": null,
+      "key": null,
+      "rawRef": null,
+      "url": null,
+      "fetchedAt": null,
+      "contentSha256": "04593ea27e05739497d5f6ab434bb239dfd0aec97781b9521c8b2b85c95b2168",
+      "risk": null,
+      "repositoryCount": 1,
+      "publicInterfaceChange": null,
+      "dataMigration": null,
+      "securityBoundaryChange": null,
+      "regulatedDataChange": null,
+      "targetOrigin": null,
+      "deploymentPolicyChange": null,
+      "crossRepositoryChange": null
+    }
+  },
+  "lineage": {
+    "schemaVersion": 1,
+    "canonicalBranch": "ANU-STORY",
+    "parentStoryId": "ANU-STORY",
+    "epicId": null,
+    "planId": null,
+    "jiraIssueId": "ANU-STORY",
+    "sourceStableId": null,
+    "initialJiraKey": null,
+    "currentJiraKey": null,
+    "branchCompletionPolicy": "pr",
+    "requiredChecks": [],
+    "childBranches": []
+  },
+  "resolution": {
+    "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+    "inputsMode": "enforce",
+    "worldModelGrounding": "warn",
+    "worldModelMaterialization": {
+      "mode": "explicit",
+      "publish": "governed",
+      "lookahead": "none",
+      "depth": "phase",
+      "confirmation": "prompt"
+    },
+    "worldModelSourceScope": null,
+    "approvalAuthorities": {
+      "product-approvers": {
+        "label": "Product approvers",
+        "allowAnyGitIdentity": true,
+        "githubTeams": [],
+        "members": []
+      },
+      "architecture-reviewers": {
+        "label": "Architecture reviewers",
+        "allowAnyGitIdentity": true,
+        "githubTeams": [],
+        "members": []
+      },
+      "engineering-reviewers": {
+        "label": "Engineering reviewers",
+        "allowAnyGitIdentity": true,
+        "githubTeams": [],
+        "members": []
+      },
+      "quality-reviewers": {
+        "label": "Quality reviewers",
+        "allowAnyGitIdentity": true,
+        "githubTeams": [],
+        "members": []
+      },
+      "design-reviewers": {
+        "label": "Design reviewers",
+        "allowAnyGitIdentity": true,
+        "githubTeams": [],
+        "members": []
+      }
+    },
+    "sequenceGates": {
+      "default": "soft",
+      "completion": "hard",
+      "currentPhase": "hard",
+      "phaseStatus": "soft",
+      "freshGeneration": "hard",
+      "generationCommit": "hard",
+      "remoteGeneration": "hard",
+      "publicationPending": "hard",
+      "documentPhase": "soft",
+      "binding": "soft"
+    },
+    "contextPolicy": {
+      "onApproval": "new",
+      "onRejection": "keep",
+      "phaseOverrides": {}
+    },
+    "ledger": {
+      "enabled": true,
+      "branch": "state",
+      "remote": "origin",
+      "behind": "warn",
+      "enforcement": "shadow",
+      "signing": "off",
+      "trustTier": "T0",
+      "maxRetries": 4,
+      "pinTransport": "refs",
+      "publication": "warn",
+      "retentionDays": 2555
+    },
+    "spec": {
+      "mode": "record",
+      "namespace": null,
+      "coverage": "record",
+      "acceptance": "presence",
+      "testCommands": {},
+      "excludes": [
+        "singularity",
+        ".git",
+        "node_modules"
+      ],
+      "limits": {
+        "maxClausesPerArtifact": 2000,
+        "maxDependenciesPerClause": 100,
+        "maxPathsPerClaim": 1000,
+        "maxClaimBytes": 2097152
+      },
+      "compositionCache": "local"
+    },
+    "constitution": {
+      "mode": "off",
+      "path": "singularity/constitution.md"
+    },
+    "analysisLimits": {
+      "maxArtifactBytes": 2097152,
+      "maxChangedPaths": 2000,
+      "maxClauses": 2000,
+      "maxEvidenceRecords": 500,
+      "maxFacts": 500,
+      "maxOutputBytes": 4194304
+    },
+    "artifactSets": {},
+    "harnessImports": {
+      "mode": "record",
+      "previewTextBytes": 16384,
+      "totalEnvelopeBytes": 32768,
+      "knowledge": {
+        "enabled": true,
+        "maximumBytes": 8192
+      },
+      "conformance": {
+        "verbatimRelay": "off",
+        "questionPrecedesMutation": "warn",
+        "maximumActions": "observe",
+        "previewRespected": "off"
+      }
+    },
+    "intelligence": {
+      "worldModel": "inherit",
+      "ast": "inherit",
+      "agentBriefs": "inherit"
+    },
+    "impact": {
+      "version": 1,
+      "automaticEnrollment": true,
+      "metricAuthorities": {
+        "flow-time-excluding-approval-wait-ms": {
+          "authority": "kernel-only"
+        },
+        "elapsed-ms": {
+          "authority": "kernel-only"
+        },
+        "approval-wait-ms": {
+          "authority": "kernel-only"
+        },
+        "rework-cycles": {
+          "authority": "kernel-only"
+        },
+        "rejections": {
+          "authority": "kernel-only"
+        },
+        "self-approvals": {
+          "authority": "kernel-only"
+        },
+        "sequence-overrides": {
+          "authority": "kernel-only"
+        },
+        "input-tokens": {
+          "authority": "kernel-only"
+        },
+        "output-tokens": {
+          "authority": "kernel-only"
+        },
+        "cached-input-tokens": {
+          "authority": "kernel-only"
+        },
+        "total-tokens": {
+          "authority": "kernel-only"
+        },
+        "cost-usd": {
+          "authority": "kernel-only"
+        },
+        "first-pass-approval-rate": {
+          "authority": "kernel-only"
+        },
+        "required-check-pass-rate": {
+          "authority": "kernel-only"
+        },
+        "conformance-gap-count": {
+          "authority": "kernel-only"
+        },
+        "escaped-defects": {
+          "authority": "external-provider",
+          "providers": [
+            "quality-system"
+          ]
+        }
+      },
+      "studies": [
+        {
+          "id": "governed-ai-delivery",
+          "label": "Governed AI delivery",
+          "enabled": false,
+          "kind": "delivery-comparison",
+          "unit": "story",
+          "method": "matched-observational",
+          "eligibility": {
+            "workTypes": [
+              "feature",
+              "bugfix",
+              "chore"
+            ],
+            "capabilities": []
+          },
+          "groups": [
+            {
+              "id": "baseline",
+              "label": "Baseline",
+              "assistanceMode": "baseline",
+              "weight": 1
+            },
+            {
+              "id": "governed-agent",
+              "label": "Governed agent",
+              "assistanceMode": "governed-agent",
+              "weight": 1
+            }
+          ],
+          "matching": {
+            "dimensions": [
+              "capability",
+              "repository-class",
+              "work-type",
+              "complexity",
+              "risk",
+              "time-period"
+            ],
+            "timePeriod": "quarter",
+            "seed": "governed-ai-delivery-v1",
+            "weighting": "minimum-cohort-count"
+          },
+          "primaryMetric": {
+            "id": "flow-time-excluding-approval-wait-ms",
+            "direction": "lower",
+            "unit": "milliseconds"
+          },
+          "guardrails": [
+            {
+              "id": "rework-cycles",
+              "maximumRegressionPercent": 10,
+              "direction": "lower",
+              "unit": "count"
+            },
+            {
+              "id": "rejections",
+              "maximumRegressionPercent": 10,
+              "direction": "lower",
+              "unit": "count"
+            }
+          ],
+          "rollout": null,
+          "reporting": {
+            "bootstrapSamples": 1000,
+            "confidenceLevel": 0.95
+          },
+          "privacy": {
+            "individualReporting": false,
+            "minimumCohortSize": 5,
+            "pseudonymizeContributors": true,
+            "allowedDimensions": [
+              "capability",
+              "repository-class",
+              "work-type",
+              "complexity",
+              "risk",
+              "time-period"
+            ]
+          }
+        }
+      ],
+      "path": "singularity/impact.yml",
+      "sha256": "01f0e5b259c920a4c6c2185d0d971a8ae53bd233fc9e36926666095eedf282cb"
+    },
+    "agents": {
+      "architect": {
+        "source": ".github/agents/architect.agent.md",
+        "sha256": "308eaf5824f2a2d431d7bbbf527947087508b408e866584c15d6365db8d1c23c",
+        "phases": [
+          "design",
+          "implementation-spec",
+          "fix-design",
+          "fix-spec"
+        ],
+        "defaultFor": [
+          "design",
+          "implementation-spec",
+          "fix-design",
+          "fix-spec"
+        ],
+        "worldModelViews": [
+          "architecture",
+          "security",
+          "operations"
+        ]
+      },
+      "developer": {
+        "source": ".github/agents/developer.agent.md",
+        "sha256": "c84b47c5353c6db58f0ecc49fe7547254804a4679882d666276344fa9271f149",
+        "phases": [
+          "implement",
+          "implementation"
+        ],
+        "defaultFor": [
+          "implement",
+          "implementation"
+        ],
+        "worldModelViews": [
+          "development",
+          "testing",
+          "architecture"
+        ]
+      },
+      "mobile-architect": {
+        "source": ".github/agents/mobile-architect.agent.md",
+        "sha256": "1cc19f6ab0b71a6c3296e8993c3610570c9ccfe82dc30308e5393e7e36f5ac33",
+        "phases": [
+          "component-mapping",
+          "mobile-spec"
+        ],
+        "defaultFor": [
+          "component-mapping",
+          "mobile-spec"
+        ],
+        "worldModelViews": [
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ]
+      },
+      "poc-analyst": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/templates/agents/poc-analyst.agent.md",
+        "sha256": "604d35e01fb207d693b8067bfa449c8c325b3493a3fb6dc49f5522156009fbe4",
+        "phases": [
+          "poc-intake",
+          "poc-impact-analysis"
+        ],
+        "defaultFor": [
+          "poc-intake",
+          "poc-impact-analysis"
+        ],
+        "worldModelViews": [
+          "business",
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ]
+      },
+      "poc-automation": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/templates/agents/poc-automation.agent.md",
+        "sha256": "c4ae69d6903cd299dd58af76e54e0d163a912a0e651b3b6d807732b018f03bb7",
+        "phases": [
+          "poc-intake",
+          "poc-impact-analysis",
+          "poc-ui-exploration",
+          "poc-test-generation",
+          "poc-validation",
+          "poc-publication-review"
+        ],
+        "defaultFor": [],
+        "worldModelViews": [
+          "business",
+          "architecture",
+          "development",
+          "testing",
+          "release",
+          "security"
+        ]
+      },
+      "poc-explorer": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/templates/agents/poc-explorer.agent.md",
+        "sha256": "5b863a56b6d645a71c858afd8edd29b6f7cbc60b441d4b3b2df513826611ee18",
+        "phases": [
+          "poc-ui-exploration"
+        ],
+        "defaultFor": [
+          "poc-ui-exploration"
+        ],
+        "worldModelViews": [
+          "testing",
+          "development",
+          "security"
+        ]
+      },
+      "poc-test-developer": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/templates/agents/poc-test-developer.agent.md",
+        "sha256": "20a6a09cc14dac8fd7cb461d412fe708eeaeaf3be55c3787212f4a09bed7e17d",
+        "phases": [
+          "poc-test-generation"
+        ],
+        "defaultFor": [
+          "poc-test-generation"
+        ],
+        "worldModelViews": [
+          "development",
+          "testing",
+          "architecture",
+          "security"
+        ]
+      },
+      "poc-validator": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/templates/agents/poc-validator.agent.md",
+        "sha256": "083dd2ee6f941c5f873f9b42d4ec50faf450cb703fd55951dd55244d1bc1d82e",
+        "phases": [
+          "poc-validation",
+          "poc-publication-review"
+        ],
+        "defaultFor": [
+          "poc-validation",
+          "poc-publication-review"
+        ],
+        "worldModelViews": [
+          "testing",
+          "development",
+          "release",
+          "security"
+        ]
+      },
+      "product-designer": {
+        "source": ".github/agents/product-designer.agent.md",
+        "sha256": "d059499cdb40b4d2cddfbfd0588dc2b2ecda51d18d56be3f3a4df8c53c7ec088",
+        "phases": [
+          "design-intake",
+          "design-inventory"
+        ],
+        "defaultFor": [
+          "design-intake",
+          "design-inventory"
+        ],
+        "worldModelViews": [
+          "business",
+          "architecture",
+          "testing"
+        ]
+      },
+      "product-owner": {
+        "source": ".github/agents/product-owner.agent.md",
+        "sha256": "d489c05a63d6e37482f6b8973881898640f72de3739db8e207470a66f2f40b63",
+        "phases": [
+          "intake",
+          "requirements"
+        ],
+        "defaultFor": [
+          "intake",
+          "requirements"
+        ],
+        "worldModelViews": [
+          "business"
+        ]
+      },
+      "qa": {
+        "source": ".github/agents/qa.agent.md",
+        "sha256": "a3e75edde4eda82ce356992295b40b67d4032404759d91f35d500c992529c88a",
+        "phases": [
+          "reproduction",
+          "verify",
+          "verification",
+          "visual-verification",
+          "conformance"
+        ],
+        "defaultFor": [
+          "reproduction",
+          "verify",
+          "verification",
+          "visual-verification",
+          "conformance"
+        ],
+        "worldModelViews": [
+          "testing",
+          "development",
+          "security"
+        ]
+      },
+      "sflow-utility": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/plugin/agents/sflow-utility.agent.md",
+        "sha256": "eeede3020be7929d523689b73ea7a631e57c9e563a87f0e57dd5430b784d5d44",
+        "phases": [],
+        "defaultFor": [],
+        "worldModelViews": []
+      },
+      "sflow-workflow": {
+        "source": "../../../../.vscode/extensions/singularityflow.singularity-flow-vscode-0.9.0/cli/plugin/agents/sflow-workflow.agent.md",
+        "sha256": "94e7f707927e89aa3f69a4d3992dcee4f09766c1a29c5861edcdfe618015588c",
+        "phases": [
+          "intake",
+          "requirements",
+          "design",
+          "implementation-spec",
+          "reproduction",
+          "fix-design",
+          "fix-spec",
+          "design-intake",
+          "design-inventory",
+          "component-mapping",
+          "mobile-spec",
+          "implement",
+          "implementation",
+          "verify",
+          "verification",
+          "visual-verification",
+          "conformance"
+        ],
+        "defaultFor": [],
+        "worldModelViews": []
+      }
+    },
+    "mcpServers": {
+      "figma": {
+        "id": "figma",
+        "label": "Figma design context",
+        "hostReference": "figma",
+        "agents": [
+          "product-designer"
+        ],
+        "phases": [
+          "design-intake",
+          "design-inventory",
+          "component-mapping",
+          "mobile-spec",
+          "visual-verification"
+        ],
+        "tools": [
+          "get_metadata",
+          "get_design_context",
+          "get_screenshot",
+          "get_variable_defs",
+          "get_code_connect_map"
+        ],
+        "required": false,
+        "approval": "confirm",
+        "evidence": {
+          "captureToolCalls": true,
+          "captureResults": true
+        }
+      },
+      "playwright": {
+        "id": "playwright",
+        "label": "Playwright browser automation",
+        "hostReference": "playwright",
+        "agents": [
+          "qa",
+          "product-designer"
+        ],
+        "phases": [
+          "design-intake",
+          "design-inventory",
+          "verification",
+          "visual-verification",
+          "conformance"
+        ],
+        "tools": [
+          "browser_navigate",
+          "browser_snapshot",
+          "browser_click",
+          "browser_take_screenshot"
+        ],
+        "required": false,
+        "approval": "confirm",
+        "evidence": {
+          "captureToolCalls": true,
+          "captureResults": true
+        }
+      }
+    },
+    "designSources": null,
+    "verification": {
+      "coverage": "warn",
+      "profiles": [],
+      "comparison": {
+        "mode": "off",
+        "channelTolerance": 0,
+        "maxDifferingPixelRatio": null,
+        "maxDifferingPixels": null,
+        "maxPixels": 40000000
+      }
+    },
+    "templates": {
+      "intake": {
+        "path": "singularity/templates/feature/intake.md",
+        "sha256": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab"
+      },
+      "requirements": {
+        "path": "singularity/templates/feature/requirements.md",
+        "sha256": "32016db8ed6fadd6596e7dc702647cff95cdee1a203b38395d7ba5626dd8134e"
+      },
+      "design": {
+        "path": "singularity/templates/feature/design.md",
+        "sha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
+      },
+      "implementation-spec": {
+        "path": "singularity/templates/feature/implementation-spec.md",
+        "sha256": "f6b06a7e8c8dfa87a7f1289b2a80c0a6e98f5ee8e3cae2fe9faed501c031656c"
+      },
+      "implementation": {
+        "path": "singularity/templates/common/implementation.md",
+        "sha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c"
+      },
+      "verification": {
+        "path": "singularity/templates/common/verification.md",
+        "sha256": "ced4ce8d532e509658558f5bf848bd6df1a03d6c278c84ed8512ac667095fd98"
+      },
+      "conformance": {
+        "path": "singularity/templates/common/conformance.md",
+        "sha256": "dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada"
+      }
+    },
+    "configurationSource": {
+      "schemaVersion": 1,
+      "repository": "https://github.com/ashokraj2011/RuleEngine.git",
+      "branch": "sflow/config",
+      "commit": "e0c3083af3f08b7900c2286e9b203d7641cbed85",
+      "materializedAt": "2026-08-22T12:27:50.086Z",
+      "files": {
+        ".github/agents/architect.agent.md": "308eaf5824f2a2d431d7bbbf527947087508b408e866584c15d6365db8d1c23c",
+        ".github/agents/developer.agent.md": "c84b47c5353c6db58f0ecc49fe7547254804a4679882d666276344fa9271f149",
+        ".github/agents/mobile-architect.agent.md": "1cc19f6ab0b71a6c3296e8993c3610570c9ccfe82dc30308e5393e7e36f5ac33",
+        ".github/agents/product-designer.agent.md": "d059499cdb40b4d2cddfbfd0588dc2b2ecda51d18d56be3f3a4df8c53c7ec088",
+        ".github/agents/product-owner.agent.md": "d489c05a63d6e37482f6b8973881898640f72de3739db8e207470a66f2f40b63",
+        ".github/agents/qa.agent.md": "a3e75edde4eda82ce356992295b40b67d4032404759d91f35d500c992529c88a",
+        "singularity/agent-mappings.yml": "1b39a4f4caa3242749889a291e2259a361c815712bd762abde3db3cbe9f8a688",
+        "singularity/capabilities.yml": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+        "singularity/impact.yml": "01f0e5b259c920a4c6c2185d0d971a8ae53bd233fc9e36926666095eedf282cb",
+        "singularity/portfolio.yml": "f6447d97dbbd6a37fc3d4f978268f21ba8f82cc4fde2c212b0f5e130274db208",
+        "singularity/prompts/copilot-planning.md": "4128acc6930949e4ba1e50e8b8c7c4f7beb23f4361c2e8428475b081712b77db",
+        "singularity/prompts/worldmodel-builder.md": "312e2d146bb61fdd5302faeb01e6f9dcfd872484db0f5bda001d803ff8c0f8fb",
+        "singularity/templates/bugfix/fix-design.md": "cee7774777fd55a3740ebd9f2cafd100702d52617ae307f80e35764229c7867e",
+        "singularity/templates/bugfix/fix-spec.md": "68c6ce36d11ab08ec96a676f60d2f143321070a108fef804c552aae1f50776e0",
+        "singularity/templates/bugfix/intake.md": "c0aa89555e400e9c78c782021b1928175607f32ad20773c70fae04b28ced320c",
+        "singularity/templates/bugfix/reproduction.md": "083e0361f6ffe9e84905b21558554c8335ab1a036719cb37f104e03f255f3567",
+        "singularity/templates/chore/intake.md": "6e84e6cee5c5c25c7bad11809f245126b646ad9e4c76503876bd77cfaf08112d",
+        "singularity/templates/common/conformance.md": "dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada",
+        "singularity/templates/common/implementation.md": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c",
+        "singularity/templates/common/intake.md": "e16cd8b47f472973823a1a53294c77ac6551285c4df75e916c739611c3bc1d23",
+        "singularity/templates/common/verification.md": "ced4ce8d532e509658558f5bf848bd6df1a03d6c278c84ed8512ac667095fd98",
+        "singularity/templates/feature/design.md": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856",
+        "singularity/templates/feature/implementation-spec.md": "f6b06a7e8c8dfa87a7f1289b2a80c0a6e98f5ee8e3cae2fe9faed501c031656c",
+        "singularity/templates/feature/intake.md": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab",
+        "singularity/templates/feature/requirements.md": "32016db8ed6fadd6596e7dc702647cff95cdee1a203b38395d7ba5626dd8134e",
+        "singularity/templates/figma-mobile/component-mapping.md": "cdea8a1e3defa73ade72bdaaac162ecd9b8b43817aa319d7e712e2de2eb296a3",
+        "singularity/templates/figma-mobile/conformance.md": "b3f2c36f238e847fafb1e1de2647f57d9516f1cac8b71d179333985d63340a83",
+        "singularity/templates/figma-mobile/design-intake.md": "f84db46cdf86cf8c4da4de0062d7150466d5dd291baf6495bd9523affa9a6453",
+        "singularity/templates/figma-mobile/design-inventory.md": "822ea61a75a25ec5a6b42dd887c842d5126233b36f7f0fc875402f9a43125079",
+        "singularity/templates/figma-mobile/implementation.md": "69b5b75886dcc41da4e3063c7ceb6ff805251f98dd40ee41b2bf5de660dc74da",
+        "singularity/templates/figma-mobile/mobile-spec.md": "88b61e823b202feb62b8c1eccbe09fdc0b78c3b68d1f20f24adb4e3d16098cee",
+        "singularity/templates/figma-mobile/visual-verification.md": "aca2f864d6cc1b5321e466f80d0751ab4874049271b2fabab03dde7b0ec0e835",
+        "singularity/templates/initiatives/adr-log.md": "4ece55ac194e15395cbc331d382d6464f76e013b33576050895092a5dcebce12",
+        "singularity/templates/initiatives/business-case.md": "155faec79961574f8dd12556f0874ec8bb396f5a546ca792b2ab41dc34aa6a17",
+        "singularity/templates/initiatives/cicd-readiness.md": "98222239a8e316ff1413f827f1fe400d90345bb0759db5d06fe49f859e2aa754",
+        "singularity/templates/initiatives/compliance-assessment.md": "88645356dc868b46a78dabc50f2605b28e0ed0d9b78549e7cf9fef6536ea2296",
+        "singularity/templates/initiatives/data-readiness.md": "9b39c24e75f253e461fdf45150378a62599ba5782fb1a1721b1b6f66ba9b2dfe",
+        "singularity/templates/initiatives/data-source-decision.md": "49b76f3f576c6660696a6504e7bfdd78737089c26b540be5ea7f638ea800189c",
+        "singularity/templates/initiatives/dependency-matrix.md": "890fef7b2cae6c11927137161755c4a9cfba8f13fdd7aca73b58ba8ef5ff1b7e",
+        "singularity/templates/initiatives/deployment-record.md": "1898365f596234fa78fd9b6330c9cc5e7ed50be566b998e7f8ec8f76f294db85",
+        "singularity/templates/initiatives/design-specification.md": "341c2ebad1e5945a011906e451c2b7290fc806e35e6a531bbc39a9b87bf11a5e",
+        "singularity/templates/initiatives/epic-record.yml": "9ca4bdb695a7cd07633746cbe8245a2e170315e09b3dd10a252684a25671ad94",
+        "singularity/templates/initiatives/epic/impact-analysis.yml": "b8f435bbc0bcab91cc1af9e32966600a8c9ccb84ca7a325baeeb3aadbc14e3f9",
+        "singularity/templates/initiatives/epic/jira-write-plan.yml": "176c8c177d77e61df465472bdb5b9bfb67a9a3183e13e4704aafa1f4931e48e9",
+        "singularity/templates/initiatives/epic/materialization-report.md": "18bdd184358ac5f1f08f4e0edda9e09bab7dab8b8dcbfe7a65a2e4196e99001c",
+        "singularity/templates/initiatives/epic/parent-spec.md": "4c80b3cb91962fd1b1fe64f01bd7dc4b0ed14ec7fb889750cabf1522eaabfa72",
+        "singularity/templates/initiatives/epic/repository-map.yml": "cb60767c53bc9bd0c6439e2b74310c050fef821a57183d15425c73cb55b25584",
+        "singularity/templates/initiatives/epic/requirements-traceability.yml": "672a8ccb13f2945e9043e325f7fe0538bddfe8a43d3bf07864bee7937b680b73",
+        "singularity/templates/initiatives/epic/requirements.md": "174d57ca16c5b43a23c6292873c683335f9fb08c6efd6d0a7bf6e6594aa5ec0b",
+        "singularity/templates/initiatives/epic/story-plan.yml": "9ff2b979d06de8302c36ef0e1898c1c74df6f0dd92df64c1b68accdf360b555f",
+        "singularity/templates/initiatives/epic/story-spec-index.yml": "3aeff575724e8b53fd1bf7cb0a01a41280c99ee714920b637c317aaf5cf88526",
+        "singularity/templates/initiatives/epic/story-spec.md": "ee2791700162ce5b843ce9458bd8e2b6580b97d2e6db4343fafc5cc64ec9bfe4",
+        "singularity/templates/initiatives/eta-register.md": "adeda18823f2d52d82f17c5c029bd883a504205cf8757f2a7ee5237e5d1cd109",
+        "singularity/templates/initiatives/feasibility-report.md": "10fe5879b55d78b9a06b24589328fb2517eb0defd4f6e465b23ca0f6f833b63b",
+        "singularity/templates/initiatives/functional-tests.md": "760e46dd617e449ff8993dad3a98ce8c4e95e928dbf63c1b00017bff1d3ebdf3",
+        "singularity/templates/initiatives/generic-output.md": "67e01f4cc8cfd624400128a7f16e50ab62a98d52a920b0f5e9a0fcea2607759a",
+        "singularity/templates/initiatives/generic-output.yml": "6d57e9ed847259d3671f61f737eaad7604c2952cb5268da25f701b1facffcdd4",
+        "singularity/templates/initiatives/implementation-index.md": "8d3c8cdf27fe2aebf9991858836fc3bb7b37d902afa5638616c67a9c9961dca0",
+        "singularity/templates/initiatives/initiative-conformance.md": "d5270e19131d7c2a1bdb6d447a1ed04017f80ba77ad3703f35c5462ee67a2801",
+        "singularity/templates/initiatives/initiative-scope.md": "142478e091855e712667f23038ffd40a92e4f86b0e665427f27361d74b1ab489",
+        "singularity/templates/initiatives/intake-record.md": "1dbd17ccf123ef632b1248963cc1ad36786b96efa8879278322e77aecc2eeabb",
+        "singularity/templates/initiatives/interface-contract.md": "fb047de3b81b417eb257862840e7cd9b07d533d70711301bf904272124954053",
+        "singularity/templates/initiatives/measurement-plan.md": "dac7671ee00e4207d5b25a520935fe536767b66219b21cf405872affb0d16187",
+        "singularity/templates/initiatives/nfr-assessment.md": "fdbdd138b0a6c1d3ae03acf1a624c42aa074c802a5c25dc8c36ceadb8db3e46a",
+        "singularity/templates/initiatives/nfr-specification.md": "b98bb5b743576d4cc55f1f508b5d7489a9a85eee72c9af4f93ce71b396fc454c",
+        "singularity/templates/initiatives/observability-handoff.md": "41787345e0e77b79e0d3ff5878d3d61f018e42cf65d66681d14fdfa014e2750a",
+        "singularity/templates/initiatives/operational-readiness.md": "d8890590723c5cdff0ffe5225f5e88e8d2d5cde8f7b3805e3568393162ff5c31",
+        "singularity/templates/initiatives/opportunity-brief.md": "1896ad72afd98908b599e3ae5d81de6843df2601e91b6bd4e813a0768dff7b6a",
+        "singularity/templates/initiatives/poc-results.md": "40aba41fdfc6b2f4c748976082801e85e1bef84b80fe300980cc50fa3d0c89f7",
+        "singularity/templates/initiatives/prfaq.md": "b2dcba973be8992f52373720ba5af959b233e3a6059bfa07e26a9797a23cc22f",
+        "singularity/templates/initiatives/product-roadmap.md": "34a3df88bd97e0637cab02564f54ff98cccc776d5267ad6d85a3d063849e6cd1",
+        "singularity/templates/initiatives/production-learning.md": "5e090b0e8a4821698af7b86052d43c970e009b8c64bcb3ddfb8b5ac8bf57c50f",
+        "singularity/templates/initiatives/production-validation.md": "8ce5dd20813d422778c1921a7658793b0b63640fe2b00af3ecca1a15cc08f56f",
+        "singularity/templates/initiatives/release-scope.md": "56ef6617316bbbe052a595dafed210f5acf854d7426cb9420e89e1269038552d",
+        "singularity/templates/initiatives/requirement-impact.md": "f3afdcc90c5bd4e7d8c8218070b6bdac58f22d5dd787d288b515495e883dd1ff",
+        "singularity/templates/initiatives/sequencing-plan.md": "832d7d8e9820482b7263b87e9305a98037bd971e4a34a5c65e7d8c5cd5fd30b3",
+        "singularity/templates/initiatives/service-blueprint.md": "36424028305ca3a95f355249783090907e9fab5620eed93a9537b777af33ccbf",
+        "singularity/templates/initiatives/solution-architecture.md": "699d6646a25f65bb7967081dced900e3c5235e16613089e54bb002f184e67862",
+        "singularity/templates/initiatives/solution-validation.md": "9e025f84f9ebdcc5a56d1a0ae5aa044e5e0f04ec3857ba72c18afee2a209052a",
+        "singularity/templates/initiatives/stakeholder-raci.md": "7aa9d81064f4e41f5756ab2d0df1e1777c7b83530ff54f994823c359292f20c7",
+        "singularity/templates/initiatives/technical-poc-results.md": "7fbe8d0159e55a79548d6a56cbb5e1990086c5abb821735c3a197bb95f9922de",
+        "singularity/templates/initiatives/test-attestation.md": "28fe58500e6d21aa1816494ce8ef6c15b16c30da9d5f04c30f8c1f97554be822",
+        "singularity/templates/initiatives/test-data-inventory.md": "3377bd930d736890c16ecff4c1f1ec81ee83636e609aa61e95d29a5449793419",
+        "singularity/templates/initiatives/ux-concept.md": "d12e90b0412fcf41cf07fec6bcfe8c83d80949fc01fec2973d23a24a62e73b89",
+        "singularity/templates/quick-fix/implement.md": "dff093133a1be4c93115cfbbb0d994c8ce391fc19279caee30b441ec27a05c0a",
+        "singularity/templates/quick-fix/verify.md": "a21900d99d044d35de501f0e43888a8a3ebcfe860e702a5d1b3eec61fdd06f27",
+        "singularity/workflow.yml": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b"
+      },
+      "filesSha256": "2ec99a6017672eb7397523ead63cce2d6ab9a8a8dfa80c7f71c7e39f63cd9dbc"
+    },
+    "worldModelStaleness": "warn",
+    "storage": null,
+    "capability": {
+      "schemaVersion": 1,
+      "id": "rule-engine",
+      "name": "Rule Engine",
+      "kind": "delivery",
+      "path": [
+        "enterprise",
+        "product",
+        "rule-engine"
+      ],
+      "repositoryId": "ruleengine",
+      "deliveries": [
+        {
+          "id": "rule-engine",
+          "name": "Rule Engine",
+          "repository": "ruleengine",
+          "repositories": [
+            "ruleengine"
+          ]
+        }
+      ],
+      "map": {
+        "path": "singularity/capabilities.yml",
+        "sha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+        "repository": "https://github.com/ashokraj2011/RuleEngine.git",
+        "branch": "ANU-STORY"
+      },
+      "basePolicy": {
+        "gateSeverity": "warn",
+        "approvalMinimum": 1,
+        "allowSelfApproval": true,
+        "requiredChecks": [],
+        "requiredAuthorityGroups": [],
+        "protectedPaths": [
+          "singularity/workflow.yml",
+          "singularity/capabilities.yml"
+        ],
+        "requiredWorldModelViews": [],
+        "qualityCommands": []
+      },
+      "policy": {
+        "gateSeverity": "warn",
+        "approvalMinimum": 1,
+        "allowSelfApproval": true,
+        "requiredChecks": [],
+        "requiredAuthorityGroups": [],
+        "protectedPaths": [
+          "singularity/workflow.yml",
+          "singularity/capabilities.yml"
+        ],
+        "requiredWorldModelViews": [],
+        "qualityCommands": []
+      },
+      "sourceScope": null,
+      "leases": [],
+      "warnings": [],
+      "context": {
+        "path": "singularity/work-items/ANU-STORY/context/capability-world-model.json",
+        "sha256": "04b80aa0de4bbd772f31c9e8464e3806b9191e164fcfe1363ab8573edbe7145d",
+        "bytes": 550,
+        "warnings": []
+      }
+    },
+    "workType": "feature",
+    "workTypeLabel": "Feature",
+    "documents": {
+      "allowedPhases": [
+        "intake",
+        "requirements",
+        "design",
+        "implementation-spec"
+      ],
+      "maxFileBytes": 26214400,
+      "maxPreviewBytes": 1048576,
+      "allowedMimeTypes": []
+    },
+    "collaboration": {
+      "assignmentMode": "suggested",
+      "approvalReminderAfterHours": 24,
+      "notifications": [
+        "terminal"
+      ]
+    },
+    "session": {
+      "workItemSelection": "prompt",
+      "requireBeforeTools": false
+    },
+    "sourceSha256": "142becb19837037c336774addd45db0b908d38715d71a2782805c230756620ca",
+    "phases": [
+      {
+        "id": "intake",
+        "order": 0,
+        "label": "Intake",
+        "defaultTemplate": "common/intake.md",
+        "artifact": {
+          "path": "artifacts/intake/intake.md",
+          "kind": "intake",
+          "minimumBytes": 200
+        },
+        "worldModel": {
+          "views": [
+            "business"
+          ],
+          "depth": "quick"
+        },
+        "clarification": {
+          "mode": "required",
+          "maxQuestions": 5,
+          "topics": [
+            "problem",
+            "outcome",
+            "users",
+            "scope",
+            "constraints"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "product-approvers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "intake"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "inputs": [],
+        "template": "feature/intake.md",
+        "defaultAgent": "product-owner",
+        "qualityCommands": []
+      },
+      {
+        "id": "requirements",
+        "order": 1,
+        "label": "Requirements",
+        "defaultTemplate": "feature/requirements.md",
+        "artifact": {
+          "path": "artifacts/requirements/requirements.md",
+          "kind": "requirements",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "business"
+          ],
+          "depth": "standard"
+        },
+        "clarification": {
+          "mode": "required",
+          "maxQuestions": 5,
+          "topics": [
+            "scope",
+            "acceptance criteria",
+            "dependencies",
+            "constraints",
+            "risks"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "product-approvers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "intake",
+            "requirements"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "intake",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/intake/intake.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "feature/requirements.md",
+        "defaultAgent": "product-owner",
+        "qualityCommands": []
+      },
+      {
+        "id": "design",
+        "order": 2,
+        "label": "Architecture and design",
+        "defaultTemplate": "feature/design.md",
+        "artifact": {
+          "path": "artifacts/design/design.md",
+          "kind": "design",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "security"
+          ],
+          "depth": "standard"
+        },
+        "clarification": {
+          "mode": "required",
+          "maxQuestions": 5,
+          "topics": [
+            "boundaries",
+            "contracts",
+            "failure behavior",
+            "security",
+            "migration"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "architecture-reviewers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "requirements",
+            "design"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "requirements",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/requirements/requirements.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "feature/design.md",
+        "defaultAgent": "architect",
+        "qualityCommands": []
+      },
+      {
+        "id": "implementation-spec",
+        "order": 3,
+        "label": "Implementation specification",
+        "defaultTemplate": "feature/implementation-spec.md",
+        "artifact": {
+          "path": "artifacts/implementation-spec/implementation-spec.md",
+          "kind": "implementation-spec",
+          "minimumBytes": 400
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "development",
+            "testing",
+            "security"
+          ],
+          "depth": "deep"
+        },
+        "clarification": {
+          "mode": "required",
+          "maxQuestions": 5,
+          "topics": [
+            "interfaces",
+            "data",
+            "security",
+            "observability",
+            "migration",
+            "tests"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "artifact-only",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "architecture-reviewers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "requirements",
+            "design",
+            "implementation-spec"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "requirements",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/requirements/requirements.md"
+          },
+          {
+            "phase": "design",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/design/design.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "feature/implementation-spec.md",
+        "defaultAgent": "architect",
+        "qualityCommands": []
+      },
+      {
+        "id": "implementation",
+        "order": 4,
+        "label": "Implementation",
+        "defaultTemplate": "common/implementation.md",
+        "artifact": {
+          "path": "artifacts/implementation/implementation-summary.md",
+          "kind": "implementation-summary",
+          "minimumBytes": 250
+        },
+        "worldModel": {
+          "views": [
+            "development",
+            "testing"
+          ],
+          "depth": "standard"
+        },
+        "clarification": {
+          "mode": "when-needed",
+          "maxQuestions": 3,
+          "topics": [
+            "approved deviations",
+            "implementation blockers"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "source-and-artifact",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "engineering-reviewers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "qualityCommands": [],
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "design",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/design/design.md"
+          },
+          {
+            "phase": "implementation-spec",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/implementation-spec/implementation-spec.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "common/implementation.md",
+        "defaultAgent": "developer"
+      },
+      {
+        "id": "verification",
+        "order": 5,
+        "label": "Verification",
+        "defaultTemplate": "common/verification.md",
+        "artifact": {
+          "path": "artifacts/verification/test-evidence.md",
+          "kind": "test-evidence",
+          "minimumBytes": 300
+        },
+        "worldModel": {
+          "views": [
+            "testing",
+            "development",
+            "security"
+          ],
+          "depth": "standard",
+          "evidence": true
+        },
+        "clarification": {
+          "mode": "when-needed",
+          "maxQuestions": 3,
+          "topics": [
+            "test gaps",
+            "environment",
+            "evidence",
+            "deviations"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "writeScope": "source-and-artifact",
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "quality-reviewers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation",
+            "verification"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "qualityCommands": [],
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "implementation-spec",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/implementation-spec/implementation-spec.md"
+          },
+          {
+            "phase": "implementation",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/implementation/implementation-summary.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "comparison": {},
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "common/verification.md",
+        "defaultAgent": "qa"
+      },
+      {
+        "id": "conformance",
+        "order": 6,
+        "label": "Spec-to-code conformance",
+        "defaultTemplate": "common/conformance.md",
+        "artifact": {
+          "path": "artifacts/conformance/spec-code-comparison.md",
+          "kind": "conformance-report",
+          "minimumBytes": 400
+        },
+        "clarification": {
+          "mode": "when-needed",
+          "maxQuestions": 3,
+          "topics": [
+            "approved deviations",
+            "missing evidence",
+            "unplanned work"
+          ],
+          "markers": {
+            "mode": "off"
+          }
+        },
+        "worldModel": {
+          "views": [
+            "architecture",
+            "development",
+            "testing",
+            "security"
+          ],
+          "depth": "deep",
+          "evidence": true
+        },
+        "writeScope": "artifact-only",
+        "comparison": {
+          "identifiers": [
+            "acceptance-criteria",
+            "specification"
+          ],
+          "verdicts": [
+            "matched",
+            "partial",
+            "missing",
+            "deviated",
+            "unplanned"
+          ],
+          "exactFileLineEvidence": true
+        },
+        "approval": {
+          "mode": "required",
+          "policy": null,
+          "maximumChangedPaths": null,
+          "authorities": [
+            "quality-reviewers",
+            "architecture-reviewers"
+          ],
+          "requiredAuthorities": [],
+          "minimum": 1,
+          "rejectTo": [
+            "implementation-spec",
+            "fix-spec",
+            "implementation",
+            "verification",
+            "conformance"
+          ],
+          "allowSelfApproval": true,
+          "changeRequests": {
+            "commentRequired": true,
+            "reopenCompleted": true
+          }
+        },
+        "mcp": {
+          "requiredServers": [],
+          "requireSmoke": false,
+          "evidence": []
+        },
+        "repairBudget": null,
+        "inputs": [
+          {
+            "phase": "implementation-spec",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/implementation-spec/implementation-spec.md"
+          },
+          {
+            "phase": "implementation",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/implementation/implementation-summary.md"
+          },
+          {
+            "phase": "verification",
+            "optional": false,
+            "maxBytes": null,
+            "path": "artifacts/verification/test-evidence.md"
+          }
+        ],
+        "generation": {
+          "requirement": "required",
+          "defaultProducer": "governed-agent",
+          "allowedProducers": [
+            "governed-agent",
+            "human"
+          ],
+          "task": null,
+          "producer": "agent"
+        },
+        "specificationQuality": {
+          "mode": "off",
+          "checklist": "requirements-quality-v1",
+          "exceptionAuthority": null,
+          "assisted": false
+        },
+        "sourceBoundary": "unrestricted",
+        "template": "common/conformance.md",
+        "defaultAgent": "qa",
+        "qualityCommands": []
+      }
+    ]
+  },
+  "status": "in_progress",
+  "currentPhase": "intake",
+  "phaseOrder": [
+    "intake",
+    "requirements",
+    "design",
+    "implementation-spec",
+    "implementation",
+    "verification",
+    "conformance"
+  ],
+  "phases": {
+    "intake": {
+      "id": "intake",
+      "label": "Intake",
+      "order": 0,
+      "defaultAgent": "product-owner",
+      "status": "in_progress",
+      "requiredArtifact": {
+        "path": "artifacts/intake/intake.md",
+        "kind": "intake",
+        "minimumBytes": 200
+      },
+      "template": "feature/intake.md",
+      "worldModel": {
+        "views": [
+          "business"
+        ],
+        "depth": "quick"
+      },
+      "writeScope": "artifact-only",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "product-approvers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "intake"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": "2026-08-22T12:27:51.654Z",
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "requirements": {
+      "id": "requirements",
+      "label": "Requirements",
+      "order": 1,
+      "defaultAgent": "product-owner",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/requirements/requirements.md",
+        "kind": "requirements",
+        "minimumBytes": 300
+      },
+      "template": "feature/requirements.md",
+      "worldModel": {
+        "views": [
+          "business"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "artifact-only",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "intake",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/intake/intake.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "product-approvers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "intake",
+          "requirements"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "design": {
+      "id": "design",
+      "label": "Architecture and design",
+      "order": 2,
+      "defaultAgent": "architect",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/design/design.md",
+        "kind": "design",
+        "minimumBytes": 300
+      },
+      "template": "feature/design.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "security"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "artifact-only",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "requirements",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/requirements/requirements.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "architecture-reviewers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "requirements",
+          "design"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "implementation-spec": {
+      "id": "implementation-spec",
+      "label": "Implementation specification",
+      "order": 3,
+      "defaultAgent": "architect",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/implementation-spec/implementation-spec.md",
+        "kind": "implementation-spec",
+        "minimumBytes": 400
+      },
+      "template": "feature/implementation-spec.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ],
+        "depth": "deep"
+      },
+      "writeScope": "artifact-only",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "requirements",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/requirements/requirements.md"
+        },
+        {
+          "phase": "design",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/design/design.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "architecture-reviewers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "requirements",
+          "design",
+          "implementation-spec"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "implementation": {
+      "id": "implementation",
+      "label": "Implementation",
+      "order": 4,
+      "defaultAgent": "developer",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/implementation/implementation-summary.md",
+        "kind": "implementation-summary",
+        "minimumBytes": 250
+      },
+      "template": "common/implementation.md",
+      "worldModel": {
+        "views": [
+          "development",
+          "testing"
+        ],
+        "depth": "standard"
+      },
+      "writeScope": "source-and-artifact",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "design",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/design/design.md"
+        },
+        {
+          "phase": "implementation-spec",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/implementation-spec/implementation-spec.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "engineering-reviewers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "verification": {
+      "id": "verification",
+      "label": "Verification",
+      "order": 5,
+      "defaultAgent": "qa",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/verification/test-evidence.md",
+        "kind": "test-evidence",
+        "minimumBytes": 300
+      },
+      "template": "common/verification.md",
+      "worldModel": {
+        "views": [
+          "testing",
+          "development",
+          "security"
+        ],
+        "depth": "standard",
+        "evidence": true
+      },
+      "writeScope": "source-and-artifact",
+      "sourceBoundary": "unrestricted",
+      "comparison": {},
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "implementation-spec",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/implementation-spec/implementation-spec.md"
+        },
+        {
+          "phase": "implementation",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/implementation/implementation-summary.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "quality-reviewers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation",
+          "verification"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    },
+    "conformance": {
+      "id": "conformance",
+      "label": "Spec-to-code conformance",
+      "order": 6,
+      "defaultAgent": "qa",
+      "status": "not_started",
+      "requiredArtifact": {
+        "path": "artifacts/conformance/spec-code-comparison.md",
+        "kind": "conformance-report",
+        "minimumBytes": 400
+      },
+      "template": "common/conformance.md",
+      "worldModel": {
+        "views": [
+          "architecture",
+          "development",
+          "testing",
+          "security"
+        ],
+        "depth": "deep",
+        "evidence": true
+      },
+      "writeScope": "artifact-only",
+      "sourceBoundary": "unrestricted",
+      "comparison": {
+        "identifiers": [
+          "acceptance-criteria",
+          "specification"
+        ],
+        "verdicts": [
+          "matched",
+          "partial",
+          "missing",
+          "deviated",
+          "unplanned"
+        ],
+        "exactFileLineEvidence": true
+      },
+      "mcp": {
+        "requiredServers": [],
+        "requireSmoke": false,
+        "evidence": []
+      },
+      "repairBudget": null,
+      "inputs": [
+        {
+          "phase": "implementation-spec",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/implementation-spec/implementation-spec.md"
+        },
+        {
+          "phase": "implementation",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/implementation/implementation-summary.md"
+        },
+        {
+          "phase": "verification",
+          "optional": false,
+          "maxBytes": null,
+          "path": "artifacts/verification/test-evidence.md"
+        }
+      ],
+      "generationPolicy": {
+        "requirement": "required",
+        "defaultProducer": "governed-agent",
+        "allowedProducers": [
+          "governed-agent",
+          "human"
+        ],
+        "task": null,
+        "producer": "agent"
+      },
+      "approvalPolicy": {
+        "mode": "required",
+        "policy": null,
+        "maximumChangedPaths": null,
+        "authorities": [
+          "quality-reviewers",
+          "architecture-reviewers"
+        ],
+        "requiredAuthorities": [],
+        "minimum": 1,
+        "rejectTo": [
+          "implementation-spec",
+          "fix-spec",
+          "implementation",
+          "verification",
+          "conformance"
+        ],
+        "allowSelfApproval": true,
+        "changeRequests": {
+          "commentRequired": true,
+          "reopenCompleted": true
+        }
+      },
+      "qualityCommands": [],
+      "startedAt": null,
+      "submittedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "rejectedAt": null,
+      "rejectedBy": null,
+      "rejectionReason": null,
+      "generation": 0,
+      "generatedBy": null,
+      "generatedAgent": null,
+      "authorship": [],
+      "usage": [],
+      "telemetry": [],
+      "approvals": [],
+      "designSourceSets": [],
+      "artifacts": [],
+      "checks": []
+    }
+  },
+  "usage": {
+    "mode": "exact-or-unavailable",
+    "totalTokens": 0,
+    "records": 0,
+    "exactRecords": 0,
+    "unavailableRecords": 0,
+    "byPhase": {},
+    "byAgent": {},
+    "byWorkType": {},
+    "byWorkItem": {}
+  },
+  "telemetry": {
+    "schemaVersion": 1,
+    "mode": "work-item-sanitized"
+  },
+  "documents": {
+    "count": 0,
+    "updatedAt": null
+  },
+  "collaboration": {
+    "assignments": {},
+    "notifications": []
+  },
+  "sequenceOverrides": [],
+  "changeRequests": [],
+  "history": [
+    {
+      "at": "2026-08-22T12:27:51.654Z",
+      "actor": "ashokraj2011",
+      "agent": "product-owner",
+      "event": "work_started",
+      "phase": "intake",
+      "detail": "Created feature branch ANU-STORY"
+    }
+  ],
+  "measurement": {
+    "schemaVersion": 1,
+    "status": "not-enrolled",
+    "plan": null,
+    "exposures": [],
+    "evidence": [],
+    "receipt": null,
+    "invalidations": []
+  },
+  "publicationProjections": [
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "ecfcae75-5062-42ba-a844-753be1e19da7",
+        "type": "binding",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-STORY",
+          "branch": "ANU-STORY"
+        },
+        "phaseId": "intake",
+        "generation": 0,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "configurationBranch": "sflow/config",
+          "configurationCommit": "e0c3083af3f08b7900c2286e9b203d7641cbed85",
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-22T12:27:51.728Z"
+      },
+      "ledgerIntent": {
+        "schemaVersion": 1,
+        "eventId": "ecfcae75-5062-42ba-a844-753be1e19da7",
+        "eventType": "binding",
+        "capabilityId": "rule-engine",
+        "subject": {
+          "branch": "ANU-STORY",
+          "generation": 0,
+          "phase": "intake",
+          "workId": "ANU-STORY",
+          "workType": "feature"
+        },
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "githubLogin": "ashokraj2011",
+          "identityAssurance": "configured-local"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+          "capabilityPolicy": {
+            "allowSelfApproval": true,
+            "approvalMinimum": 1,
+            "gateSeverity": "warn",
+            "protectedPaths": [
+              "singularity/workflow.yml",
+              "singularity/capabilities.yml"
+            ],
+            "qualityCommands": [],
+            "requiredAuthorityGroups": [],
+            "requiredChecks": [],
+            "requiredWorldModelViews": []
+          },
+          "configPath": "singularity/workflow.yml",
+          "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+          "lifecycleEventId": "ecfcae75-5062-42ba-a844-753be1e19da7",
+          "lifecyclePayload": {
+            "configurationBranch": "sflow/config",
+            "configurationCommit": "e0c3083af3f08b7900c2286e9b203d7641cbed85",
+            "decision": null,
+            "reviewPacketSha256": null
+          },
+          "templateSha256": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab"
+        },
+        "createdAt": "2026-08-22T12:27:51.733Z"
+      }
+    }
+  ]
+}

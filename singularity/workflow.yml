@@ -62,14 +62,7 @@ planning:
   maxContextBytes: 1048576
 
 worldModel:
-  views:
-    - business
-    - architecture
-    - development
-    - testing
-    - release
-    - operations
-    - security
+  views: [business, architecture, development, testing, release, operations, security]
   outputDir: singularity/world-model
   promptSource: singularity/prompts/worldmodel-builder.md
   # State-branch refresh is bounded so an offline corporate remote cannot hang prompt composition.
@@ -87,8 +80,8 @@ worldModel:
     # To make `next` run the deterministic equivalent of `wm light --phase <current>`, set:
     # mode: on-demand, depth: light, confirmation: automatic. That path never invokes a model.
     # Use depth: phase with confirmation: prompt when exact phase-depth generation is preferred.
-    depth: light
-    confirmation: automatic
+    depth: phase
+    confirmation: prompt
   # warn, not enforce. Grounding is a quality signal, and a repository that has not built a world
   # model yet — or has no model provider configured at all — must still be able to run its
   # lifecycle. Under `warn` the check runs and reports; under `enforce` it blocks publication.
@@ -98,7 +91,7 @@ worldModel:
   injection:
     placeholder: "{{WORLD_MODEL}}"
     mode: append
-    maxBytes: 34817
+    maxBytes: 32768
     rules: []
     # Rules add focused context to the active agent prompt. Phase-required
     # views below are always loaded separately and cannot be removed by rules.
@@ -111,8 +104,6 @@ worldModel:
 
     # Trusted kernel-owned model providers. Arguments are passed directly without a
     # shell; credentials remain in the provider/host environment and are never stored here.
-  sourceRoots: []
-  sharedRoots: []
 models:
   defaultProvider: copilot-cli
   providers:
@@ -140,16 +131,7 @@ spec:
   excludes: []
 
 documents:
-  allowedPhases:
-    [
-      intake,
-      requirements,
-      design,
-      implementation-spec,
-      reproduction,
-      fix-design,
-      fix-spec
-    ]
+  allowedPhases: [intake, requirements, design, implementation-spec, reproduction, fix-design, fix-spec]
   maxFileBytes: 26214400
   maxPreviewBytes: 1048576
 
@@ -173,7 +155,7 @@ collaboration:
   approvalReminderAfterHours: 24
   # Add teams-webhook to summon reviewers after publication. The URL stays local
   # in VS Code SecretStorage or SINGULARITY_FLOW_TEAMS_WEBHOOK_URL; it is never committed.
-  notifications: [ terminal ]
+  notifications: [terminal]
 
 # Activity logging. The log is written to .git/singularity-flow/logs/activity.log, so it
 # stays machine-local and is never committed. Read it with `singularity-flow logs`.
@@ -203,23 +185,9 @@ mcpServers:
   figma:
     label: Figma design context
     hostReference: figma
-    agents: [ product-designer ]
-    phases:
-      [
-        design-intake,
-        design-inventory,
-        component-mapping,
-        mobile-spec,
-        visual-verification
-      ]
-    tools:
-      [
-        get_metadata,
-        get_design_context,
-        get_screenshot,
-        get_variable_defs,
-        get_code_connect_map
-      ]
+    agents: [product-designer]
+    phases: [design-intake, design-inventory, component-mapping, mobile-spec, visual-verification]
+    tools: [get_metadata, get_design_context, get_screenshot, get_variable_defs, get_code_connect_map]
     required: false
     approval: confirm
     evidence:
@@ -228,22 +196,9 @@ mcpServers:
   playwright:
     label: Playwright browser automation
     hostReference: playwright
-    agents: [ qa, product-designer ]
-    phases:
-      [
-        design-intake,
-        design-inventory,
-        verification,
-        visual-verification,
-        conformance
-      ]
-    tools:
-      [
-        browser_navigate,
-        browser_snapshot,
-        browser_click,
-        browser_take_screenshot
-      ]
+    agents: [qa, product-designer]
+    phases: [design-intake, design-inventory, verification, visual-verification, conformance]
+    tools: [browser_navigate, browser_snapshot, browser_click, browser_take_screenshot]
     required: false
     approval: confirm
     evidence:
@@ -276,103 +231,57 @@ approvalAuthorities:
 workTypes:
   feature:
     label: Feature
-    phases:
-      [
-        intake,
-        requirements,
-        design,
-        implementation-spec,
-        implementation,
-        verification,
-        conformance
-      ]
+    phases: [intake, requirements, design, implementation-spec, implementation, verification, conformance]
     templateOverrides:
       intake: feature/intake.md
       requirements: feature/requirements.md
       design: feature/design.md
       implementation-spec: feature/implementation-spec.md
     phaseOverrides:
-      requirements: { inputs: [ intake ] }
-      design: { inputs: [ requirements ] }
-      implementation-spec: { inputs: [ requirements, design ] }
-      implementation: { inputs: [ design, implementation-spec ] }
-      verification: { inputs: [ implementation-spec, implementation ] }
-      conformance: { inputs: [ implementation-spec, implementation, verification ] }
+      requirements: {inputs: [intake]}
+      design: {inputs: [requirements]}
+      implementation-spec: {inputs: [requirements, design]}
+      implementation: {inputs: [design, implementation-spec]}
+      verification: {inputs: [implementation-spec, implementation]}
+      conformance: {inputs: [implementation-spec, implementation, verification]}
   bugfix:
     label: Bug fix
-    phases:
-      [
-        intake,
-        reproduction,
-        fix-design,
-        fix-spec,
-        implementation,
-        verification,
-        conformance
-      ]
+    phases: [intake, reproduction, fix-design, fix-spec, implementation, verification, conformance]
     templateOverrides:
       intake: bugfix/intake.md
       reproduction: bugfix/reproduction.md
       fix-design: bugfix/fix-design.md
       fix-spec: bugfix/fix-spec.md
     phaseOverrides:
-      reproduction: { inputs: [ intake ] }
-      fix-design: { inputs: [ reproduction ] }
-      fix-spec: { inputs: [ reproduction, fix-design ] }
-      implementation: { inputs: [ fix-spec ] }
-      verification: { inputs: [ fix-spec, implementation ] }
-      conformance: { inputs: [ fix-spec, implementation, verification ] }
+      reproduction: {inputs: [intake]}
+      fix-design: {inputs: [reproduction]}
+      fix-spec: {inputs: [reproduction, fix-design]}
+      implementation: {inputs: [fix-spec]}
+      verification: {inputs: [fix-spec, implementation]}
+      conformance: {inputs: [fix-spec, implementation, verification]}
   chore:
     label: Chore
-    phases: [ intake, implementation, verification, conformance ]
+    phases: [intake, implementation, verification, conformance]
     templateOverrides:
       intake: chore/intake.md
     phaseOverrides:
-      implementation: { inputs: [ intake ] }
-      verification: { inputs: [ implementation ] }
-      conformance: { inputs: [ implementation, verification ] }
+      implementation: {inputs: [intake]}
+      verification: {inputs: [implementation]}
+      conformance: {inputs: [implementation, verification]}
   figma-mobile:
     label: Figma export to mobile app
-    phases:
-      [
-        design-intake,
-        design-inventory,
-        component-mapping,
-        mobile-spec,
-        implementation,
-        visual-verification,
-        conformance
-      ]
+    phases: [design-intake, design-inventory, component-mapping, mobile-spec, implementation, visual-verification, conformance]
     designSources:
       capturePhase: design-intake
-      consumeIn:
-        [
-          design-inventory,
-          component-mapping,
-          mobile-spec,
-          visual-verification,
-          conformance
-        ]
+      consumeIn: [design-inventory, component-mapping, mobile-spec, visual-verification, conformance]
       staleness: warn
       requireApprovedSet: true
       inventoryDigest: optional
     verification:
       coverage: enforce
       profiles:
-        - {
-            id: phone-390x844,
-            label: Phone 390 × 844,
-            width: 390,
-            height: 844,
-            deviceScaleFactor: 1
-          }
-        - {
-            id: tablet-834x1194,
-            label: Tablet 834 × 1194,
-            width: 834,
-            height: 1194,
-            deviceScaleFactor: 1
-          }
+        - {id: phone-390x844, label: Phone 390 × 844, width: 390, height: 844, deviceScaleFactor: 1}
+        - {id: tablet-834x1194, label: Tablet 834 × 1194, width: 834, height: 1194, deviceScaleFactor: 1}
       comparison:
         mode: warn
         channelTolerance: 8
@@ -380,7 +289,7 @@ workTypes:
         maxDifferingPixels: null
         maxPixels: 40000000
     documents:
-      allowedPhases: [ design-intake, design-inventory ]
+      allowedPhases: [design-intake, design-inventory]
     templateOverrides:
       design-intake: figma-mobile/design-intake.md
       design-inventory: figma-mobile/design-inventory.md
@@ -390,411 +299,206 @@ workTypes:
       visual-verification: figma-mobile/visual-verification.md
       conformance: figma-mobile/conformance.md
     phaseOverrides:
-      design-inventory: { inputs: [ design-intake ] }
-      component-mapping: { inputs: [ design-inventory ] }
-      mobile-spec: { inputs: [ design-inventory, component-mapping ] }
-      implementation: { inputs: [ component-mapping, mobile-spec ] }
-      visual-verification: { inputs: [ design-inventory, mobile-spec, implementation ] }
+      design-inventory: {inputs: [design-intake]}
+      component-mapping: {inputs: [design-inventory]}
+      mobile-spec: {inputs: [design-inventory, component-mapping]}
+      implementation: {inputs: [component-mapping, mobile-spec]}
+      visual-verification: {inputs: [design-inventory, mobile-spec, implementation]}
       conformance:
-        inputs: [ mobile-spec, implementation, visual-verification ]
-        approval:
-          {
-            authorities: [ design-reviewers, architecture-reviewers, quality-reviewers ],
-            minimum: 2,
-            rejectTo:
-              [
-                design-inventory,
-                component-mapping,
-                mobile-spec,
-                implementation,
-                visual-verification,
-                conformance
-              ]
-          }
+        inputs: [mobile-spec, implementation, visual-verification]
+        approval: {authorities: [design-reviewers, architecture-reviewers, quality-reviewers], minimum: 2, rejectTo: [design-inventory, component-mapping, mobile-spec, implementation, visual-verification, conformance]}
     sequenceGates:
       documentPhase: hard
   quick-fix:
     label: Quick fix
-    phases: [ implement, verify ]
+    phases: [implement, verify]
     templateOverrides:
       implement: quick-fix/implement.md
       verify: quick-fix/verify.md
     phaseOverrides:
-      verify: { inputs: [ implement ] }
+      verify: {inputs: [implement]}
 
 phases:
   implement:
     label: Implement
     defaultTemplate: quick-fix/implement.md
-    artifact:
-      {
-        path: artifacts/implement/implementation-summary.md,
-        kind: implementation-summary,
-        minimumBytes: 200
-      }
-    generation: { requirement: required, producer: deterministic }
-    worldModel: { views: [ development ], depth: quick }
+    artifact: {path: artifacts/implement/implementation-summary.md, kind: implementation-summary, minimumBytes: 200}
+    generation: {requirement: required, producer: deterministic}
+    worldModel: {views: [development], depth: quick}
     writeScope: source-and-artifact
     approval: none
     qualityCommands: []
   verify:
     label: Verify
     defaultTemplate: quick-fix/verify.md
-    artifact:
-      {
-        path: artifacts/verify/verification-summary.md,
-        kind: test-evidence,
-        minimumBytes: 200
-      }
-    generation: { requirement: required, producer: deterministic }
-    worldModel: { views: [ testing ], depth: quick, evidence: true }
+    artifact: {path: artifacts/verify/verification-summary.md, kind: test-evidence, minimumBytes: 200}
+    generation: {requirement: required, producer: deterministic}
+    worldModel: {views: [testing], depth: quick, evidence: true}
     writeScope: source-and-artifact
-    approval:
-      {
-        mode: policy,
-        policy: quick-fix-low-risk-v1,
-        maximumChangedPaths: 5,
-        authorities: [ quality-reviewers ],
-        minimum: 1,
-        rejectTo: [ implement, verify ]
-      }
+    approval: {mode: policy, policy: quick-fix-low-risk-v1, maximumChangedPaths: 5, authorities: [quality-reviewers], minimum: 1, rejectTo: [implement, verify]}
     # A policy waiver is impossible without at least one required check. Repositories
     # should replace or extend this deterministic baseline with their own test command.
     qualityCommands:
       - id: git-diff-check
-        argv: [ git, diff, --check ]
+        argv: [git, diff, --check]
         modelPolicy: never
   intake:
     label: Intake
     defaultTemplate: common/intake.md
-    artifact: { path: artifacts/intake/intake.md, kind: intake, minimumBytes: 200 }
-    worldModel: { views: [ business ], depth: quick }
+    artifact: {path: artifacts/intake/intake.md, kind: intake, minimumBytes: 200}
+    worldModel: {views: [business], depth: quick}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ problem, outcome, users, scope, constraints ]
+      topics: [problem, outcome, users, scope, constraints]
     writeScope: artifact-only
-    approval: { authorities: [ product-approvers ], minimum: 1, rejectTo: [ intake ] }
+    approval: {authorities: [product-approvers], minimum: 1, rejectTo: [intake]}
   requirements:
     label: Requirements
     defaultTemplate: feature/requirements.md
-    artifact:
-      {
-        path: artifacts/requirements/requirements.md,
-        kind: requirements,
-        minimumBytes: 300
-      }
-    worldModel: { views: [ business ], depth: standard }
+    artifact: {path: artifacts/requirements/requirements.md, kind: requirements, minimumBytes: 300}
+    worldModel: {views: [business], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ scope, acceptance criteria, dependencies, constraints, risks ]
+      topics: [scope, acceptance criteria, dependencies, constraints, risks]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ product-approvers ],
-        minimum: 1,
-        rejectTo: [ intake, requirements ]
-      }
+    approval: {authorities: [product-approvers], minimum: 1, rejectTo: [intake, requirements]}
   design:
     label: Architecture and design
     defaultTemplate: feature/design.md
-    artifact: { path: artifacts/design/design.md, kind: design, minimumBytes: 300 }
-    worldModel: { views: [ architecture, security ], depth: standard }
+    artifact: {path: artifacts/design/design.md, kind: design, minimumBytes: 300}
+    worldModel: {views: [architecture, security], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ boundaries, contracts, failure behavior, security, migration ]
+      topics: [boundaries, contracts, failure behavior, security, migration]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ requirements, design ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [requirements, design]}
   implementation-spec:
     label: Implementation specification
     defaultTemplate: feature/implementation-spec.md
-    artifact:
-      {
-        path: artifacts/implementation-spec/implementation-spec.md,
-        kind: implementation-spec,
-        minimumBytes: 400
-      }
-    worldModel: { views: [ architecture, development, testing, security ], depth: deep }
+    artifact: {path: artifacts/implementation-spec/implementation-spec.md, kind: implementation-spec, minimumBytes: 400}
+    worldModel: {views: [architecture, development, testing, security], depth: deep}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ interfaces, data, security, observability, migration, tests ]
+      topics: [interfaces, data, security, observability, migration, tests]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ requirements, design, implementation-spec ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [requirements, design, implementation-spec]}
   reproduction:
     label: Reproduction
     defaultTemplate: bugfix/reproduction.md
-    artifact:
-      {
-        path: artifacts/reproduction/reproduction.md,
-        kind: reproduction,
-        minimumBytes: 250
-      }
-    worldModel: { views: [ development, testing ], depth: standard }
+    artifact: {path: artifacts/reproduction/reproduction.md, kind: reproduction, minimumBytes: 250}
+    worldModel: {views: [development, testing], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ observed behavior, expected behavior, reproduction, environment, impact ]
+      topics: [observed behavior, expected behavior, reproduction, environment, impact]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ quality-reviewers ],
-        minimum: 1,
-        rejectTo: [ intake, reproduction ]
-      }
+    approval: {authorities: [quality-reviewers], minimum: 1, rejectTo: [intake, reproduction]}
   fix-design:
     label: Fix design
     defaultTemplate: bugfix/fix-design.md
-    artifact:
-      {
-        path: artifacts/fix-design/fix-design.md,
-        kind: fix-design,
-        minimumBytes: 250
-      }
-    worldModel: { views: [ architecture, development, security ], depth: standard }
+    artifact: {path: artifacts/fix-design/fix-design.md, kind: fix-design, minimumBytes: 250}
+    worldModel: {views: [architecture, development, security], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ root cause, scope, regression risk, compatibility, rollback ]
+      topics: [root cause, scope, regression risk, compatibility, rollback]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ reproduction, fix-design ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [reproduction, fix-design]}
   fix-spec:
     label: Fix specification
     defaultTemplate: bugfix/fix-spec.md
-    artifact:
-      {
-        path: artifacts/fix-spec/fix-spec.md,
-        kind: implementation-spec,
-        minimumBytes: 300
-      }
-    worldModel: { views: [ development, testing, security ], depth: standard }
+    artifact: {path: artifacts/fix-spec/fix-spec.md, kind: implementation-spec, minimumBytes: 300}
+    worldModel: {views: [development, testing, security], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics:
-        [
-          changed behavior,
-          test expectations,
-          compatibility,
-          failure behavior,
-          rollback
-        ]
+      topics: [changed behavior, test expectations, compatibility, failure behavior, rollback]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ reproduction, fix-design, fix-spec ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [reproduction, fix-design, fix-spec]}
   design-intake:
     label: Design package intake
     defaultTemplate: figma-mobile/design-intake.md
-    artifact:
-      {
-        path: artifacts/design-intake/design-package-intake.md,
-        kind: design-intake,
-        minimumBytes: 350
-      }
-    worldModel: { views: [ business, architecture ], depth: standard }
+    artifact: {path: artifacts/design-intake/design-package-intake.md, kind: design-intake, minimumBytes: 350}
+    worldModel: {views: [business, architecture], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics:
-        [
-          target platforms,
-          screen states,
-          interactions,
-          accessibility,
-          design constraints
-        ]
+      topics: [target platforms, screen states, interactions, accessibility, design constraints]
     writeScope: artifact-only
-    approval: { authorities: [ design-reviewers ], minimum: 1, rejectTo: [ design-intake ] }
+    approval: {authorities: [design-reviewers], minimum: 1, rejectTo: [design-intake]}
   design-inventory:
     label: Screen and design inventory
     defaultTemplate: figma-mobile/design-inventory.md
-    artifact:
-      {
-        path: artifacts/design-inventory/design-inventory.md,
-        kind: design-inventory,
-        minimumBytes: 500
-      }
-    worldModel: { views: [ business, architecture ], depth: standard }
+    artifact: {path: artifacts/design-inventory/design-inventory.md, kind: design-inventory, minimumBytes: 500}
+    worldModel: {views: [business, architecture], depth: standard}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ screen states, transitions, assets, responsive behavior, evidence gaps ]
+      topics: [screen states, transitions, assets, responsive behavior, evidence gaps]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ design-reviewers ],
-        minimum: 1,
-        rejectTo: [ design-intake, design-inventory ]
-      }
+    approval: {authorities: [design-reviewers], minimum: 1, rejectTo: [design-intake, design-inventory]}
   component-mapping:
     label: Mobile component mapping
     defaultTemplate: figma-mobile/component-mapping.md
-    artifact:
-      {
-        path: artifacts/component-mapping/component-mapping.md,
-        kind: component-mapping,
-        minimumBytes: 500
-      }
-    worldModel: { views: [ architecture, development, security ], depth: deep }
+    artifact: {path: artifacts/component-mapping/component-mapping.md, kind: component-mapping, minimumBytes: 500}
+    worldModel: {views: [architecture, development, security], depth: deep}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ component ownership, navigation, state, data contracts, accessibility ]
+      topics: [component ownership, navigation, state, data contracts, accessibility]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ design-inventory, component-mapping ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [design-inventory, component-mapping]}
   mobile-spec:
     label: Mobile implementation specification
     defaultTemplate: figma-mobile/mobile-spec.md
-    artifact:
-      {
-        path: artifacts/mobile-spec/mobile-spec.md,
-        kind: implementation-spec,
-        minimumBytes: 700
-      }
-    worldModel: { views: [ architecture, development, testing, security ], depth: deep }
+    artifact: {path: artifacts/mobile-spec/mobile-spec.md, kind: implementation-spec, minimumBytes: 700}
+    worldModel: {views: [architecture, development, testing, security], depth: deep}
     clarification:
       mode: required
       maxQuestions: 5
-      topics: [ behavior, interfaces, failure states, analytics, testing ]
+      topics: [behavior, interfaces, failure states, analytics, testing]
     writeScope: artifact-only
-    approval:
-      {
-        authorities: [ architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ design-inventory, component-mapping, mobile-spec ]
-      }
+    approval: {authorities: [architecture-reviewers], minimum: 1, rejectTo: [design-inventory, component-mapping, mobile-spec]}
   implementation:
     label: Implementation
     defaultTemplate: common/implementation.md
-    artifact:
-      {
-        path: artifacts/implementation/implementation-summary.md,
-        kind: implementation-summary,
-        minimumBytes: 250
-      }
-    worldModel: { views: [ development, testing ], depth: standard }
-    clarification:
-      {
-        mode: when-needed,
-        maxQuestions: 3,
-        topics: [ approved deviations, implementation blockers ]
-      }
+    artifact: {path: artifacts/implementation/implementation-summary.md, kind: implementation-summary, minimumBytes: 250}
+    worldModel: {views: [development, testing], depth: standard}
+    clarification: {mode: when-needed, maxQuestions: 3, topics: [approved deviations, implementation blockers]}
     writeScope: source-and-artifact
-    approval:
-      {
-        authorities: [ engineering-reviewers ],
-        minimum: 1,
-        rejectTo: [ implementation ]
-      }
+    approval: {authorities: [engineering-reviewers], minimum: 1, rejectTo: [implementation]}
     qualityCommands: []
   verification:
     label: Verification
     defaultTemplate: common/verification.md
-    artifact:
-      {
-        path: artifacts/verification/test-evidence.md,
-        kind: test-evidence,
-        minimumBytes: 300
-      }
-    worldModel: { views: [ testing, development, security ], depth: standard, evidence: true }
-    clarification:
-      {
-        mode: when-needed,
-        maxQuestions: 3,
-        topics: [ test gaps, environment, evidence, deviations ]
-      }
+    artifact: {path: artifacts/verification/test-evidence.md, kind: test-evidence, minimumBytes: 300}
+    worldModel: {views: [testing, development, security], depth: standard, evidence: true}
+    clarification: {mode: when-needed, maxQuestions: 3, topics: [test gaps, environment, evidence, deviations]}
     writeScope: source-and-artifact
-    approval:
-      {
-        authorities: [ quality-reviewers ],
-        minimum: 1,
-        rejectTo: [ implementation, verification ]
-      }
+    approval: {authorities: [quality-reviewers], minimum: 1, rejectTo: [implementation, verification]}
     qualityCommands: []
   visual-verification:
     label: Mobile visual verification
     defaultTemplate: figma-mobile/visual-verification.md
-    artifact:
-      {
-        path: artifacts/visual-verification/visual-comparison.md,
-        kind: visual-test-evidence,
-        minimumBytes: 600
-      }
-    worldModel: { views: [ testing, development, security ], depth: deep, evidence: true }
-    clarification:
-      {
-        mode: when-needed,
-        maxQuestions: 3,
-        topics: [ visual tolerance, device evidence, accessibility, deviations ]
-      }
+    artifact: {path: artifacts/visual-verification/visual-comparison.md, kind: visual-test-evidence, minimumBytes: 600}
+    worldModel: {views: [testing, development, security], depth: deep, evidence: true}
+    clarification: {mode: when-needed, maxQuestions: 3, topics: [visual tolerance, device evidence, accessibility, deviations]}
     writeScope: source-and-artifact
-    approval:
-      {
-        authorities: [ design-reviewers, quality-reviewers ],
-        minimum: 2,
-        rejectTo: [ component-mapping, mobile-spec, implementation, visual-verification ]
-      }
+    approval: {authorities: [design-reviewers, quality-reviewers], minimum: 2, rejectTo: [component-mapping, mobile-spec, implementation, visual-verification]}
     qualityCommands: []
   conformance:
     label: Spec-to-code conformance
     defaultTemplate: common/conformance.md
-    artifact:
-      {
-        path: artifacts/conformance/spec-code-comparison.md,
-        kind: conformance-report,
-        minimumBytes: 400
-      }
-    clarification:
-      {
-        mode: when-needed,
-        maxQuestions: 3,
-        topics: [ approved deviations, missing evidence, unplanned work ]
-      }
-    worldModel:
-      {
-        views: [ architecture, development, testing, security ],
-        depth: deep,
-        evidence: true
-      }
+    artifact: {path: artifacts/conformance/spec-code-comparison.md, kind: conformance-report, minimumBytes: 400}
+    clarification: {mode: when-needed, maxQuestions: 3, topics: [approved deviations, missing evidence, unplanned work]}
+    worldModel: {views: [architecture, development, testing, security], depth: deep, evidence: true}
     writeScope: artifact-only
-    comparison:
-      {
-        identifiers: [ acceptance-criteria, specification ],
-        verdicts: [ matched, partial, missing, deviated, unplanned ],
-        exactFileLineEvidence: true
-      }
-    approval:
-      {
-        authorities: [ quality-reviewers, architecture-reviewers ],
-        minimum: 1,
-        rejectTo: [ implementation-spec, fix-spec, implementation, verification, conformance ]
-      }
+    comparison: {identifiers: [acceptance-criteria, specification], verdicts: [matched, partial, missing, deviated, unplanned], exactFileLineEvidence: true}
+    approval: {authorities: [quality-reviewers, architecture-reviewers], minimum: 1, rejectTo: [implementation-spec, fix-spec, implementation, verification, conformance]}
 
 governance:
   requireAcceptanceCriteriaTags: true
