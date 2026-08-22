@@ -1,13 +1,13 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-22T12:43:52.875Z",
+  "generated_at": "2026-08-22T13:46:53.095Z",
   "generated_date": "22 August 2026",
   "builder_version": "2.1-light",
   "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
-  "repository_commit": "46417a9a552adbc43abaa79b407652c0a13bb0e1",
+  "repository_commit": "701241d37bece3bb00362de9fb0341ac82d3b1d2",
   "repository_branch": "ANU-STORY",
   "working_tree_clean": false,
-  "generated_for_phase": "requirements",
+  "generated_for_phase": "design",
   "analysis_depth": "light",
   "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
   "generator": {
@@ -58,13 +58,53 @@
           "sha256": "e56ba70700c174cf1c4ca37b61d9b4852397ecceb9c8a54d3e1665a908288510"
         }
       }
+    },
+    "architecture": {
+      "tiers": {
+        "brief": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/architecture.md",
+          "bytes": 763,
+          "sha256": "962aa94f3b996a1068ef4b1be04ce36431f4542ed79df88933c121a7ad702ee9"
+        }
+      },
+      "brief_path": null,
+      "path": "views/architecture.md",
+      "generated": true
+    },
+    "security": {
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/security.brief.md",
+          "bytes": 226,
+          "sha256": "aa5a42321e905ea1c1c66026eaa7ae8f2c3d731fe37486cd2d3dcb8c9caf0246"
+        },
+        "full": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        }
+      },
+      "brief_path": "views/security.brief.md",
+      "path": null,
+      "generated": true
     }
   },
   "views_generated": [
-    "business"
+    "architecture",
+    "security"
   ],
   "requested_views": [
-    "business"
+    "architecture",
+    "security"
   ],
   "domains": [],
   "task_guides": [
@@ -129,6 +169,72 @@
       "produced": [
         "business/full",
         "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
       ],
       "reused": [
         "core/brief"
