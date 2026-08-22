@@ -1,20 +1,92 @@
 {
-  "schemaVersion": 1,
-  "mode": "bounded-light-index",
-  "totalPaths": 23,
-  "representativePaths": [
-    "README.md",
-    "pom.xml",
-    "src/main/java/org/example/Main.java",
-    "src/main/java/org/example/RuleEngineApplication.java",
-    "src/main/java/org/example/api/GlobalExceptionHandler.java",
-    "src/main/java/org/example/api/RuleEngineController.java",
-    "src/main/java/org/example/api/dto/EvaluateRequest.java",
-    "src/main/java/org/example/api/dto/EvaluateResponse.java",
-    "src/main/java/org/example/rules/Operator.java",
-    "src/main/java/org/example/rules/RuleEngineService.java",
-    "src/test/java/org/example/api/RuleEngineControllerTest.java",
-    "src/test/java/org/example/rules/RuleEngineServiceTest.java"
+  "schema_version": "1.0",
+  "generated_at": "2026-08-22T14:44:16.846Z",
+  "repository_commit": "5268d8abf4c696e8ff5bdeb9eb956bede7c75cc8",
+  "entries": [
+    {
+      "glob": "src/main/java/org/example/api/**",
+      "component_ids": [
+        "api-boundary"
+      ],
+      "domains": [
+        "rule-engine"
+      ],
+      "views": [
+        "architecture",
+        "development",
+        "security"
+      ],
+      "symbols": [
+        "RuleEngineController",
+        "EvaluateRequest",
+        "GlobalExceptionHandler"
+      ],
+      "tests": [
+        "src/test/java/org/example/api/RuleEngineControllerTest.java"
+      ],
+      "anchors": [
+        "arch.contracts",
+        "dev.symbols",
+        "sec.surface"
+      ],
+      "notes": "Grounding for API-boundary changes and validation behavior."
+    },
+    {
+      "glob": "src/main/java/org/example/rules/**",
+      "component_ids": [
+        "rule-engine-service"
+      ],
+      "domains": [
+        "rule-engine"
+      ],
+      "views": [
+        "architecture",
+        "development",
+        "testing",
+        "security"
+      ],
+      "symbols": [
+        "RuleEngineService",
+        "Operator"
+      ],
+      "tests": [
+        "src/test/java/org/example/rules/RuleEngineServiceTest.java"
+      ],
+      "anchors": [
+        "arch.workflows",
+        "dev.hotspots",
+        "test.strategy",
+        "sec.input"
+      ],
+      "notes": "Grounding for evaluator semantics, operators, and rule-grammar changes."
+    },
+    {
+      "glob": "pom.xml",
+      "component_ids": [
+        "build-system"
+      ],
+      "domains": [],
+      "views": [
+        "architecture",
+        "development",
+        "testing"
+      ],
+      "symbols": [],
+      "tests": [],
+      "anchors": [
+        "core.tech",
+        "dev.entrypoints",
+        "test.commands"
+      ],
+      "notes": "Grounding for dependencies, Java version, and build tools."
+    }
   ],
-  "omittedPathCount": 11
+  "fallback": {
+    "views": [
+      "development"
+    ],
+    "anchors": [
+      "core.map"
+    ]
+  }
 }
