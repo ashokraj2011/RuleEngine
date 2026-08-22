@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "phase": "implementation-spec",
+  "generation": 1,
+  "capturedAt": "2026-08-22T14:20:50.172Z",
+  "source": "copilot-otel",
+  "rawTraceCommitted": false,
+  "spanCount": 0,
+  "rawBytesRead": 0,
+  "startedAt": "2026-08-22T14:10:03.249Z",
+  "completedAt": "2026-08-22T14:20:50.164Z",
+  "pending": true,
+  "warnings": [
+    "No completed Copilot chat spans were available before publication.",
+    "The active Copilot turn has not been exported yet; telemetry will be reconciled automatically before submission."
+  ],
+  "privacyDiagnostics": [],
+  "launches": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-22T14:20:50.164Z",
+      "completedAt": "2026-08-22T14:20:50.164Z",
+      "agent": "architect",
+      "generation": 1
+    }
+  ]
+}

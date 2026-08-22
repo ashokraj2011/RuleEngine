@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "phase": "implementation-spec",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-22T14:20:50.007Z",
+  "renderedSha256": "c9d3083454bf6ac7112ed971d8ff9469434db9db21dcfce32d008083c700e5eb",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "requirements",
+      "path": "artifacts/requirements/requirements.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T12:54:44.379Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "0e042063c4f8d950b74a69c7d670bd38876c68a1fbc16f4d2d5dfcf911426de2",
+      "sha256": "0e042063c4f8d950b74a69c7d670bd38876c68a1fbc16f4d2d5dfcf911426de2",
+      "bytes": 12370,
+      "injectedBytes": 12368,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    },
+    {
+      "phase": "design",
+      "path": "artifacts/design/design.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T14:09:08.558Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "428779d668f0575a9479582a176fbeed9f12bf9cf39931ae742a05887d546199",
+      "sha256": "428779d668f0575a9479582a176fbeed9f12bf9cf39931ae742a05887d546199",
+      "bytes": 21066,
+      "injectedBytes": 21064,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}
