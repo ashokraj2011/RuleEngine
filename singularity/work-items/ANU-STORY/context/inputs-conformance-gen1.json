@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "phase": "conformance",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-22T15:59:55.654Z",
+  "renderedSha256": "664849e5acc7678978e2b8dcba94b8d2cd4c230105141fef8f34841a3013dcfb",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "implementation-spec",
+      "path": "artifacts/implementation-spec/implementation-spec.md",
+      "repositoryPath": "singularity/work-items/ANU-STORY/artifacts/implementation-spec/implementation-spec.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T14:28:52.961Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "3d45eb4a2eb29470185d7381fbcda953cb1fbe457a0e0512fd9f215cbe51fa6c",
+      "sha256": "3d45eb4a2eb29470185d7381fbcda953cb1fbe457a0e0512fd9f215cbe51fa6c",
+      "bytes": 41939,
+      "injectedBytes": 41937,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    },
+    {
+      "phase": "implementation",
+      "path": "artifacts/implementation/implementation-summary.md",
+      "repositoryPath": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T15:48:38.509Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "7c588b1be395a12297f7fd5c74b874cff3849aa5121252bcc36d9bd1a2bde9bd",
+      "sha256": "7c588b1be395a12297f7fd5c74b874cff3849aa5121252bcc36d9bd1a2bde9bd",
+      "bytes": 69764,
+      "injectedBytes": 69762,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    },
+    {
+      "phase": "verification",
+      "path": "artifacts/verification/test-evidence.md",
+      "repositoryPath": "singularity/work-items/ANU-STORY/artifacts/verification/test-evidence.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T15:57:55.086Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "5be3999cb7d17ad950c6fb2447fa9862dd9dfd5d7cc7d62767a79d268775fff4",
+      "sha256": "5be3999cb7d17ad950c6fb2447fa9862dd9dfd5d7cc7d62767a79d268775fff4",
+      "bytes": 118153,
+      "injectedBytes": 118151,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}
