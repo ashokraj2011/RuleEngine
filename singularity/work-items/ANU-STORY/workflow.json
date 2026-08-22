@@ -3269,14 +3269,14 @@
       "rejectedAt": "2026-08-22T17:02:03.915Z",
       "rejectedBy": "ashokraj2011",
       "rejectionReason": "Implementation was published without source or acceptance-test delivery evidence",
-      "generation": 1,
+      "generation": 2,
       "generatedBy": {
         "name": "Ashok Raj",
         "email": "88361104+ashokraj2011@users.noreply.github.com",
         "login": "ashokraj2011",
         "githubLookup": "resolved"
       },
-      "generatedAgent": "developer",
+      "generatedAgent": "qa",
       "authorship": [
         {
           "schemaVersion": 1,
@@ -3309,6 +3309,38 @@
           },
           "generation": 1,
           "publishedAt": "2026-08-22T15:45:43.394Z"
+        },
+        {
+          "schemaVersion": 1,
+          "producer": "governed-agent",
+          "channel": "copilot-host",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "qa"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "implementation-summary.md",
+            "mediaType": "text/markdown",
+            "sha256": "e0e025765a978137424402f4e8187006756e589ecaac5f004f08a972d269e70e",
+            "bytes": 65161
+          },
+          "generation": 2,
+          "publishedAt": "2026-08-22T17:18:10.534Z"
         }
       ],
       "usage": [
@@ -3332,6 +3364,27 @@
           "completedAt": "2026-08-22T15:45:43.394Z",
           "agent": "developer",
           "generation": 1
+        },
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "requestedModel": null,
+          "resolvedModel": null,
+          "resolvedModelAssurance": "unavailable",
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-08-22T17:18:10.533Z",
+          "completedAt": "2026-08-22T17:18:10.534Z",
+          "agent": "qa",
+          "generation": 2
         }
       ],
       "telemetry": [
@@ -3339,6 +3392,14 @@
           "generation": 1,
           "path": "singularity/work-items/ANU-STORY/telemetry/implementation-gen1.json",
           "sha256": "298f8ff8ed7e0280a6315e42cf5eeef5f302e52492ac0cdf09bf75eb79cd5b79",
+          "status": "pending",
+          "models": [],
+          "providerCost": null
+        },
+        {
+          "generation": 2,
+          "path": "singularity/work-items/ANU-STORY/telemetry/implementation-gen2.json",
+          "sha256": "f42406c762c83f0005b80aedb47effbdc4af355080c3c41f41a9256abd44e8ea",
           "status": "pending",
           "models": [],
           "providerCost": null
@@ -3392,33 +3453,153 @@
         {
           "path": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
           "kind": "document",
-          "status": "approved",
+          "status": "pending",
           "exists": true,
-          "size": 69764,
-          "sha256": "7c588b1be395a12297f7fd5c74b874cff3849aa5121252bcc36d9bd1a2bde9bd",
+          "size": 70906,
+          "sha256": "d607a20e02399a6bc65b079605948998325392f187b0915ff39f6d1b4d59382f",
           "registeredAt": "2026-08-22T15:45:43.175Z",
-          "updatedAt": "2026-08-22T15:46:48.124Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z",
           "approvedAt": "2026-08-22T15:48:38.509Z",
           "approvedBy": "ashokraj2011"
+        },
+        {
+          "path": "src/main/java/org/example/api/dto/InterestRequest.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 867,
+          "sha256": "2665518572d05898ec7669ad23f2aff64868b5c1c6aeb71fa1df234d75a95628",
+          "registeredAt": "2026-08-22T17:18:09.722Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z"
+        },
+        {
+          "path": "src/main/java/org/example/api/dto/InterestResult.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 1368,
+          "sha256": "80572a123555b1590b477176344d4314b0e7875acde30616bd602a8abb506beb",
+          "registeredAt": "2026-08-22T17:18:09.723Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z"
+        },
+        {
+          "path": "src/main/java/org/example/api/GlobalExceptionHandler.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 1669,
+          "sha256": "ec6a733146b8a656dd5de607fc70b76a063d07f4aacee2b593a943b0c0b8b1b6",
+          "registeredAt": "2026-08-22T17:18:09.722Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z"
+        },
+        {
+          "path": "src/main/java/org/example/api/InterestController.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 1095,
+          "sha256": "89eda0d905c825add0f1567dcdeb0402cf703a01e5d976944b90b7204c176170",
+          "registeredAt": "2026-08-22T17:18:09.722Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/InterestCalculationService.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 1415,
+          "sha256": "af898991085dd418c75f7d3e5f44f1d494e45481457452cc15def317d144cf8a",
+          "registeredAt": "2026-08-22T17:18:09.723Z",
+          "updatedAt": "2026-08-22T17:18:10.612Z"
+        },
+        {
+          "path": "src/test/java/org/example/api/InterestControllerTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 4098,
+          "sha256": "bad879e12c6345f64d92ae7bad98ebeab56de9b3be3e780173be76bafd5d89ad",
+          "registeredAt": "2026-08-22T17:18:09.723Z",
+          "updatedAt": "2026-08-22T17:18:10.613Z"
+        },
+        {
+          "path": "src/test/java/org/example/api/RuleEngineControllerTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 1783,
+          "sha256": "fcba9e8946273dcddc9d8baa4e87e43105f96826deefb479d2eafa8f3201be43",
+          "registeredAt": "2026-08-22T17:18:09.724Z",
+          "updatedAt": "2026-08-22T17:18:10.613Z"
+        },
+        {
+          "path": "src/test/java/org/example/rules/InterestCalculationServiceTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 3789,
+          "sha256": "e8edc1c696a6c7584ca45b7a7c8197b368200860f093c5293642520b1fbdd963",
+          "registeredAt": "2026-08-22T17:18:09.724Z",
+          "updatedAt": "2026-08-22T17:18:10.613Z"
         }
       ],
       "checks": [],
       "remoteOutputs": [],
       "inputContext": {
-        "generation": 1,
-        "path": "singularity/work-items/ANU-STORY/context/inputs-implementation-gen1.json",
-        "sha256": "0b7b82a3e52493fafc0e595de9b77cfcd6ec8ee2dc3f02f5c93292dd7176ad58",
+        "generation": 2,
+        "path": "singularity/work-items/ANU-STORY/context/inputs-implementation-gen2.json",
+        "sha256": "6cd8140ae4989aa9127f6804d4cc75f1d788ec89517941d6d17b8a71496f2947",
         "renderedSha256": "ed919d41ac3ab890180a5b5f1ce8aa6ec9a550a8ed91c6b81f926db56d9c8e7e",
         "mode": "enforce"
       },
       "sidecars": [
         {
-          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen1-singularity-work-items-ANU-STORY-artifacts-implementation-implementation-summary.md.json",
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-singularity-work-items-ANU-STORY-artifacts-implementation-implementation-summary.md.json",
           "artifact": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
-          "integritySha256": "87e3ba1484c5518512ab35ef1234bc39be307b710e42a3ad1b1a18d2ccfd9c0c"
+          "integritySha256": "64fb7ff5d7fd5298c321ea7c0891cc27d05435784dff7a8fd42a8cf74eeb23e2"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-main-java-org-example-api-dto-InterestRequest.java.json",
+          "artifact": "src/main/java/org/example/api/dto/InterestRequest.java",
+          "integritySha256": "c32bf86bcdb6101d1298ac361b6791011c3eda3deb92c919bc06e395f965225f"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-main-java-org-example-api-dto-InterestResult.java.json",
+          "artifact": "src/main/java/org/example/api/dto/InterestResult.java",
+          "integritySha256": "2c84bfc184c078a4cc2962b57feac5b19b40e96e29e28e83d4d1bdc6e679fb44"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-main-java-org-example-api-GlobalExceptionHandler.java.json",
+          "artifact": "src/main/java/org/example/api/GlobalExceptionHandler.java",
+          "integritySha256": "82d07b2effafba6677cf0a1393f8893199af86605eb78d37a75e6463ef274df4"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-main-java-org-example-api-InterestController.java.json",
+          "artifact": "src/main/java/org/example/api/InterestController.java",
+          "integritySha256": "3966da1d29e277e73c5a7ea8d65ca2e82ae793df03f5512d25235e925a180326"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-main-java-org-example-rules-InterestCalculationService.java.json",
+          "artifact": "src/main/java/org/example/rules/InterestCalculationService.java",
+          "integritySha256": "5a62cc2de8ac0811e0f9bfcca912bd2921cf31e8fffd27988883d10b7801af4a"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-test-java-org-example-api-InterestControllerTest.java.json",
+          "artifact": "src/test/java/org/example/api/InterestControllerTest.java",
+          "integritySha256": "411779d6a2436c782c5a5ac90d0e805ceccabf4e810d0effb8ac74f2bcc12295"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-test-java-org-example-api-RuleEngineControllerTest.java.json",
+          "artifact": "src/test/java/org/example/api/RuleEngineControllerTest.java",
+          "integritySha256": "beccf1fc525caed7cf175f09e419e847dbfefee6a4adfb5611ea646187f64bd2"
+        },
+        {
+          "path": "singularity/work-items/ANU-STORY/context/sidecars/implementation-gen2-src-test-java-org-example-rules-InterestCalculationServiceTest.java.json",
+          "artifact": "src/test/java/org/example/rules/InterestCalculationServiceTest.java",
+          "integritySha256": "b4499eeb158a5dc7585948646785f0a04b774bd502efac72c19bf16a4dfdd417"
         }
       ],
-      "sourceCommit": "b13d76e013f8995ec582326a08837f89ff9c642d",
+      "sourceCommit": "12751970c11ac46fa1cc007409fd7cd57190c22d",
       "generationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
       "publicationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
       "validationVerdict": "passed",
@@ -3448,6 +3629,94 @@
           "verified": true,
           "sourceBaseCommit": "09cbb9698a087611fd523272aa3b5f03022e37b1"
         }
+      },
+      "deliveryEvidence": {
+        "requirement": "source-and-tests",
+        "baselineCommit": "9e049b79ec2ce15b94d7478cf41b79e89ed0156f",
+        "paths": [
+          {
+            "path": "src/main/java/org/example/api/GlobalExceptionHandler.java",
+            "kind": "source",
+            "exists": true,
+            "size": 1669,
+            "sha256": "ec6a733146b8a656dd5de607fc70b76a063d07f4aacee2b593a943b0c0b8b1b6"
+          },
+          {
+            "path": "src/main/java/org/example/api/InterestController.java",
+            "kind": "source",
+            "exists": true,
+            "size": 1095,
+            "sha256": "89eda0d905c825add0f1567dcdeb0402cf703a01e5d976944b90b7204c176170"
+          },
+          {
+            "path": "src/main/java/org/example/api/dto/InterestRequest.java",
+            "kind": "source",
+            "exists": true,
+            "size": 867,
+            "sha256": "2665518572d05898ec7669ad23f2aff64868b5c1c6aeb71fa1df234d75a95628"
+          },
+          {
+            "path": "src/main/java/org/example/api/dto/InterestResult.java",
+            "kind": "source",
+            "exists": true,
+            "size": 1368,
+            "sha256": "80572a123555b1590b477176344d4314b0e7875acde30616bd602a8abb506beb"
+          },
+          {
+            "path": "src/main/java/org/example/rules/InterestCalculationService.java",
+            "kind": "source",
+            "exists": true,
+            "size": 1415,
+            "sha256": "af898991085dd418c75f7d3e5f44f1d494e45481457452cc15def317d144cf8a"
+          },
+          {
+            "path": "src/test/java/org/example/api/InterestControllerTest.java",
+            "kind": "test",
+            "exists": true,
+            "size": 4098,
+            "sha256": "bad879e12c6345f64d92ae7bad98ebeab56de9b3be3e780173be76bafd5d89ad"
+          },
+          {
+            "path": "src/test/java/org/example/api/RuleEngineControllerTest.java",
+            "kind": "test",
+            "exists": true,
+            "size": 1783,
+            "sha256": "fcba9e8946273dcddc9d8baa4e87e43105f96826deefb479d2eafa8f3201be43"
+          },
+          {
+            "path": "src/test/java/org/example/rules/InterestCalculationServiceTest.java",
+            "kind": "test",
+            "exists": true,
+            "size": 3789,
+            "sha256": "e8edc1c696a6c7584ca45b7a7c8197b368200860f093c5293642520b1fbdd963"
+          }
+        ],
+        "sourcePaths": [
+          "src/main/java/org/example/api/GlobalExceptionHandler.java",
+          "src/main/java/org/example/api/InterestController.java",
+          "src/main/java/org/example/api/dto/InterestRequest.java",
+          "src/main/java/org/example/api/dto/InterestResult.java",
+          "src/main/java/org/example/rules/InterestCalculationService.java"
+        ],
+        "testPaths": [
+          "src/test/java/org/example/api/InterestControllerTest.java",
+          "src/test/java/org/example/api/RuleEngineControllerTest.java",
+          "src/test/java/org/example/rules/InterestCalculationServiceTest.java"
+        ],
+        "intentRevalidation": null,
+        "acceptanceCriteria": {
+          "required": [
+            "AC-001"
+          ],
+          "tagged": [
+            "AC-001"
+          ],
+          "missing": []
+        },
+        "generation": 2,
+        "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+        "capturedAt": "2026-08-22T17:18:10.534Z",
+        "validation": null
       }
     },
     "verification": {
@@ -3991,9 +4260,9 @@
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 7,
+    "records": 8,
     "exactRecords": 0,
-    "unavailableRecords": 7,
+    "unavailableRecords": 8,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -4020,9 +4289,9 @@
         "totalTokens": 0
       },
       "implementation": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       },
       "verification": {
@@ -4058,25 +4327,25 @@
         "totalTokens": 0
       },
       "qa": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 7,
+        "records": 8,
         "exactRecords": 0,
-        "unavailableRecords": 7,
+        "unavailableRecords": 8,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "ANU-STORY": {
-        "records": 7,
+        "records": 8,
         "exactRecords": 0,
-        "unavailableRecords": 7,
+        "unavailableRecords": 8,
         "totalTokens": 0
       }
     }
@@ -4364,6 +4633,14 @@
       "event": "workflow_reopened",
       "phase": "conformance",
       "detail": "CR-001 returned completed work to implementation: Implementation was published without source or acceptance-test delivery evidence"
+    },
+    {
+      "at": "2026-08-22T17:18:10.615Z",
+      "actor": "ashokraj2011",
+      "agent": "qa",
+      "event": "phase_generated",
+      "phase": "implementation",
+      "detail": "generation 2"
     }
   ],
   "measurement": {
@@ -6180,6 +6457,111 @@
           }
         },
         "createdAt": "2026-08-22T17:02:03.855Z"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "7394fb38-17ae-46d7-a276-4387293d05c3",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-STORY",
+          "branch": "ANU-STORY"
+        },
+        "phaseId": "implementation",
+        "generation": 2,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "developer",
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-22T17:18:10.323Z"
+      },
+      "ledgerIntent": {
+        "schemaVersion": 1,
+        "eventId": "7394fb38-17ae-46d7-a276-4387293d05c3",
+        "eventType": "artifact-generated",
+        "capabilityId": "rule-engine",
+        "subject": {
+          "branch": "ANU-STORY",
+          "generation": 2,
+          "phase": "implementation",
+          "workId": "ANU-STORY",
+          "workType": "feature"
+        },
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "githubLogin": "ashokraj2011",
+          "identityAssurance": "configured-local"
+        },
+        "agent": "developer",
+        "authorityGroup": null,
+        "payload": {
+          "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+          "capabilityPolicy": {
+            "allowSelfApproval": true,
+            "approvalMinimum": 1,
+            "gateSeverity": "warn",
+            "protectedPaths": [
+              "singularity/workflow.yml",
+              "singularity/capabilities.yml"
+            ],
+            "qualityCommands": [],
+            "requiredAuthorityGroups": [],
+            "requiredChecks": [],
+            "requiredWorldModelViews": []
+          },
+          "configPath": "singularity/workflow.yml",
+          "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+          "lifecycleEventId": "7394fb38-17ae-46d7-a276-4387293d05c3",
+          "lifecyclePayload": {
+            "decision": null,
+            "reviewPacketSha256": null
+          },
+          "templateSha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c",
+          "lifecycleEvent": {
+            "schemaVersion": 1,
+            "eventId": "7394fb38-17ae-46d7-a276-4387293d05c3",
+            "type": "artifact-generated",
+            "subject": {
+              "kind": "story",
+              "id": "ANU-STORY",
+              "branch": "ANU-STORY"
+            },
+            "phaseId": "implementation",
+            "generation": 2,
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "agent": "developer",
+            "authorityGroup": null,
+            "payload": {
+              "decision": null,
+              "reviewPacketSha256": null
+            },
+            "sourceCommit": null,
+            "idempotencyKey": null,
+            "idempotencyHash": null,
+            "createdAt": "2026-08-22T17:18:10.323Z"
+          }
+        },
+        "createdAt": "2026-08-22T17:18:10.334Z"
       }
     }
   ],

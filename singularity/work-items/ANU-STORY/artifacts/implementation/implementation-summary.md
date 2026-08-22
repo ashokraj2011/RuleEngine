@@ -4,7 +4,7 @@
   "workId": "ANU-STORY",
   "workType": "feature",
   "phase": "implementation",
-  "generation": 1,
+  "generation": 2,
   "status": "in_progress",
   "generatedBy": {
     "name": "Ashok Raj",
@@ -12,7 +12,7 @@
     "login": "ashokraj2011",
     "githubLookup": "resolved"
   },
-  "generatedAgent": "developer",
+  "generatedAgent": "qa",
   "authorship": {
     "schemaVersion": 1,
     "producer": "governed-agent",
@@ -24,7 +24,7 @@
       "githubLookup": "resolved"
     },
     "governedAgentContext": {
-      "agentId": "developer"
+      "agentId": "qa"
     },
     "kernelModel": {
       "invoked": false,
@@ -39,13 +39,13 @@
       "kind": "in-place",
       "filename": "implementation-summary.md",
       "mediaType": "text/markdown",
-      "sha256": "700f0cec5deb296f92ffaaa22fca9318f5686be7617f266c271347b6473a9690",
-      "bytes": 64953
+      "sha256": "e0e025765a978137424402f4e8187006756e589ecaac5f004f08a972d269e70e",
+      "bytes": 65161
     },
-    "generation": 1,
-    "publishedAt": "2026-08-22T15:45:43.394Z"
+    "generation": 2,
+    "publishedAt": "2026-08-22T17:18:10.534Z"
   },
-  "sourceCommit": "b13d76e013f8995ec582326a08837f89ff9c642d",
+  "sourceCommit": "12751970c11ac46fa1cc007409fd7cd57190c22d",
   "generationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
   "publicationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
   "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
@@ -55,9 +55,9 @@
     "sha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c"
   },
   "inputs": {
-    "generation": 1,
-    "path": "singularity/work-items/ANU-STORY/context/inputs-implementation-gen1.json",
-    "sha256": "0b7b82a3e52493fafc0e595de9b77cfcd6ec8ee2dc3f02f5c93292dd7176ad58",
+    "generation": 2,
+    "path": "singularity/work-items/ANU-STORY/context/inputs-implementation-gen2.json",
+    "sha256": "6cd8140ae4989aa9127f6804d4cc75f1d788ec89517941d6d17b8a71496f2947",
     "renderedSha256": "ed919d41ac3ab890180a5b5f1ce8aa6ec9a550a8ed91c6b81f926db56d9c8e7e",
     "mode": "enforce"
   },
@@ -72,6 +72,14 @@
       "generation": 1,
       "path": "singularity/work-items/ANU-STORY/telemetry/implementation-gen1.json",
       "sha256": "298f8ff8ed7e0280a6315e42cf5eeef5f302e52492ac0cdf09bf75eb79cd5b79",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    },
+    {
+      "generation": 2,
+      "path": "singularity/work-items/ANU-STORY/telemetry/implementation-gen2.json",
+      "sha256": "f42406c762c83f0005b80aedb47effbdc4af355080c3c41f41a9256abd44e8ea",
       "status": "pending",
       "models": [],
       "providerCost": null
@@ -99,6 +107,27 @@
       "completedAt": "2026-08-22T15:45:43.394Z",
       "agent": "developer",
       "generation": 1
+    },
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-22T17:18:10.533Z",
+      "completedAt": "2026-08-22T17:18:10.534Z",
+      "agent": "qa",
+      "generation": 2
     }
   ],
   "sequenceOverrides": [],
@@ -154,21 +183,22 @@
 
 ## Implemented outcome
 
-The implementation work for ANU-STORY will add a reusable interest-calculation capability to the existing Spring Boot rule engine structure. The flow is designed around a dedicated service and a thin HTTP endpoint so interest scenarios can be evaluated deterministically without coupling the logic to the console entry point.
+ANU-STORY adds a reusable simple-interest capability to the Spring Boot rule engine. The implementation accepts principal, decimal annual rate, and period values through `POST /interest/calculate`, validates the request, and returns a deterministic result calculated as `principal × rate × period`.
 
 ## Changed components and decisions
 
-- Add a domain-oriented interest service that owns validation and simple-interest calculation.
-- Introduce request and response DTOs for principal, rate, period, and calculated interest values.
-- Expose the capability through a thin controller endpoint at /interest/calculate while keeping the change additive to the current API surface.
-- Keep validation in the service layer and avoid persistence, UI, or background-job changes, in line with the approved scope.
-- Follow the approved design decisions: simple interest only, with rate expressed as a decimal fraction and invalid or negative values rejected with clear validation errors.
+- Added `InterestCalculationService` to own required-field checks, non-negative validation, simple-interest calculation, and two-decimal `HALF_UP` normalization.
+- Added `InterestRequest` and `InterestResult` DTOs for the documented request and response contract.
+- Added `InterestController` with the additive `POST /interest/calculate` JSON endpoint.
+- Extended `GlobalExceptionHandler` so malformed JSON and calculation validation failures return stable HTTP 400 error bodies.
+- Kept the change stateless and additive: there are no persistence, migration, UI, or background-job changes.
 
 ## Tests and operational notes
 
-- Add example-driven tests for valid calculation scenarios and invalid input handling (SPEC-002).
-- Verify behavior through Maven test execution and sample requests to the new endpoint.
-- No migrations, rollout flags, or operational handoffs are required for this additive change.
+- `InterestCalculationServiceTest` covers the known calculation example, every negative input, missing inputs, null requests, zero boundaries, and rounding.
+- `InterestControllerTest` covers the complete JSON response contract, negative inputs, a missing field, and malformed JSON.
+- The acceptance tests are tagged with `@ac:AC-001`; interface coverage is tagged with `@ifc:IFC-001`, `@ifc:IFC-002`, and `@ifc:IFC-003` for deterministic traceability.
+- Repository validation is `mvn -q test`; no migrations, rollout flags, or operational handoffs are required.
 
 <!-- singularity-flow:inputs:start -->
 
