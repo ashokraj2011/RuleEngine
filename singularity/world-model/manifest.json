@@ -1,0 +1,100 @@
+{
+  "schema_version": "3.0",
+  "generated_at": "2026-08-22T12:36:05.846Z",
+  "generated_date": "22 August 2026",
+  "builder_version": "2.1-light",
+  "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
+  "repository_commit": "f9257abbab4bde3b8c1fb62518ff9080c861cc47",
+  "repository_branch": "ANU-STORY",
+  "working_tree_clean": false,
+  "generated_for_phase": "intake",
+  "analysis_depth": "light",
+  "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "generator": {
+    "type": "deterministic-local",
+    "model": null,
+    "model_tokens": 0
+  },
+  "core": {
+    "brief": "core/summary.brief.md",
+    "summary": "core/summary.md",
+    "model": {
+      "path": "core/model.json"
+    },
+    "tiers": {
+      "brief": {
+        "status": "ready",
+        "path": "core/summary.brief.md",
+        "bytes": 581,
+        "sha256": "4e4154d4ce580b86e8a942327147405265805190dec830d28210a32edabc2ac7"
+      },
+      "full": {
+        "status": "ready",
+        "path": "core/summary.md",
+        "bytes": 1790,
+        "sha256": "f8fb17e083565a416770a1ac76b5517649534d9d8947b5a997d516b290d6b3f9"
+      }
+    }
+  },
+  "path_index": {
+    "path": "index/path-map.json"
+  },
+  "views": {
+    "business": {
+      "path": "views/business.md",
+      "brief_path": "views/business.brief.md",
+      "generated": true,
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/business.brief.md",
+          "bytes": 240,
+          "sha256": "4d4f2fad4e8ce97e82c31de346d65b3feb7d6d62b96248895b5e69cc2ddfc7a4"
+        },
+        "full": {
+          "status": "missing",
+          "path": "views/business.md",
+          "bytes": 0,
+          "sha256": null
+        }
+      }
+    }
+  },
+  "views_generated": [
+    "business"
+  ],
+  "requested_views": [
+    "business"
+  ],
+  "domains": [],
+  "task_guides": [],
+  "evidence": {
+    "path": "evidence/evidence.jsonl"
+  },
+  "generation": {
+    "parallel": false,
+    "strategy": "deterministic-light",
+    "max_workers": 0,
+    "discovery_views": [],
+    "degraded_views": [],
+    "resumed_views": [],
+    "pending_views_at_start": []
+  },
+  "materializations": [
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    }
+  ]
+}
