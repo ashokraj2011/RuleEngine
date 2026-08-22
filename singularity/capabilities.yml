@@ -23,3 +23,8 @@ capabilities:
       serviceTier: standard
     owns: [initiatives, stories]
     policy: {}
+  rule-engine:
+    name: Rule Engine
+    kind: delivery
+    parent: product
+    repository: ruleengine
