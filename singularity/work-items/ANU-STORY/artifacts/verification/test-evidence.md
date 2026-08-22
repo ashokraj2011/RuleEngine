@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "verification",
   "generation": 1,
-  "status": "approved",
+  "status": "not_started",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -125,10 +125,11 @@
         }
       ],
       "reviewPacketSha256": "8f7724ed4b4f08d655e95789377a327f7f598a39ce10ca4206cc47f9d1700a36",
-      "selfApproval": true
+      "selfApproval": true,
+      "invalidatedAt": "2026-08-22T17:02:03.915Z"
     }
   ],
-  "selfApproval": true,
+  "selfApproval": false,
   "conformanceTree": null
 }
 -->

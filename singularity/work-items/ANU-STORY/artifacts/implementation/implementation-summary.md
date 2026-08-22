@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "implementation",
   "generation": 1,
-  "status": "approved",
+  "status": "in_progress",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -141,10 +141,11 @@
         "submittedSourceCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
         "planId": "da37ce8e85b47227becde771"
       },
-      "selfApproval": true
+      "selfApproval": true,
+      "invalidatedAt": "2026-08-22T17:02:03.915Z"
     }
   ],
-  "selfApproval": true,
+  "selfApproval": false,
   "conformanceTree": null
 }
 -->
