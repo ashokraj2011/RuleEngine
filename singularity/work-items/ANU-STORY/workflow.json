@@ -267,6 +267,115 @@
           },
           "status": "awaiting_review"
         }
+      },
+      {
+        "packetSha256": "c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e",
+        "phase": "design",
+        "generation": 1,
+        "branch": "ANU-STORY",
+        "sourceTreeSha256": "sha256:232984350614fea27a8ec15269747b6fb7541f4e7be983fff2c5a6c3230ca489",
+        "path": "singularity/work-items/ANU-STORY/submissions/design/c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e.json",
+        "submittedAt": "2026-08-22T14:01:33.088Z",
+        "projection": {
+          "schemaVersion": 1,
+          "workId": "ANU-STORY",
+          "epicId": null,
+          "planId": null,
+          "jiraIssueId": "ANU-STORY",
+          "initialJiraKey": null,
+          "currentJiraKey": null,
+          "canonicalBranch": "ANU-STORY",
+          "submittedBranch": "ANU-STORY",
+          "submissionCommit": "c3c44c1d401b93e18fd2f204ed23343534078d79",
+          "sourceCommit": "c3c44c1d401b93e18fd2f204ed23343534078d79",
+          "sourceTreeSha256": "sha256:232984350614fea27a8ec15269747b6fb7541f4e7be983fff2c5a6c3230ca489",
+          "phase": "design",
+          "generation": 1,
+          "authorship": {
+            "schemaVersion": 1,
+            "producer": "governed-agent",
+            "channel": "copilot-host",
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "governedAgentContext": {
+              "agentId": "product-owner"
+            },
+            "kernelModel": {
+              "invoked": false,
+              "status": "exact",
+              "invocationIds": []
+            },
+            "externalAiUse": {
+              "value": "unknown",
+              "status": "unavailable"
+            },
+            "source": {
+              "kind": "in-place",
+              "filename": "design.md",
+              "mediaType": "text/markdown",
+              "sha256": "59c0cee7232d94cbd590bd84cc77371e0b1affe7c7494c65b5b51f3a13944418",
+              "bytes": 16578
+            },
+            "generation": 1,
+            "publishedAt": "2026-08-22T13:58:21.936Z"
+          },
+          "artifacts": [
+            {
+              "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
+              "kind": "document",
+              "sha256": "f8816faf1e107b7853adc88b62f128813d998a89a38388d0873c825b98c57d5b",
+              "size": 20171,
+              "reference": {
+                "handle": "sfref:v1:story:ANU-STORY:1250c714ddf11053dadc18ea4512b23738527f7b11fc20f2f044aa33bcd6ca36",
+                "recordHash": "1250c714ddf11053dadc18ea4512b23738527f7b11fc20f2f044aa33bcd6ca36"
+              }
+            }
+          ],
+          "references": [
+            {
+              "handle": "sfref:v1:story:ANU-STORY:1250c714ddf11053dadc18ea4512b23738527f7b11fc20f2f044aa33bcd6ca36",
+              "recordHash": "1250c714ddf11053dadc18ea4512b23738527f7b11fc20f2f044aa33bcd6ca36",
+              "purpose": "review-evidence",
+              "required": true
+            }
+          ],
+          "agentBriefs": [],
+          "checks": [],
+          "usage": [
+            {
+              "status": "unavailable",
+              "source": "copilot-otel-unavailable",
+              "provider": null,
+              "model": null,
+              "inputTokens": null,
+              "outputTokens": null,
+              "cachedInputTokens": null,
+              "cacheWriteInputTokens": null,
+              "totalTokens": null,
+              "providerCost": null,
+              "costStatus": "unavailable",
+              "spans": null,
+              "startedAt": "2026-08-22T13:58:21.936Z",
+              "completedAt": "2026-08-22T13:58:21.936Z",
+              "agent": "product-owner",
+              "generation": 1
+            }
+          ],
+          "approvals": [],
+          "visualAssurance": null,
+          "submittedAt": "2026-08-22T14:01:33.088Z",
+          "submittedBy": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "status": "awaiting_review"
+        }
       }
     ]
   },
@@ -2179,7 +2288,7 @@
       "label": "Architecture and design",
       "order": 2,
       "defaultAgent": "architect",
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/design/design.md",
         "kind": "design",
@@ -2241,7 +2350,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-08-22T12:54:44.379Z",
-      "submittedAt": null,
+      "submittedAt": "2026-08-22T14:01:33.088Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -2327,10 +2436,10 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 20171,
-          "sha256": "f8816faf1e107b7853adc88b62f128813d998a89a38388d0873c825b98c57d5b",
+          "size": 20253,
+          "sha256": "20f40291a2021fa06ea3085d6fa28186c465a7d6670bbcfaba8457bad629932d",
           "registeredAt": "2026-08-22T13:58:21.731Z",
-          "updatedAt": "2026-08-22T13:58:21.974Z"
+          "updatedAt": "2026-08-22T14:01:33.090Z"
         }
       ],
       "checks": [],
@@ -2366,7 +2475,10 @@
           }
         }
       ],
-      "sourceCommit": "148aa762ca0695ad7054d51f7e04f527cbcbbc23"
+      "sourceCommit": "148aa762ca0695ad7054d51f7e04f527cbcbbc23",
+      "generationCommit": "c3c44c1d401b93e18fd2f204ed23343534078d79",
+      "publicationCommit": "c3c44c1d401b93e18fd2f204ed23343534078d79",
+      "validationVerdict": "passed"
     },
     "implementation-spec": {
       "id": "implementation-spec",
@@ -2892,6 +3004,14 @@
       "event": "phase_generated",
       "phase": "design",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-08-22T14:01:33.088Z",
+      "actor": "ashokraj2011",
+      "agent": "product-owner",
+      "event": "phase_submitted",
+      "phase": "design",
+      "detail": "1 artifacts"
     }
   ],
   "measurement": {
@@ -3522,6 +3642,83 @@
           "templateSha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
         },
         "createdAt": "2026-08-22T13:58:21.754Z"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "d2f80e01-49ed-4b86-ba33-7ffc8da8f04e",
+        "type": "approval-requested",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-STORY",
+          "branch": "ANU-STORY"
+        },
+        "phaseId": "design",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "product-owner",
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-22T14:01:33.009Z"
+      },
+      "ledgerIntent": {
+        "schemaVersion": 1,
+        "eventId": "d2f80e01-49ed-4b86-ba33-7ffc8da8f04e",
+        "eventType": "approval-requested",
+        "capabilityId": "rule-engine",
+        "subject": {
+          "branch": "ANU-STORY",
+          "generation": 1,
+          "phase": "design",
+          "workId": "ANU-STORY",
+          "workType": "feature"
+        },
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "githubLogin": "ashokraj2011",
+          "identityAssurance": "configured-local"
+        },
+        "agent": "product-owner",
+        "authorityGroup": null,
+        "payload": {
+          "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+          "capabilityPolicy": {
+            "allowSelfApproval": true,
+            "approvalMinimum": 1,
+            "gateSeverity": "warn",
+            "protectedPaths": [
+              "singularity/workflow.yml",
+              "singularity/capabilities.yml"
+            ],
+            "qualityCommands": [],
+            "requiredAuthorityGroups": [],
+            "requiredChecks": [],
+            "requiredWorldModelViews": []
+          },
+          "configPath": "singularity/workflow.yml",
+          "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+          "lifecycleEventId": "d2f80e01-49ed-4b86-ba33-7ffc8da8f04e",
+          "lifecyclePayload": {
+            "decision": null,
+            "reviewPacketSha256": null
+          },
+          "templateSha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
+        },
+        "createdAt": "2026-08-22T14:01:33.014Z"
       }
     }
   ],
