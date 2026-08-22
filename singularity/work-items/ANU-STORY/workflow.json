@@ -1819,7 +1819,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "design",
+  "currentPhase": "implementation-spec",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -2288,7 +2288,7 @@
       "label": "Architecture and design",
       "order": 2,
       "defaultAgent": "architect",
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/design/design.md",
         "kind": "design",
@@ -2351,8 +2351,8 @@
       "qualityCommands": [],
       "startedAt": "2026-08-22T12:54:44.379Z",
       "submittedAt": "2026-08-22T14:01:33.088Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-08-22T14:09:08.558Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -2428,18 +2428,45 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "design",
+          "at": "2026-08-22T14:09:08.558Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "architect",
+          "authorityGroup": "architecture-reviewers",
+          "identityAssurance": "configured-local",
+          "channel": "terminal",
+          "generation": 1,
+          "artifactSha256": [
+            {
+              "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
+              "sha256": "20f40291a2021fa06ea3085d6fa28186c465a7d6670bbcfaba8457bad629932d"
+            }
+          ],
+          "reviewPacketSha256": "c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e",
+          "selfApproval": true
+        }
+      ],
       "designSourceSets": [],
       "artifacts": [
         {
           "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 20253,
-          "sha256": "20f40291a2021fa06ea3085d6fa28186c465a7d6670bbcfaba8457bad629932d",
+          "size": 21066,
+          "sha256": "428779d668f0575a9479582a176fbeed9f12bf9cf39931ae742a05887d546199",
           "registeredAt": "2026-08-22T13:58:21.731Z",
-          "updatedAt": "2026-08-22T14:01:33.090Z"
+          "updatedAt": "2026-08-22T14:01:33.090Z",
+          "approvedAt": "2026-08-22T14:09:08.558Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -2485,7 +2512,7 @@
       "label": "Implementation specification",
       "order": 3,
       "defaultAgent": "architect",
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/implementation-spec/implementation-spec.md",
         "kind": "implementation-spec",
@@ -2555,7 +2582,7 @@
         }
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-08-22T14:09:08.558Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -3012,6 +3039,14 @@
       "event": "phase_submitted",
       "phase": "design",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-08-22T14:09:08.558Z",
+      "actor": "ashokraj2011",
+      "agent": "architect",
+      "event": "phase_self_approved",
+      "phase": "design",
+      "detail": "threshold reached; advanced to implementation-spec"
     }
   ],
   "measurement": {
@@ -3719,6 +3754,83 @@
           "templateSha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
         },
         "createdAt": "2026-08-22T14:01:33.014Z"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "f52efdf9-750a-4a10-969a-b86c26e62f4a",
+        "type": "phase-approved",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-STORY",
+          "branch": "ANU-STORY"
+        },
+        "phaseId": "design",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "architect",
+        "authorityGroup": "architecture-reviewers",
+        "payload": {
+          "decision": "approved",
+          "reviewPacketSha256": "c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e"
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-22T14:09:08.567Z"
+      },
+      "ledgerIntent": {
+        "schemaVersion": 1,
+        "eventId": "f52efdf9-750a-4a10-969a-b86c26e62f4a",
+        "eventType": "phase-approved",
+        "capabilityId": "rule-engine",
+        "subject": {
+          "branch": "ANU-STORY",
+          "generation": 1,
+          "phase": "design",
+          "workId": "ANU-STORY",
+          "workType": "feature"
+        },
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "githubLogin": "ashokraj2011",
+          "identityAssurance": "configured-local"
+        },
+        "agent": "architect",
+        "authorityGroup": "architecture-reviewers",
+        "payload": {
+          "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+          "capabilityPolicy": {
+            "allowSelfApproval": true,
+            "approvalMinimum": 1,
+            "gateSeverity": "warn",
+            "protectedPaths": [
+              "singularity/workflow.yml",
+              "singularity/capabilities.yml"
+            ],
+            "qualityCommands": [],
+            "requiredAuthorityGroups": [],
+            "requiredChecks": [],
+            "requiredWorldModelViews": []
+          },
+          "configPath": "singularity/workflow.yml",
+          "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+          "lifecycleEventId": "f52efdf9-750a-4a10-969a-b86c26e62f4a",
+          "lifecyclePayload": {
+            "decision": "approved",
+            "reviewPacketSha256": "c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e"
+          },
+          "templateSha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
+        },
+        "createdAt": "2026-08-22T14:09:08.573Z"
       }
     }
   ],

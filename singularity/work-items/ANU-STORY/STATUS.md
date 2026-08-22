@@ -5,7 +5,7 @@
 - Capability: **Rule Engine** (`rule-engine`)
 - Capability map: `6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb`
 - Overall status: **in_progress**
-- Current phase: **design**
+- Current phase: **implementation-spec**
 
 | # | Phase | Governed agent | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
@@ -13,14 +13,16 @@
 |  | ⚠ self-approval | Ashok Raj via product-approvers; agent product-owner | **warning** |  |  |  |
 | 2 | Requirements (`requirements`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | Ashok Raj via product-approvers; agent product-owner | **warning** |  |  |  |
-| 3 | Architecture and design (`design`) | architect | **awaiting_approval** | 1 | 0 | unavailable |
-| 4 | Implementation specification (`implementation-spec`) | architect | **not_started** | 0 | 0 | unavailable |
+| 3 | Architecture and design (`design`) | architect | **approved** | 1 | 1 | unavailable |
+|  | ⚠ self-approval | Ashok Raj via architecture-reviewers; agent architect | **warning** |  |  |  |
+| 4 | Implementation specification (`implementation-spec`) | architect | **in_progress** | 0 | 0 | unavailable |
 | 5 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
 | 6 | Verification (`verification`) | qa | **not_started** | 0 | 0 | unavailable |
 | 7 | Spec-to-code conformance (`conformance`) | qa | **not_started** | 0 | 0 | unavailable |
 
 ## Recent history
 
+- 2026-08-22T14:09:08.558Z — **phase_self_approved** (design) by ashokraj2011 · governed agent architect: threshold reached; advanced to implementation-spec
 - 2026-08-22T14:01:33.088Z — **phase_submitted** (design) by ashokraj2011 · governed agent product-owner: 1 artifacts
 - 2026-08-22T13:58:21.974Z — **phase_generated** (design) by ashokraj2011 · governed agent product-owner: generation 1
 - 2026-08-22T12:54:44.379Z — **phase_self_approved** (requirements) by ashokraj2011 · governed agent product-owner: threshold reached; advanced to design

@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "design",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -113,8 +113,33 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "design",
+      "at": "2026-08-22T14:09:08.558Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "architect",
+      "authorityGroup": "architecture-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "terminal",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
+          "sha256": "20f40291a2021fa06ea3085d6fa28186c465a7d6670bbcfaba8457bad629932d"
+        }
+      ],
+      "reviewPacketSha256": "c907a6e89f5904ed4ebc36c6ba0da073adbbfff93d51040996cd3d67b291fa2e",
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": null
 }
 -->
