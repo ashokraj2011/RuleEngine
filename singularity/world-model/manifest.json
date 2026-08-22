@@ -1,14 +1,14 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-22T14:12:05.705Z",
+  "generated_at": "2026-08-22T15:44:43.359Z",
   "generated_date": "22 August 2026",
-  "builder_version": "2.0",
-  "builder_prompt_sha256": "312e2d146bb61fdd5302faeb01e6f9dcfd872484db0f5bda001d803ff8c0f8fb",
-  "repository_commit": "5268d8abf4c696e8ff5bdeb9eb956bede7c75cc8",
+  "builder_version": "2.1-light",
+  "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
+  "repository_commit": "7399d48d189e31a0ec87072801db3f837a80a0f6",
   "repository_branch": "ANU-STORY",
   "working_tree_clean": false,
-  "generated_for_phase": "implementation-spec",
-  "analysis_depth": "deep",
+  "generated_for_phase": "implementation",
+  "analysis_depth": "light",
   "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
   "generator": {
     "type": "deterministic-local",
@@ -119,10 +119,10 @@
     "testing": {
       "tiers": {
         "brief": {
-          "status": "missing",
-          "path": null,
-          "bytes": 0,
-          "sha256": null
+          "status": "ready",
+          "path": "views/testing.brief.md",
+          "bytes": 352,
+          "sha256": "c1312b4f5ebaa6f39f987b2da923611968e632dc695e94f7a2d7d663dd9f7089"
         },
         "full": {
           "status": "ready",
@@ -131,25 +131,18 @@
           "sha256": "dab2751e87430a720fb8ced8b9b976a443802c69a020740840d48e4ebc4335fc"
         }
       },
-      "brief_path": null,
+      "brief_path": "views/testing.brief.md",
       "path": "views/testing.md",
       "generated": true
     }
   },
   "views_generated": [
-    "architecture",
-    "business",
     "development",
-    "operations",
-    "release",
-    "security",
     "testing"
   ],
   "requested_views": [
-    "architecture",
     "development",
-    "testing",
-    "security"
+    "testing"
   ],
   "domains": [
     {
@@ -181,27 +174,16 @@
     }
   ],
   "evidence": {
-    "path": "evidence/evidence.jsonl",
-    "load_only_when_verification_is_needed": true
+    "path": "evidence/evidence.jsonl"
   },
   "generation": {
-    "parallel": true,
-    "strategy": "view",
-    "max_workers": 4,
-    "discovery_views": [
-      "architecture",
-      "development",
-      "security",
-      "testing"
-    ],
+    "parallel": false,
+    "strategy": "deterministic-light",
+    "max_workers": 0,
+    "discovery_views": [],
     "degraded_views": [],
     "resumed_views": [],
-    "pending_views_at_start": [
-      "architecture",
-      "development",
-      "security",
-      "testing"
-    ]
+    "pending_views_at_start": []
   },
   "materializations": [
     {
@@ -452,6 +434,276 @@
       "reused": [
         "architecture/full",
         "core/full"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "provider-1787408411291",
+      "generated_at": "2026-08-22T14:12:05.705Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": "copilot-cli",
+      "requested": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "reused": [
+        "architecture/full",
+        "core/full"
+      ]
+    },
+    {
+      "id": "light-1787413483465",
+      "generated_at": "2026-08-22T15:44:43.359Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "produced": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "reused": [
+        "core/brief",
+        "development/full"
       ]
     }
   ],
