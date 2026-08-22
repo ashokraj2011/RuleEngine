@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-reconciliation",
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "intervalId": "INT-implementation-G2-003",
+  "phaseId": "implementation",
+  "generation": 2,
+  "baselineSha256": "9f0ee49c8940d3b013d7efb2202de2835feac0fed1de93b71b2bdac1c3f1f9b3",
+  "baseline": {
+    "path": "singularity/work-items/ANU-STORY/context/work-intervals/implementation-gen2-baseline.json",
+    "sha256": "9f0ee49c8940d3b013d7efb2202de2835feac0fed1de93b71b2bdac1c3f1f9b3",
+    "verified": true,
+    "sourceBaseCommit": "9e049b79ec2ce15b94d7478cf41b79e89ed0156f"
+  },
+  "sourceBaseCommit": "9e049b79ec2ce15b94d7478cf41b79e89ed0156f",
+  "target": {
+    "branch": "ANU-STORY",
+    "head": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+    "includesWorktree": false,
+    "cleanApplicationTree": true,
+    "uncommittedApplicationPaths": []
+  },
+  "findings": [
+    {
+      "path": "src/main/java/org/example/api/GlobalExceptionHandler.java",
+      "status": "present",
+      "sha256": "ec6a733146b8a656dd5de607fc70b76a063d07f4aacee2b593a943b0c0b8b1b6",
+      "bytes": 1669,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/main/java/org/example/api/InterestController.java",
+      "status": "present",
+      "sha256": "89eda0d905c825add0f1567dcdeb0402cf703a01e5d976944b90b7204c176170",
+      "bytes": 1095,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/main/java/org/example/api/dto/InterestRequest.java",
+      "status": "present",
+      "sha256": "2665518572d05898ec7669ad23f2aff64868b5c1c6aeb71fa1df234d75a95628",
+      "bytes": 867,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/main/java/org/example/api/dto/InterestResult.java",
+      "status": "present",
+      "sha256": "80572a123555b1590b477176344d4314b0e7875acde30616bd602a8abb506beb",
+      "bytes": 1368,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/main/java/org/example/rules/InterestCalculationService.java",
+      "status": "present",
+      "sha256": "af898991085dd418c75f7d3e5f44f1d494e45481457452cc15def317d144cf8a",
+      "bytes": 1415,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/test/java/org/example/api/InterestControllerTest.java",
+      "status": "present",
+      "sha256": "bad879e12c6345f64d92ae7bad98ebeab56de9b3be3e780173be76bafd5d89ad",
+      "bytes": 4098,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/test/java/org/example/api/RuleEngineControllerTest.java",
+      "status": "present",
+      "sha256": "fcba9e8946273dcddc9d8baa4e87e43105f96826deefb479d2eafa8f3201be43",
+      "bytes": 1783,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/test/java/org/example/rules/InterestCalculationServiceTest.java",
+      "status": "present",
+      "sha256": "e8edc1c696a6c7584ca45b7a7c8197b368200860f093c5293642520b1fbdd963",
+      "bytes": 3789,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    }
+  ],
+  "summary": {
+    "changedPaths": 8,
+    "planned": 0,
+    "unplanned": 8,
+    "protected": 0
+  },
+  "decision": {
+    "status": "review",
+    "summaryStatus": "attention",
+    "eligibleForSubmission": true,
+    "reasons": [],
+    "escalationTarget": null
+  },
+  "reconciliationSha256": "b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc",
+  "reconciledAt": "2026-08-22T17:47:07.411Z",
+  "final": true,
+  "recordedAt": "2026-08-22T17:47:07.412Z",
+  "path": "singularity/work-items/ANU-STORY/context/work-intervals/reconciliations/b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc.json"
+}

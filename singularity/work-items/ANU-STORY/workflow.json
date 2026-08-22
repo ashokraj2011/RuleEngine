@@ -821,6 +821,206 @@
           },
           "status": "awaiting_review"
         }
+      },
+      {
+        "packetSha256": "d7966c65ff0796bf7732b97c8ca2c0af69ddb78f06d57dc1a81254cefc50caf8",
+        "phase": "implementation",
+        "generation": 2,
+        "branch": "ANU-STORY",
+        "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+        "path": "singularity/work-items/ANU-STORY/submissions/implementation/d7966c65ff0796bf7732b97c8ca2c0af69ddb78f06d57dc1a81254cefc50caf8.json",
+        "submittedAt": "2026-08-22T17:47:07.413Z",
+        "projection": {
+          "schemaVersion": 1,
+          "workId": "ANU-STORY",
+          "epicId": null,
+          "planId": null,
+          "jiraIssueId": "ANU-STORY",
+          "initialJiraKey": null,
+          "currentJiraKey": null,
+          "canonicalBranch": "ANU-STORY",
+          "submittedBranch": "ANU-STORY",
+          "submissionCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+          "sourceCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+          "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+          "phase": "implementation",
+          "generation": 2,
+          "authorship": {
+            "schemaVersion": 1,
+            "producer": "governed-agent",
+            "channel": "copilot-host",
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "governedAgentContext": {
+              "agentId": "qa"
+            },
+            "kernelModel": {
+              "invoked": false,
+              "status": "exact",
+              "invocationIds": []
+            },
+            "externalAiUse": {
+              "value": "unknown",
+              "status": "unavailable"
+            },
+            "source": {
+              "kind": "in-place",
+              "filename": "implementation-summary.md",
+              "mediaType": "text/markdown",
+              "sha256": "e0e025765a978137424402f4e8187006756e589ecaac5f004f08a972d269e70e",
+              "bytes": 65161
+            },
+            "generation": 2,
+            "publishedAt": "2026-08-22T17:18:10.534Z"
+          },
+          "artifacts": [
+            {
+              "path": "singularity/work-items/ANU-STORY/artifacts/implementation/implementation-summary.md",
+              "kind": "document",
+              "sha256": "d607a20e02399a6bc65b079605948998325392f187b0915ff39f6d1b4d59382f",
+              "size": 70906,
+              "reference": {
+                "handle": "sfref:v1:story:ANU-STORY:8ed76b3415b52dcbef1849806a9d22d5cd8c1b53ba21125351fda0c0a17d0f93",
+                "recordHash": "8ed76b3415b52dcbef1849806a9d22d5cd8c1b53ba21125351fda0c0a17d0f93"
+              }
+            },
+            {
+              "path": "src/main/java/org/example/api/dto/InterestRequest.java",
+              "kind": "code",
+              "sha256": "2665518572d05898ec7669ad23f2aff64868b5c1c6aeb71fa1df234d75a95628",
+              "size": 867
+            },
+            {
+              "path": "src/main/java/org/example/api/dto/InterestResult.java",
+              "kind": "code",
+              "sha256": "80572a123555b1590b477176344d4314b0e7875acde30616bd602a8abb506beb",
+              "size": 1368
+            },
+            {
+              "path": "src/main/java/org/example/api/GlobalExceptionHandler.java",
+              "kind": "code",
+              "sha256": "ec6a733146b8a656dd5de607fc70b76a063d07f4aacee2b593a943b0c0b8b1b6",
+              "size": 1669
+            },
+            {
+              "path": "src/main/java/org/example/api/InterestController.java",
+              "kind": "code",
+              "sha256": "89eda0d905c825add0f1567dcdeb0402cf703a01e5d976944b90b7204c176170",
+              "size": 1095
+            },
+            {
+              "path": "src/main/java/org/example/rules/InterestCalculationService.java",
+              "kind": "code",
+              "sha256": "af898991085dd418c75f7d3e5f44f1d494e45481457452cc15def317d144cf8a",
+              "size": 1415
+            },
+            {
+              "path": "src/test/java/org/example/api/InterestControllerTest.java",
+              "kind": "test",
+              "sha256": "bad879e12c6345f64d92ae7bad98ebeab56de9b3be3e780173be76bafd5d89ad",
+              "size": 4098
+            },
+            {
+              "path": "src/test/java/org/example/api/RuleEngineControllerTest.java",
+              "kind": "test",
+              "sha256": "fcba9e8946273dcddc9d8baa4e87e43105f96826deefb479d2eafa8f3201be43",
+              "size": 1783
+            },
+            {
+              "path": "src/test/java/org/example/rules/InterestCalculationServiceTest.java",
+              "kind": "test",
+              "sha256": "e8edc1c696a6c7584ca45b7a7c8197b368200860f093c5293642520b1fbdd963",
+              "size": 3789
+            }
+          ],
+          "references": [
+            {
+              "handle": "sfref:v1:story:ANU-STORY:8ed76b3415b52dcbef1849806a9d22d5cd8c1b53ba21125351fda0c0a17d0f93",
+              "recordHash": "8ed76b3415b52dcbef1849806a9d22d5cd8c1b53ba21125351fda0c0a17d0f93",
+              "purpose": "review-evidence",
+              "required": true
+            }
+          ],
+          "agentBriefs": [],
+          "checks": [
+            {
+              "id": "maven-tests",
+              "command": "mvn -q test",
+              "externalModelPolicy": "never",
+              "timeoutMs": 1800000,
+              "sourceCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+              "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+              "startedAt": "2026-08-22T17:46:54.955Z",
+              "completedAt": "2026-08-22T17:47:07.259Z",
+              "status": "passed",
+              "exitCode": 0,
+              "stdout": "23:17:02.859 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.1.Final\n23:17:03.190 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.190 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.193 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 2 ms\n23:17:03.358 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.358 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.359 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms\n23:17:03.386 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.386 [main] INFO org.springframewor\n… diagnostic output truncated …\n-- Initializing Spring TestDispatcherServlet ''\n23:17:03.416 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.417 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms\n23:17:03.433 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.433 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.434 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms\n23:17:03.451 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.452 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.452 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms\n",
+              "stderr": "",
+              "stdoutBytes": 2580,
+              "stderrBytes": 0,
+              "stdoutTruncated": false,
+              "stderrTruncated": false
+            }
+          ],
+          "usage": [
+            {
+              "status": "unavailable",
+              "source": "copilot-otel-unavailable",
+              "provider": null,
+              "model": null,
+              "requestedModel": null,
+              "resolvedModel": null,
+              "resolvedModelAssurance": "unavailable",
+              "inputTokens": null,
+              "outputTokens": null,
+              "cachedInputTokens": null,
+              "cacheWriteInputTokens": null,
+              "totalTokens": null,
+              "providerCost": null,
+              "costStatus": "unavailable",
+              "spans": null,
+              "startedAt": "2026-08-22T15:45:43.394Z",
+              "completedAt": "2026-08-22T15:45:43.394Z",
+              "agent": "developer",
+              "generation": 1
+            },
+            {
+              "status": "unavailable",
+              "source": "copilot-otel-unavailable",
+              "provider": null,
+              "model": null,
+              "requestedModel": null,
+              "resolvedModel": null,
+              "resolvedModelAssurance": "unavailable",
+              "inputTokens": null,
+              "outputTokens": null,
+              "cachedInputTokens": null,
+              "cacheWriteInputTokens": null,
+              "totalTokens": null,
+              "providerCost": null,
+              "costStatus": "unavailable",
+              "spans": null,
+              "startedAt": "2026-08-22T17:18:10.533Z",
+              "completedAt": "2026-08-22T17:18:10.534Z",
+              "agent": "qa",
+              "generation": 2
+            }
+          ],
+          "approvals": [],
+          "visualAssurance": null,
+          "submittedAt": "2026-08-22T17:47:07.413Z",
+          "submittedBy": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "status": "awaiting_review"
+        }
       }
     ]
   },
@@ -3196,7 +3396,7 @@
       "label": "Implementation",
       "order": 4,
       "defaultAgent": "developer",
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -3263,7 +3463,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-08-22T14:28:52.961Z",
-      "submittedAt": null,
+      "submittedAt": "2026-08-22T17:47:07.413Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": "2026-08-22T17:02:03.915Z",
@@ -3455,10 +3655,10 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 70906,
-          "sha256": "d607a20e02399a6bc65b079605948998325392f187b0915ff39f6d1b4d59382f",
+          "size": 70912,
+          "sha256": "efd572d249396bbcbc41ad75e030fdf1de2d590b3aad66a1eec3387e75414eeb",
           "registeredAt": "2026-08-22T15:45:43.175Z",
-          "updatedAt": "2026-08-22T17:18:10.612Z",
+          "updatedAt": "2026-08-22T17:47:07.414Z",
           "approvedAt": "2026-08-22T15:48:38.509Z",
           "approvedBy": "ashokraj2011"
         },
@@ -3543,7 +3743,26 @@
           "updatedAt": "2026-08-22T17:18:10.613Z"
         }
       ],
-      "checks": [],
+      "checks": [
+        {
+          "id": "maven-tests",
+          "command": "mvn -q test",
+          "externalModelPolicy": "never",
+          "timeoutMs": 1800000,
+          "sourceCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+          "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+          "startedAt": "2026-08-22T17:46:54.955Z",
+          "completedAt": "2026-08-22T17:47:07.259Z",
+          "status": "passed",
+          "exitCode": 0,
+          "stdout": "23:17:02.859 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.1.Final\n23:17:03.190 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.190 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.193 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 2 ms\n23:17:03.358 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.358 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.359 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms\n23:17:03.386 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.386 [main] INFO org.springframewor\n… diagnostic output truncated …\n-- Initializing Spring TestDispatcherServlet ''\n23:17:03.416 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.417 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms\n23:17:03.433 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.433 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.434 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms\n23:17:03.451 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''\n23:17:03.452 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''\n23:17:03.452 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms\n",
+          "stderr": "",
+          "stdoutBytes": 2580,
+          "stderrBytes": 0,
+          "stdoutTruncated": false,
+          "stderrTruncated": false
+        }
+      ],
       "remoteOutputs": [],
       "inputContext": {
         "generation": 2,
@@ -3600,34 +3819,34 @@
         }
       ],
       "sourceCommit": "12751970c11ac46fa1cc007409fd7cd57190c22d",
-      "generationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
-      "publicationCommit": "4347397397bfff549552a21d21ea1289f757ab8d",
+      "generationCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+      "publicationCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
       "validationVerdict": "passed",
       "workIntervalReconciliation": {
-        "reconciliationSha256": "e87416408541e63ca53b8ee6ec1877526cfe5aa9047ebcde743ca2a6f24c9bd2",
-        "baselineSha256": "0529dbab06aaf892b350b430346188d76b3373e0e3232f5db1705141075debde",
-        "path": "singularity/work-items/ANU-STORY/context/work-intervals/reconciliations/e87416408541e63ca53b8ee6ec1877526cfe5aa9047ebcde743ca2a6f24c9bd2.json",
-        "status": "aligned",
-        "summaryStatus": "clear",
-        "targetHead": "4347397397bfff549552a21d21ea1289f757ab8d",
+        "reconciliationSha256": "b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc",
+        "baselineSha256": "9f0ee49c8940d3b013d7efb2202de2835feac0fed1de93b71b2bdac1c3f1f9b3",
+        "path": "singularity/work-items/ANU-STORY/context/work-intervals/reconciliations/b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc.json",
+        "status": "review",
+        "summaryStatus": "attention",
+        "targetHead": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
         "summary": {
-          "changedPaths": 0,
+          "changedPaths": 8,
           "planned": 0,
-          "unplanned": 0,
+          "unplanned": 8,
           "protected": 0
         },
         "decision": {
-          "status": "aligned",
-          "summaryStatus": "clear",
+          "status": "review",
+          "summaryStatus": "attention",
           "eligibleForSubmission": true,
           "reasons": [],
           "escalationTarget": null
         },
         "baseline": {
-          "path": "singularity/work-items/ANU-STORY/context/work-intervals/implementation-gen1-baseline.json",
-          "sha256": "0529dbab06aaf892b350b430346188d76b3373e0e3232f5db1705141075debde",
+          "path": "singularity/work-items/ANU-STORY/context/work-intervals/implementation-gen2-baseline.json",
+          "sha256": "9f0ee49c8940d3b013d7efb2202de2835feac0fed1de93b71b2bdac1c3f1f9b3",
           "verified": true,
-          "sourceBaseCommit": "09cbb9698a087611fd523272aa3b5f03022e37b1"
+          "sourceBaseCommit": "9e049b79ec2ce15b94d7478cf41b79e89ed0156f"
         }
       },
       "deliveryEvidence": {
@@ -3716,7 +3935,25 @@
         "generation": 2,
         "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
         "capturedAt": "2026-08-22T17:18:10.534Z",
-        "validation": null
+        "validation": {
+          "sourceCommit": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+          "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a",
+          "commands": [
+            {
+              "id": "maven-tests",
+              "command": "mvn -q test"
+            }
+          ],
+          "checks": [
+            {
+              "id": "maven-tests",
+              "status": "passed",
+              "sourceTreeSha256": "sha256:d84ca9b17b75c1133b5e0360cf4f81b083a705ee59463f464da45a4b4928f08a"
+            }
+          ],
+          "status": "passed",
+          "validatedAt": "2026-08-22T17:47:07.318Z"
+        }
       }
     },
     "verification": {
@@ -4641,6 +4878,22 @@
       "event": "phase_generated",
       "phase": "implementation",
       "detail": "generation 2"
+    },
+    {
+      "at": "2026-08-22T17:47:07.412Z",
+      "actor": "system",
+      "agent": null,
+      "event": "work_interval_reconciled",
+      "phase": "implementation",
+      "detail": "review; 8 changed path(s)"
+    },
+    {
+      "at": "2026-08-22T17:47:07.413Z",
+      "actor": "ashokraj2011",
+      "agent": "qa",
+      "event": "phase_submitted",
+      "phase": "implementation",
+      "detail": "9 artifacts"
     }
   ],
   "measurement": {
@@ -6563,6 +6816,111 @@
         },
         "createdAt": "2026-08-22T17:18:10.334Z"
       }
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "7cb147af-1263-4d0f-9281-9045f01b0e55",
+        "type": "approval-requested",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-STORY",
+          "branch": "ANU-STORY"
+        },
+        "phaseId": "implementation",
+        "generation": 2,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "qa",
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-22T17:46:54.706Z"
+      },
+      "ledgerIntent": {
+        "schemaVersion": 1,
+        "eventId": "7cb147af-1263-4d0f-9281-9045f01b0e55",
+        "eventType": "approval-requested",
+        "capabilityId": "rule-engine",
+        "subject": {
+          "branch": "ANU-STORY",
+          "generation": 2,
+          "phase": "implementation",
+          "workId": "ANU-STORY",
+          "workType": "feature"
+        },
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "githubLogin": "ashokraj2011",
+          "identityAssurance": "configured-local"
+        },
+        "agent": "qa",
+        "authorityGroup": null,
+        "payload": {
+          "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+          "capabilityPolicy": {
+            "allowSelfApproval": true,
+            "approvalMinimum": 1,
+            "gateSeverity": "warn",
+            "protectedPaths": [
+              "singularity/workflow.yml",
+              "singularity/capabilities.yml"
+            ],
+            "qualityCommands": [],
+            "requiredAuthorityGroups": [],
+            "requiredChecks": [],
+            "requiredWorldModelViews": []
+          },
+          "configPath": "singularity/workflow.yml",
+          "configSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+          "lifecycleEventId": "7cb147af-1263-4d0f-9281-9045f01b0e55",
+          "lifecyclePayload": {
+            "decision": null,
+            "reviewPacketSha256": null
+          },
+          "templateSha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c",
+          "lifecycleEvent": {
+            "schemaVersion": 1,
+            "eventId": "7cb147af-1263-4d0f-9281-9045f01b0e55",
+            "type": "approval-requested",
+            "subject": {
+              "kind": "story",
+              "id": "ANU-STORY",
+              "branch": "ANU-STORY"
+            },
+            "phaseId": "implementation",
+            "generation": 2,
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "agent": "qa",
+            "authorityGroup": null,
+            "payload": {
+              "decision": null,
+              "reviewPacketSha256": null
+            },
+            "sourceCommit": null,
+            "idempotencyKey": null,
+            "idempotencyHash": null,
+            "createdAt": "2026-08-22T17:46:54.706Z"
+          }
+        },
+        "createdAt": "2026-08-22T17:46:54.717Z"
+      }
     }
   ],
   "repairBudgets": {},
@@ -6576,7 +6934,13 @@
       "sourceBaseCommit": "9e049b79ec2ce15b94d7478cf41b79e89ed0156f",
       "escalationTarget": null,
       "path": "singularity/work-items/ANU-STORY/context/work-intervals/implementation-gen2-baseline.json",
-      "status": "open"
+      "status": "reconciled",
+      "finalReconciliation": {
+        "reconciliationSha256": "b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc",
+        "path": "singularity/work-items/ANU-STORY/context/work-intervals/reconciliations/b8197b62c3443e0ef14d187835412104c3a1cdb8ac098cffad99eeea0ad2a6bc.json",
+        "targetHead": "3b72dbd66efd068b2a1b22800e1eed523eb37a34",
+        "recordedAt": "2026-08-22T17:47:07.412Z"
+      }
     },
     "history": [
       {
