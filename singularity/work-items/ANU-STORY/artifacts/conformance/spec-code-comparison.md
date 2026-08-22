@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "conformance",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -102,8 +102,49 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "conformance",
+      "at": "2026-08-22T16:03:35.550Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "qa",
+      "authorityGroup": "quality-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "copilot-selection-receipt",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/ANU-STORY/artifacts/conformance/spec-code-comparison.md",
+          "sha256": "4b6342aebe400582c8df3393c993abe4248df4ff2f61aac10815538ec49c2c4a"
+        }
+      ],
+      "reviewPacketSha256": "6ff00baa0d3898a6b859248f76492762124eb455bf14aeb247a356f5bf68a09e",
+      "actionContext": {
+        "phase": "conformance",
+        "label": "Spec-to-code conformance",
+        "generation": 1,
+        "submittedAt": "2026-08-22T16:00:38.856Z",
+        "artifacts": [
+          {
+            "path": "singularity/work-items/ANU-STORY/artifacts/conformance/spec-code-comparison.md",
+            "sha256": "4b6342aebe400582c8df3393c993abe4248df4ff2f61aac10815538ec49c2c4a"
+          }
+        ],
+        "agentBriefs": [],
+        "reviewPacketSha256": "6ff00baa0d3898a6b859248f76492762124eb455bf14aeb247a356f5bf68a09e",
+        "submittedSourceCommit": "86207c2672459a2b44703078f4d0ebcc486267ab",
+        "planId": "f5055f4295817d6f339fee79"
+      },
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": "sha256:232984350614fea27a8ec15269747b6fb7541f4e7be983fff2c5a6c3230ca489"
 }
 -->
