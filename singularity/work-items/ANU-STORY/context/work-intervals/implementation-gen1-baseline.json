@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-interval-baseline",
+  "intervalId": "INT-implementation-G1-001",
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "railId": "feature",
+  "phaseId": "implementation",
+  "generation": 1,
+  "branch": "ANU-STORY",
+  "sourceBaseCommit": "09cbb9698a087611fd523272aa3b5f03022e37b1",
+  "configurationSha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+  "sourceSha256": "142becb19837037c336774addd45db0b908d38715d71a2782805c230756620ca",
+  "templateSha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c",
+  "workflowSubjectRevision": "sha256:45bd590a19efae84dbdb5d5fbe3cda9345136ac4bcd91a97d07227c6682d1749",
+  "protectedPaths": [
+    ".github/agents",
+    ".github/skills",
+    "plugin/agents",
+    "plugin/skills",
+    "singularity/agent-mappings.yml",
+    "singularity/agents",
+    "singularity/agents.lock.yml",
+    "singularity/capabilities.yml",
+    "singularity/impact.yml",
+    "singularity/prompts",
+    "singularity/templates",
+    "singularity/workflow.yml"
+  ],
+  "requiredChecks": [],
+  "requiredChecksSha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "policySha256": "sha256:e637c11ad13d110dfd86e8c75bb3c17fd781ebe854a87ec98a654127603fac2d",
+  "escalationLadderSha256": null,
+  "reconciliationPolicy": {
+    "changedPathLimit": 5,
+    "escalationTarget": null,
+    "localProvidersOnly": true
+  },
+  "baselineSha256": "0529dbab06aaf892b350b430346188d76b3373e0e3232f5db1705141075debde",
+  "createdAt": "2026-08-22T14:28:53.061Z",
+  "path": "singularity/work-items/ANU-STORY/context/work-intervals/implementation-gen1-baseline.json",
+  "status": "open"
+}
