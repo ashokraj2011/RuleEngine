@@ -1,0 +1,866 @@
+{
+  "schema_version": "3.0",
+  "generated_at": "2026-08-22T15:44:43.359Z",
+  "generated_date": "22 August 2026",
+  "builder_version": "2.1-light",
+  "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
+  "repository_commit": "7399d48d189e31a0ec87072801db3f837a80a0f6",
+  "repository_branch": "ANU-STORY",
+  "working_tree_clean": false,
+  "generated_for_phase": "implementation",
+  "analysis_depth": "light",
+  "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "generator": {
+    "type": "deterministic-local",
+    "model": null,
+    "model_tokens": 0
+  },
+  "core": {
+    "brief": "core/summary.brief.md",
+    "summary": "core/summary.md",
+    "model": {
+      "path": "core/model.json"
+    },
+    "tiers": {
+      "brief": {
+        "status": "ready",
+        "path": "core/summary.brief.md",
+        "bytes": 581,
+        "sha256": "4e4154d4ce580b86e8a942327147405265805190dec830d28210a32edabc2ac7"
+      },
+      "full": {
+        "status": "ready",
+        "path": "core/summary.md",
+        "bytes": 1790,
+        "sha256": "f8fb17e083565a416770a1ac76b5517649534d9d8947b5a997d516b290d6b3f9"
+      }
+    }
+  },
+  "path_index": {
+    "path": "index/path-map.json"
+  },
+  "views": {
+    "business": {
+      "path": "views/business.md",
+      "brief_path": "views/business.brief.md",
+      "generated": true,
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/business.brief.md",
+          "bytes": 240,
+          "sha256": "4d4f2fad4e8ce97e82c31de346d65b3feb7d6d62b96248895b5e69cc2ddfc7a4"
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/business.md",
+          "bytes": 777,
+          "sha256": "e56ba70700c174cf1c4ca37b61d9b4852397ecceb9c8a54d3e1665a908288510"
+        }
+      }
+    },
+    "architecture": {
+      "tiers": {
+        "brief": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/architecture.md",
+          "bytes": 763,
+          "sha256": "962aa94f3b996a1068ef4b1be04ce36431f4542ed79df88933c121a7ad702ee9"
+        }
+      },
+      "brief_path": null,
+      "path": "views/architecture.md",
+      "generated": true
+    },
+    "security": {
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/security.brief.md",
+          "bytes": 226,
+          "sha256": "aa5a42321e905ea1c1c66026eaa7ae8f2c3d731fe37486cd2d3dcb8c9caf0246"
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/security.md",
+          "bytes": 3919,
+          "sha256": "1180321d83732af2b9cfef04ee53544151df711c08f47e35e3eb35e21575bebc"
+        }
+      },
+      "brief_path": "views/security.brief.md",
+      "path": "views/security.md",
+      "generated": true
+    },
+    "development": {
+      "tiers": {
+        "brief": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/development.md",
+          "bytes": 5535,
+          "sha256": "4d8efd81192ecd5a53386a623dcb01e04c17d2c1f803bd846e722d084d6e6b46"
+        }
+      },
+      "brief_path": null,
+      "path": "views/development.md",
+      "generated": true
+    },
+    "testing": {
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/testing.brief.md",
+          "bytes": 352,
+          "sha256": "c1312b4f5ebaa6f39f987b2da923611968e632dc695e94f7a2d7d663dd9f7089"
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/testing.md",
+          "bytes": 4169,
+          "sha256": "dab2751e87430a720fb8ced8b9b976a443802c69a020740840d48e4ebc4335fc"
+        }
+      },
+      "brief_path": "views/testing.brief.md",
+      "path": "views/testing.md",
+      "generated": true
+    }
+  },
+  "views_generated": [
+    "development",
+    "testing"
+  ],
+  "requested_views": [
+    "development",
+    "testing"
+  ],
+  "domains": [
+    {
+      "id": "rule-engine",
+      "path": "domains/rule-engine.md",
+      "summary": "The repository’s rule-evaluation capability, including the API contract and evaluator semantics.",
+      "relevant_views": [
+        "architecture",
+        "development",
+        "testing",
+        "security"
+      ],
+      "keywords": [
+        "rule",
+        "operator",
+        "evaluation",
+        "api"
+      ],
+      "anchors": [
+        "domain.rule-engine.tldr"
+      ]
+    }
+  ],
+  "task_guides": [
+    {
+      "id": "task-d447212495cb",
+      "path": "task-guides/d447212495cb9cc8.md",
+      "task": "implement intrest calcuation"
+    }
+  ],
+  "evidence": {
+    "path": "evidence/evidence.jsonl"
+  },
+  "generation": {
+    "parallel": false,
+    "strategy": "deterministic-light",
+    "max_workers": 0,
+    "discovery_views": [],
+    "degraded_views": [],
+    "resumed_views": [],
+    "pending_views_at_start": []
+  },
+  "materializations": [
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "provider-1787408411291",
+      "generated_at": "2026-08-22T14:12:05.705Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": "copilot-cli",
+      "requested": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "reused": [
+        "architecture/full",
+        "core/full"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402166753",
+      "generated_at": "2026-08-22T12:36:05.846Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/brief",
+        "core/brief"
+      ],
+      "produced": [
+        "business/brief",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787402632978",
+      "generated_at": "2026-08-22T12:43:52.875Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "business/full",
+        "core/brief"
+      ],
+      "produced": [
+        "business/full",
+        "core/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "light-1787406413200",
+      "generated_at": "2026-08-22T13:46:53.095Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief",
+        "security/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
+    },
+    {
+      "id": "provider-1787408411291",
+      "generated_at": "2026-08-22T14:12:05.705Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": "copilot-cli",
+      "requested": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
+      ],
+      "reused": [
+        "architecture/full",
+        "core/full"
+      ]
+    },
+    {
+      "id": "light-1787413483465",
+      "generated_at": "2026-08-22T15:44:43.359Z",
+      "source_tree_sha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+      "provider": null,
+      "requested": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "produced": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "reused": [
+        "core/brief",
+        "development/full"
+      ]
+    }
+  ],
+  "phase_map": {
+    "intake": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "requirements": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "design": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "implementation-spec": {
+      "views": [
+        "architecture",
+        "development"
+      ],
+      "tier": "full"
+    },
+    "implementation": {
+      "views": [
+        "development"
+      ],
+      "tier": "full"
+    },
+    "verification": {
+      "views": [
+        "testing"
+      ],
+      "tier": "full"
+    },
+    "conformance": {
+      "views": [
+        "testing",
+        "security"
+      ],
+      "tier": "full"
+    }
+  },
+  "agent_map": {
+    "product-owner": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "business-analyst": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "architect": {
+      "views": [
+        "architecture",
+        "security"
+      ],
+      "tier": "full"
+    },
+    "developer": {
+      "views": [
+        "development"
+      ],
+      "tier": "full"
+    },
+    "qa": {
+      "views": [
+        "testing"
+      ],
+      "tier": "full"
+    },
+    "security": {
+      "views": [
+        "security"
+      ],
+      "tier": "full"
+    },
+    "operations": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    },
+    "delivery-manager": {
+      "views": [
+        "architecture"
+      ],
+      "tier": "full"
+    }
+  },
+  "recommended_loading_rules": [
+    {
+      "agent_type": "business",
+      "load": [
+        "core/summary.md",
+        "views/architecture.md"
+      ]
+    },
+    {
+      "agent_type": "architect",
+      "load": [
+        "core/summary.md",
+        "views/architecture.md"
+      ]
+    },
+    {
+      "agent_type": "developer",
+      "load": [
+        "core/summary.md",
+        "views/development.md"
+      ]
+    },
+    {
+      "agent_type": "tester",
+      "load": [
+        "core/summary.md",
+        "views/testing.md"
+      ]
+    },
+    {
+      "agent_type": "security",
+      "load": [
+        "core/summary.md",
+        "views/security.md"
+      ]
+    }
+  ],
+  "budget_hints": {
+    "orientation_only": [
+      "core/summary.md"
+    ],
+    "single_phase_typical": [
+      "core/summary.md",
+      "views/<view>.md"
+    ],
+    "deep_investigation": [
+      "core/summary.md",
+      "views/<view>.md",
+      "domains/rule-engine.md",
+      "evidence/evidence.jsonl"
+    ]
+  },
+  "requested_selections": [
+    "core/full",
+    "architecture/full",
+    "development/full",
+    "testing/full",
+    "security/full"
+  ]
+}

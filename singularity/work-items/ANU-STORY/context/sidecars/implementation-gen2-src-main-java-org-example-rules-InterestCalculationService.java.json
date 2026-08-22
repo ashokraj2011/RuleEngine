@@ -1,0 +1,46 @@
+{
+  "artifact": {
+    "bytes": 1415,
+    "path": "src/main/java/org/example/rules/InterestCalculationService.java",
+    "role": "code",
+    "sha256": "af898991085dd418c75f7d3e5f44f1d494e45481457452cc15def317d144cf8a"
+  },
+  "configuration": {
+    "revision": "e0c3083af3f08b7900c2286e9b203d7641cbed85",
+    "sha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b"
+  },
+  "generation": 2,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/design/design.md",
+      "sha256": null
+    },
+    {
+      "kind": null,
+      "path": "artifacts/implementation-spec/implementation-spec.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "5a62cc2de8ac0811e0f9bfcca912bd2921cf31e8fffd27988883d10b7801af4a",
+  "phase": "implementation",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "qa",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "ANU-STORY",
+    "commit": null,
+    "publishedAt": "2026-08-22T17:18:10.534Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "ANU-STORY",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/common/implementation.md",
+    "sha256": "5d0478b18c8fd14221e14c68e6238b909bccd6802a70262c416005354716c62c"
+  }
+}

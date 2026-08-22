@@ -1,0 +1,13 @@
+{
+  "clauses": [],
+  "generation": 1,
+  "indexSha256": "5ad3503e9fa12a97e460bb58c2a82a095d88a0bb26128bb1a5f5cbb47deb1157",
+  "phase": "conformance",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 237051,
+    "path": "singularity/work-items/ANU-STORY/artifacts/conformance/spec-code-comparison.md",
+    "sha256": "cdc88fcf9cccdde3425ae880dd84b4c8b2040bd2ac975df04b4e59684ebc163a"
+  },
+  "workId": "ANU-STORY"
+}

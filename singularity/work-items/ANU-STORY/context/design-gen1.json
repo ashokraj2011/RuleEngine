@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 3,
+  "workId": "ANU-STORY",
+  "phase": "design",
+  "generation": 1,
+  "agent": "product-owner",
+  "modelCommit": "59600d03b074eb9b4f65c0e55f1d2e1ab074175e",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "architecture",
+    "security"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "brief",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "architecture",
+      "tier": "full",
+      "required": true,
+      "origin": "phase"
+    },
+    {
+      "kind": "view",
+      "view": "security",
+      "tier": "brief",
+      "required": true,
+      "origin": "phase"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [
+    {
+      "handle": "sfref:v1:story:ANU-STORY:fc54d7c1662e2638e4df804262cfbb7741b277239e2f43ffebf6ea6a0c50ceb1",
+      "phase": "intake",
+      "path": "singularity/work-items/ANU-STORY/artifacts/intake/intake.md",
+      "rawSha256": "cef1ac61ce0c86cb316c27112cd98a22abf631e9a698749182b82d6d0d9468f6",
+      "rawBytes": 4543,
+      "previewSha256": "f128780f15375b98c4a50e8406e28e11f875d5204fe257031f22c7d0fc018103",
+      "previewBytes": 4668,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    },
+    {
+      "handle": "sfref:v1:story:ANU-STORY:a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+      "phase": "requirements",
+      "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md",
+      "rawSha256": "26e2c886e797b94e4fda068a858a5e055c782110600f912fa3fe047dada1bca3",
+      "rawBytes": 11458,
+      "previewSha256": "3f71cdd2d6cc1a46d4398cfa259d63c76173ab8ae2af0975a5517c665eef6050",
+      "previewBytes": 11583,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    }
+  ],
+  "modelSourceTreeSha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "composedSourceTreeSha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "worldModelCommit": "59600d03b074eb9b4f65c0e55f1d2e1ab074175e",
+  "manifestSha256": "0efbb509ceb82732c612571bf9c677518d04374b11c3ba641e6a24bfd062b828",
+  "fresh": true,
+  "renderedSha256": "33add69e0128a262be2caf38faf630c81b31f2fff515b096d4571a049da7baa8",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/ANU-STORY/context/prompts/design-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.brief.md",
+      "sha256": "4e4154d4ce580b86e8a942327147405265805190dec830d28210a32edabc2ac7",
+      "bytes": 581,
+      "injectedBytes": 581,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (brief)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/architecture.md",
+      "sha256": "962aa94f3b996a1068ef4b1be04ce36431f4542ed79df88933c121a7ad702ee9",
+      "bytes": 763,
+      "injectedBytes": 763,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "design view: architecture (full; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/security.brief.md",
+      "sha256": "aa5a42321e905ea1c1c66026eaa7ae8f2c3d731fe37486cd2d3dcb8c9caf0246",
+      "bytes": 226,
+      "injectedBytes": 226,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "design view: security (brief; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/evidence/evidence.jsonl",
+      "sha256": "4968b51c725e2bb11cee9830e79f867be5a6090744d676ea9e083db4795b5feb",
+      "bytes": 398,
+      "injectedBytes": 398,
+      "truncated": false,
+      "category": "required",
+      "level": 3,
+      "reason": "evidence ledger",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/work-items/ANU-STORY/artifacts/intake/intake.md",
+      "sha256": "cef1ac61ce0c86cb316c27112cd98a22abf631e9a698749182b82d6d0d9468f6",
+      "bytes": 4543,
+      "injectedBytes": 4668,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "intake:sfref:v1:story:ANU-STORY:fc54d7c1662e2638e4df804262cfbb7741b277239e2f43ffebf6ea6a0c50ceb1",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:ANU-STORY:fc54d7c1662e2638e4df804262cfbb7741b277239e2f43ffebf6ea6a0c50ceb1",
+      "previewSha256": "f128780f15375b98c4a50e8406e28e11f875d5204fe257031f22c7d0fc018103",
+      "previewBytes": 4668,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    },
+    {
+      "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md",
+      "sha256": "26e2c886e797b94e4fda068a858a5e055c782110600f912fa3fe047dada1bca3",
+      "bytes": 11458,
+      "injectedBytes": 11583,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "requirements:sfref:v1:story:ANU-STORY:a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:ANU-STORY:a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+      "previewSha256": "3f71cdd2d6cc1a46d4398cfa259d63c76173ab8ae2af0975a5517c665eef6050",
+      "previewBytes": 11583,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    }
+  ],
+  "injectedAt": "2026-08-22T13:57:22.155Z"
+}

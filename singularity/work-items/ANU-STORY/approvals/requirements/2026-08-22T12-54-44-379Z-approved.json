@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "phase": "requirements",
+  "at": "2026-08-22T12:54:44.379Z",
+  "actor": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner",
+  "authorityGroup": "product-approvers",
+  "identityAssurance": "configured-local",
+  "channel": "terminal",
+  "generation": 1,
+  "artifactSha256": [
+    {
+      "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md",
+      "sha256": "7f50fd9bd464c525e1a16f93dae6eeea92e3c8fee4d27125385cd544ec7d0bf3"
+    }
+  ],
+  "reviewPacketSha256": "9e2ab4eba5bc90e8fba62eb77c1f148f70ea80477b97c2a429c6f38684acaa96",
+  "selfApproval": true
+}

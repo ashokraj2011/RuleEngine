@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "return-locator",
+  "workId": "ANU-STORY",
+  "capabilityId": "rule-engine",
+  "originRepositoryId": "ruleengine",
+  "repositories": [
+    {
+      "id": "ruleengine",
+      "remote": "origin",
+      "required": true,
+      "url": "https://github.com/ashokraj2011/RuleEngine.git",
+      "fingerprint": "8041d3ac0c10317a28a4194f74beb81598d75b36fe05d03ee3f82bf6598312d7",
+      "portability": "portable"
+    }
+  ],
+  "lifecycleRef": "refs/heads/ANU-STORY",
+  "workBranchRef": "refs/heads/ANU-STORY",
+  "configuration": {
+    "sha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b",
+    "branch": "sflow/config",
+    "commit": "e0c3083af3f08b7900c2286e9b203d7641cbed85"
+  },
+  "cloneStrategy": "existing-or-clone",
+  "integritySha256": "99d5bcf5e03afe0fefcfdbbd25cd6e1a9c6af9960d9784cb25917bb1903882c2"
+}
