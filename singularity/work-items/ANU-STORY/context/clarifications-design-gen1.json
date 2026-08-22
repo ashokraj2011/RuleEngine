@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "phase": "design",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-STORY/context/prompts/design-gen1.md",
+  "promptSha256": "33add69e0128a262be2caf38faf630c81b31f2fff515b096d4571a049da7baa8",
+  "groundingRecordPath": "singularity/work-items/ANU-STORY/context/design-gen1.json",
+  "groundingRecordSha256": "13d11863be2216811e6a754098ec336d37f0e54fcd2b6610accb2888b476af25",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Which rate input format should the initial release support: decimal or percentage?",
+      "answer": "decimal",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-22T13:58:12.469Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}
