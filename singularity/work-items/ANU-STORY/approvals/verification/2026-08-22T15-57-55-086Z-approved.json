@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "phase": "verification",
+  "at": "2026-08-22T15:57:55.086Z",
+  "actor": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "qa",
+  "authorityGroup": "quality-reviewers",
+  "identityAssurance": "configured-local",
+  "channel": "terminal",
+  "generation": 1,
+  "artifactSha256": [
+    {
+      "path": "singularity/work-items/ANU-STORY/artifacts/verification/test-evidence.md",
+      "sha256": "1544e1e809d7a25b76097a80a731282929e2a5c3f76723d4d47568929f138538"
+    }
+  ],
+  "reviewPacketSha256": "8f7724ed4b4f08d655e95789377a327f7f598a39ce10ca4206cc47f9d1700a36",
+  "selfApproval": true
+}
