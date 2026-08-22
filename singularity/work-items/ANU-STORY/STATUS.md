@@ -9,7 +9,7 @@
 
 | # | Phase | Governed agent | Status | Generation | Approvals | Tokens |
 |---:|---|---|---|---:|---:|---:|
-| 1 | Intake (`intake`) | product-owner | **in_progress** | 1 | 0 | unavailable |
+| 1 | Intake (`intake`) | product-owner | **awaiting_approval** | 1 | 0 | unavailable |
 | 2 | Requirements (`requirements`) | product-owner | **not_started** | 0 | 0 | unavailable |
 | 3 | Architecture and design (`design`) | architect | **not_started** | 0 | 0 | unavailable |
 | 4 | Implementation specification (`implementation-spec`) | architect | **not_started** | 0 | 0 | unavailable |
@@ -19,5 +19,6 @@
 
 ## Recent history
 
+- 2026-08-22T12:37:18.083Z — **phase_submitted** (intake) by ashokraj2011 · governed agent product-owner: 1 artifacts
 - 2026-08-22T12:36:26.005Z — **phase_generated** (intake) by ashokraj2011 · governed agent product-owner: generation 1
 - 2026-08-22T12:27:51.654Z — **work_started** (intake) by ashokraj2011 · governed agent product-owner: Created feature branch ANU-STORY
