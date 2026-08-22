@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "phase": "requirements",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-STORY/context/prompts/requirements-gen1.md",
+  "promptSha256": "b36631aebe96ef2ff13cf4294362302dfc8b232ced801581e974403aadbd2669",
+  "groundingRecordPath": "singularity/work-items/ANU-STORY/context/requirements-gen1.json",
+  "groundingRecordSha256": "a16cc3274eae8b90af3f4b62f3a64ee8deb36be36b4447703e454e69732303e5",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Should the initial interest feature support only simple interest, or should compound interest also be included in the first release?",
+      "answer": "Support simple interest only in the initial release; compound interest can be deferred.",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-22T12:44:07.362Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}
