@@ -5,7 +5,7 @@
   "workType": "feature",
   "phase": "conformance",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -102,8 +102,33 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "conformance",
+      "at": "2026-08-23T15:13:03.356Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "qa",
+      "authorityGroup": "quality-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "terminal",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/ANU-2018/artifacts/conformance/spec-code-comparison.md",
+          "sha256": "8f8150bba0449ee5dc2b215d991f35e6577579a62d4a1c0f2f75299b0005e958"
+        }
+      ],
+      "reviewPacketSha256": "f3c782a4909d0f8b9e489208ff228588f10e57a82c2bdf15418f3f12217a9153",
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9"
 }
 -->
