@@ -11,7 +11,7 @@
 |---:|---|---|---|---:|---:|---:|
 | 1 | Intake (`intake`) | product-owner | **approved** | 1 | 1 | unavailable |
 |  | ⚠ self-approval | Ashok Raj via product-approvers; agent product-owner | **warning** |  |  |  |
-| 2 | Requirements (`requirements`) | product-owner | **in_progress** | 1 | 0 | unavailable |
+| 2 | Requirements (`requirements`) | product-owner | **awaiting_approval** | 1 | 0 | unavailable |
 | 3 | Architecture and design (`design`) | architect | **not_started** | 0 | 0 | unavailable |
 | 4 | Implementation specification (`implementation-spec`) | architect | **not_started** | 0 | 0 | unavailable |
 | 5 | Implementation (`implementation`) | developer | **not_started** | 0 | 0 | unavailable |
@@ -20,6 +20,7 @@
 
 ## Recent history
 
+- 2026-08-23T11:51:07.338Z — **phase_submitted** (requirements) by ashokraj2011 · governed agent product-owner: 1 artifacts
 - 2026-08-23T11:50:44.125Z — **phase_generated** (requirements) by ashokraj2011 · governed agent product-owner: generation 1
 - 2026-08-23T11:39:54.873Z — **phase_self_approved** (intake) by ashokraj2011 · governed agent product-owner: threshold reached; advanced to requirements
 - 2026-08-23T11:38:35.836Z — **phase_submitted** (intake) by ashokraj2011 · governed agent product-owner: 1 artifacts
