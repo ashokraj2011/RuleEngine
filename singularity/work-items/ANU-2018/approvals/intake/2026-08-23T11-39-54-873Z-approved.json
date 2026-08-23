@@ -1,0 +1,40 @@
+{
+  "decision": "approved",
+  "phase": "intake",
+  "at": "2026-08-23T11:39:54.873Z",
+  "actor": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner",
+  "authorityGroup": "product-approvers",
+  "identityAssurance": "configured-local",
+  "channel": "copilot-selection-receipt",
+  "generation": 1,
+  "artifactSha256": [
+    {
+      "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+      "sha256": "92087a8e0bb79764ff00f9fb6c17f6f07f7dbf08e21ea7d54ac7993ccfec2dd4"
+    }
+  ],
+  "reviewPacketSha256": "9df1ec666fb9158b51420e2b75e186339a1b5299656a74288bee5ddeb45dbad9",
+  "actionContext": {
+    "phase": "intake",
+    "label": "Intake",
+    "generation": 1,
+    "submittedAt": "2026-08-23T11:38:35.836Z",
+    "artifacts": [
+      {
+        "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+        "sha256": "92087a8e0bb79764ff00f9fb6c17f6f07f7dbf08e21ea7d54ac7993ccfec2dd4"
+      }
+    ],
+    "agentBriefs": [],
+    "reviewPacketSha256": "9df1ec666fb9158b51420e2b75e186339a1b5299656a74288bee5ddeb45dbad9",
+    "submittedSourceCommit": "d83f1793bf39f17615bd50dfa93bb4be3f819d25",
+    "planId": "7efc1116a9776ad5e573a967"
+  },
+  "selfApproval": true
+}

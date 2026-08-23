@@ -197,4 +197,32 @@ public class RuleEngineServiceTest {
         isNotNullAge.put("op", "isNotNull");
         assertTrue(service.evaluate(data, isNotNullAge));
     }
+
+    @Test
+    /* @ac:ANU-2018:AC-001 */
+    void testCircleAreaOperatorReturnsComputedValueForNumericRadius() {
+        Map<String, Object> data = Map.of("radius", 3);
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+
+        Object result = service.evaluateValue(data, rule);
+        assertNotNull(result);
+        assertEquals(28.274333882308138, ((Number) result).doubleValue(), 1e-12);
+    }
+
+    @Test
+    /* @ac:ANU-2018:AC-001 */
+    void testCircleAreaOperatorRejectsNonNumericInput() {
+        Map<String, Object> data = Map.of("radius", "not-a-number");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> service.evaluateValue(data, rule));
+        assertTrue(exception.getMessage().contains("numeric"));
+    }
 }

@@ -1,0 +1,40 @@
+{
+  "decision": "approved",
+  "phase": "design",
+  "at": "2026-08-23T11:55:35.237Z",
+  "actor": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "architect",
+  "authorityGroup": "architecture-reviewers",
+  "identityAssurance": "configured-local",
+  "channel": "copilot-selection-receipt",
+  "generation": 1,
+  "artifactSha256": [
+    {
+      "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+      "sha256": "f97ff4ec8d02e8f32ccd1b5ff35723edfc36a79dbfdf9756e4de1cbe89a2ff25"
+    }
+  ],
+  "reviewPacketSha256": "92858d4a3ac8f0a0759f4b7a8c2adb6f4030956abe364b4de765c7f3b14cd96a",
+  "actionContext": {
+    "phase": "design",
+    "label": "Architecture and design",
+    "generation": 1,
+    "submittedAt": "2026-08-23T11:54:46.191Z",
+    "artifacts": [
+      {
+        "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+        "sha256": "f97ff4ec8d02e8f32ccd1b5ff35723edfc36a79dbfdf9756e4de1cbe89a2ff25"
+      }
+    ],
+    "agentBriefs": [],
+    "reviewPacketSha256": "92858d4a3ac8f0a0759f4b7a8c2adb6f4030956abe364b4de765c7f3b14cd96a",
+    "submittedSourceCommit": "ad41012bb048c395b3286bc1b896778732d91717",
+    "planId": "21333bc87151f69afe2b5836"
+  },
+  "selfApproval": true
+}

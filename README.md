@@ -5,6 +5,7 @@ A lightweight Spring Boot service that evaluates JSON rules against arbitrary in
 The rule language supports:
 - Group operators: `all` (AND), `any` (OR), `not`
 - Condition operators: `eq`, `ne`, `lt`, `lte`, `gt`, `gte`, `between`, `in`, `contains`, `regex`, `exists`, `not_exists`, `isNull`, `isNotNull`
+- Value-producing operator: `circle_area` (computes $A = \pi r^2$ from a numeric radius field)
 
 This document shows how to build, run, and use the API with practical examples.
 
@@ -161,6 +162,16 @@ curl -s -X POST http://localhost:8080/api/v1/rule-engine/evaluate \
 }
 ```
 
+### 6) Circle-area value-producing operator
+```
+{
+  "data": { "radius": 3 },
+  "rule": { "field": "radius", "op": "circle_area" }
+}
+```
+
+This evaluates to the numeric area $A = \pi r^2$ and rejects non-numeric input with an error.
+
 ---
 
 ## Full Operator Reference
@@ -170,6 +181,7 @@ curl -s -X POST http://localhost:8080/api/v1/rule-engine/evaluate \
 - Pattern: `regex`
 - Range: `between` (must supply `[min, max]`)
 - Existence: `exists`, `not_exists`, `isNull`, `isNotNull`
+- Value-producing: `circle_area`
 
 ### isNull Operator
 

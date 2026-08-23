@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 3,
+  "workId": "ANU-2018",
+  "phase": "implementation-spec",
+  "generation": 1,
+  "agent": "architect",
+  "modelCommit": "e524499f042446fc0c7e16176a5cbe96301aa60c",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "architecture",
+    "development",
+    "testing",
+    "security"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "full",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "architecture",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    },
+    {
+      "kind": "view",
+      "view": "development",
+      "tier": "full",
+      "required": true,
+      "origin": "phase"
+    },
+    {
+      "kind": "view",
+      "view": "testing",
+      "tier": "full",
+      "required": true,
+      "origin": "phase"
+    },
+    {
+      "kind": "view",
+      "view": "security",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [
+    {
+      "handle": "sfref:v1:story:ANU-2018:e8a24b2a87e12cebac21f40b43a21c3e4f6dec5965399a04b3a4a33e290ab589",
+      "phase": "intake",
+      "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+      "rawSha256": "7577bdceeab39ae9483aec451dfca0bb2dfb1e94e26f930eab4c454fdceeb532",
+      "rawBytes": 5125,
+      "previewSha256": "17c981c938ad0aedc04de78150d742aa9fe334a1c7078364155a7b0b55ae946f",
+      "previewBytes": 5250,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    },
+    {
+      "handle": "sfref:v1:story:ANU-2018:5ad9a9b6e30b09c2aae4f9150d7d518c9ccab12c0379b4c679cb3ada1b16c3cc",
+      "phase": "requirements",
+      "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md",
+      "rawSha256": "06514d79d1dcc5e66ce330243f5effc379d2f9922d7007c5f3cbe404bd65eab8",
+      "rawBytes": 12071,
+      "previewSha256": "211fedaa08d41e792b457acf24e38f183823dcf9503257dec6763bb6babce9c0",
+      "previewBytes": 12196,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    },
+    {
+      "handle": "sfref:v1:story:ANU-2018:8b8022b49216261037709f7c1bc610d3030d51a7dea6d5d96aa6fd9392c885d4",
+      "phase": "design",
+      "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+      "rawSha256": "63d86d1f27b625cb490b5339d9b6f362b6f5b96d4d958f5519f3a7d4756bc4ed",
+      "rawBytes": 19306,
+      "previewSha256": "874376a9b3fa46bf32fa432aa7f524bdf9509460af4eb50d54e1d4b5c23eda7a",
+      "previewBytes": 16384,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": true
+    }
+  ],
+  "modelSourceTreeSha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "composedSourceTreeSha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "worldModelCommit": "e524499f042446fc0c7e16176a5cbe96301aa60c",
+  "manifestSha256": "139223047371d18809c82aca0612b306a2c50571a9e0c28f887b9fb8032025a8",
+  "fresh": true,
+  "renderedSha256": "5397c47384aa8f4e90de5ea2ce121af369c60b284da46436e6026377e941e980",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/ANU-2018/context/prompts/implementation-spec-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.md",
+      "sha256": "f8fb17e083565a416770a1ac76b5517649534d9d8947b5a997d516b290d6b3f9",
+      "bytes": 1790,
+      "injectedBytes": 1790,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (full)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/architecture.md",
+      "sha256": "962aa94f3b996a1068ef4b1be04ce36431f4542ed79df88933c121a7ad702ee9",
+      "bytes": 763,
+      "injectedBytes": 763,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation-spec view: architecture (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/development.md",
+      "sha256": "4d8efd81192ecd5a53386a623dcb01e04c17d2c1f803bd846e722d084d6e6b46",
+      "bytes": 5535,
+      "injectedBytes": 5535,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation-spec view: development (full; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/testing.md",
+      "sha256": "dab2751e87430a720fb8ced8b9b976a443802c69a020740840d48e4ebc4335fc",
+      "bytes": 4169,
+      "injectedBytes": 4169,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation-spec view: testing (full; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/security.md",
+      "sha256": "1180321d83732af2b9cfef04ee53544151df711c08f47e35e3eb35e21575bebc",
+      "bytes": 3919,
+      "injectedBytes": 3919,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation-spec view: security (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/domains/rule-engine.md",
+      "sha256": "dc976aae9ba09a7b88d08cfe480f98e94188f4bb8f9fac94a6a8ff47b6232d43",
+      "bytes": 4171,
+      "injectedBytes": 4171,
+      "truncated": false,
+      "category": "required",
+      "level": 2,
+      "reason": "domain: rule-engine",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+      "sha256": "7577bdceeab39ae9483aec451dfca0bb2dfb1e94e26f930eab4c454fdceeb532",
+      "bytes": 5125,
+      "injectedBytes": 5250,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "intake:sfref:v1:story:ANU-2018:e8a24b2a87e12cebac21f40b43a21c3e4f6dec5965399a04b3a4a33e290ab589",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:ANU-2018:e8a24b2a87e12cebac21f40b43a21c3e4f6dec5965399a04b3a4a33e290ab589",
+      "previewSha256": "17c981c938ad0aedc04de78150d742aa9fe334a1c7078364155a7b0b55ae946f",
+      "previewBytes": 5250,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    },
+    {
+      "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md",
+      "sha256": "06514d79d1dcc5e66ce330243f5effc379d2f9922d7007c5f3cbe404bd65eab8",
+      "bytes": 12071,
+      "injectedBytes": 12196,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "requirements:sfref:v1:story:ANU-2018:5ad9a9b6e30b09c2aae4f9150d7d518c9ccab12c0379b4c679cb3ada1b16c3cc",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:ANU-2018:5ad9a9b6e30b09c2aae4f9150d7d518c9ccab12c0379b4c679cb3ada1b16c3cc",
+      "previewSha256": "211fedaa08d41e792b457acf24e38f183823dcf9503257dec6763bb6babce9c0",
+      "previewBytes": 12196,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    },
+    {
+      "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+      "sha256": "63d86d1f27b625cb490b5339d9b6f362b6f5b96d4d958f5519f3a7d4756bc4ed",
+      "bytes": 19306,
+      "injectedBytes": 16384,
+      "truncated": true,
+      "category": "reference",
+      "level": null,
+      "reason": "design:sfref:v1:story:ANU-2018:8b8022b49216261037709f7c1bc610d3030d51a7dea6d5d96aa6fd9392c885d4",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:ANU-2018:8b8022b49216261037709f7c1bc610d3030d51a7dea6d5d96aa6fd9392c885d4",
+      "previewSha256": "874376a9b3fa46bf32fa432aa7f524bdf9509460af4eb50d54e1d4b5c23eda7a",
+      "previewBytes": 16384,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    }
+  ],
+  "injectedAt": "2026-08-23T11:58:49.255Z"
+}

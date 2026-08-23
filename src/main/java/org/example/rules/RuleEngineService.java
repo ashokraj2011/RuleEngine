@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.*;
@@ -13,6 +14,20 @@ import java.util.regex.Pattern;
 
 @Service
 public class RuleEngineService {
+
+    public Object evaluateValue(Map<String, Object> data, JsonNode rule) {
+        if (rule == null || rule.isNull()) {
+            throw new IllegalArgumentException("Rule cannot be null");
+        }
+        if (rule.isObject()) {
+            ObjectNode obj = (ObjectNode) rule;
+            if (obj.has("all") || obj.has("any") || obj.has("not")) {
+                throw new IllegalArgumentException("Group operators are not supported for value evaluation");
+            }
+            return evaluateValueCondition(data, obj);
+        }
+        throw new IllegalArgumentException("Unsupported rule type: " + rule.getNodeType());
+    }
 
     public boolean evaluate(Map<String, Object> data, JsonNode rule) {
         if (rule == null || rule.isNull()) {
@@ -58,6 +73,37 @@ public class RuleEngineService {
             }
         }
         return result;
+    }
+
+    private Object evaluateValueCondition(Map<String, Object> data, ObjectNode cond) {
+        String field = textOrNull(cond, "field");
+        String opStr = textOrNull(cond, "op");
+        if (opStr == null) {
+            throw new IllegalArgumentException("Condition missing 'op'");
+        }
+        Operator op;
+        try {
+            op = Operator.valueOf(opStr);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unknown operator: " + opStr);
+        }
+
+        Object left = field != null ? resolvePath(data, field) : null;
+
+        switch (op) {
+            case circle_area:
+                if (left == null) {
+                    throw new IllegalArgumentException("circle_area requires a numeric radius value");
+                }
+                BigDecimal radius = toBigDecimalOrNull(left);
+                if (radius == null) {
+                    throw new IllegalArgumentException("circle_area requires a numeric radius value");
+                }
+                BigDecimal pi = BigDecimal.valueOf(Math.PI);
+                return radius.multiply(radius).multiply(pi, MathContext.DECIMAL128);
+            default:
+                throw new IllegalArgumentException("Operator not implemented for value evaluation: " + op);
+        }
     }
 
     private boolean evalCondition(Map<String, Object> data, ObjectNode cond) {
@@ -129,6 +175,8 @@ public class RuleEngineService {
                 return compare(left, jsonToJava(valueNode)) > 0;
             case gte:
                 return compare(left, jsonToJava(valueNode)) >= 0;
+            case circle_area:
+                throw new IllegalArgumentException("circle_area is a value-producing operator and cannot be used in boolean evaluation");
             default:
                 throw new IllegalArgumentException("Operator not implemented: " + op);
         }

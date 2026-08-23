@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "kind": "repository-change-set",
+  "subject": {
+    "workId": "ANU-2018",
+    "phase": "implementation",
+    "generation": 1,
+    "generationIntentId": "c5a4f1ea-119b-4f97-a15d-31f407b2e9f9"
+  },
+  "base": {
+    "commit": "5baee3c207c65bea2b8c7389f68a424879524d78",
+    "tree": "5476496223f9327f12b63fc6d823f1313e4b22a8"
+  },
+  "target": {
+    "head": "c2547f045cf3ec128360fd033ab01d84fc1c6508",
+    "includesIndex": true,
+    "includesWorktree": true,
+    "includesUntracked": true
+  },
+  "entries": [
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/approvals/implementation-spec.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": "64e24ef71a8a5f73e23526f65a6a054a7d133d74",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:32e55b998729654448a84bad9ecff9e2af31084fa549599568a8ce7c9f53d599",
+        "bytes": 1657
+      },
+      "changeId": "sha256:7abc5e8eb0ce43a0c2b1a2a1f1c493884185b29f30c31f6eeecb5f898a5074ad"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/approvals/implementation-spec/2026-08-23T12-03-23-636Z-approved.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": "23efed49f9bf9a30c0ec1804ad6d5381d77aa166",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:36a9720e60761aa251078be0c6650cd69d6f9654da0aa1ecaed20016ff5f5236",
+        "bytes": 1416
+      },
+      "changeId": "sha256:864ef4e692661a94b70ba69ce189a70bcb4f30fd429e963313f75cb1696ee8e8"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": null,
+      "untracked": true,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:7a89b7e04e461f4eb2925600b6a87a6e6e6df6d00df4b8fd4b71376a14d44852",
+        "bytes": 67866
+      },
+      "changeId": "sha256:15ad64f01df28e2f50b1060044e1517ba06c70dc47beb0f6abb24b5d7d396330"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen1.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": null,
+      "untracked": true,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:b02bc31572cc5a395382bf0a738ca673b8145e41e19609be41f96ce7f7f7d1a5",
+        "bytes": 1111
+      },
+      "changeId": "sha256:1ac87ae46e0243d8498c5633de52c61998d59f14d77a4758da490fcbdb9edae0"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/implementation-gen1.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": null,
+      "untracked": true,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:ee097dacbcb865a5440e42fe47e2f2d8c66945168b3997c9f7392159840fde72",
+        "bytes": 9139
+      },
+      "changeId": "sha256:1890d21ac28c9427ddd9a43acce64d93c2991f94f2c5b64b48d8432587daf838"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/inputs-implementation-gen1.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": null,
+      "untracked": true,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:af8e05f56f716ad87f59f2e40ce5ce3a78dc3652d474cb83b107205f3b145757",
+        "bytes": 1782
+      },
+      "changeId": "sha256:b20d467c48ba0a96bb0d269384902d6b53b7ee038b255821466d739fb8332807"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/prompts/implementation-gen1.md",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": null,
+      "untracked": true,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:e72468667f9697b8f43a2c3a56c2ab92670ccc1a34b62afdb392fb921d9b2100",
+        "bytes": 132486
+      },
+      "changeId": "sha256:86af5e0b9bdc9774d9c769745fe96f95ccc58ac314cfc9fe0a98f6873a2c44fa"
+    },
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen1-baseline.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": "d93f7eb5df6eec838fa56bf13516c9eeb14582a7",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:458880bd10eb5f6f11d26f6696c27ffe0421f2a55ae7c38e39d63f08ed6867cc",
+        "bytes": 1680
+      },
+      "changeId": "sha256:a46a0ac3bdc01b773efe957c15e8a13232f2c523c65cf597db9dab6383a3faf8"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "README.md",
+      "newPath": "README.md",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "9430488ff87dbabf2ec4780edbc8475c2cb13858",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa",
+        "bytes": 7782
+      },
+      "changeId": "sha256:f241ac9b761cb10d254896c8af4673cee41afa6e6238067f337046b33ba3706f"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/artifacts/implementation-spec/implementation-spec.md",
+      "newPath": "singularity/work-items/ANU-2018/artifacts/implementation-spec/implementation-spec.md",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "127632922241d81c8e0ae71802fb3018800b75a9",
+      "newObject": "ce198606cbffb9f0244fa3c407638672733961e9",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:9addc406e78b9d512ad328b2ecc1d22fc0d76d77b9ff245804d49f38ce70ad1e",
+        "bytes": 43241
+      },
+      "changeId": "sha256:ded9188526bed513b4a85cc81d55f0621e4d9c8965004425751cea8fdeaa1a5c"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/STATUS.md",
+      "newPath": "singularity/work-items/ANU-2018/STATUS.md",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "2f955ea019dcba855bca154163aa66f44f67f2d7",
+      "newObject": "392bb0007287a68e021c2bfd8d76085e0bb8bf87",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:1c6017c039066d9530bcc9d9f95604e27ce4b3bfeb47cce46a00a78b8621020c",
+        "bytes": 3383
+      },
+      "changeId": "sha256:36bdcf9ac7f5674eb05765fa6ab0c4ef69be22b3f77b85f1f4fa9b68d404da17"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/workflow.json",
+      "newPath": "singularity/work-items/ANU-2018/workflow.json",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "e908300e9b48ad557b66a04855659752701fe865",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:31c0b39f427592c1a75924c37d68d6338871c56d1f07588fb9047e180b0e7010",
+        "bytes": 134620
+      },
+      "changeId": "sha256:7fc348ad13ba74584f7522f79773f13de32258fe529951433427164a8e9e284c"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "src/main/java/org/example/rules/Operator.java",
+      "newPath": "src/main/java/org/example/rules/Operator.java",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "7880a8c256fdd8ac9c881b836aae07200728daf1",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433",
+        "bytes": 295
+      },
+      "changeId": "sha256:d751718fe0718b6b1bcd94327bce29f518f588faa6436ef057e7398d229ab9a4"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "src/main/java/org/example/rules/RuleEngineService.java",
+      "newPath": "src/main/java/org/example/rules/RuleEngineService.java",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "fcf1f69fb2a9a655b91e54b8c63c323506c18060",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:05932a0fcfc0002eb783d49e09f24567dbf811593ed0bc320f9d0ea6e1d8a725",
+        "bytes": 11305
+      },
+      "changeId": "sha256:30b1d00fee7a353139520643729bbfe0f8895be685c7c44e5f3b38d177740454"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "newPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "b1b1a9bd095f7c653434957fc97a3d124dd18605",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:c11f1cc0a9aaa7020716ea78b8ecd5dd7cf099e58415884a41e0d6071214c11e",
+        "bytes": 7546
+      },
+      "changeId": "sha256:a312d7065189bbd47507745f7756206fa10da0c4432a639d7a293fe462c64bf5"
+    }
+  ],
+  "digest": "sha256:dd76e4e80d412753737355f92c8d097202bfb150edae9254e066ff20b1134f66"
+}

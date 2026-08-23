@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "phase": "design",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-2018/context/prompts/design-gen1.md",
+  "promptSha256": "e9f82e176f305cf860a5c25ad71230751b06a38d0f2ee490b9bb85ad165cf720",
+  "groundingRecordPath": "singularity/work-items/ANU-2018/context/design-gen1.json",
+  "groundingRecordSha256": "13bd702d794da2e33093e2751d585d8cd7c6865dcbc3c8a3b7c21d79afcd648d",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Should the design keep the operator contract strictly to one numeric radius input and one numeric output, and should the implementation preserve the existing evaluator patterns?",
+      "answer": "Yes. The design should keep the operator contract to a single numeric radius input and a single numeric output, preserve the existing evaluator and operator registration patterns, and explicitly note that invalid or non-numeric input should be rejected rather than coerced.",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-23T11:54:03.891Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}

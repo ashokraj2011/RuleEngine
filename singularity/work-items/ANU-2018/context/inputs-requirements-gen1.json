@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "workType": "feature",
+  "phase": "requirements",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-23T11:50:43.936Z",
+  "renderedSha256": "915a95c3635169883eb8e6fb711ae3f7a62c82855267f55b7b8697d384ae49ee",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "intake",
+      "path": "artifacts/intake/intake.md",
+      "repositoryPath": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-23T11:39:54.873Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "ef1a18bf022b5212657df137bbe21a3cdae563dff817fb67a77e584cb2995b09",
+      "sha256": "ef1a18bf022b5212657df137bbe21a3cdae563dff817fb67a77e584cb2995b09",
+      "bytes": 6675,
+      "injectedBytes": 6675,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}

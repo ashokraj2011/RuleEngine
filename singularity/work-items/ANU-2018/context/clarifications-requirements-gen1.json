@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "phase": "requirements",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-2018/context/prompts/requirements-gen1.md",
+  "promptSha256": "41bc23e665b9b5604d5dbf969819f55c2be7270a81733147a5d9828d2b9bfddf",
+  "groundingRecordPath": "singularity/work-items/ANU-2018/context/requirements-gen1.json",
+  "groundingRecordSha256": "19fbf6d531c258c99059180701cf0b542742ec68be248f1005ae2d96ce70e439",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "What level of detail should the requirements capture for the new circle-area operator, and should it explicitly call out numeric-only input behavior?",
+      "answer": "Capture a concise but complete feature requirements document that defines the new value-producing circle-area operator, its numeric-radius input contract, the expected computation result, and the need for tests and documentation. Explicitly state that the implementation accepts numeric input only and does not introduce unsupported input formats.",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-23T11:50:38.903Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}

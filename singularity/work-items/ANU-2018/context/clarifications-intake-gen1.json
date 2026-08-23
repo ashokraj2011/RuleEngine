@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "phase": "intake",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-2018/context/prompts/intake-gen1.md",
+  "promptSha256": "3f3f7fb8dde09665796fb132253432729cf6d0aaaa1dcb8cf4faf2079784d009",
+  "groundingRecordPath": "singularity/work-items/ANU-2018/context/intake-gen1.json",
+  "groundingRecordSha256": "ead14f2de55f4c0fd2231c55ded3375351b94f11074b82ceabe99abe5763454c",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Should this feature add a condition operator that evaluates circle area against a threshold, or a value-producing operator that returns the computed area?",
+      "why": "This determines whether the new capability returns a computed area or evaluates a boolean rule.",
+      "answer": "Value-producing operator",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-002",
+      "question": "What input shape should the operator use: a single radius field, or a nested object field such as circle.radius?",
+      "why": "This defines the operator input contract for the rule engine.",
+      "answer": "Single radius field",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "Q-003",
+      "question": "Which scope should the acceptance criteria cover: implementation only, or implementation plus tests and documentation?",
+      "why": "This defines whether the story should include verification and documentation work alongside the implementation.",
+      "answer": "Implementation plus tests and docs",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-23T11:36:57.882Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}
