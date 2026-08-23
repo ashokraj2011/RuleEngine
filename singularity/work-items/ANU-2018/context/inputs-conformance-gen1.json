@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "workType": "feature",
+  "phase": "conformance",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-23T15:08:31.377Z",
+  "renderedSha256": "a88c052ea6c897c74ecbbedb46abf67a4b9a0532c87e17f6844218182c55c4d9",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "implementation-spec",
+      "path": "artifacts/implementation-spec/implementation-spec.md",
+      "repositoryPath": "singularity/work-items/ANU-2018/artifacts/implementation-spec/implementation-spec.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-23T12:03:23.636Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "9addc406e78b9d512ad328b2ecc1d22fc0d76d77b9ff245804d49f38ce70ad1e",
+      "sha256": "9addc406e78b9d512ad328b2ecc1d22fc0d76d77b9ff245804d49f38ce70ad1e",
+      "bytes": 43241,
+      "injectedBytes": 43239,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    },
+    {
+      "phase": "implementation",
+      "path": "artifacts/implementation/implementation-summary.md",
+      "repositoryPath": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 2,
+      "approvedAt": "2026-08-23T14:55:41.045Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "948cbc4860d18c0505196a711ec7001aacd5c23631311872676c0ab3933d7c7f",
+      "sha256": "948cbc4860d18c0505196a711ec7001aacd5c23631311872676c0ab3933d7c7f",
+      "bytes": 73379,
+      "injectedBytes": 73377,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    },
+    {
+      "phase": "verification",
+      "path": "artifacts/verification/test-evidence.md",
+      "repositoryPath": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-23T15:03:45.860Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "ae407bebc2d7d5a02704aefd384ff98348405d5541bad9f0e2ca7cfc72eb28b6",
+      "sha256": "ae407bebc2d7d5a02704aefd384ff98348405d5541bad9f0e2ca7cfc72eb28b6",
+      "bytes": 123374,
+      "injectedBytes": 123372,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}
