@@ -1986,7 +1986,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "design",
+  "currentPhase": "implementation-spec",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -2477,7 +2477,7 @@
       "label": "Architecture and design",
       "order": 2,
       "defaultAgent": "architect",
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/design/design.md",
         "kind": "design",
@@ -2540,8 +2540,8 @@
       "qualityCommands": [],
       "startedAt": "2026-08-23T11:52:11.303Z",
       "submittedAt": "2026-08-23T11:54:46.191Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-08-23T11:55:35.237Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -2620,18 +2620,61 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "design",
+          "at": "2026-08-23T11:55:35.237Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "architect",
+          "authorityGroup": "architecture-reviewers",
+          "identityAssurance": "configured-local",
+          "channel": "copilot-selection-receipt",
+          "generation": 1,
+          "artifactSha256": [
+            {
+              "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+              "sha256": "f97ff4ec8d02e8f32ccd1b5ff35723edfc36a79dbfdf9756e4de1cbe89a2ff25"
+            }
+          ],
+          "reviewPacketSha256": "92858d4a3ac8f0a0759f4b7a8c2adb6f4030956abe364b4de765c7f3b14cd96a",
+          "actionContext": {
+            "phase": "design",
+            "label": "Architecture and design",
+            "generation": 1,
+            "submittedAt": "2026-08-23T11:54:46.191Z",
+            "artifacts": [
+              {
+                "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
+                "sha256": "f97ff4ec8d02e8f32ccd1b5ff35723edfc36a79dbfdf9756e4de1cbe89a2ff25"
+              }
+            ],
+            "agentBriefs": [],
+            "reviewPacketSha256": "92858d4a3ac8f0a0759f4b7a8c2adb6f4030956abe364b4de765c7f3b14cd96a",
+            "submittedSourceCommit": "ad41012bb048c395b3286bc1b896778732d91717",
+            "planId": "21333bc87151f69afe2b5836"
+          },
+          "selfApproval": true
+        }
+      ],
       "designSourceSets": [],
       "artifacts": [
         {
           "path": "singularity/work-items/ANU-2018/artifacts/design/design.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 19388,
-          "sha256": "f97ff4ec8d02e8f32ccd1b5ff35723edfc36a79dbfdf9756e4de1cbe89a2ff25",
+          "size": 20874,
+          "sha256": "848f382895e672d17ac99ecb530ea188ad3c3b38402ec3cb1aba9522818fd103",
           "registeredAt": "2026-08-23T11:54:08.947Z",
-          "updatedAt": "2026-08-23T11:54:46.194Z"
+          "updatedAt": "2026-08-23T11:54:46.194Z",
+          "approvedAt": "2026-08-23T11:55:35.237Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -2677,7 +2720,7 @@
       "label": "Implementation specification",
       "order": 3,
       "defaultAgent": "architect",
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/implementation-spec/implementation-spec.md",
         "kind": "implementation-spec",
@@ -2747,7 +2790,7 @@
         }
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-08-23T11:55:35.237Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -3204,6 +3247,14 @@
       "event": "phase_submitted",
       "phase": "design",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-08-23T11:55:35.237Z",
+      "actor": "ashokraj2011",
+      "agent": "architect",
+      "event": "phase_self_approved",
+      "phase": "design",
+      "detail": "threshold reached; advanced to implementation-spec"
     }
   ],
   "measurement": {
@@ -3503,6 +3554,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-23T11:54:46.048Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "10ae2bbe-f3ec-4e43-8a99-5341c3649e01",
+        "type": "phase-approved",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "design",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "architect",
+        "authorityGroup": "architecture-reviewers",
+        "payload": {
+          "decision": "approved",
+          "reviewPacketSha256": "92858d4a3ac8f0a0759f4b7a8c2adb6f4030956abe364b4de765c7f3b14cd96a"
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T11:55:35.244Z"
       },
       "ledgerIntent": null
     }
