@@ -497,6 +497,184 @@
           },
           "status": "awaiting_review"
         }
+      },
+      {
+        "packetSha256": "fd14efcd663b2b9f39034956e4bbc84c0023eec3e2a3d51ddab1deec8140c77a",
+        "phase": "implementation",
+        "generation": 2,
+        "branch": "ANU-2018",
+        "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+        "path": "singularity/work-items/ANU-2018/submissions/implementation/fd14efcd663b2b9f39034956e4bbc84c0023eec3e2a3d51ddab1deec8140c77a.json",
+        "submittedAt": "2026-08-23T14:54:36.171Z",
+        "projection": {
+          "schemaVersion": 1,
+          "workId": "ANU-2018",
+          "epicId": null,
+          "planId": null,
+          "jiraIssueId": "ANU-2018",
+          "initialJiraKey": null,
+          "currentJiraKey": null,
+          "canonicalBranch": "ANU-2018",
+          "submittedBranch": "ANU-2018",
+          "submissionCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+          "sourceCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+          "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+          "phase": "implementation",
+          "generation": 2,
+          "authorship": {
+            "schemaVersion": 1,
+            "producer": "governed-agent",
+            "channel": "copilot-host",
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "governedAgentContext": {
+              "agentId": "developer"
+            },
+            "kernelModel": {
+              "invoked": false,
+              "status": "exact",
+              "invocationIds": []
+            },
+            "externalAiUse": {
+              "value": "unknown",
+              "status": "unavailable"
+            },
+            "source": {
+              "kind": "in-place",
+              "filename": "implementation-summary.md",
+              "mediaType": "text/markdown",
+              "sha256": "2d787474a96b7073ecf5fe1e170ba3eaeb66429c3522fb3b7074dbbf729e0772",
+              "bytes": 66270
+            },
+            "generation": 2,
+            "publishedAt": "2026-08-23T14:54:15.091Z"
+          },
+          "artifacts": [
+            {
+              "path": "README.md",
+              "kind": "document",
+              "sha256": "f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa",
+              "size": 7782
+            },
+            {
+              "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+              "kind": "document",
+              "sha256": "d953527b4fe874d0e4329c8e523f27f2d845a53486836c2c83f947345ffbc996",
+              "size": 70353,
+              "reference": {
+                "handle": "sfref:v1:story:ANU-2018:fc90cf84e8504646c07feed26b98f24559e53b7ad778c155969d0ef6c40e6548",
+                "recordHash": "fc90cf84e8504646c07feed26b98f24559e53b7ad778c155969d0ef6c40e6548"
+              }
+            },
+            {
+              "path": "src/main/java/org/example/rules/Operator.java",
+              "kind": "code",
+              "sha256": "0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433",
+              "size": 295
+            },
+            {
+              "path": "src/main/java/org/example/rules/RuleEngineService.java",
+              "kind": "code",
+              "sha256": "2ac00ab02a0703a160fd7a533eddb0e2ccb917670ff0aa6a596a4ae9a741cda5",
+              "size": 11474
+            },
+            {
+              "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+              "kind": "test",
+              "sha256": "39f6d9835ade37040a0583d0738cdecfa1c5fa57b9a19628c410903f87adc377",
+              "size": 8061
+            }
+          ],
+          "references": [
+            {
+              "handle": "sfref:v1:story:ANU-2018:fc90cf84e8504646c07feed26b98f24559e53b7ad778c155969d0ef6c40e6548",
+              "recordHash": "fc90cf84e8504646c07feed26b98f24559e53b7ad778c155969d0ef6c40e6548",
+              "purpose": "review-evidence",
+              "required": true
+            }
+          ],
+          "agentBriefs": [],
+          "checks": [
+            {
+              "id": ".-maven-tests",
+              "command": "mvn test",
+              "kind": "test",
+              "workingDirectory": ".",
+              "externalModelPolicy": "never",
+              "timeoutMs": 1800000,
+              "sourceCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+              "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+              "startedAt": "2026-08-23T14:54:33.555Z",
+              "completedAt": "2026-08-23T14:54:36.050Z",
+              "status": "passed",
+              "exitCode": 0,
+              "stdout": "[INFO] Scanning for projects...\n[INFO] \n[INFO] --------------------< org.example:rule-engine-api >---------------------\n[INFO] Building rule-engine-api 1.0.0-SNAPSHOT\n[INFO]   from pom.xml\n[INFO] --------------------------------[ jar ]---------------------------------\n[INFO] \n[INFO] --- resources:3.3.1:resources (default-resources) @ rule-engine-api ---\n[INFO] skip non existing resourceDirectory /Users/ashokraj/ruleLatestDemo/rule-engine/repos/ruleengine/src/main/resources\n[INFO] skip non existing resourceDirectory /Users/ashokraj/ruleLatestDemo/rule-engine/repos/ruleengine/src/main/resources\n[INFO] \n[INFO] --- compiler:3.11.0:compile (default-compile) @ rule-engine-api ---\n[INFO] Nothing to compile - all classes are up to date\n[INFO] \n[INFO] --- resources:3.3.1:testResources (default-testResources) @ rule-engine-api ---\n[INFO] Copying 0 resource from src/test/resources to target/test-classes\n[INFO] \n[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ rule-en\n… diagnostic output truncated …\n0  INFO 1402 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''\n2026-08-23T20:24:35.832+05:30  INFO 1402 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms\n2026-08-23T20:24:35.841+05:30  INFO 1402 --- [           main] o.example.api.RuleEngineControllerTest   : Started RuleEngineControllerTest in 0.713 seconds (process running for 1.193)\n[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.031 s -- in org.example.api.RuleEngineControllerTest\n[INFO] \n[INFO] Results:\n[INFO] \n[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0\n[INFO] \n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  1.960 s\n[INFO] Finished at: 2026-08-23T20:24:36+05:30\n[INFO] ------------------------------------------------------------------------\n",
+              "stderr": "WARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (file:/Users/ashokraj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.20/tomcat-embed-core-10.1.20.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n",
+              "stdoutBytes": 4057,
+              "stderrBytes": 476,
+              "stdoutTruncated": false,
+              "stderrTruncated": false
+            }
+          ],
+          "usage": [
+            {
+              "status": "unavailable",
+              "source": "copilot-otel-unavailable",
+              "provider": null,
+              "model": null,
+              "requestedModel": null,
+              "resolvedModel": null,
+              "resolvedModelAssurance": "unavailable",
+              "inputTokens": null,
+              "outputTokens": null,
+              "cachedInputTokens": null,
+              "cacheWriteInputTokens": null,
+              "totalTokens": null,
+              "providerCost": null,
+              "costStatus": "unavailable",
+              "spans": null,
+              "startedAt": "2026-08-23T12:08:05.672Z",
+              "completedAt": "2026-08-23T12:08:05.672Z",
+              "agent": "architect",
+              "generation": 1
+            },
+            {
+              "status": "unavailable",
+              "source": "copilot-otel-unavailable",
+              "provider": null,
+              "model": null,
+              "requestedModel": null,
+              "resolvedModel": null,
+              "resolvedModelAssurance": "unavailable",
+              "inputTokens": null,
+              "outputTokens": null,
+              "cachedInputTokens": null,
+              "cacheWriteInputTokens": null,
+              "totalTokens": null,
+              "providerCost": null,
+              "costStatus": "unavailable",
+              "spans": null,
+              "startedAt": "2026-08-23T14:54:15.091Z",
+              "completedAt": "2026-08-23T14:54:15.091Z",
+              "agent": "developer",
+              "generation": 2
+            }
+          ],
+          "approvals": [],
+          "visualAssurance": null,
+          "submittedAt": "2026-08-23T14:54:36.171Z",
+          "submittedBy": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "status": "awaiting_review"
+        }
       }
     ]
   },
@@ -3090,7 +3268,7 @@
       "label": "Implementation",
       "order": 4,
       "defaultAgent": "developer",
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -3157,7 +3335,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-08-23T12:03:23.636Z",
-      "submittedAt": null,
+      "submittedAt": "2026-08-23T14:54:36.171Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -3317,10 +3495,10 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 70353,
-          "sha256": "d953527b4fe874d0e4329c8e523f27f2d845a53486836c2c83f947345ffbc996",
+          "size": 70435,
+          "sha256": "453621a12c836778a0c2d88105c7a1e2b0b077c5c5404a5584f8d5297405da1a",
           "registeredAt": "2026-08-23T12:08:05.424Z",
-          "updatedAt": "2026-08-23T14:54:15.154Z"
+          "updatedAt": "2026-08-23T14:54:36.172Z"
         },
         {
           "path": "src/main/java/org/example/rules/Operator.java",
@@ -3353,7 +3531,28 @@
           "updatedAt": "2026-08-23T14:54:15.154Z"
         }
       ],
-      "checks": [],
+      "checks": [
+        {
+          "id": ".-maven-tests",
+          "command": "mvn test",
+          "kind": "test",
+          "workingDirectory": ".",
+          "externalModelPolicy": "never",
+          "timeoutMs": 1800000,
+          "sourceCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+          "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+          "startedAt": "2026-08-23T14:54:33.555Z",
+          "completedAt": "2026-08-23T14:54:36.050Z",
+          "status": "passed",
+          "exitCode": 0,
+          "stdout": "[INFO] Scanning for projects...\n[INFO] \n[INFO] --------------------< org.example:rule-engine-api >---------------------\n[INFO] Building rule-engine-api 1.0.0-SNAPSHOT\n[INFO]   from pom.xml\n[INFO] --------------------------------[ jar ]---------------------------------\n[INFO] \n[INFO] --- resources:3.3.1:resources (default-resources) @ rule-engine-api ---\n[INFO] skip non existing resourceDirectory /Users/ashokraj/ruleLatestDemo/rule-engine/repos/ruleengine/src/main/resources\n[INFO] skip non existing resourceDirectory /Users/ashokraj/ruleLatestDemo/rule-engine/repos/ruleengine/src/main/resources\n[INFO] \n[INFO] --- compiler:3.11.0:compile (default-compile) @ rule-engine-api ---\n[INFO] Nothing to compile - all classes are up to date\n[INFO] \n[INFO] --- resources:3.3.1:testResources (default-testResources) @ rule-engine-api ---\n[INFO] Copying 0 resource from src/test/resources to target/test-classes\n[INFO] \n[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ rule-en\n… diagnostic output truncated …\n0  INFO 1402 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''\n2026-08-23T20:24:35.832+05:30  INFO 1402 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms\n2026-08-23T20:24:35.841+05:30  INFO 1402 --- [           main] o.example.api.RuleEngineControllerTest   : Started RuleEngineControllerTest in 0.713 seconds (process running for 1.193)\n[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.031 s -- in org.example.api.RuleEngineControllerTest\n[INFO] \n[INFO] Results:\n[INFO] \n[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0\n[INFO] \n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  1.960 s\n[INFO] Finished at: 2026-08-23T20:24:36+05:30\n[INFO] ------------------------------------------------------------------------\n",
+          "stderr": "WARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (file:/Users/ashokraj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.20/tomcat-embed-core-10.1.20.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n",
+          "stdoutBytes": 4057,
+          "stderrBytes": 476,
+          "stdoutTruncated": false,
+          "stderrTruncated": false
+        }
+      ],
       "remoteOutputs": [],
       "generationIntent": {
         "id": "9a22d29f-615e-4a2e-a857-87213f80ab4f",
@@ -3561,9 +3760,39 @@
         "receiptPath": "singularity/work-items/ANU-2018/context/code-delivery/implementation-gen2.json",
         "changeSetPath": "singularity/work-items/ANU-2018/context/code-delivery/implementation-gen2-changes.json",
         "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
-        "status": "pending-tests",
+        "status": "ready",
         "capturedAt": "2026-08-23T14:54:15.091Z",
-        "validation": null
+        "validation": {
+          "sourceCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+          "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+          "commands": [
+            {
+              "id": ".-maven-tests",
+              "command": "mvn test"
+            }
+          ],
+          "checks": [
+            {
+              "id": ".-maven-tests",
+              "status": "passed",
+              "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9"
+            }
+          ],
+          "status": "passed",
+          "validatedAt": "2026-08-23T14:54:36.084Z"
+        },
+        "testExecutions": [
+          {
+            "commandId": ".-maven-tests",
+            "receiptPath": "singularity/work-items/ANU-2018/context/code-delivery/tests/implementation-gen2-.-maven-tests.json",
+            "receiptSha256": "239fab7d2b4ae5ecd4fac16ac77199a20b474ed4d075070ce4c4063ffb3c4625",
+            "status": "passed",
+            "affectedRoots": [
+              "."
+            ]
+          }
+        ],
+        "receiptSha256": "70b9d07a32a5585970e1293fc655b1cedfb9396033dde48cf570c104da82feda"
       },
       "sidecars": [
         {
@@ -3592,7 +3821,37 @@
           "integritySha256": "bea7af609dc309b747f2bd3ec6b89a6f46ee2e69b594687dc45974448ac66185"
         }
       ],
-      "sourceCommit": "747a19f7d8f5e535796f588815023e21792edd8b"
+      "sourceCommit": "747a19f7d8f5e535796f588815023e21792edd8b",
+      "generationCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+      "publicationCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+      "validationVerdict": "passed",
+      "workIntervalReconciliation": {
+        "reconciliationSha256": "6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a",
+        "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+        "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a.json",
+        "status": "review",
+        "summaryStatus": "attention",
+        "targetHead": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+        "summary": {
+          "changedPaths": 2,
+          "planned": 0,
+          "unplanned": 2,
+          "protected": 0
+        },
+        "decision": {
+          "status": "review",
+          "summaryStatus": "attention",
+          "eligibleForSubmission": true,
+          "reasons": [],
+          "escalationTarget": null
+        },
+        "baseline": {
+          "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
+          "sha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+          "verified": true,
+          "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3"
+        }
+      }
     },
     "verification": {
       "id": "verification",
@@ -4059,6 +4318,22 @@
       "event": "phase_generated",
       "phase": "implementation",
       "detail": "generation 2"
+    },
+    {
+      "at": "2026-08-23T14:54:36.170Z",
+      "actor": "system",
+      "agent": null,
+      "event": "work_interval_reconciled",
+      "phase": "implementation",
+      "detail": "review; 2 changed path(s)"
+    },
+    {
+      "at": "2026-08-23T14:54:36.171Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "phase_submitted",
+      "phase": "implementation",
+      "detail": "5 artifacts"
     }
   ],
   "measurement": {
@@ -4617,6 +4892,38 @@
         "createdAt": "2026-08-23T14:54:14.949Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "ef9a02ec-10aa-4949-bf73-9791db890e9e",
+        "type": "approval-requested",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "implementation",
+        "generation": 2,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "developer",
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T14:54:33.433Z"
+      },
+      "ledgerIntent": null
     }
   ],
   "repairBudgets": {},
@@ -4630,7 +4937,13 @@
       "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
       "escalationTarget": null,
       "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
-      "status": "open"
+      "status": "reconciled",
+      "finalReconciliation": {
+        "reconciliationSha256": "6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a",
+        "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a.json",
+        "targetHead": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+        "recordedAt": "2026-08-23T14:54:36.170Z"
+      }
     },
     "history": [
       {

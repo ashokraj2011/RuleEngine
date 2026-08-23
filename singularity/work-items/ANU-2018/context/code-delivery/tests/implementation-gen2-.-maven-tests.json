@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "test-execution",
+  "commandId": ".-maven-tests",
+  "argvSha256": "f0dd930e7bb59b9fef42d9a9c2814789b6df3ebca6edb4bf5aaae66d0ab447ef",
+  "platform": "darwin",
+  "workingDirectory": ".",
+  "affectedRoots": [
+    "."
+  ],
+  "adapter": "junit-xml",
+  "status": "passed",
+  "exitCode": 0,
+  "timedOut": false,
+  "skipped": false,
+  "suppressed": false,
+  "tests": {
+    "discovered": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "result": {
+    "path": "target/surefire-reports",
+    "sha256": "26de10bd705a84802f330d8d131812c474c2b2229162f7db5823e0ce44217a0f",
+    "bytes": 41356
+  },
+  "assurance": "module-executed"
+}

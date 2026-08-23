@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 2,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+    "phaseId": "implementation"
+  },
+  "createdAt": "2026-08-23T14:54:36.208Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 70353,
+    "commitSha": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+    "sha256": "d953527b4fe874d0e4329c8e523f27f2d845a53486836c2c83f947345ffbc996"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "ANU-2018",
+    "id": "ANU-2018",
+    "kind": "story",
+    "subjectRevision": 2
+  },
+  "visibility": "model"
+}

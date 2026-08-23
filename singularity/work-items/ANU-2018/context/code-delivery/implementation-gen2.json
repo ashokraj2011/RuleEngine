@@ -29,15 +29,26 @@
       {
         "clauseId": "ANU-2018:AC-001",
         "testSource": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
-        "bindingAssurance": "namespace-qualified"
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": ".-maven-tests",
+        "executionAssurance": "module-executed"
       }
     ]
   },
-  "testExecutions": [],
+  "testExecutions": [
+    {
+      "commandId": ".-maven-tests",
+      "receiptPath": "singularity/work-items/ANU-2018/context/code-delivery/tests/implementation-gen2-.-maven-tests.json",
+      "receiptSha256": "239fab7d2b4ae5ecd4fac16ac77199a20b474ed4d075070ce4c4063ffb3c4625",
+      "status": "passed"
+    }
+  ],
   "tree": {
     "workingStateDigest": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
-    "generationCommit": null,
-    "generationTree": null
+    "generationCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+    "generationTree": "b758241ab5548ecec5b8095a8e4aa77160e9f375"
   },
   "model": {
     "task": "code",
@@ -47,6 +58,7 @@
     "assurance": "host-observed",
     "invocationIds": []
   },
-  "status": "pending-tests",
-  "capturedAt": "2026-08-23T14:54:15.091Z"
+  "status": "ready",
+  "capturedAt": "2026-08-23T14:54:15.091Z",
+  "validatedAt": "2026-08-23T14:54:36.084Z"
 }
