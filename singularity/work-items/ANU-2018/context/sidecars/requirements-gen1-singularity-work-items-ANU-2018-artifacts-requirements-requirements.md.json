@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "bytes": 9932,
+    "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md",
+    "role": "document",
+    "sha256": "dd5ca90d92dfb8a6a37bfccd28976dad90e952e258c9bfd60ad110b05f9abc6f"
+  },
+  "configuration": {
+    "revision": "7860c52f5db56cb9d233bfe97ac56bb4433f444d",
+    "sha256": "b7c710a6c2ded44e7f24f7ff126485ec80500e7115e9b61b6e01310c2ed80d08"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/intake/intake.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "cde22e93c015bc5299694a4b637abd408fdbb14b8b17a8146c3a4c1cf1f809bf",
+  "phase": "requirements",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "product-owner",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "ANU-2018",
+    "commit": null,
+    "publishedAt": "2026-08-23T11:50:44.034Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "ANU-2018",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/feature/requirements.md",
+    "sha256": "32016db8ed6fadd6596e7dc702647cff95cdee1a203b38395d7ba5626dd8134e"
+  }
+}

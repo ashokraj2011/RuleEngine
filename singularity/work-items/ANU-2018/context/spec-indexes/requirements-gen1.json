@@ -1,0 +1,56 @@
+{
+  "clauses": [
+    {
+      "anchor": "[ANU-2018:REQ-001]",
+      "body": "## Scope\n\nThe implementation includes adding a new operator to the rule engine, wiring it into the existing expression evaluation flow, and adding tests and documentation for the new capability. It explicitly excludes changing the external rule syntax or introducing support for non-numeric input formats.",
+      "bodySha256": "9f455521ff787cd3cd659c288ff7cb6857200a34100c9a963b31413b317a52d7",
+      "dependsOn": [],
+      "id": "ANU-2018:REQ-001",
+      "namespace": "ANU-2018",
+      "number": 1,
+      "source": {
+        "line": 129,
+        "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[ANU-2018:CON-001]",
+      "body": "## Acceptance criteria\n\nThe completed behavior MUST accept a numeric radius input, compute the circle area using the standard formula $A = \\pi r^2$, return the resulting numeric value to downstream rules, and be covered by implementation tests and user documentation.",
+      "bodySha256": "acd4cdcd1a08000bb095a84f12c25fe39aab9a5a55f35c23fb6c41d89b2264c8",
+      "dependsOn": [],
+      "id": "ANU-2018:CON-001",
+      "namespace": "ANU-2018",
+      "number": 1,
+      "source": {
+        "line": 133,
+        "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md"
+      },
+      "type": "CON"
+    },
+    {
+      "anchor": "[ANU-2018:AC-001]",
+      "body": "## Dependencies, risks, and open questions\n\nDependencies include the existing operator registration and evaluation pipeline. Risks include incorrect numeric handling or inconsistent behavior with the current operator conventions. Open questions are none; the current scope is defined by the approved intake and clarified decisions.\n\n<!-- singularity-flow:inputs:start -->\n\n# Approved phase inputs\n\n## Approved phase input: intake\n\n<!-- source=singularity/work-items/ANU-2018/artifacts/intake/intake.md sha256=ef1a18bf022b5212657df137bbe21a3cdae563dff817fb67a77e584cb2995b09 status=captured projection=full -->\n\n<!-- singularity-flow:metadata\n{\n  \"schemaVersion\": 1,\n  \"workId\": \"ANU-2018\",\n  \"workType\": \"feature\",\n  \"phase\": \"intake\",\n  \"generation\": 1,\n  \"status\": \"approved\",\n  \"generatedBy\": {\n    \"name\": \"Ashok Raj\",\n    \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n    \"login\": \"ashokraj2011\",\n    \"githubLookup\": \"resolved\"\n  },\n  \"generatedAgent\": \"product-owner\",\n  \"authorship\": {\n    \"schemaVersion\": 1,\n    \"producer\": \"governed-agent\",\n    \"channel\": \"copilot-host\",\n    \"actor\": {\n      \"name\": \"Ashok Raj\",\n      \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n      \"login\": \"ashokraj2011\",\n      \"githubLookup\": \"resolved\"\n    },\n    \"governedAgentContext\": {\n      \"agentId\": \"product-owner\"\n    },\n    \"kernelModel\": {\n      \"invoked\": false,\n      \"status\": \"exact\",\n      \"invocationIds\": []\n    },\n    \"externalAiUse\": {\n      \"value\": \"unknown\",\n      \"status\": \"unavailable\"\n    },\n    \"source\": {\n      \"kind\": \"in-place\",\n      \"filename\": \"intake.md\",\n      \"mediaType\": \"text/markdown\",\n      \"sha256\": \"c1939715aee8bda8a3c47c7c14a6291f1c726625f71007361ea539e666dca7d3\",\n      \"bytes\": 1726\n    },\n    \"generation\": 1,\n    \"publishedAt\": \"2026-08-23T11:36:58.380Z\"\n  },\n  \"sourceCommit\": \"2232c44268b129ca607ffba5a191dde065941fbe\",\n  \"generationCommit\": \"d83f1793bf39f17615bd50dfa93bb4be3f819d25\",\n  \"publicationCommit\": \"d83f1793bf39f17615bd50dfa93bb4be3f819d25\",\n  \"configSha256\": \"b7c710a6c2ded44e7f24f7ff126485ec80500e7115e9b61b6e01310c2ed80d08\",\n  \"sourceSha256\": \"03a4377397391cfb241553c61071eb9683397597765ff7209c365222b97d34fc\",\n  \"template\": {\n    \"path\": \"singularity/templates/feature/intake.md\",\n    \"sha256\": \"eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab\"\n  },\n  \"inputs\": null,\n  \"designSources\": {\n    \"sets\": [],\n    \"approved\": null\n  },\n  \"remoteAgent\": null,\n  \"clarification\": {\n    \"generation\": 1,\n    \"path\": \"singularity/work-items/ANU-2018/context/clarifications-intake-gen1.json\",\n    \"sha256\": \"0768db8ee1b15c12a9f60e33a935cdbf01f762f66ee9eb56a8137f9d0cc350b5\",\n    \"promptSha256\": \"3f3f7fb8dde09665796fb132253432729cf6d0aaaa1dcb8cf4faf2079784d009\",\n    \"responses\": 3,\n    \"markers\": [],\n    \"recordedAt\": \"2026-08-23T11:36:57.882Z\",\n    \"recordedBy\": {\n      \"name\": \"Ashok Raj\",\n      \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n      \"login\": \"ashokraj2011\",\n      \"githubLookup\": \"resolved\"\n    }\n  },\n  \"telemetry\": [\n    {\n      \"generation\": 1,\n      \"path\": \"singularity/work-items/ANU-2018/telemetry/intake-gen1.json\",\n      \"sha256\": \"906cd75865445ab209df5b1ed9ecdc5900a6460ccaa24c15ff172ba15fb611dc\",\n      \"status\": \"pending\",\n      \"models\": [],\n      \"providerCost\": null\n    }\n  ],\n  \"remoteOutputs\": [],\n  \"usage\": [\n    {\n      \"status\": \"unavailable\",\n      \"source\": \"copilot-otel-unavailable\",\n      \"provider\": null,\n      \"model\": null,\n      \"requestedModel\": null,\n      \"resolvedModel\": null,\n      \"resolvedModelAssurance\": \"unavailable\",\n      \"inputTokens\": null,\n      \"outputTokens\": null,\n      \"cachedInputTokens\": null,\n      \"cacheWriteInputTokens\": null,\n      \"totalTokens\": null,\n      \"providerCost\": null,\n      \"costStatus\": \"unavailable\",\n      \"spans\": null,\n      \"startedAt\": \"2026-08-23T11:36:58.380Z\",\n      \"completedAt\": \"2026-08-23T11:36:58.380Z\",\n      \"agent\": \"product-owner\",\n      \"generation\": 1\n    }\n  ],\n  \"sequenceOverrides\": [],\n  \"approvals\": [\n    {\n      \"decision\": \"approved\",\n      \"phase\": \"intake\",\n      \"at\": \"2026-08-23T11:39:54.873Z\",\n      \"actor\": {\n        \"name\": \"Ashok Raj\",\n        \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n        \"login\": \"ashokraj2011\",\n        \"githubLookup\": \"resolved\"\n      },\n      \"agent\": \"product-owner\",\n      \"authorityGroup\": \"product-approvers\",\n      \"identityAssurance\": \"configured-local\",\n      \"channel\": \"copilot-selection-receipt\",\n      \"generation\": 1,\n      \"artifactSha256\": [\n        {\n          \"path\": \"singularity/work-items/ANU-2018/artifacts/intake/intake.md\",\n          \"sha256\": \"92087a8e0bb79764ff00f9fb6c17f6f07f7dbf08e21ea7d54ac7993ccfec2dd4\"\n        }\n      ],\n      \"reviewPacketSha256\": \"9df1ec666fb9158b51420e2b75e186339a1b5299656a74288bee5ddeb45dbad9\",\n      \"actionContext\": {\n        \"phase\": \"intake\",\n        \"label\": \"Intake\",\n        \"generation\": 1,\n        \"submittedAt\": \"2026-08-23T11:38:35.836Z\",\n        \"artifacts\": [\n          {\n            \"path\": \"singularity/work-items/ANU-2018/artifacts/intake/intake.md\",\n            \"sha256\": \"92087a8e0bb79764ff00f9fb6c17f6f07f7dbf08e21ea7d54ac7993ccfec2dd4\"\n          }\n        ],\n        \"agentBriefs\": [],\n        \"reviewPacketSha256\": \"9df1ec666fb9158b51420e2b75e186339a1b5299656a74288bee5ddeb45dbad9\",\n        \"submittedSourceCommit\": \"d83f1793bf39f17615bd50dfa93bb4be3f819d25\",\n        \"planId\": \"7efc1116a9776ad5e573a967\"\n      },\n      \"selfApproval\": true\n    }\n  ],\n  \"selfApproval\": true,\n  \"conformanceTree\": null\n}\n-->\n\n# ANU-2018 — Feature Intake\n\n## User and outcome\n\nThe rule engine needs a new operator that can compute the area of a circle from a radius input and return the calculated area as a value for downstream rule evaluation. The intended outcome is to make this capability available in the existing rule language so users can express calculations directly inside rules without introducing an external workaround.\n\n## Proposed capability\n\nAdd support for a new value-producing operator in the rule engine that accepts a numeric radius input and returns the circle area calculation result. The capability should fit the current operator model used by the rule engine and be usable from the existing evaluation flow.\n\n## Scope, constraints, and stakeholders\n\nScope includes implementing the new operator, adding coverage for its behavior, and updating user-facing documentation so the capability is discoverable. The implementation should use a single radius field input contract and remain consistent with the repository’s existing rule engine conventions.\n\nConstraints include staying within the current rule engine architecture and avoiding assumptions about unsupported input formats. Stakeholders include the rule engine maintainers, the API users who rely on expression-based evaluation, and the project team responsible for validating behavior through tests and documentation.\n\n## Clarified decisions\n\n- The feature will be a value-producing operator rather than a boolean condition operator.\n- The operator will accept a single radius field input.\n- The acceptance criteria should cover implementation, tests, and documentation.\n\n## Open questions\n\n- None at intake; the clarified decisions above define the current scope.\n\n<!-- singularity-flow:inputs:end -->",
+      "bodySha256": "95d1a2dbc4451f4b88d140da992d9b99939ed5086cfeaf37ec26536d329e7b37",
+      "dependsOn": [],
+      "id": "ANU-2018:AC-001",
+      "namespace": "ANU-2018",
+      "number": 1,
+      "source": {
+        "line": 137,
+        "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md"
+      },
+      "type": "AC"
+    }
+  ],
+  "generation": 1,
+  "indexSha256": "d891f3d051d2e96540574c84b7f31e8b11d3728d265f76a45f4e83300555e329",
+  "phase": "requirements",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 12071,
+    "path": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md",
+    "sha256": "06514d79d1dcc5e66ce330243f5effc379d2f9922d7007c5f3cbe404bd65eab8"
+  },
+  "workId": "ANU-2018"
+}
