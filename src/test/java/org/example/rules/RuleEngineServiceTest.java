@@ -225,4 +225,18 @@ public class RuleEngineServiceTest {
                 () -> service.evaluateValue(data, rule));
         assertTrue(exception.getMessage().contains("numeric"));
     }
+
+    @Test
+    /* @ac:ANU-2018:AC-001 */
+    void testCircleAreaOperatorRejectsNegativeRadius() {
+        Map<String, Object> data = Map.of("radius", -3);
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "radius");
+        rule.put("op", "circle_area");
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> service.evaluateValue(data, rule));
+        assertTrue(exception.getMessage().contains("non-negative"));
+    }
 }

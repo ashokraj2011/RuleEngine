@@ -6,7 +6,7 @@
   "phase": "implementation",
   "generation": 2,
   "task": "code",
-  "status": "open",
+  "status": "consumed",
   "baseline": {
     "commit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
     "tree": "a143f58cca12498fbe9211933edc64a86885bfd2",
@@ -35,5 +35,11 @@
     "key": "ANU-2018:implementation:2",
     "startedAt": "2026-08-23T14:53:22.617Z"
   },
-  "adoption": null
+  "adoption": null,
+  "consumedAt": "2026-08-23T14:54:15.091Z",
+  "publication": {
+    "generation": 2,
+    "changeSetDigest": "sha256:0ba2d5f969b9ed5d9a8343b214b4a93ee5146a610e609b9b7c3dbb7fc97ae945",
+    "resultDigest": "sha256:71fad118a403cf53c08bda3a66bc0bcee64efe265bbfa13bdcdfaf78a809ae81"
+  }
 }

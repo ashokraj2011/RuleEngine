@@ -4,7 +4,7 @@
   "workId": "ANU-2018",
   "workType": "feature",
   "phase": "implementation",
-  "generation": 1,
+  "generation": 2,
   "status": "in_progress",
   "generatedBy": {
     "name": "Ashok Raj",
@@ -12,7 +12,7 @@
     "login": "ashokraj2011",
     "githubLookup": "resolved"
   },
-  "generatedAgent": "architect",
+  "generatedAgent": "developer",
   "authorship": {
     "schemaVersion": 1,
     "producer": "governed-agent",
@@ -24,7 +24,7 @@
       "githubLookup": "resolved"
     },
     "governedAgentContext": {
-      "agentId": "architect"
+      "agentId": "developer"
     },
     "kernelModel": {
       "invoked": false,
@@ -42,10 +42,10 @@
       "sha256": "2d787474a96b7073ecf5fe1e170ba3eaeb66429c3522fb3b7074dbbf729e0772",
       "bytes": 66270
     },
-    "generation": 1,
-    "publishedAt": "2026-08-23T12:08:05.672Z"
+    "generation": 2,
+    "publishedAt": "2026-08-23T14:54:15.091Z"
   },
-  "sourceCommit": "c2547f045cf3ec128360fd033ab01d84fc1c6508",
+  "sourceCommit": "747a19f7d8f5e535796f588815023e21792edd8b",
   "generationCommit": null,
   "publicationCommit": null,
   "configSha256": "b7c710a6c2ded44e7f24f7ff126485ec80500e7115e9b61b6e01310c2ed80d08",
@@ -55,9 +55,9 @@
     "sha256": "61cd7cba79a0dd2914a25b53496b8bd9c575c36219597d65b8ec10010e801d9c"
   },
   "inputs": {
-    "generation": 1,
-    "path": "singularity/work-items/ANU-2018/context/inputs-implementation-gen1.json",
-    "sha256": "25f088dfcd824b771168c1455710ff2faf82aff3c00d1067b9ab5b3b44c46475",
+    "generation": 2,
+    "path": "singularity/work-items/ANU-2018/context/inputs-implementation-gen2.json",
+    "sha256": "5336609c274bc14e06e4bf0c46a75c11770e2e1d3d4412f60b1e5884fa85c1ac",
     "renderedSha256": "1e3e584aa4c6165bd66c994fd5af82b5662ad1d15ca86e10832746eaade15b80",
     "mode": "enforce"
   },
@@ -72,6 +72,14 @@
       "generation": 1,
       "path": "singularity/work-items/ANU-2018/telemetry/implementation-gen1.json",
       "sha256": "0fd999c5b25a4dd0ae946feb0a4b1e050827000cdf78516e728858aa01cd070c",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    },
+    {
+      "generation": 2,
+      "path": "singularity/work-items/ANU-2018/telemetry/implementation-gen2.json",
+      "sha256": "929096f61d32b8cf05bbd0aadd67aa53076382301dbd37f0109e28f29b5c72c1",
       "status": "pending",
       "models": [],
       "providerCost": null
@@ -99,6 +107,27 @@
       "completedAt": "2026-08-23T12:08:05.672Z",
       "agent": "architect",
       "generation": 1
+    },
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-23T14:54:15.091Z",
+      "completedAt": "2026-08-23T14:54:15.091Z",
+      "agent": "developer",
+      "generation": 2
     }
   ],
   "sequenceOverrides": [],
