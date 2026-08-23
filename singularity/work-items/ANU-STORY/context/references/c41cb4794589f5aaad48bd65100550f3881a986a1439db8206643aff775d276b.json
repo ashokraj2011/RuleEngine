@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "conformance-report",
+    "path": "singularity/work-items/ANU-STORY/artifacts/conformance/spec-code-comparison.md",
+    "phaseId": "conformance"
+  },
+  "createdAt": "2026-08-22T16:00:38.893Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 237051,
+    "commitSha": "86207c2672459a2b44703078f4d0ebcc486267ab",
+    "sha256": "cdc88fcf9cccdde3425ae880dd84b4c8b2040bd2ac975df04b4e59684ebc163a"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "ANU-STORY",
+    "id": "ANU-STORY",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}

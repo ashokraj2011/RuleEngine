@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
+    "phaseId": "design"
+  },
+  "createdAt": "2026-08-22T14:01:33.122Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 20171,
+    "commitSha": "c3c44c1d401b93e18fd2f204ed23343534078d79",
+    "sha256": "f8816faf1e107b7853adc88b62f128813d998a89a38388d0873c825b98c57d5b"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "ANU-STORY",
+    "id": "ANU-STORY",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}

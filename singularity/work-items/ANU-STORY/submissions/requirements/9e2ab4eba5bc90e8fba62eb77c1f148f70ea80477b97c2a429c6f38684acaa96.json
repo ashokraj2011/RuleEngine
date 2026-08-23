@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "epicId": null,
+  "planId": null,
+  "jiraIssueId": "ANU-STORY",
+  "initialJiraKey": null,
+  "currentJiraKey": null,
+  "canonicalBranch": "ANU-STORY",
+  "submittedBranch": "ANU-STORY",
+  "submissionCommit": "91f7bef9e16861ae5d42e2701bba28c83dd00278",
+  "sourceCommit": "91f7bef9e16861ae5d42e2701bba28c83dd00278",
+  "sourceTreeSha256": "sha256:232984350614fea27a8ec15269747b6fb7541f4e7be983fff2c5a6c3230ca489",
+  "phase": "requirements",
+  "generation": 1,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "requirements.md",
+      "mediaType": "text/markdown",
+      "sha256": "2ce85cbe1456c316a7c39c650c8ddb967e305a07ac861831c9f13d574fdc970b",
+      "bytes": 7830
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-22T12:44:12.645Z"
+  },
+  "artifacts": [
+    {
+      "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md",
+      "kind": "document",
+      "sha256": "26e2c886e797b94e4fda068a858a5e055c782110600f912fa3fe047dada1bca3",
+      "size": 11458,
+      "reference": {
+        "handle": "sfref:v1:story:ANU-STORY:a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+        "recordHash": "a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "handle": "sfref:v1:story:ANU-STORY:a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+      "recordHash": "a5cc701934858ef0dd2b4371f57f1c6a4030ac9439182b041abb649872b7d8e1",
+      "purpose": "review-evidence",
+      "required": true
+    }
+  ],
+  "agentBriefs": [],
+  "checks": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-22T12:44:12.645Z",
+      "completedAt": "2026-08-22T12:44:12.645Z",
+      "agent": "product-owner",
+      "generation": 1
+    }
+  ],
+  "approvals": [],
+  "visualAssurance": null,
+  "submittedAt": "2026-08-22T12:49:02.598Z",
+  "submittedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "status": "awaiting_review",
+  "packetSha256": "9e2ab4eba5bc90e8fba62eb77c1f148f70ea80477b97c2a429c6f38684acaa96"
+}

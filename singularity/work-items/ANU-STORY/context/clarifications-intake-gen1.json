@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "phase": "intake",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-STORY/context/prompts/intake-gen1.md",
+  "promptSha256": "f42994d4ca1939d0b5d380b56e45e493b0cd4f199264917f6b2983fb70ceeca2",
+  "groundingRecordPath": "singularity/work-items/ANU-STORY/context/intake-gen1.json",
+  "groundingRecordSha256": "14fa9b255455ee5ca6c3751bd096cf484f0f7a78afb9846ccc97805ae4203c57",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "For the interest-calculation feature, which scenario should the intake prioritize first?",
+      "answer": "Simple interest",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-22T12:36:20.563Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}

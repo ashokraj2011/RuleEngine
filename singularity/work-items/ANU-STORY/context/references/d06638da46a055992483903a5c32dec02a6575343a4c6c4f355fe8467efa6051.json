@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/ANU-STORY/artifacts/verification/test-evidence.md",
+    "phaseId": "verification"
+  },
+  "createdAt": "2026-08-22T15:51:16.687Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 117251,
+    "commitSha": "7cbebf8b519db673fd787dd6b57c20dd20f3fc62",
+    "sha256": "c5959a707a2592b58875fd7ec4151a13bce92575236144fbe1da0cc980e80759"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "ANU-STORY",
+    "id": "ANU-STORY",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}

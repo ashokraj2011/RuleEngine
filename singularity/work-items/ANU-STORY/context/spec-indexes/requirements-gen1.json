@@ -1,0 +1,56 @@
+{
+  "clauses": [
+    {
+      "anchor": "[ANU-STORY:REQ-001]",
+      "body": "## Scope\n\nThe implementation includes a reusable interest-calculation path that accepts principal, rate, and period values, validates inputs, and returns a normalized interest result. It explicitly excludes integrations with external billing systems, persistence changes, or user-interface work.",
+      "bodySha256": "6139ffa396f6dcb0e969495027a84c55d70cc93c9e32e0a7a13d9ded4b0731be",
+      "dependsOn": [],
+      "id": "ANU-STORY:REQ-001",
+      "namespace": "ANU-STORY",
+      "number": 1,
+      "source": {
+        "line": 126,
+        "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md"
+      },
+      "type": "REQ"
+    },
+    {
+      "anchor": "[ANU-STORY:CON-001]",
+      "body": "## Acceptance criteria\n\nThe completed behavior MUST accept principal, rate, and period values; MUST reject invalid or negative inputs with a clear validation error; MUST calculate simple interest using a documented formula; and MUST return a result that can be verified with example scenarios.",
+      "bodySha256": "2d7cc99dbae1ce47baae96d13507ec5aa27af654d555f4e0ead51dec24303a76",
+      "dependsOn": [],
+      "id": "ANU-STORY:CON-001",
+      "namespace": "ANU-STORY",
+      "number": 1,
+      "source": {
+        "line": 130,
+        "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md"
+      },
+      "type": "CON"
+    },
+    {
+      "anchor": "[ANU-STORY:AC-001]",
+      "body": "## Dependencies, risks, and open questions\n\nDependencies include the existing rule-engine expression and numeric handling paths. Risks include ambiguous rate semantics and inconsistent handling of period units. Open questions include whether the initial release should support only simple interest or also compound interest, and whether rate input should be expressed as a decimal or a percentage. [ANU-STORY:DE-001]\n\n<!-- singularity-flow:inputs:start -->\n\n# Approved phase inputs\n\n## Approved phase input: intake\n\n<!-- source=artifacts/intake/intake.md sha256=cc4f2e89a17fe5e84fdcae5c818d79dc72e60cbf0d9917cb9008915e1369f0ae status=captured projection=full -->\n\n<!-- singularity-flow:metadata\n{\n  \"schemaVersion\": 1,\n  \"workId\": \"ANU-STORY\",\n  \"workType\": \"feature\",\n  \"phase\": \"intake\",\n  \"generation\": 1,\n  \"status\": \"approved\",\n  \"generatedBy\": {\n    \"name\": \"Ashok Raj\",\n    \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n    \"login\": \"ashokraj2011\",\n    \"githubLookup\": \"resolved\"\n  },\n  \"generatedAgent\": \"product-owner\",\n  \"authorship\": {\n    \"schemaVersion\": 1,\n    \"producer\": \"governed-agent\",\n    \"channel\": \"copilot-host\",\n    \"actor\": {\n      \"name\": \"Ashok Raj\",\n      \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n      \"login\": \"ashokraj2011\",\n      \"githubLookup\": \"resolved\"\n    },\n    \"governedAgentContext\": {\n      \"agentId\": \"product-owner\"\n    },\n    \"kernelModel\": {\n      \"invoked\": false,\n      \"status\": \"exact\",\n      \"invocationIds\": []\n    },\n    \"externalAiUse\": {\n      \"value\": \"unknown\",\n      \"status\": \"unavailable\"\n    },\n    \"source\": {\n      \"kind\": \"in-place\",\n      \"filename\": \"intake.md\",\n      \"mediaType\": \"text/markdown\",\n      \"sha256\": \"05c86408b0608f471d05809422ffbac68b025275fe93641e09d6216fed354f68\",\n      \"bytes\": 1247\n    },\n    \"generation\": 1,\n    \"publishedAt\": \"2026-08-22T12:36:25.942Z\"\n  },\n  \"sourceCommit\": \"97026e5d0e6fb4e53fa68d8ed071ffa76beedabb\",\n  \"generationCommit\": \"759609df8cdb1acd3136f5c4762ab28584c31d2e\",\n  \"publicationCommit\": \"759609df8cdb1acd3136f5c4762ab28584c31d2e\",\n  \"configSha256\": \"3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b\",\n  \"sourceSha256\": \"142becb19837037c336774addd45db0b908d38715d71a2782805c230756620ca\",\n  \"template\": {\n    \"path\": \"singularity/templates/feature/intake.md\",\n    \"sha256\": \"eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab\"\n  },\n  \"inputs\": null,\n  \"designSources\": {\n    \"sets\": [],\n    \"approved\": null\n  },\n  \"remoteAgent\": null,\n  \"clarification\": {\n    \"generation\": 1,\n    \"path\": \"singularity/work-items/ANU-STORY/context/clarifications-intake-gen1.json\",\n    \"sha256\": \"fc66b446cb78fbd6491ac7d861c8297789620bc7a63620f3e84cb7a4d347c7f8\",\n    \"promptSha256\": \"f42994d4ca1939d0b5d380b56e45e493b0cd4f199264917f6b2983fb70ceeca2\",\n    \"responses\": 1,\n    \"markers\": [],\n    \"recordedAt\": \"2026-08-22T12:36:20.563Z\",\n    \"recordedBy\": {\n      \"name\": \"Ashok Raj\",\n      \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n      \"login\": \"ashokraj2011\",\n      \"githubLookup\": \"resolved\"\n    }\n  },\n  \"telemetry\": [\n    {\n      \"generation\": 1,\n      \"path\": \"singularity/work-items/ANU-STORY/telemetry/intake-gen1.json\",\n      \"sha256\": \"c057a1781f32f4bfb8be24a5d90a80dd2789263702526bcf3081ed8560aba15a\",\n      \"status\": \"pending\",\n      \"models\": [],\n      \"providerCost\": null\n    }\n  ],\n  \"remoteOutputs\": [],\n  \"usage\": [\n    {\n      \"status\": \"unavailable\",\n      \"source\": \"copilot-otel-unavailable\",\n      \"provider\": null,\n      \"model\": null,\n      \"inputTokens\": null,\n      \"outputTokens\": null,\n      \"cachedInputTokens\": null,\n      \"cacheWriteInputTokens\": null,\n      \"totalTokens\": null,\n      \"providerCost\": null,\n      \"costStatus\": \"unavailable\",\n      \"spans\": null,\n      \"startedAt\": \"2026-08-22T12:36:25.942Z\",\n      \"completedAt\": \"2026-08-22T12:36:25.942Z\",\n      \"agent\": \"product-owner\",\n      \"generation\": 1\n    }\n  ],\n  \"sequenceOverrides\": [],\n  \"approvals\": [\n    {\n      \"decision\": \"approved\",\n      \"phase\": \"intake\",\n      \"at\": \"2026-08-22T12:38:41.817Z\",\n      \"actor\": {\n        \"name\": \"Ashok Raj\",\n        \"email\": \"88361104+ashokraj2011@users.noreply.github.com\",\n        \"login\": \"ashokraj2011\",\n        \"githubLookup\": \"resolved\"\n      },\n      \"agent\": \"product-owner\",\n      \"authorityGroup\": \"product-approvers\",\n      \"identityAssurance\": \"configured-local\",\n      \"channel\": \"copilot-selection-receipt\",\n      \"generation\": 1,\n      \"artifactSha256\": [\n        {\n          \"path\": \"singularity/work-items/ANU-STORY/artifacts/intake/intake.md\",\n          \"sha256\": \"b37a8c0c3684410f4a8223e0612e63fc94fcd4668651316253dc15a300a4e227\"\n        }\n      ],\n      \"reviewPacketSha256\": \"c1a371f2724c59f520a3fa747ce230b006c5d31b24220eb13150989137ba1d6e\",\n      \"actionContext\": {\n        \"phase\": \"intake\",\n        \"label\": \"Intake\",\n        \"generation\": 1,\n        \"submittedAt\": \"2026-08-22T12:37:18.083Z\",\n        \"artifacts\": [\n          {\n            \"path\": \"singularity/work-items/ANU-STORY/artifacts/intake/intake.md\",\n            \"sha256\": \"b37a8c0c3684410f4a8223e0612e63fc94fcd4668651316253dc15a300a4e227\"\n          }\n        ],\n        \"agentBriefs\": [],\n        \"reviewPacketSha256\": \"c1a371f2724c59f520a3fa747ce230b006c5d31b24220eb13150989137ba1d6e\",\n        \"submittedSourceCommit\": \"759609df8cdb1acd3136f5c4762ab28584c31d2e\",\n        \"planId\": \"e6aeea3fb993c621dc02d875\"\n      },\n      \"selfApproval\": true\n    }\n  ],\n  \"selfApproval\": true,\n  \"conformanceTree\": null\n}\n-->\n\n# ANU-STORY — Feature Intake\n\n## User and outcome\n\nBusiness users need a reliable way to calculate interest amounts from a principal value, a rate, and a period so that the rule engine can support financial decision rules in a consistent way. The success measure is a clear, repeatable calculation path that can be validated with example inputs and produces the expected interest result.\n\n## Proposed capability\n\nAdd an interest-calculation capability to the rule engine workflow so that a rule or request can evaluate interest-related scenarios without bespoke implementation work. The capability should be described as part of the product intake so the implementation team can design and build it against a shared understanding of the user need.\n\n## Scope, constraints, and stakeholders\n\nThe scope is limited to intake and planning for the interest-calculation feature; implementation details should be deferred until the requirements and design phases. Constraints include keeping the change aligned with the existing rule-engine API and avoiding assumptions about external billing or persistence systems. Stakeholders include the product owner, the engineering team, and any downstream users who will rely on the new calculation capability.\n\n<!-- singularity-flow:inputs:end -->",
+      "bodySha256": "a17dc8917da2c3483448d46b42ec8690c6bbee841701d4fac67d8cbbdec7cd08",
+      "dependsOn": [],
+      "id": "ANU-STORY:AC-001",
+      "namespace": "ANU-STORY",
+      "number": 1,
+      "source": {
+        "line": 134,
+        "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md"
+      },
+      "type": "AC"
+    }
+  ],
+  "generation": 1,
+  "indexSha256": "0274fe13012e4d4e96af398f8d26e849e11aeb39234a2cba7d050924cf7092d4",
+  "phase": "requirements",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 11458,
+    "path": "singularity/work-items/ANU-STORY/artifacts/requirements/requirements.md",
+    "sha256": "26e2c886e797b94e4fda068a858a5e055c782110600f912fa3fe047dada1bca3"
+  },
+  "workId": "ANU-STORY"
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "phase": "implementation-spec",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/ANU-STORY/context/prompts/implementation-spec-gen1.md",
+  "promptSha256": "fe445267ca8ea700baa96c0b1f10437c3d85d37834bfe4102d8cac47255072b9",
+  "groundingRecordPath": "singularity/work-items/ANU-STORY/context/implementation-spec-gen1.json",
+  "groundingRecordSha256": "7edfc900c1e1affccad0354519cbc5dc7c231cefe6f751038ac33cf24678b0df",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Which HTTP status code should invalid interest input use for validation failures?",
+      "answer": "400",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-22T14:20:44.881Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "architect"
+}

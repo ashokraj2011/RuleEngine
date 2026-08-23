@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "bytes": 18153,
+    "path": "singularity/work-items/ANU-STORY/artifacts/design/design.md",
+    "role": "document",
+    "sha256": "d90068869497ada04fb88d564c164ca8c0962d86f651ab95a23a105587a7be99"
+  },
+  "configuration": {
+    "revision": "e0c3083af3f08b7900c2286e9b203d7641cbed85",
+    "sha256": "3bdacb436bc709f61acdd7a587e3c64c3f1401d861ba0ae781de15bf96568b9b"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/requirements/requirements.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "d098c11e53153907649277f86861795db8eaf9f85bf9d78198ec8fa4a797f43c",
+  "phase": "design",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "product-owner",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "ANU-STORY",
+    "commit": null,
+    "publishedAt": "2026-08-22T13:58:21.936Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "ANU-STORY",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/feature/design.md",
+    "sha256": "8b7455f464a7025efa92942c272a04e3c0a3ab2a4d3eb438703cc14e230bc856"
+  }
+}

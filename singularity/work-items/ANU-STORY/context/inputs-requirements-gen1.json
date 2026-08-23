@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-STORY",
+  "workType": "feature",
+  "phase": "requirements",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-22T12:44:12.567Z",
+  "renderedSha256": "4262a420498bce7cf0b193afab32653bff2031bd68b6d93178b787fa9fa9267d",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "intake",
+      "path": "artifacts/intake/intake.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-22T12:38:41.817Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "cc4f2e89a17fe5e84fdcae5c818d79dc72e60cbf0d9917cb9008915e1369f0ae",
+      "sha256": "cc4f2e89a17fe5e84fdcae5c818d79dc72e60cbf0d9917cb9008915e1369f0ae",
+      "bytes": 6095,
+      "injectedBytes": 6095,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}

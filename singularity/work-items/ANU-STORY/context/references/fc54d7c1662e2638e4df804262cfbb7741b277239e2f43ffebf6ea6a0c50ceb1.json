@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/ANU-STORY/artifacts/intake/intake.md",
+    "phaseId": "intake"
+  },
+  "createdAt": "2026-08-22T12:37:18.141Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 4543,
+    "commitSha": "759609df8cdb1acd3136f5c4762ab28584c31d2e",
+    "sha256": "cef1ac61ce0c86cb316c27112cd98a22abf631e9a698749182b82d6d0d9468f6"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "ANU-STORY",
+    "id": "ANU-STORY",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
