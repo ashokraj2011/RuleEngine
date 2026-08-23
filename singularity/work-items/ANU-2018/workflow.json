@@ -3295,17 +3295,17 @@
       "checks": [],
       "remoteOutputs": [],
       "generationIntent": {
-        "id": "c5a4f1ea-119b-4f97-a15d-31f407b2e9f9",
-        "generation": 1,
-        "status": "consumed",
-        "path": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen1.json",
+        "id": "9a22d29f-615e-4a2e-a857-87213f80ab4f",
+        "generation": 2,
+        "status": "open",
+        "path": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen2.json",
         "baseline": {
-          "commit": "5baee3c207c65bea2b8c7389f68a424879524d78",
-          "tree": "5476496223f9327f12b63fc6d823f1313e4b22a8",
-          "initialChangeSetDigest": "sha256:c349747f1883ded43b86310f9672f1c707e187eafdd42408e4f1d93239c3b76b",
+          "commit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
+          "tree": "a143f58cca12498fbe9211933edc64a86885bfd2",
+          "initialChangeSetDigest": "sha256:17df5d0c1003df55e3abf0e82f0183c069d2fc897255534336018bcad31c81c3",
           "mode": "clean"
         },
-        "startedAt": "2026-08-23T12:03:50.383Z",
+        "startedAt": "2026-08-23T14:53:22.618Z",
         "startedBy": {
           "actor": {
             "name": "Ashok Raj",
@@ -3313,14 +3313,9 @@
             "login": "ashokraj2011",
             "githubLookup": "resolved"
           },
-          "agent": "architect"
+          "agent": "developer"
         },
-        "publication": {
-          "generation": 1,
-          "changeSetDigest": "sha256:dd76e4e80d412753737355f92c8d097202bfb150edae9254e066ff20b1134f66",
-          "resultDigest": "sha256:46bb4f132e67f66a654e67d86cd301a55fb75cf7feb1e3a5dca541bc86c63c77"
-        },
-        "consumedAt": "2026-08-23T12:08:05.672Z"
+        "publication": null
       },
       "inputContext": {
         "generation": 1,
@@ -4143,6 +4138,14 @@
       "event": "phase_assigned",
       "phase": "implementation",
       "detail": "ashok"
+    },
+    {
+      "at": "2026-08-23T14:53:22.566Z",
+      "actor": "system",
+      "agent": null,
+      "event": "work_interval_started",
+      "phase": "implementation",
+      "detail": "baseline 2d653a682e2d at 75ca103be537"
     }
   ],
   "measurement": {
@@ -4637,19 +4640,51 @@
         "createdAt": "2026-08-23T13:13:08.353Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "88c4e34f-8083-46e2-9118-393c83dfe74c",
+        "type": "generation-started",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "implementation",
+        "generation": 2,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "architect",
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T14:53:22.490Z"
+      },
+      "ledgerIntent": null
     }
   ],
   "repairBudgets": {},
   "workIntervals": {
     "schemaVersion": 1,
     "current": {
-      "intervalId": "INT-implementation-G1-001",
+      "intervalId": "INT-implementation-G2-002",
       "phaseId": "implementation",
-      "generation": 1,
-      "baselineSha256": "2c78eb97b5c318856c02ed6dca82129dd8b1114545d0b777aa0a2b12d7650941",
-      "sourceBaseCommit": "5baee3c207c65bea2b8c7389f68a424879524d78",
+      "generation": 2,
+      "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+      "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
       "escalationTarget": null,
-      "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen1-baseline.json",
+      "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
       "status": "open"
     },
     "history": [
@@ -4661,6 +4696,16 @@
         "sourceBaseCommit": "5baee3c207c65bea2b8c7389f68a424879524d78",
         "escalationTarget": null,
         "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen1-baseline.json",
+        "status": "open"
+      },
+      {
+        "intervalId": "INT-implementation-G2-002",
+        "phaseId": "implementation",
+        "generation": 2,
+        "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+        "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
+        "escalationTarget": null,
+        "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
         "status": "open"
       }
     ],

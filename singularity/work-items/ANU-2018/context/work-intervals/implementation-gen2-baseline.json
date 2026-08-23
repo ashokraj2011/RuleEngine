@@ -8,7 +8,7 @@
   "phaseId": "implementation",
   "generation": 2,
   "branch": "ANU-2018",
-  "sourceBaseCommit": "52b7fb3b26c2a03fdbcf7ad927c63666973245ec",
+  "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
   "configurationSha256": "b7c710a6c2ded44e7f24f7ff126485ec80500e7115e9b61b6e01310c2ed80d08",
   "sourceSha256": "03a4377397391cfb241553c61071eb9683397597765ff7209c365222b97d34fc",
   "templateSha256": "61cd7cba79a0dd2914a25b53496b8bd9c575c36219597d65b8ec10010e801d9c",
@@ -36,8 +36,8 @@
     "escalationTarget": null,
     "localProvidersOnly": true
   },
-  "baselineSha256": "9aae25dbdf7972e8dd22f7b256739e55caa78f34fc79570b1e2238d8ff814df0",
-  "createdAt": "2026-08-23T12:58:52.694Z",
+  "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+  "createdAt": "2026-08-23T14:53:22.566Z",
   "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
   "status": "open"
 }
