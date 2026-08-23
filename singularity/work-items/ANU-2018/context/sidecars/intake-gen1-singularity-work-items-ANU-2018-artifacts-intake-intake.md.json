@@ -1,0 +1,35 @@
+{
+  "artifact": {
+    "bytes": 3004,
+    "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+    "role": "document",
+    "sha256": "189082a5b539d37161bfc91f3ec4a8caefe925baeed0158e2ca929c9245c257d"
+  },
+  "configuration": {
+    "revision": "7860c52f5db56cb9d233bfe97ac56bb4433f444d",
+    "sha256": "b7c710a6c2ded44e7f24f7ff126485ec80500e7115e9b61b6e01310c2ed80d08"
+  },
+  "generation": 1,
+  "inputs": [],
+  "integritySha256": "c874d7b30a913e9a09ba4ea70fc9970f93112ab8da69f239e4c75ff60e67b1c8",
+  "phase": "intake",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "product-owner",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "ANU-2018",
+    "commit": null,
+    "publishedAt": "2026-08-23T11:36:58.380Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "ANU-2018",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/feature/intake.md",
+    "sha256": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab"
+  }
+}

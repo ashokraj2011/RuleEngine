@@ -1723,16 +1723,122 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedAgent": null,
-      "authorship": [],
-      "usage": [],
-      "telemetry": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "generatedAgent": "product-owner",
+      "authorship": [
+        {
+          "schemaVersion": 1,
+          "producer": "governed-agent",
+          "channel": "copilot-host",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "product-owner"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "intake.md",
+            "mediaType": "text/markdown",
+            "sha256": "c1939715aee8bda8a3c47c7c14a6291f1c726625f71007361ea539e666dca7d3",
+            "bytes": 1726
+          },
+          "generation": 1,
+          "publishedAt": "2026-08-23T11:36:58.380Z"
+        }
+      ],
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "requestedModel": null,
+          "resolvedModel": null,
+          "resolvedModelAssurance": "unavailable",
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-08-23T11:36:58.380Z",
+          "completedAt": "2026-08-23T11:36:58.380Z",
+          "agent": "product-owner",
+          "generation": 1
+        }
+      ],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/ANU-2018/telemetry/intake-gen1.json",
+          "sha256": "906cd75865445ab209df5b1ed9ecdc5900a6460ccaa24c15ff172ba15fb611dc",
+          "status": "pending",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
       "designSourceSets": [],
-      "artifacts": [],
-      "checks": []
+      "artifacts": [
+        {
+          "path": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 5125,
+          "sha256": "7577bdceeab39ae9483aec451dfca0bb2dfb1e94e26f930eab4c454fdceeb532",
+          "registeredAt": "2026-08-23T11:36:58.248Z",
+          "updatedAt": "2026-08-23T11:36:58.412Z"
+        }
+      ],
+      "checks": [],
+      "remoteOutputs": [],
+      "sidecars": [
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/intake-gen1-singularity-work-items-ANU-2018-artifacts-intake-intake.md.json",
+          "artifact": "singularity/work-items/ANU-2018/artifacts/intake/intake.md",
+          "integritySha256": "c874d7b30a913e9a09ba4ea70fc9970f93112ab8da69f239e4c75ff60e67b1c8"
+        }
+      ],
+      "clarifications": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/ANU-2018/context/clarifications-intake-gen1.json",
+          "sha256": "0768db8ee1b15c12a9f60e33a935cdbf01f762f66ee9eb56a8137f9d0cc350b5",
+          "promptSha256": "3f3f7fb8dde09665796fb132253432729cf6d0aaaa1dcb8cf4faf2079784d009",
+          "responses": 3,
+          "markers": [],
+          "recordedAt": "2026-08-23T11:36:57.882Z",
+          "recordedBy": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          }
+        }
+      ],
+      "sourceCommit": "2232c44268b129ca607ffba5a191dde065941fbe"
     },
     "requirements": {
       "id": "requirements",
@@ -1815,7 +1921,8 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "design": {
       "id": "design",
@@ -1899,7 +2006,8 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "implementation-spec": {
       "id": "implementation-spec",
@@ -1992,7 +2100,8 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "implementation": {
       "id": "implementation",
@@ -2081,7 +2190,8 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "verification": {
       "id": "verification",
@@ -2173,7 +2283,8 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     },
     "conformance": {
       "id": "conformance",
@@ -2289,19 +2400,48 @@
       "approvals": [],
       "designSourceSets": [],
       "artifacts": [],
-      "checks": []
+      "checks": [],
+      "remoteOutputs": []
     }
   },
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 0,
+    "records": 1,
     "exactRecords": 0,
-    "unavailableRecords": 0,
-    "byPhase": {},
-    "byAgent": {},
-    "byWorkType": {},
-    "byWorkItem": {}
+    "unavailableRecords": 1,
+    "byPhase": {
+      "intake": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byAgent": {
+      "product-owner": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byWorkType": {
+      "feature": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    },
+    "byWorkItem": {
+      "ANU-2018": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
+      }
+    }
   },
   "telemetry": {
     "schemaVersion": 1,
@@ -2325,6 +2465,14 @@
       "event": "work_started",
       "phase": "intake",
       "detail": "Created feature branch ANU-2018"
+    },
+    {
+      "at": "2026-08-23T11:36:58.413Z",
+      "actor": "ashokraj2011",
+      "agent": "product-owner",
+      "event": "phase_generated",
+      "phase": "intake",
+      "detail": "generation 1"
     }
   ],
   "measurement": {
@@ -2370,6 +2518,45 @@
         "createdAt": "2026-08-23T11:27:46.224Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "1fc4d470-d7a7-4185-99cf-b4ec8da9d6de",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "intake",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T11:36:58.266Z"
+      },
+      "ledgerIntent": null
     }
-  ]
+  ],
+  "repairBudgets": {},
+  "workIntervals": {
+    "schemaVersion": 1,
+    "current": null,
+    "history": [],
+    "escalations": []
+  }
 }
