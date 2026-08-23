@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "ANU-2018",
+  "workType": "feature",
+  "phase": "design",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-23T11:54:09.117Z",
+  "renderedSha256": "931740d405cd72f0e6b760feb98eafb21c98c47f3d9af64446296e3b3fff6c91",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "requirements",
+      "path": "artifacts/requirements/requirements.md",
+      "repositoryPath": "singularity/work-items/ANU-2018/artifacts/requirements/requirements.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-23T11:52:11.303Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "41f59aa562cedef1b624ba9b95b6ab676a2eb835ece52573a9ac2f3d713aa05f",
+      "sha256": "41f59aa562cedef1b624ba9b95b6ab676a2eb835ece52573a9ac2f3d713aa05f",
+      "bytes": 13663,
+      "injectedBytes": 13661,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}
