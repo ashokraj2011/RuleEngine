@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "phase": "verification",
+  "decisions": [
+    {
+      "decision": "approved",
+      "phase": "verification",
+      "at": "2026-08-23T15:03:45.860Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "qa",
+      "authorityGroup": "quality-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "copilot-selection-receipt",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+          "sha256": "70f62c6f12329fb06bcac8f817eddadd0d56de0f0cd63916c92028ec9cd25f25"
+        }
+      ],
+      "reviewPacketSha256": "0d9002cbba10e831727d73d68d1b1faf022e2fbd397b1202c68692b26551f181",
+      "actionContext": {
+        "phase": "verification",
+        "label": "Verification",
+        "generation": 1,
+        "submittedAt": "2026-08-23T14:56:52.711Z",
+        "artifacts": [
+          {
+            "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+            "sha256": "70f62c6f12329fb06bcac8f817eddadd0d56de0f0cd63916c92028ec9cd25f25"
+          }
+        ],
+        "agentBriefs": [],
+        "reviewPacketSha256": "0d9002cbba10e831727d73d68d1b1faf022e2fbd397b1202c68692b26551f181",
+        "submittedSourceCommit": "bb0157b9c9daba9cef64025706afc8cac5479cf3",
+        "planId": "418d9bc0b4df599da74e2b81"
+      },
+      "selfApproval": true
+    }
+  ]
+}

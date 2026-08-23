@@ -2366,7 +2366,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "verification",
+  "currentPhase": "conformance",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -4023,7 +4023,7 @@
       "label": "Verification",
       "order": 5,
       "defaultAgent": "qa",
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/verification/test-evidence.md",
         "kind": "test-evidence",
@@ -4094,8 +4094,8 @@
       "qualityCommands": [],
       "startedAt": "2026-08-23T14:55:41.045Z",
       "submittedAt": "2026-08-23T14:56:52.711Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-08-23T15:03:45.860Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -4152,18 +4152,61 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "verification",
+          "at": "2026-08-23T15:03:45.860Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "qa",
+          "authorityGroup": "quality-reviewers",
+          "identityAssurance": "configured-local",
+          "channel": "copilot-selection-receipt",
+          "generation": 1,
+          "artifactSha256": [
+            {
+              "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+              "sha256": "70f62c6f12329fb06bcac8f817eddadd0d56de0f0cd63916c92028ec9cd25f25"
+            }
+          ],
+          "reviewPacketSha256": "0d9002cbba10e831727d73d68d1b1faf022e2fbd397b1202c68692b26551f181",
+          "actionContext": {
+            "phase": "verification",
+            "label": "Verification",
+            "generation": 1,
+            "submittedAt": "2026-08-23T14:56:52.711Z",
+            "artifacts": [
+              {
+                "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+                "sha256": "70f62c6f12329fb06bcac8f817eddadd0d56de0f0cd63916c92028ec9cd25f25"
+              }
+            ],
+            "agentBriefs": [],
+            "reviewPacketSha256": "0d9002cbba10e831727d73d68d1b1faf022e2fbd397b1202c68692b26551f181",
+            "submittedSourceCommit": "bb0157b9c9daba9cef64025706afc8cac5479cf3",
+            "planId": "418d9bc0b4df599da74e2b81"
+          },
+          "selfApproval": true
+        }
+      ],
       "designSourceSets": [],
       "artifacts": [
         {
           "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 121873,
-          "sha256": "70f62c6f12329fb06bcac8f817eddadd0d56de0f0cd63916c92028ec9cd25f25",
+          "size": 123374,
+          "sha256": "ae407bebc2d7d5a02704aefd384ff98348405d5541bad9f0e2ca7cfc72eb28b6",
           "registeredAt": "2026-08-23T14:56:40.472Z",
-          "updatedAt": "2026-08-23T14:56:52.712Z"
+          "updatedAt": "2026-08-23T14:56:52.712Z",
+          "approvedAt": "2026-08-23T15:03:45.860Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -4219,7 +4262,7 @@
       "label": "Spec-to-code conformance",
       "order": 6,
       "defaultAgent": "qa",
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/conformance/spec-code-comparison.md",
         "kind": "conformance-report",
@@ -4312,7 +4355,7 @@
         }
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-08-23T15:03:45.860Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -4650,6 +4693,22 @@
       "event": "phase_submitted",
       "phase": "verification",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-08-23T15:03:45.860Z",
+      "actor": "ashokraj2011",
+      "agent": "qa",
+      "event": "work_interval_closed",
+      "phase": "verification",
+      "detail": "interval INT-verification-G1-003 closed after phase approval"
+    },
+    {
+      "at": "2026-08-23T15:03:45.860Z",
+      "actor": "ashokraj2011",
+      "agent": "qa",
+      "event": "phase_self_approved",
+      "phase": "verification",
+      "detail": "threshold reached; advanced to conformance"
     }
   ],
   "measurement": {
@@ -5336,6 +5395,38 @@
         "createdAt": "2026-08-23T14:56:52.554Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "5d3d7fab-6eeb-44a8-929e-f3cb7308cc0a",
+        "type": "phase-approved",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "verification",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "qa",
+        "authorityGroup": "quality-reviewers",
+        "payload": {
+          "decision": "approved",
+          "reviewPacketSha256": "0d9002cbba10e831727d73d68d1b1faf022e2fbd397b1202c68692b26551f181"
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T15:03:45.867Z"
+      },
+      "ledgerIntent": null
     }
   ],
   "repairBudgets": {},
@@ -5349,13 +5440,14 @@
       "sourceBaseCommit": "d36620e0354b6883d9313b97da980889247caf4c",
       "escalationTarget": null,
       "path": "singularity/work-items/ANU-2018/context/work-intervals/verification-gen1-baseline.json",
-      "status": "reconciled",
+      "status": "closed",
       "finalReconciliation": {
         "reconciliationSha256": "63994cccabc800f287873062f6a13bafc1343e6a85c57733d498423d53c28506",
         "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/63994cccabc800f287873062f6a13bafc1343e6a85c57733d498423d53c28506.json",
         "targetHead": "bb0157b9c9daba9cef64025706afc8cac5479cf3",
         "recordedAt": "2026-08-23T14:56:52.711Z"
-      }
+      },
+      "closedAt": "2026-08-23T15:03:45.860Z"
     },
     "history": [
       {
