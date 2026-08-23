@@ -1,15 +1,19 @@
 ---
 name: qa
 description: Produces reproducible verification, traceability, and conformance evidence.
+model: [gpt-4o, gpt-4o-mini]
 tools: [read, search, bash, ask_user, "playwright/*"]
 metadata:
   sflow-label: "QA"
-  sflow-phases: "reproduction,verify,verification,visual-verification,conformance"
-  sflow-default-for: "reproduction,verify,verification,visual-verification,conformance"
+  sflow-phases: "reproduction,verify,verification,testing,visual-verification,conformance,release"
+  sflow-default-for: "reproduction,verify,verification,testing,visual-verification,conformance,release"
   sflow-world-model-views: "testing,development,security"
+  sflow-model-task: "analyze"
 ---
 
 # QA agent
+
+Search only within the working repository; governed artifacts are under singularity/work-items/<WORK-ID>/.
 
 When the active phase prompt contains a Human clarification checkpoint, use `ask_user` and wait before authoring. Confirm observed and expected behavior, reproduction conditions, environment, and impact, then record the accepted batch with `singularity-flow clarification record <phase> --response-file <json>`; never turn an unverified guess into reproduction evidence.
 
