@@ -3163,17 +3163,542 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
-      "generatedAgent": null,
-      "authorship": [],
-      "usage": [],
-      "telemetry": [],
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "generatedAgent": "architect",
+      "authorship": [
+        {
+          "schemaVersion": 1,
+          "producer": "governed-agent",
+          "channel": "copilot-host",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "architect"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "implementation-summary.md",
+            "mediaType": "text/markdown",
+            "sha256": "2d787474a96b7073ecf5fe1e170ba3eaeb66429c3522fb3b7074dbbf729e0772",
+            "bytes": 66270
+          },
+          "generation": 1,
+          "publishedAt": "2026-08-23T12:08:05.672Z"
+        }
+      ],
+      "usage": [
+        {
+          "status": "unavailable",
+          "source": "copilot-otel-unavailable",
+          "provider": null,
+          "model": null,
+          "requestedModel": null,
+          "resolvedModel": null,
+          "resolvedModelAssurance": "unavailable",
+          "inputTokens": null,
+          "outputTokens": null,
+          "cachedInputTokens": null,
+          "cacheWriteInputTokens": null,
+          "totalTokens": null,
+          "providerCost": null,
+          "costStatus": "unavailable",
+          "spans": null,
+          "startedAt": "2026-08-23T12:08:05.672Z",
+          "completedAt": "2026-08-23T12:08:05.672Z",
+          "agent": "architect",
+          "generation": 1
+        }
+      ],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/ANU-2018/telemetry/implementation-gen1.json",
+          "sha256": "0fd999c5b25a4dd0ae946feb0a4b1e050827000cdf78516e728858aa01cd070c",
+          "status": "pending",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
       "designSourceSets": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": "README.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 7782,
+          "sha256": "f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa",
+          "registeredAt": "2026-08-23T12:08:05.423Z",
+          "updatedAt": "2026-08-23T12:08:05.735Z"
+        },
+        {
+          "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 69454,
+          "sha256": "89058d3cf93291f1bf9e711b43819a028d07aecabadc8b96a181179b408fed1e",
+          "registeredAt": "2026-08-23T12:08:05.424Z",
+          "updatedAt": "2026-08-23T12:08:05.735Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/Operator.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 295,
+          "sha256": "0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433",
+          "registeredAt": "2026-08-23T12:08:05.424Z",
+          "updatedAt": "2026-08-23T12:08:05.735Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/RuleEngineService.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 11305,
+          "sha256": "05932a0fcfc0002eb783d49e09f24567dbf811593ed0bc320f9d0ea6e1d8a725",
+          "registeredAt": "2026-08-23T12:08:05.424Z",
+          "updatedAt": "2026-08-23T12:08:05.735Z"
+        },
+        {
+          "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 7546,
+          "sha256": "c11f1cc0a9aaa7020716ea78b8ecd5dd7cf099e58415884a41e0d6071214c11e",
+          "registeredAt": "2026-08-23T12:08:05.424Z",
+          "updatedAt": "2026-08-23T12:08:05.736Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "generationIntent": {
+        "id": "c5a4f1ea-119b-4f97-a15d-31f407b2e9f9",
+        "generation": 1,
+        "status": "consumed",
+        "path": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen1.json",
+        "baseline": {
+          "commit": "5baee3c207c65bea2b8c7389f68a424879524d78",
+          "tree": "5476496223f9327f12b63fc6d823f1313e4b22a8",
+          "initialChangeSetDigest": "sha256:c349747f1883ded43b86310f9672f1c707e187eafdd42408e4f1d93239c3b76b",
+          "mode": "clean"
+        },
+        "startedAt": "2026-08-23T12:03:50.383Z",
+        "startedBy": {
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "architect"
+        },
+        "publication": {
+          "generation": 1,
+          "changeSetDigest": "sha256:dd76e4e80d412753737355f92c8d097202bfb150edae9254e066ff20b1134f66",
+          "resultDigest": "sha256:46bb4f132e67f66a654e67d86cd301a55fb75cf7feb1e3a5dca541bc86c63c77"
+        },
+        "consumedAt": "2026-08-23T12:08:05.672Z"
+      },
+      "inputContext": {
+        "generation": 1,
+        "path": "singularity/work-items/ANU-2018/context/inputs-implementation-gen1.json",
+        "sha256": "25f088dfcd824b771168c1455710ff2faf82aff3c00d1067b9ab5b3b44c46475",
+        "renderedSha256": "1e3e584aa4c6165bd66c994fd5af82b5662ad1d15ca86e10832746eaade15b80",
+        "mode": "enforce"
+      },
+      "deliveryEvidence": {
+        "requirement": "source-and-tests",
+        "baselineCommit": "5baee3c207c65bea2b8c7389f68a424879524d78",
+        "generationIntentId": "c5a4f1ea-119b-4f97-a15d-31f407b2e9f9",
+        "changeSet": {
+          "schemaVersion": 1,
+          "kind": "repository-change-set",
+          "subject": {
+            "workId": "ANU-2018",
+            "phase": "implementation",
+            "generation": 1,
+            "generationIntentId": "c5a4f1ea-119b-4f97-a15d-31f407b2e9f9"
+          },
+          "base": {
+            "commit": "5baee3c207c65bea2b8c7389f68a424879524d78",
+            "tree": "5476496223f9327f12b63fc6d823f1313e4b22a8"
+          },
+          "target": {
+            "head": "c2547f045cf3ec128360fd033ab01d84fc1c6508",
+            "includesIndex": true,
+            "includesWorktree": true,
+            "includesUntracked": true
+          },
+          "entries": [
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/approvals/implementation-spec.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": "64e24ef71a8a5f73e23526f65a6a054a7d133d74",
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:32e55b998729654448a84bad9ecff9e2af31084fa549599568a8ce7c9f53d599",
+                "bytes": 1657
+              },
+              "changeId": "sha256:7abc5e8eb0ce43a0c2b1a2a1f1c493884185b29f30c31f6eeecb5f898a5074ad"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/approvals/implementation-spec/2026-08-23T12-03-23-636Z-approved.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": "23efed49f9bf9a30c0ec1804ad6d5381d77aa166",
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:36a9720e60761aa251078be0c6650cd69d6f9654da0aa1ecaed20016ff5f5236",
+                "bytes": 1416
+              },
+              "changeId": "sha256:864ef4e692661a94b70ba69ce189a70bcb4f30fd429e963313f75cb1696ee8e8"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": null,
+              "untracked": true,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:7a89b7e04e461f4eb2925600b6a87a6e6e6df6d00df4b8fd4b71376a14d44852",
+                "bytes": 67866
+              },
+              "changeId": "sha256:15ad64f01df28e2f50b1060044e1517ba06c70dc47beb0f6abb24b5d7d396330"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen1.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": null,
+              "untracked": true,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:b02bc31572cc5a395382bf0a738ca673b8145e41e19609be41f96ce7f7f7d1a5",
+                "bytes": 1111
+              },
+              "changeId": "sha256:1ac87ae46e0243d8498c5633de52c61998d59f14d77a4758da490fcbdb9edae0"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/context/implementation-gen1.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": null,
+              "untracked": true,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:ee097dacbcb865a5440e42fe47e2f2d8c66945168b3997c9f7392159840fde72",
+                "bytes": 9139
+              },
+              "changeId": "sha256:1890d21ac28c9427ddd9a43acce64d93c2991f94f2c5b64b48d8432587daf838"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/context/inputs-implementation-gen1.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": null,
+              "untracked": true,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:af8e05f56f716ad87f59f2e40ce5ce3a78dc3652d474cb83b107205f3b145757",
+                "bytes": 1782
+              },
+              "changeId": "sha256:b20d467c48ba0a96bb0d269384902d6b53b7ee038b255821466d739fb8332807"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/context/prompts/implementation-gen1.md",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": null,
+              "untracked": true,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:e72468667f9697b8f43a2c3a56c2ab92670ccc1a34b62afdb392fb921d9b2100",
+                "bytes": 132486
+              },
+              "changeId": "sha256:86af5e0b9bdc9774d9c769745fe96f95ccc58ac314cfc9fe0a98f6873a2c44fa"
+            },
+            {
+              "status": "added",
+              "similarity": null,
+              "oldPath": null,
+              "newPath": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen1-baseline.json",
+              "oldMode": "000000",
+              "newMode": "100644",
+              "oldObject": null,
+              "newObject": "d93f7eb5df6eec838fa56bf13516c9eeb14582a7",
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:458880bd10eb5f6f11d26f6696c27ffe0421f2a55ae7c38e39d63f08ed6867cc",
+                "bytes": 1680
+              },
+              "changeId": "sha256:a46a0ac3bdc01b773efe957c15e8a13232f2c523c65cf597db9dab6383a3faf8"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "README.md",
+              "newPath": "README.md",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "9430488ff87dbabf2ec4780edbc8475c2cb13858",
+              "newObject": null,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa",
+                "bytes": 7782
+              },
+              "changeId": "sha256:f241ac9b761cb10d254896c8af4673cee41afa6e6238067f337046b33ba3706f"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "singularity/work-items/ANU-2018/artifacts/implementation-spec/implementation-spec.md",
+              "newPath": "singularity/work-items/ANU-2018/artifacts/implementation-spec/implementation-spec.md",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "127632922241d81c8e0ae71802fb3018800b75a9",
+              "newObject": "ce198606cbffb9f0244fa3c407638672733961e9",
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:9addc406e78b9d512ad328b2ecc1d22fc0d76d77b9ff245804d49f38ce70ad1e",
+                "bytes": 43241
+              },
+              "changeId": "sha256:ded9188526bed513b4a85cc81d55f0621e4d9c8965004425751cea8fdeaa1a5c"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "singularity/work-items/ANU-2018/STATUS.md",
+              "newPath": "singularity/work-items/ANU-2018/STATUS.md",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "2f955ea019dcba855bca154163aa66f44f67f2d7",
+              "newObject": "392bb0007287a68e021c2bfd8d76085e0bb8bf87",
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:1c6017c039066d9530bcc9d9f95604e27ce4b3bfeb47cce46a00a78b8621020c",
+                "bytes": 3383
+              },
+              "changeId": "sha256:36bdcf9ac7f5674eb05765fa6ab0c4ef69be22b3f77b85f1f4fa9b68d404da17"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "singularity/work-items/ANU-2018/workflow.json",
+              "newPath": "singularity/work-items/ANU-2018/workflow.json",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "e908300e9b48ad557b66a04855659752701fe865",
+              "newObject": null,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:31c0b39f427592c1a75924c37d68d6338871c56d1f07588fb9047e180b0e7010",
+                "bytes": 134620
+              },
+              "changeId": "sha256:7fc348ad13ba74584f7522f79773f13de32258fe529951433427164a8e9e284c"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "src/main/java/org/example/rules/Operator.java",
+              "newPath": "src/main/java/org/example/rules/Operator.java",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "7880a8c256fdd8ac9c881b836aae07200728daf1",
+              "newObject": null,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433",
+                "bytes": 295
+              },
+              "changeId": "sha256:d751718fe0718b6b1bcd94327bce29f518f588faa6436ef057e7398d229ab9a4"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "src/main/java/org/example/rules/RuleEngineService.java",
+              "newPath": "src/main/java/org/example/rules/RuleEngineService.java",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "fcf1f69fb2a9a655b91e54b8c63c323506c18060",
+              "newObject": null,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:05932a0fcfc0002eb783d49e09f24567dbf811593ed0bc320f9d0ea6e1d8a725",
+                "bytes": 11305
+              },
+              "changeId": "sha256:30b1d00fee7a353139520643729bbfe0f8895be685c7c44e5f3b38d177740454"
+            },
+            {
+              "status": "modified",
+              "similarity": null,
+              "oldPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+              "newPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+              "oldMode": "100644",
+              "newMode": "100644",
+              "oldObject": "b1b1a9bd095f7c653434957fc97a3d124dd18605",
+              "newObject": null,
+              "newContent": {
+                "kind": "regular-file",
+                "sha256": "sha256:c11f1cc0a9aaa7020716ea78b8ecd5dd7cf099e58415884a41e0d6071214c11e",
+                "bytes": 7546
+              },
+              "changeId": "sha256:a312d7065189bbd47507745f7756206fa10da0c4432a639d7a293fe462c64bf5"
+            }
+          ],
+          "digest": "sha256:dd76e4e80d412753737355f92c8d097202bfb150edae9254e066ff20b1134f66"
+        },
+        "paths": [
+          {
+            "path": "README.md",
+            "kind": "source",
+            "fileKind": "regular-file",
+            "exists": true,
+            "size": 7782,
+            "sha256": "f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa"
+          },
+          {
+            "path": "src/main/java/org/example/rules/Operator.java",
+            "kind": "source",
+            "fileKind": "regular-file",
+            "exists": true,
+            "size": 295,
+            "sha256": "0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433"
+          },
+          {
+            "path": "src/main/java/org/example/rules/RuleEngineService.java",
+            "kind": "source",
+            "fileKind": "regular-file",
+            "exists": true,
+            "size": 11305,
+            "sha256": "05932a0fcfc0002eb783d49e09f24567dbf811593ed0bc320f9d0ea6e1d8a725"
+          },
+          {
+            "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+            "kind": "test",
+            "fileKind": "regular-file",
+            "exists": true,
+            "size": 7546,
+            "sha256": "c11f1cc0a9aaa7020716ea78b8ecd5dd7cf099e58415884a41e0d6071214c11e"
+          }
+        ],
+        "sourcePaths": [
+          "README.md",
+          "src/main/java/org/example/rules/Operator.java",
+          "src/main/java/org/example/rules/RuleEngineService.java"
+        ],
+        "testPaths": [
+          "src/test/java/org/example/rules/RuleEngineServiceTest.java"
+        ],
+        "supportingTestPaths": [],
+        "intentRevalidation": null,
+        "acceptanceCriteria": {
+          "required": [
+            "ANU-2018:AC-001"
+          ],
+          "tagged": [
+            "ANU-2018:AC-001"
+          ],
+          "missing": [],
+          "ambiguous": [],
+          "inferred": [],
+          "bindings": [
+            {
+              "clauseId": "ANU-2018:AC-001",
+              "testSource": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+              "bindingAssurance": "namespace-qualified"
+            }
+          ]
+        },
+        "generation": 1,
+        "receiptPath": "singularity/work-items/ANU-2018/context/code-delivery/implementation-gen1.json",
+        "changeSetPath": "singularity/work-items/ANU-2018/context/code-delivery/implementation-gen1-changes.json",
+        "sourceTreeSha256": "sha256:45c61361825f751663855da8b1c456eb483409b2ac073448bd03aed111a8a438",
+        "status": "pending-tests",
+        "capturedAt": "2026-08-23T12:08:05.672Z",
+        "validation": null
+      },
+      "sidecars": [
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/implementation-gen1-README.md.json",
+          "artifact": "README.md",
+          "integritySha256": "e9a3c0f11c21cb3aff8f5f1d3adc6b487d9bf9d8807d6bcae4648179ccba6107"
+        },
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/implementation-gen1-singularity-work-items-ANU-2018-artifacts-implementation-implementation-summary.md.json",
+          "artifact": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+          "integritySha256": "eeafdd29b86ac13c1d42255782505a31e2bcde5d9dc943bc23e3201756370cd5"
+        },
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/implementation-gen1-src-main-java-org-example-rules-Operator.java.json",
+          "artifact": "src/main/java/org/example/rules/Operator.java",
+          "integritySha256": "146f566e6e74932fe69c706242d5445ebace7a5b8876821a049cc8d1285aa4f0"
+        },
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/implementation-gen1-src-main-java-org-example-rules-RuleEngineService.java.json",
+          "artifact": "src/main/java/org/example/rules/RuleEngineService.java",
+          "integritySha256": "69a5a233d1a4c11da1cd5fedf23ed5535ce990002014a4130fb943b91507c6ff"
+        },
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/implementation-gen1-src-test-java-org-example-rules-RuleEngineServiceTest.java.json",
+          "artifact": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+          "integritySha256": "ddd6661d9120a241319ac159cbcd78cb33662259c0dd3175cb997d56d83d0a7f"
+        }
+      ],
+      "sourceCommit": "c2547f045cf3ec128360fd033ab01d84fc1c6508"
     },
     "verification": {
       "id": "verification",
@@ -3389,9 +3914,9 @@
   "usage": {
     "mode": "exact-or-unavailable",
     "totalTokens": 0,
-    "records": 4,
+    "records": 5,
     "exactRecords": 0,
-    "unavailableRecords": 4,
+    "unavailableRecords": 5,
     "byPhase": {
       "intake": {
         "records": 1,
@@ -3416,6 +3941,12 @@
         "exactRecords": 0,
         "unavailableRecords": 1,
         "totalTokens": 0
+      },
+      "implementation": {
+        "records": 1,
+        "exactRecords": 0,
+        "unavailableRecords": 1,
+        "totalTokens": 0
       }
     },
     "byAgent": {
@@ -3426,25 +3957,25 @@
         "totalTokens": 0
       },
       "architect": {
-        "records": 1,
+        "records": 2,
         "exactRecords": 0,
-        "unavailableRecords": 1,
+        "unavailableRecords": 2,
         "totalTokens": 0
       }
     },
     "byWorkType": {
       "feature": {
-        "records": 4,
+        "records": 5,
         "exactRecords": 0,
-        "unavailableRecords": 4,
+        "unavailableRecords": 5,
         "totalTokens": 0
       }
     },
     "byWorkItem": {
       "ANU-2018": {
-        "records": 4,
+        "records": 5,
         "exactRecords": 0,
-        "unavailableRecords": 4,
+        "unavailableRecords": 5,
         "totalTokens": 0
       }
     }
@@ -3575,6 +4106,14 @@
       "event": "work_interval_started",
       "phase": "implementation",
       "detail": "baseline 2c78eb97b5c3 at 5baee3c207c6"
+    },
+    {
+      "at": "2026-08-23T12:08:05.762Z",
+      "actor": "ashokraj2011",
+      "agent": "architect",
+      "event": "phase_generated",
+      "phase": "implementation",
+      "detail": "generation 1"
     }
   ],
   "measurement": {
@@ -4002,6 +4541,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-23T12:03:23.643Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "abd1ba3d-84f4-491d-bf5a-28c2cb53d6d8",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "implementation",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T12:08:05.444Z"
       },
       "ledgerIntent": null
     }
