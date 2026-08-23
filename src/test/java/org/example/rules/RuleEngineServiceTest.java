@@ -199,7 +199,7 @@ public class RuleEngineServiceTest {
     }
 
     @Test
-    // @ac:ANU-2018:AC-001
+    /* @ac:ANU-2018:AC-001 */
     void testCircleAreaOperatorReturnsComputedValueForNumericRadius() {
         Map<String, Object> data = Map.of("radius", 3);
 
@@ -213,7 +213,7 @@ public class RuleEngineServiceTest {
     }
 
     @Test
-    // @ac:ANU-2018:AC-001
+    /* @ac:ANU-2018:AC-001 */
     void testCircleAreaOperatorRejectsNonNumericInput() {
         Map<String, Object> data = Map.of("radius", "not-a-number");
 
