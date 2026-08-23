@@ -3989,8 +3989,29 @@
     "updatedAt": null
   },
   "collaboration": {
-    "assignments": {},
-    "notifications": []
+    "assignments": {
+      "implementation": {
+        "phase": "implementation",
+        "assignee": "ashok",
+        "assignedAt": "2026-08-23T13:13:08.406Z",
+        "assignedBy": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "architect"
+      }
+    },
+    "notifications": [
+      {
+        "at": "2026-08-23T13:13:08.406Z",
+        "type": "assignment",
+        "phase": "implementation",
+        "message": "Implementation assigned to ashok",
+        "read": false
+      }
+    ]
   },
   "sequenceOverrides": [],
   "changeRequests": [],
@@ -4114,6 +4135,14 @@
       "event": "phase_generated",
       "phase": "implementation",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-08-23T13:13:08.406Z",
+      "actor": "ashokraj2011",
+      "agent": "architect",
+      "event": "phase_assigned",
+      "phase": "implementation",
+      "detail": "ashok"
     }
   ],
   "measurement": {
@@ -4573,6 +4602,39 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-23T12:08:05.444Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "5db7b0e9-37e9-49e4-9c28-c0713b1d7b4e",
+        "type": "configuration-changed",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "implementation",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "architect",
+        "authorityGroup": null,
+        "payload": {
+          "assignee": "ashok",
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T13:13:08.353Z"
       },
       "ledgerIntent": null
     }
