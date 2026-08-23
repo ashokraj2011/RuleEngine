@@ -1,0 +1,13 @@
+{
+  "clauses": [],
+  "generation": 1,
+  "indexSha256": "0880ea15ed876c07f02a1b67102aa4ba30127bd0dd557e8b96c50ee50d01fcaf",
+  "phase": "conformance",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 245665,
+    "path": "singularity/work-items/ANU-2018/artifacts/conformance/spec-code-comparison.md",
+    "sha256": "f3bd8824fdece6f38f99d27a661dd5671958e3b9157c01534d503b7b7dd6e44e"
+  },
+  "workId": "ANU-2018"
+}

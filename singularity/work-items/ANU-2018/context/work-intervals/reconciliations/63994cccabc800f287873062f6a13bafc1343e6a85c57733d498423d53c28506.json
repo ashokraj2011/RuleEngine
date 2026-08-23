@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-reconciliation",
+  "workId": "ANU-2018",
+  "workType": "feature",
+  "intervalId": "INT-verification-G1-003",
+  "phaseId": "verification",
+  "generation": 1,
+  "baselineSha256": "62b0647b907a1a6b29816b23c6f4ad4039aa561131d29e3390ac3b28e2371aaa",
+  "baseline": {
+    "path": "singularity/work-items/ANU-2018/context/work-intervals/verification-gen1-baseline.json",
+    "sha256": "62b0647b907a1a6b29816b23c6f4ad4039aa561131d29e3390ac3b28e2371aaa",
+    "verified": true,
+    "sourceBaseCommit": "d36620e0354b6883d9313b97da980889247caf4c"
+  },
+  "sourceBaseCommit": "d36620e0354b6883d9313b97da980889247caf4c",
+  "target": {
+    "branch": "ANU-2018",
+    "head": "bb0157b9c9daba9cef64025706afc8cac5479cf3",
+    "includesWorktree": false,
+    "cleanApplicationTree": true,
+    "uncommittedApplicationPaths": []
+  },
+  "findings": [],
+  "summary": {
+    "changedPaths": 0,
+    "planned": 0,
+    "unplanned": 0,
+    "protected": 0
+  },
+  "decision": {
+    "status": "aligned",
+    "summaryStatus": "clear",
+    "eligibleForSubmission": true,
+    "reasons": [],
+    "escalationTarget": null
+  },
+  "reconciliationSha256": "63994cccabc800f287873062f6a13bafc1343e6a85c57733d498423d53c28506",
+  "reconciledAt": "2026-08-23T14:56:52.711Z",
+  "final": true,
+  "recordedAt": "2026-08-23T14:56:52.711Z",
+  "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/63994cccabc800f287873062f6a13bafc1343e6a85c57733d498423d53c28506.json"
+}

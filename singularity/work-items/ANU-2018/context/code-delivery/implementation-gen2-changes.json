@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "repository-change-set",
+  "subject": {
+    "workId": "ANU-2018",
+    "phase": "implementation",
+    "generation": 2,
+    "generationIntentId": "9a22d29f-615e-4a2e-a857-87213f80ab4f"
+  },
+  "base": {
+    "commit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
+    "tree": "a143f58cca12498fbe9211933edc64a86885bfd2"
+  },
+  "target": {
+    "head": "747a19f7d8f5e535796f588815023e21792edd8b",
+    "includesIndex": true,
+    "includesWorktree": true,
+    "includesUntracked": true
+  },
+  "entries": [
+    {
+      "status": "added",
+      "similarity": null,
+      "oldPath": null,
+      "newPath": "singularity/work-items/ANU-2018/context/generation-start/implementation-gen2.json",
+      "oldMode": "000000",
+      "newMode": "100644",
+      "oldObject": null,
+      "newObject": "20c76fea580ea33bf2a593bd392f37c115fe4ad8",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:fdf40e08bf29864db36a6c471c8416009c024dfed908a1a4a6ada453fe2dca9c",
+        "bytes": 1111
+      },
+      "changeId": "sha256:4b5df3f3e112a5ee6cb8604ccddb523104541b9cccf22eed56118b83d6dc7dc8"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
+      "newPath": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "258a9dc22ce157dc8fb97db717a97b969830f4b1",
+      "newObject": "3b4c7bc6749ac330b1d08c8b57bbff388ed0d738",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:a9d2011f244956fd44805b77d8ae7aead6e12087b72f42e29abd33025374afed",
+        "bytes": 1680
+      },
+      "changeId": "sha256:cbaadc0412a4b9d9345dfce21e9a6551b6e961dca44ae665107d2b1b7f36fc83"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/STATUS.md",
+      "newPath": "singularity/work-items/ANU-2018/STATUS.md",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "b6942a09deb39996f41478586350facb14f2040e",
+      "newObject": "69a1ccf703fc1f905f411f45cde9066f8668b4e4",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:6b85adc2e8dffc669dc2e947cf296beb3b03aa67c296ac7fbf0493a523ef7c8a",
+        "bytes": 3490
+      },
+      "changeId": "sha256:d3db0167a75adfcbfc33d9bcaaee0440100a7c462e3d57aea903709227d3c300"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "singularity/work-items/ANU-2018/workflow.json",
+      "newPath": "singularity/work-items/ANU-2018/workflow.json",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "d600c3d18de7e8b4d1e8e41fb085d96b1aa78f4a",
+      "newObject": "bfc2b31609b1a061b6e144fe24fd6bbe0f79f2ea",
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:9ffda02ce524526e89d25e2ce490e3c7fcbd0c55b70a0014853aad418e4226db",
+        "bytes": 159870
+      },
+      "changeId": "sha256:aeb38f961975dbd86e7450f3113d4c36e66fd059286f960d72e3b91f157b7757"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "src/main/java/org/example/rules/RuleEngineService.java",
+      "newPath": "src/main/java/org/example/rules/RuleEngineService.java",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "21d14dcf4c03837ecfbf37b0c4322671021ee19d",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:2ac00ab02a0703a160fd7a533eddb0e2ccb917670ff0aa6a596a4ae9a741cda5",
+        "bytes": 11474
+      },
+      "changeId": "sha256:41ef13bef6278e9e09f7b157f4fd0202df70550bd40e832491152360c8cea9bf"
+    },
+    {
+      "status": "modified",
+      "similarity": null,
+      "oldPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "newPath": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "oldMode": "100644",
+      "newMode": "100644",
+      "oldObject": "b98203aa08099f35afee1fe36929826cd53930e1",
+      "newObject": null,
+      "newContent": {
+        "kind": "regular-file",
+        "sha256": "sha256:39f6d9835ade37040a0583d0738cdecfa1c5fa57b9a19628c410903f87adc377",
+        "bytes": 8061
+      },
+      "changeId": "sha256:a0dbbdeaf356bd4cdd4cf1377f3e2eef3f21b6df7355217f700d8caf0c3ac64a"
+    }
+  ],
+  "digest": "sha256:0ba2d5f969b9ed5d9a8343b214b4a93ee5146a610e609b9b7c3dbb7fc97ae945"
+}

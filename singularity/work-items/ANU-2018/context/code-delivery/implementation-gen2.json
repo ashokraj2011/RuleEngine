@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 2,
+  "kind": "code-delivery",
+  "workId": "ANU-2018",
+  "phase": "implementation",
+  "generation": 2,
+  "generationIntentId": "9a22d29f-615e-4a2e-a857-87213f80ab4f",
+  "changeSet": {
+    "path": "singularity/work-items/ANU-2018/context/code-delivery/implementation-gen2-changes.json",
+    "digest": "sha256:0ba2d5f969b9ed5d9a8343b214b4a93ee5146a610e609b9b7c3dbb7fc97ae945",
+    "sourcePaths": [
+      "src/main/java/org/example/rules/RuleEngineService.java"
+    ],
+    "executableTestPaths": [
+      "src/test/java/org/example/rules/RuleEngineServiceTest.java"
+    ],
+    "supportingTestPaths": []
+  },
+  "traceability": {
+    "required": [
+      "ANU-2018:AC-001"
+    ],
+    "bound": [
+      "ANU-2018:AC-001"
+    ],
+    "missing": [],
+    "ambiguous": [],
+    "bindings": [
+      {
+        "clauseId": "ANU-2018:AC-001",
+        "testSource": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+        "bindingAssurance": "namespace-qualified",
+        "testIdentity": null,
+        "moduleRoot": ".",
+        "commandId": ".-maven-tests",
+        "executionAssurance": "module-executed"
+      }
+    ]
+  },
+  "testExecutions": [
+    {
+      "commandId": ".-maven-tests",
+      "receiptPath": "singularity/work-items/ANU-2018/context/code-delivery/tests/implementation-gen2-.-maven-tests.json",
+      "receiptSha256": "239fab7d2b4ae5ecd4fac16ac77199a20b474ed4d075070ce4c4063ffb3c4625",
+      "status": "passed"
+    }
+  ],
+  "tree": {
+    "workingStateDigest": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+    "generationCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+    "generationTree": "b758241ab5548ecec5b8095a8e4aa77160e9f375"
+  },
+  "model": {
+    "task": "code",
+    "mappingRevision": null,
+    "requestedModel": null,
+    "resolvedModel": null,
+    "assurance": "host-observed",
+    "invocationIds": []
+  },
+  "status": "ready",
+  "capturedAt": "2026-08-23T14:54:15.091Z",
+  "validatedAt": "2026-08-23T14:54:36.084Z"
+}

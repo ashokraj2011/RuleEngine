@@ -99,6 +99,9 @@ public class RuleEngineService {
                 if (radius == null) {
                     throw new IllegalArgumentException("circle_area requires a numeric radius value");
                 }
+                if (radius.signum() < 0) {
+                    throw new IllegalArgumentException("circle_area requires a non-negative radius value");
+                }
                 BigDecimal pi = BigDecimal.valueOf(Math.PI);
                 return radius.multiply(radius).multiply(pi, MathContext.DECIMAL128);
             default:

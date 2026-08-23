@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-reconciliation",
+  "workId": "ANU-2018",
+  "workType": "feature",
+  "intervalId": "INT-implementation-G2-002",
+  "phaseId": "implementation",
+  "generation": 2,
+  "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+  "baseline": {
+    "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
+    "sha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
+    "verified": true,
+    "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3"
+  },
+  "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
+  "target": {
+    "branch": "ANU-2018",
+    "head": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+    "includesWorktree": false,
+    "cleanApplicationTree": true,
+    "uncommittedApplicationPaths": []
+  },
+  "findings": [
+    {
+      "path": "src/main/java/org/example/rules/RuleEngineService.java",
+      "status": "present",
+      "sha256": "2ac00ab02a0703a160fd7a533eddb0e2ccb917670ff0aa6a596a4ae9a741cda5",
+      "bytes": 11474,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "status": "present",
+      "sha256": "39f6d9835ade37040a0583d0738cdecfa1c5fa57b9a19628c410903f87adc377",
+      "bytes": 8061,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    }
+  ],
+  "summary": {
+    "changedPaths": 2,
+    "planned": 0,
+    "unplanned": 2,
+    "protected": 0
+  },
+  "decision": {
+    "status": "review",
+    "summaryStatus": "attention",
+    "eligibleForSubmission": true,
+    "reasons": [],
+    "escalationTarget": null
+  },
+  "reconciliationSha256": "6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a",
+  "reconciledAt": "2026-08-23T14:54:36.169Z",
+  "final": true,
+  "recordedAt": "2026-08-23T14:54:36.170Z",
+  "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a.json"
+}
