@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "return-locator",
+  "workId": "work-2030",
+  "capabilityId": "rule-engine",
+  "originRepositoryId": "ruleengine",
+  "repositories": [
+    {
+      "id": "ruleengine",
+      "remote": "origin",
+      "required": true,
+      "url": "https://github.com/ashokraj2011/RuleEngine.git",
+      "fingerprint": "8041d3ac0c10317a28a4194f74beb81598d75b36fe05d03ee3f82bf6598312d7",
+      "portability": "portable"
+    }
+  ],
+  "lifecycleRef": "refs/heads/work-2030",
+  "workBranchRef": "refs/heads/work-2030",
+  "configuration": {
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
+    "branch": "sflow/config",
+    "commit": "23646a050c64e1d442b6ba02cb5dbaaba5cb30be"
+  },
+  "cloneStrategy": "existing-or-clone",
+  "integritySha256": "ffa3e4744f83bcf1ad34c32d2b1ec36571059ab807edbb0e3d6f6f411d9e404e"
+}

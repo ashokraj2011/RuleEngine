@@ -75,6 +75,7 @@ codeDelivery:
   tests:
     requireExecutableSource: true
     minimumDiscovered: 1
+    minimumPassed: 1
     executionAssurance: module
     stringCommands: reject
     unknownModelPolicy: block
@@ -91,7 +92,7 @@ codeDelivery:
     previewBytes: 4096
     fullDocumentMaximumBytes: 65536
   model:
-    minimumAssurance: observed
+    minimumAssurance: unavailable
 collaboration:
   assignmentMode: suggested
   approvalReminderAfterHours: 24
@@ -1469,7 +1470,7 @@ workTypes:
       - conformance
     intelligence:
       worldModel: required
-      ast: required-context
+      ast: optional-context
       agentBriefs: required
     templateOverrides:
       intake: benchmark/intake.md
