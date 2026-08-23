@@ -2276,7 +2276,7 @@
     ]
   },
   "status": "in_progress",
-  "currentPhase": "implementation",
+  "currentPhase": "verification",
   "phaseOrder": [
     "intake",
     "requirements",
@@ -3268,7 +3268,7 @@
       "label": "Implementation",
       "order": 4,
       "defaultAgent": "developer",
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -3336,8 +3336,8 @@
       "qualityCommands": [],
       "startedAt": "2026-08-23T12:03:23.636Z",
       "submittedAt": "2026-08-23T14:54:36.171Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-08-23T14:55:41.045Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -3477,7 +3477,80 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "implementation",
+          "at": "2026-08-23T14:55:41.045Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "developer",
+          "authorityGroup": "engineering-reviewers",
+          "identityAssurance": "configured-local",
+          "channel": "copilot-selection-receipt",
+          "generation": 2,
+          "artifactSha256": [
+            {
+              "path": "README.md",
+              "sha256": "f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa"
+            },
+            {
+              "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+              "sha256": "453621a12c836778a0c2d88105c7a1e2b0b077c5c5404a5584f8d5297405da1a"
+            },
+            {
+              "path": "src/main/java/org/example/rules/Operator.java",
+              "sha256": "0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433"
+            },
+            {
+              "path": "src/main/java/org/example/rules/RuleEngineService.java",
+              "sha256": "2ac00ab02a0703a160fd7a533eddb0e2ccb917670ff0aa6a596a4ae9a741cda5"
+            },
+            {
+              "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+              "sha256": "39f6d9835ade37040a0583d0738cdecfa1c5fa57b9a19628c410903f87adc377"
+            }
+          ],
+          "reviewPacketSha256": "fd14efcd663b2b9f39034956e4bbc84c0023eec3e2a3d51ddab1deec8140c77a",
+          "actionContext": {
+            "phase": "implementation",
+            "label": "Implementation",
+            "generation": 2,
+            "submittedAt": "2026-08-23T14:54:36.171Z",
+            "artifacts": [
+              {
+                "path": "README.md",
+                "sha256": "f26d6638bf8950dd596224b55fd5643c4e4e74c80537a9f952ee2a9e7ab7fcfa"
+              },
+              {
+                "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
+                "sha256": "453621a12c836778a0c2d88105c7a1e2b0b077c5c5404a5584f8d5297405da1a"
+              },
+              {
+                "path": "src/main/java/org/example/rules/Operator.java",
+                "sha256": "0795ac554139e6df04c4eae1891116507f3c75890ac26a0dc2d9bd2b3e88c433"
+              },
+              {
+                "path": "src/main/java/org/example/rules/RuleEngineService.java",
+                "sha256": "2ac00ab02a0703a160fd7a533eddb0e2ccb917670ff0aa6a596a4ae9a741cda5"
+              },
+              {
+                "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+                "sha256": "39f6d9835ade37040a0583d0738cdecfa1c5fa57b9a19628c410903f87adc377"
+              }
+            ],
+            "agentBriefs": [],
+            "reviewPacketSha256": "fd14efcd663b2b9f39034956e4bbc84c0023eec3e2a3d51ddab1deec8140c77a",
+            "submittedSourceCommit": "84bba4960bbab9bed824d85c98d4b6fee3555304",
+            "planId": "c87f8b803e7a489cbfb9d077"
+          },
+          "selfApproval": true
+        }
+      ],
       "designSourceSets": [],
       "artifacts": [
         {
@@ -3493,12 +3566,14 @@
         {
           "path": "singularity/work-items/ANU-2018/artifacts/implementation/implementation-summary.md",
           "kind": "document",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 70435,
-          "sha256": "453621a12c836778a0c2d88105c7a1e2b0b077c5c5404a5584f8d5297405da1a",
+          "size": 73379,
+          "sha256": "948cbc4860d18c0505196a711ec7001aacd5c23631311872676c0ab3933d7c7f",
           "registeredAt": "2026-08-23T12:08:05.424Z",
-          "updatedAt": "2026-08-23T14:54:36.172Z"
+          "updatedAt": "2026-08-23T14:54:36.172Z",
+          "approvedAt": "2026-08-23T14:55:41.045Z",
+          "approvedBy": "ashokraj2011"
         },
         {
           "path": "src/main/java/org/example/rules/Operator.java",
@@ -3858,7 +3933,7 @@
       "label": "Verification",
       "order": 5,
       "defaultAgent": "qa",
-      "status": "not_started",
+      "status": "in_progress",
       "requiredArtifact": {
         "path": "artifacts/verification/test-evidence.md",
         "kind": "test-evidence",
@@ -3927,7 +4002,7 @@
         }
       },
       "qualityCommands": [],
-      "startedAt": null,
+      "startedAt": "2026-08-23T14:55:41.045Z",
       "submittedAt": null,
       "approvedAt": null,
       "approvedBy": null,
@@ -4334,6 +4409,30 @@
       "event": "phase_submitted",
       "phase": "implementation",
       "detail": "5 artifacts"
+    },
+    {
+      "at": "2026-08-23T14:55:41.045Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "work_interval_closed",
+      "phase": "implementation",
+      "detail": "interval INT-implementation-G2-002 closed after phase approval"
+    },
+    {
+      "at": "2026-08-23T14:55:41.045Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "phase_self_approved",
+      "phase": "implementation",
+      "detail": "threshold reached; advanced to verification"
+    },
+    {
+      "at": "2026-08-23T14:55:41.120Z",
+      "actor": "system",
+      "agent": null,
+      "event": "work_interval_started",
+      "phase": "verification",
+      "detail": "baseline 62b0647b907a at d36620e0354b"
     }
   ],
   "measurement": {
@@ -4924,26 +5023,52 @@
         "createdAt": "2026-08-23T14:54:33.433Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "2b8db69b-4483-4e7f-9d6f-ff672bb93aa3",
+        "type": "phase-approved",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "implementation",
+        "generation": 2,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "developer",
+        "authorityGroup": "engineering-reviewers",
+        "payload": {
+          "decision": "approved",
+          "reviewPacketSha256": "fd14efcd663b2b9f39034956e4bbc84c0023eec3e2a3d51ddab1deec8140c77a"
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T14:55:41.052Z"
+      },
+      "ledgerIntent": null
     }
   ],
   "repairBudgets": {},
   "workIntervals": {
     "schemaVersion": 1,
     "current": {
-      "intervalId": "INT-implementation-G2-002",
-      "phaseId": "implementation",
-      "generation": 2,
-      "baselineSha256": "2d653a682e2d0183469f2e64de3ee794c73e349419c122bfdbeff553a115778f",
-      "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
+      "intervalId": "INT-verification-G1-003",
+      "phaseId": "verification",
+      "generation": 1,
+      "baselineSha256": "62b0647b907a1a6b29816b23c6f4ad4039aa561131d29e3390ac3b28e2371aaa",
+      "sourceBaseCommit": "d36620e0354b6883d9313b97da980889247caf4c",
       "escalationTarget": null,
-      "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
-      "status": "reconciled",
-      "finalReconciliation": {
-        "reconciliationSha256": "6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a",
-        "path": "singularity/work-items/ANU-2018/context/work-intervals/reconciliations/6bd872f5f6edbd52d369c8c133268e3ef96129c24caeb7771818f09d10de082a.json",
-        "targetHead": "84bba4960bbab9bed824d85c98d4b6fee3555304",
-        "recordedAt": "2026-08-23T14:54:36.170Z"
-      }
+      "path": "singularity/work-items/ANU-2018/context/work-intervals/verification-gen1-baseline.json",
+      "status": "open"
     },
     "history": [
       {
@@ -4964,6 +5089,16 @@
         "sourceBaseCommit": "75ca103be53773fb0813f8f957693da2d1e8a6b3",
         "escalationTarget": null,
         "path": "singularity/work-items/ANU-2018/context/work-intervals/implementation-gen2-baseline.json",
+        "status": "open"
+      },
+      {
+        "intervalId": "INT-verification-G1-003",
+        "phaseId": "verification",
+        "generation": 1,
+        "baselineSha256": "62b0647b907a1a6b29816b23c6f4ad4039aa561131d29e3390ac3b28e2371aaa",
+        "sourceBaseCommit": "d36620e0354b6883d9313b97da980889247caf4c",
+        "escalationTarget": null,
+        "path": "singularity/work-items/ANU-2018/context/work-intervals/verification-gen1-baseline.json",
         "status": "open"
       }
     ],
