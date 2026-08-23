@@ -4009,17 +4009,90 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
       "generatedAgent": null,
-      "authorship": [],
+      "authorship": [
+        {
+          "schemaVersion": 1,
+          "producer": "human",
+          "channel": "manual-in-place",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "developer"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "test-evidence.md",
+            "mediaType": "text/markdown",
+            "sha256": "59379033816ad7f366f0a11e57ff7b246bc01f470fb32ea130f8a3801775ff5d",
+            "bytes": 119255
+          },
+          "generation": 1,
+          "publishedAt": "2026-08-23T14:56:40.612Z"
+        }
+      ],
       "usage": [],
-      "telemetry": [],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/ANU-2018/telemetry/verification-gen1.json",
+          "sha256": "0528f363e091d3502cc6fd262d01710c18f0c27911b677a4ba738969979b6914",
+          "status": "not-invoked",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
       "designSourceSets": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 121791,
+          "sha256": "2df6c319a138a35b523f0e849549b7dad811946b3760e2359f7a500b47d9b1d3",
+          "registeredAt": "2026-08-23T14:56:40.472Z",
+          "updatedAt": "2026-08-23T14:56:40.647Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "inputContext": {
+        "generation": 1,
+        "path": "singularity/work-items/ANU-2018/context/inputs-verification-gen1.json",
+        "sha256": "ebc3a4200243182d58745b6251cf10995bbb40d72005bb52b1c24f06dcaa436e",
+        "renderedSha256": "357d88aaaee13d64fe8624c2b33208446bc746d87a34079b3375d83c8475c62f",
+        "mode": "enforce"
+      },
+      "sidecars": [
+        {
+          "path": "singularity/work-items/ANU-2018/context/sidecars/verification-gen1-singularity-work-items-ANU-2018-artifacts-verification-test-evidence.md.json",
+          "artifact": "singularity/work-items/ANU-2018/artifacts/verification/test-evidence.md",
+          "integritySha256": "12a9ee9ba6dca8f6046578cf29bdf96b5c0c2f58e975496cd0df38079974d692"
+        }
+      ],
+      "sourceCommit": "5df012f115fa66b7268d0b9ba9d1221ad985de5e"
     },
     "conformance": {
       "id": "conformance",
@@ -4433,6 +4506,14 @@
       "event": "work_interval_started",
       "phase": "verification",
       "detail": "baseline 62b0647b907a at d36620e0354b"
+    },
+    {
+      "at": "2026-08-23T14:56:40.648Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "phase_generated",
+      "phase": "verification",
+      "detail": "generation 1"
     }
   ],
   "measurement": {
@@ -5053,6 +5134,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-23T14:55:41.052Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "b1cd5ade-318a-4e29-9253-fc258aaf371b",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "ANU-2018",
+          "branch": "ANU-2018"
+        },
+        "phaseId": "verification",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-23T14:56:40.493Z"
       },
       "ledgerIntent": null
     }
