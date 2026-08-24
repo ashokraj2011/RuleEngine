@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/work-2030/artifacts/specification/spec.md",
+    "phaseId": "specification"
+  },
+  "createdAt": "2026-08-24T00:15:04.417Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 7297,
+    "commitSha": "e3d4178bffd4450bd7662f6d7bf90654fbb09252",
+    "sha256": "2fc737063c0da69626124088b0da277324122a9a55d20dfb886f4a22554cd92d"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "work-2030",
+    "id": "work-2030",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
