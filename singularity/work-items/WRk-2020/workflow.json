@@ -1691,17 +1691,141 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
       "generatedAgent": null,
-      "authorship": [],
+      "authorship": [
+        {
+          "schemaVersion": 1,
+          "producer": "human",
+          "channel": "manual-in-place",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "developer"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "implementation-summary.md",
+            "mediaType": "text/markdown",
+            "sha256": "cd33eb01aee2a715c5f966c669c9b9a0f273b2b043d18a5395bed97c9a1d8598",
+            "bytes": 1454
+          },
+          "generation": 1,
+          "publishedAt": "2026-08-24T15:20:40.965Z"
+        }
+      ],
       "usage": [],
-      "telemetry": [],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/WRk-2020/telemetry/implementation-gen1.json",
+          "sha256": "e8c672de8cf01788a38397f564c63434e80488876f59b127238ab21a18e43713",
+          "status": "not-invoked",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
       "designSourceSets": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 8243,
+          "sha256": "0d825836f156b6ff5fec90054d90c4e075a262fee6a7f622c11e1a8c1079e5c3",
+          "registeredAt": "2026-08-24T15:20:40.805Z",
+          "updatedAt": "2026-08-24T15:20:41.004Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/Operator.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 306,
+          "sha256": "e19aeaef10bee49184f42c428f9c24498994be3d7b606fb2dbd1307ae526e134",
+          "registeredAt": "2026-08-24T15:20:40.806Z",
+          "updatedAt": "2026-08-24T15:20:41.005Z"
+        },
+        {
+          "path": "src/main/java/org/example/rules/RuleEngineService.java",
+          "kind": "code",
+          "status": "pending",
+          "exists": true,
+          "size": 11991,
+          "sha256": "7ced1379ae6c8a6ab6ef3681fb9a46a5d8f2ebf01fb3b372ea908e69de911acc",
+          "registeredAt": "2026-08-24T15:20:40.806Z",
+          "updatedAt": "2026-08-24T15:20:41.005Z"
+        },
+        {
+          "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+          "kind": "test",
+          "status": "pending",
+          "exists": true,
+          "size": 8776,
+          "sha256": "aa56deffeae9e2af3fdb2bab881d136818f8fccbf1fe4f94f20b77df8ed0d3d0",
+          "registeredAt": "2026-08-24T15:20:40.806Z",
+          "updatedAt": "2026-08-24T15:20:41.005Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "authoringBaseline": {
+        "generation": 1,
+        "path": "artifacts/implementation/implementation-summary.md",
+        "fingerprint": "sha256:219e4e816ae23830e5e34c939be4280c123fa485afdda68494112241e66ce87a",
+        "bytes": 647
+      },
+      "inputContext": {
+        "generation": 1,
+        "path": "singularity/work-items/WRk-2020/context/inputs-implementation-gen1.json",
+        "sha256": "0f87f149d0d72c48e68600c229252a1d65cf6521c87e30dd34dc30cf7ffeec38",
+        "renderedSha256": "014ad09184a260d7620713045e2664febd56c4ca3075237b24805bd31fb8276c",
+        "mode": "enforce"
+      },
+      "sidecars": [
+        {
+          "path": "singularity/work-items/WRk-2020/context/sidecars/implementation-gen1-singularity-work-items-WRk-2020-artifacts-implementation-implementation-summary.md.json",
+          "artifact": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+          "integritySha256": "2d4cf0193700175a39917406465106847c0f82623fca07355c97de147460415a"
+        },
+        {
+          "path": "singularity/work-items/WRk-2020/context/sidecars/implementation-gen1-src-main-java-org-example-rules-Operator.java.json",
+          "artifact": "src/main/java/org/example/rules/Operator.java",
+          "integritySha256": "eab5f02eba46b05367309f11521e69c643dfc1f371e2931fba1fd3f97c777e9c"
+        },
+        {
+          "path": "singularity/work-items/WRk-2020/context/sidecars/implementation-gen1-src-main-java-org-example-rules-RuleEngineService.java.json",
+          "artifact": "src/main/java/org/example/rules/RuleEngineService.java",
+          "integritySha256": "3bdb0080b1d8eeabf285bb425996c13121ca5a493d9e7c52691f90a9a08442b7"
+        },
+        {
+          "path": "singularity/work-items/WRk-2020/context/sidecars/implementation-gen1-src-test-java-org-example-rules-RuleEngineServiceTest.java.json",
+          "artifact": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+          "integritySha256": "32bb5b9c577a09b452868d0c56fe72610f49da17d961ac33d4f47e4a799f0722"
+        }
+      ],
+      "sourceCommit": "8589463ab0ebc83bc981a3a039d8381e4794cd17"
     },
     "verification": {
       "id": "verification",
@@ -1967,6 +2091,14 @@
       "event": "work_interval_started",
       "phase": "implementation",
       "detail": "baseline e4c4078992e7 at 310c94675cad"
+    },
+    {
+      "at": "2026-08-24T15:20:41.006Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "phase_generated",
+      "phase": "implementation",
+      "detail": "generation 1"
     }
   ],
   "measurement": {
@@ -2106,6 +2238,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-24T15:15:47.958Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "bae2f009-aee0-45c3-862a-59c22808a495",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "WRk-2020",
+          "branch": "WRk-2020"
+        },
+        "phaseId": "implementation",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-24T15:20:40.830Z"
       },
       "ledgerIntent": null
     }

@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "bytes": 306,
+    "path": "src/main/java/org/example/rules/Operator.java",
+    "role": "code",
+    "sha256": "e19aeaef10bee49184f42c428f9c24498994be3d7b606fb2dbd1307ae526e134"
+  },
+  "configuration": {
+    "revision": "9137584faa780b8f406277253b4b512a154270b7",
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/intake/intake.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "eab5f02eba46b05367309f11521e69c643dfc1f371e2931fba1fd3f97c777e9c",
+  "phase": "implementation",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": null,
+    "kind": "human"
+  },
+  "publication": {
+    "branch": "WRk-2020",
+    "commit": null,
+    "publishedAt": "2026-08-24T15:20:40.965Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRk-2020",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/common/implementation.md",
+    "sha256": "61cd7cba79a0dd2914a25b53496b8bd9c575c36219597d65b8ec10010e801d9c"
+  }
+}

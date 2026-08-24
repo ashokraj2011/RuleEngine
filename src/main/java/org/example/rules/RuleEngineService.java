@@ -161,6 +161,14 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case startwith:
+                if (left == null) return false;
+                if (!(left instanceof String leftText)) return false;
+                Object expectedValue = jsonToJava(valueNode);
+                if (!(expectedValue instanceof String prefix)) return false;
+                String normalizedLeft = leftText.trim().toLowerCase(Locale.ROOT);
+                String normalizedPrefix = prefix.trim().toLowerCase(Locale.ROOT);
+                return normalizedLeft.startsWith(normalizedPrefix);
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;

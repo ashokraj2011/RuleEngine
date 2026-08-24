@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "bytes": 8776,
+    "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+    "role": "test",
+    "sha256": "aa56deffeae9e2af3fdb2bab881d136818f8fccbf1fe4f94f20b77df8ed0d3d0"
+  },
+  "configuration": {
+    "revision": "9137584faa780b8f406277253b4b512a154270b7",
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/intake/intake.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "32bb5b9c577a09b452868d0c56fe72610f49da17d961ac33d4f47e4a799f0722",
+  "phase": "implementation",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": null,
+    "kind": "human"
+  },
+  "publication": {
+    "branch": "WRk-2020",
+    "commit": null,
+    "publishedAt": "2026-08-24T15:20:40.965Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRk-2020",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/common/implementation.md",
+    "sha256": "61cd7cba79a0dd2914a25b53496b8bd9c575c36219597d65b8ec10010e801d9c"
+  }
+}

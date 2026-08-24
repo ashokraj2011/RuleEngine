@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 3,
+  "workId": "WRk-2020",
+  "phase": "implementation",
+  "generation": 1,
+  "agent": "developer",
+  "modelCommit": "dc200bea1c47603baf83d1486184ad482ee15618",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "development",
+    "testing"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "brief",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "development",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    },
+    {
+      "kind": "view",
+      "view": "testing",
+      "tier": "brief",
+      "required": true,
+      "origin": "phase+agent"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [
+    {
+      "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "phase": "intake",
+      "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "rawSha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+      "rawBytes": 3032,
+      "previewSha256": "1b6fba732b36a12c4036d9c71a4d6c9b2294ba95f3f5ee83bcf8dc1841704d79",
+      "previewBytes": 3157,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    }
+  ],
+  "modelSourceTreeSha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "composedSourceTreeSha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "worldModelCommit": "dc200bea1c47603baf83d1486184ad482ee15618",
+  "manifestSha256": "df2edc3311d35429f8e12f16960177ad89d21b4898c2c8e3eb44e256fb6f1f2d",
+  "fresh": true,
+  "renderedSha256": "8cb0cb63c96974ba214e5e3aa937b316a89acf2ca60e0c716a0eb2b803087b3f",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/WRk-2020/context/prompts/implementation-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.brief.md",
+      "sha256": "52ccfe522fcb7f8404af79015b7ebe7e3763b418dd242994a2d935949dcfa4c7",
+      "bytes": 581,
+      "injectedBytes": 581,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (brief)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/development.md",
+      "sha256": "d24115f53741f0f51f80310e0843cad50bfd7545072c5b9d4fbc1ef8b7319e34",
+      "bytes": 1292,
+      "injectedBytes": 1292,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation view: development (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/testing.brief.md",
+      "sha256": "c786c5cb7526ec42606c3334c46f51722f48617bf9f14cdaca3c7a185a7636b3",
+      "bytes": 352,
+      "injectedBytes": 352,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "implementation view: testing (brief; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+      "bytes": 3032,
+      "injectedBytes": 3157,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "intake:sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "previewSha256": "1b6fba732b36a12c4036d9c71a4d6c9b2294ba95f3f5ee83bcf8dc1841704d79",
+      "previewBytes": 3157,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    }
+  ],
+  "injectedAt": "2026-08-24T15:19:12.150Z"
+}

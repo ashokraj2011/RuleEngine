@@ -199,6 +199,30 @@ public class RuleEngineServiceTest {
     }
 
     @Test
+    void testStartWithOperatorTrimsAndMatchesCaseInsensitively() {
+        Map<String, Object> data = Map.of("name", "  Hello World");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "name");
+        rule.put("op", "startwith");
+        rule.put("value", "h");
+
+        assertTrue(service.evaluate(data, rule));
+    }
+
+    @Test
+    void testStartWithOperatorRejectsNonMatchingPrefix() {
+        Map<String, Object> data = Map.of("name", "  Hello World");
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "name");
+        rule.put("op", "startwith");
+        rule.put("value", "z");
+
+        assertFalse(service.evaluate(data, rule));
+    }
+
+    @Test
     /* @ac:ANU-2018:AC-001 */
     void testCircleAreaOperatorReturnsComputedValueForNumericRadius() {
         Map<String, Object> data = Map.of("radius", 3);

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "phase": "implementation",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-24T15:20:40.926Z",
+  "renderedSha256": "014ad09184a260d7620713045e2664febd56c4ca3075237b24805bd31fb8276c",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "intake",
+      "path": "artifacts/intake/intake.md",
+      "repositoryPath": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-24T15:15:48.014Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "c4a32efc363e8ca2cc87925548173379436f4434d44a25b941f56df57a2f78bf",
+      "sha256": "c4a32efc363e8ca2cc87925548173379436f4434d44a25b941f56df57a2f78bf",
+      "bytes": 3925,
+      "injectedBytes": 3925,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}

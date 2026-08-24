@@ -1,0 +1,247 @@
+<!-- singularity-flow:metadata
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "phase": "implementation",
+  "generation": 1,
+  "status": "in_progress",
+  "generatedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "generatedAgent": null,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "human",
+    "channel": "manual-in-place",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "developer"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "implementation-summary.md",
+      "mediaType": "text/markdown",
+      "sha256": "cd33eb01aee2a715c5f966c669c9b9a0f273b2b043d18a5395bed97c9a1d8598",
+      "bytes": 1454
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T15:20:40.965Z"
+  },
+  "sourceCommit": "8589463ab0ebc83bc981a3a039d8381e4794cd17",
+  "generationCommit": null,
+  "publicationCommit": null,
+  "configSha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
+  "sourceSha256": "ca1996d6033e835a0511ddf9ad433aaf360260dbcceef251d676d7589047449a",
+  "template": {
+    "path": "singularity/templates/common/implementation.md",
+    "sha256": "61cd7cba79a0dd2914a25b53496b8bd9c575c36219597d65b8ec10010e801d9c"
+  },
+  "inputs": {
+    "generation": 1,
+    "path": "singularity/work-items/WRk-2020/context/inputs-implementation-gen1.json",
+    "sha256": "0f87f149d0d72c48e68600c229252a1d65cf6521c87e30dd34dc30cf7ffeec38",
+    "renderedSha256": "014ad09184a260d7620713045e2664febd56c4ca3075237b24805bd31fb8276c",
+    "mode": "enforce"
+  },
+  "designSources": {
+    "sets": [],
+    "approved": null
+  },
+  "remoteAgent": null,
+  "clarification": null,
+  "telemetry": [
+    {
+      "generation": 1,
+      "path": "singularity/work-items/WRk-2020/telemetry/implementation-gen1.json",
+      "sha256": "e8c672de8cf01788a38397f564c63434e80488876f59b127238ab21a18e43713",
+      "status": "not-invoked",
+      "models": [],
+      "providerCost": null
+    }
+  ],
+  "remoteOutputs": [],
+  "usage": [],
+  "sequenceOverrides": [],
+  "approvals": [],
+  "selfApproval": false,
+  "conformanceTree": null
+}
+-->
+
+# WRk-2020 — Implementation Summary
+
+## Agent brief
+
+<!--
+Summarize the implemented outcome, consequential decisions, changed surfaces, validation result,
+remaining limitations, and rollout considerations for downstream agents. Keep it evidence-based;
+the detailed changed-components and test sections are preserved separately.
+-->
+
+## Implemented outcome
+
+Implemented a new `startwith` operator in the rule engine evaluation flow. It now evaluates string values by trimming leading/trailing whitespace and comparing the prefix case-insensitively, matching the requested behavior for the new rule engine operator.
+
+## Changed components and decisions
+
+- Added `startwith` to the supported operator enum in [src/main/java/org/example/rules/Operator.java](src/main/java/org/example/rules/Operator.java).
+- Implemented boolean evaluation for `startwith` in [src/main/java/org/example/rules/RuleEngineService.java](src/main/java/org/example/rules/RuleEngineService.java), using trimmed and lower-cased string values before checking the prefix.
+- Added regression coverage in [src/test/java/org/example/rules/RuleEngineServiceTest.java](src/test/java/org/example/rules/RuleEngineServiceTest.java) for positive and negative cases.
+
+## Tests and operational notes
+
+- Verified with `mvn test -Dtest=RuleEngineServiceTest`.
+- The change is intentionally scoped to the rule evaluation logic and its tests; no external integration or UI surfaces were modified.
+
+<!-- singularity-flow:inputs:start -->
+
+# Approved phase inputs
+
+## Approved phase input: intake
+
+<!-- source=singularity/work-items/WRk-2020/artifacts/intake/intake.md sha256=c4a32efc363e8ca2cc87925548173379436f4434d44a25b941f56df57a2f78bf status=captured projection=full -->
+
+<!-- singularity-flow:metadata
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "phase": "intake",
+  "generation": 1,
+  "status": "approved",
+  "generatedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "generatedAgent": null,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "human",
+    "channel": "manual-in-place",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "intake.md",
+      "mediaType": "text/markdown",
+      "sha256": "7f02bbea0ff18adff3e3096d9e7cb544e326d1c65a14c7a814212514dc80b6f6",
+      "bytes": 824
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T12:48:22.007Z"
+  },
+  "sourceCommit": "0a9b810353620129aacc8f95e736bc58616b7a14",
+  "generationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+  "publicationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+  "configSha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
+  "sourceSha256": "ca1996d6033e835a0511ddf9ad433aaf360260dbcceef251d676d7589047449a",
+  "template": {
+    "path": "singularity/templates/chore/intake.md",
+    "sha256": "6e84e6cee5c5c25c7bad11809f245126b646ad9e4c76503876bd77cfaf08112d"
+  },
+  "inputs": null,
+  "designSources": {
+    "sets": [],
+    "approved": null
+  },
+  "remoteAgent": null,
+  "clarification": null,
+  "telemetry": [
+    {
+      "generation": 1,
+      "path": "singularity/work-items/WRk-2020/telemetry/intake-gen1.json",
+      "sha256": "a37ef10d0b1dcf738610b12b9dc507a52e83c80c6c63ead68e1ff6059095bad9",
+      "status": "not-invoked",
+      "models": [],
+      "providerCost": null
+    }
+  ],
+  "remoteOutputs": [],
+  "usage": [],
+  "sequenceOverrides": [],
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "intake",
+      "at": "2026-08-24T15:15:48.014Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "product-owner",
+      "authorityGroup": "product-approvers",
+      "identityAssurance": "configured-local",
+      "channel": "terminal",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+          "sha256": "a0eba54450ca2f46950eaba7e584606df32f993f970a4039c12b0854618da4b4"
+        }
+      ],
+      "reviewPacketSha256": "6e5b916b5338bf00931b9795037ca211e6f47e7321cd65efae53acb081e6f11d",
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
+  "conformanceTree": null
+}
+-->
+
+# WRk-2020 — Chore Intake
+
+## Request
+
+Implement a new `startwith` operator for the rule engine. The operator should accept a string and a character, determine whether the string begins with that character, trim the input string before comparison, and perform the comparison in a case-insensitive manner.
+
+## Scope and urgency
+
+- Implement the operator in the rule engine expression evaluation flow.
+- Keep the change scoped to the relevant rule engine logic and tests.
+- Cover the intended behavior with tests for trimmed input, case-insensitive matching, and negative cases.
+- Treat this as a contained maintenance change with no external integration or UI changes.
+
+## Initial evidence
+
+- Story: WRk-2020 — implement startwith
+- Repository context: rule-engine source and test suite under the repository source tree.
+
+<!-- singularity-flow:inputs:end -->
