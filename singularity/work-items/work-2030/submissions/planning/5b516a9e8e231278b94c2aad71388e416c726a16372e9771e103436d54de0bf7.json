@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "workId": "work-2030",
+  "epicId": null,
+  "planId": null,
+  "jiraIssueId": "work-2030",
+  "initialJiraKey": null,
+  "currentJiraKey": null,
+  "canonicalBranch": "work-2030",
+  "submittedBranch": "work-2030",
+  "submissionCommit": "f966cfc489c8f705ef89d45004785ab9a6e01f37",
+  "sourceCommit": "f966cfc489c8f705ef89d45004785ab9a6e01f37",
+  "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+  "phase": "planning",
+  "generation": 1,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "plan.md",
+      "mediaType": "text/markdown",
+      "sha256": "42e8473f40efe3ec092d23c8e9561c6be16cdfc91aa3379d304fd0a16ca165cf",
+      "bytes": 4257
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T00:27:53.416Z"
+  },
+  "artifacts": [
+    {
+      "path": "singularity/work-items/work-2030/artifacts/planning/plan.md",
+      "kind": "document",
+      "sha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e",
+      "size": 7427,
+      "reference": {
+        "handle": "sfref:v1:story:work-2030:b41a4e6b7ff8eb9d03008a938270f6daa5896ef72ecc9ffdfe67e4dcad2501fb",
+        "recordHash": "b41a4e6b7ff8eb9d03008a938270f6daa5896ef72ecc9ffdfe67e4dcad2501fb"
+      }
+    }
+  ],
+  "references": [
+    {
+      "handle": "sfref:v1:story:work-2030:b41a4e6b7ff8eb9d03008a938270f6daa5896ef72ecc9ffdfe67e4dcad2501fb",
+      "recordHash": "b41a4e6b7ff8eb9d03008a938270f6daa5896ef72ecc9ffdfe67e4dcad2501fb",
+      "purpose": "review-evidence",
+      "required": true
+    }
+  ],
+  "agentBriefs": [
+    {
+      "consumerPhase": "convergence",
+      "status": "fallback-whole",
+      "path": "singularity/work-items/work-2030/context/briefs/planning-gen1-for-convergence.json",
+      "renderedPath": null,
+      "sourceSha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e",
+      "renderedSha256": null,
+      "integritySha256": "ea1409ba74ced65a2145fee4927cfd8fce2c2a50fdf62881829c560a04f199ac"
+    },
+    {
+      "consumerPhase": "implementation",
+      "status": "fallback-whole",
+      "path": "singularity/work-items/work-2030/context/briefs/planning-gen1-for-implementation.json",
+      "renderedPath": null,
+      "sourceSha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e",
+      "renderedSha256": null,
+      "integritySha256": "0e4e9b7b3a06cd1fbe49617abafcd551cdf710ba75c136c7bca18fdeef3364d2"
+    },
+    {
+      "consumerPhase": "verification",
+      "status": "fallback-whole",
+      "path": "singularity/work-items/work-2030/context/briefs/planning-gen1-for-verification.json",
+      "renderedPath": null,
+      "sourceSha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e",
+      "renderedSha256": null,
+      "integritySha256": "418fc4eae011517c518b469b3cd2d0a7351cf4931ca355c7a00d1b6e866f484c"
+    }
+  ],
+  "checks": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-24T00:27:53.416Z",
+      "completedAt": "2026-08-24T00:27:53.416Z",
+      "agent": "product-owner",
+      "generation": 1
+    }
+  ],
+  "approvals": [],
+  "visualAssurance": null,
+  "submissionEvidence": null,
+  "submittedAt": "2026-08-24T00:28:32.738Z",
+  "submittedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "status": "awaiting_review",
+  "packetSha256": "5b516a9e8e231278b94c2aad71388e416c726a16372e9771e103436d54de0bf7"
+}

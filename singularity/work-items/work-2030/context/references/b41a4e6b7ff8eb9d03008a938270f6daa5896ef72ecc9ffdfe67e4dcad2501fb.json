@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/work-2030/artifacts/planning/plan.md",
+    "phaseId": "planning"
+  },
+  "createdAt": "2026-08-24T00:28:32.778Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 7427,
+    "commitSha": "f966cfc489c8f705ef89d45004785ab9a6e01f37",
+    "sha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "work-2030",
+    "id": "work-2030",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
