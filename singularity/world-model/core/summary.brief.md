@@ -1,6 +1,6 @@
 # ruleengine — light repository brief
 
-> Generated 22 August 2026 · zero model tokens · source `f9257abbab4b`
+> Generated 24 August 2026 · zero model tokens · source `f35796de20a2`
 
 - Files indexed: 23
 - Languages: Java (10)

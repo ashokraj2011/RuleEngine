@@ -1,6 +1,6 @@
 # architecture — light repository view
 
-> Generated 22 August 2026 (2026-08-22T13:46:53.095Z) · deterministic light mode · source `701241d37bece3bb00362de9fb0341ac82d3b1d2`
+> Generated 24 August 2026 (2026-08-24T00:27:29.011Z) · deterministic light mode · source `f35796de20a233ecf3d4efa15873b7f79be2a06c`
 
 ## Observed
 

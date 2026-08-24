@@ -1,6 +1,6 @@
 # ruleengine — deterministic light world model
 
-> Generated 22 August 2026 (2026-08-22T12:36:05.846Z) · source `f9257abbab4bde3b8c1fb62518ff9080c861cc47` · branch `ANU-STORY`
+> Generated 24 August 2026 (2026-08-24T00:27:29.011Z) · source `f35796de20a233ecf3d4efa15873b7f79be2a06c` · branch `work-2030`
 
 ## Repository shape
 
@@ -22,12 +22,12 @@ languages_scanned: 0
 frameworks: [none identified]
 # Commits touching each file in the last year, from Git history.
 most_changed:
-  - { path: src/test/java/org/example/rules/RuleEngineServiceTest.java, commits: 5 }
+  - { path: src/test/java/org/example/rules/RuleEngineServiceTest.java, commits: 8 }
+  - { path: src/main/java/org/example/rules/RuleEngineService.java, commits: 5 }
+  - { path: README.md, commits: 4 }
+  - { path: src/main/java/org/example/rules/Operator.java, commits: 4 }
   - { path: .idea/misc.xml, commits: 3 }
   - { path: 1.txt, commits: 3 }
-  - { path: README.md, commits: 3 }
-  - { path: src/main/java/org/example/rules/Operator.java, commits: 3 }
-  - { path: src/main/java/org/example/rules/RuleEngineService.java, commits: 3 }
   - { path: .idea/codeStyles/codeStyleConfig.xml, commits: 2 }
   - { path: .idea/copilot.data.migration.agent.xml, commits: 2 }
 tests: 2
