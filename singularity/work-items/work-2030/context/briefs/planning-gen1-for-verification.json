@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "work-2030",
+  "producer": {
+    "phase": "planning",
+    "generation": 1
+  },
+  "consumer": {
+    "phase": "verification"
+  },
+  "source": {
+    "path": "singularity/work-items/work-2030/artifacts/planning/plan.md",
+    "sha256": "8cace38134a0c0f62e9e6f69c0225940f6b01e42ecb778fdaa1b185264bfd49e",
+    "bytes": 7427
+  },
+  "policy": {
+    "projection": "approved-summary",
+    "preserve": [
+      "Test strategy",
+      "Risks and rollback"
+    ],
+    "maximumSummaryBytes": 24576,
+    "expansion": "hash-bound-reference",
+    "fallback": "whole"
+  },
+  "policySha256": "3be38d5830ce8251e825433809d4d6266af8d8991a82f424eef968933f33475b",
+  "status": "fallback-whole",
+  "summary": null,
+  "preserved": [],
+  "rendered": null,
+  "generatedAt": "2026-08-24T00:27:53.452Z",
+  "integritySha256": "418fc4eae011517c518b469b3cd2d0a7351cf4931ca355c7a00d1b6e866f484c"
+}

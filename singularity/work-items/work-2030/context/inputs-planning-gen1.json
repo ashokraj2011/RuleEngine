@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "workId": "work-2030",
+  "workType": "spec-driven-standard",
+  "phase": "planning",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-24T00:27:53.343Z",
+  "renderedSha256": "877f63b3f7d1506470f1d764e6bd7411cdb8f608dc22ea6e3974c34198de62d1",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "specification",
+      "path": "artifacts/specification/spec.md",
+      "repositoryPath": "singularity/work-items/work-2030/artifacts/specification/spec.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-24T00:22:30.212Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "ef9e7b0d65be2ce830c7a7cbe54c03c4070f90e7990367479c3c04b5f6da688d",
+      "sha256": "ef9e7b0d65be2ce830c7a7cbe54c03c4070f90e7990367479c3c04b5f6da688d",
+      "bytes": 9023,
+      "injectedBytes": 2042,
+      "truncated": false,
+      "projection": {
+        "kind": "approved-summary",
+        "preserve": [
+          "Requirements",
+          "Non-functional requirements",
+          "Boundary conditions"
+        ],
+        "maximumSummaryBytes": 32768,
+        "expansion": "hash-bound-reference",
+        "fallback": "whole",
+        "briefPath": "singularity/work-items/work-2030/context/briefs/specification-gen1-for-planning.md",
+        "briefSha256": "025c29275dafac0f5940ca41064292f584f7c18c9e5fe280cb2f0c803c214271",
+        "expansionHandle": "sfref:v1:story:work-2030:632612e4d859f73dc0742e5283318b49005625d5df4af105aeb127c4537c9584"
+      }
+    }
+  ]
+}

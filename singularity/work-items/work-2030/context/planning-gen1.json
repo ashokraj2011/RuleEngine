@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 3,
+  "workId": "work-2030",
+  "phase": "planning",
+  "generation": 1,
+  "agent": "product-owner",
+  "modelCommit": "f39f9b6ab510b8099a04c58ff79f7fd433b3ce14",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "architecture"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "brief",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "architecture",
+      "tier": "full",
+      "required": true,
+      "origin": "phase"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [
+    {
+      "handle": "sfref:v1:story:work-2030:632612e4d859f73dc0742e5283318b49005625d5df4af105aeb127c4537c9584",
+      "phase": "specification",
+      "path": "singularity/work-items/work-2030/artifacts/specification/spec.md",
+      "rawSha256": "2fc737063c0da69626124088b0da277324122a9a55d20dfb886f4a22554cd92d",
+      "rawBytes": 7297,
+      "previewSha256": "3b27b5db77f5a2ac3e32845ab0691554bf24220285dadba1651b399ee230c6c5",
+      "previewBytes": 7422,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    }
+  ],
+  "modelSourceTreeSha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "composedSourceTreeSha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "worldModelCommit": "f39f9b6ab510b8099a04c58ff79f7fd433b3ce14",
+  "manifestSha256": "5c55f28c56f6fb4ba29bb3c21ffaaf70b3c979dbba203460628cdb1a2cd3af06",
+  "fresh": true,
+  "renderedSha256": "d7553f0c24337909ad89381acb3236f6b90d9a2fdcfcf282de862d5ad6190136",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/work-2030/context/prompts/planning-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.brief.md",
+      "sha256": "52ccfe522fcb7f8404af79015b7ebe7e3763b418dd242994a2d935949dcfa4c7",
+      "bytes": 581,
+      "injectedBytes": 581,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (brief)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/architecture.md",
+      "sha256": "c87525fb61b30f2113a839c15e26157b02ad9b9d85f66320aaac6336b74799da",
+      "bytes": 763,
+      "injectedBytes": 763,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "planning view: architecture (full; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/work-items/work-2030/artifacts/specification/spec.md",
+      "sha256": "2fc737063c0da69626124088b0da277324122a9a55d20dfb886f4a22554cd92d",
+      "bytes": 7297,
+      "injectedBytes": 7422,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "specification:sfref:v1:story:work-2030:632612e4d859f73dc0742e5283318b49005625d5df4af105aeb127c4537c9584",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:work-2030:632612e4d859f73dc0742e5283318b49005625d5df4af105aeb127c4537c9584",
+      "previewSha256": "3b27b5db77f5a2ac3e32845ab0691554bf24220285dadba1651b399ee230c6c5",
+      "previewBytes": 7422,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    }
+  ],
+  "injectedAt": "2026-08-24T00:27:38.060Z"
+}
