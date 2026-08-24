@@ -5,7 +5,7 @@
   "workType": "chore",
   "phase": "intake",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -74,8 +74,33 @@
   "remoteOutputs": [],
   "usage": [],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "intake",
+      "at": "2026-08-24T15:15:48.014Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "product-owner",
+      "authorityGroup": "product-approvers",
+      "identityAssurance": "configured-local",
+      "channel": "terminal",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+          "sha256": "a0eba54450ca2f46950eaba7e584606df32f993f970a4039c12b0854618da4b4"
+        }
+      ],
+      "reviewPacketSha256": "6e5b916b5338bf00931b9795037ca211e6f47e7321cd65efae53acb081e6f11d",
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": null
 }
 -->
