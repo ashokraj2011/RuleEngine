@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: 76e24d30e34651911bfece5e7aa3c15999443c59
+  revision: 3c33a9bed8ddfec901d8017eeac658d5e6dcfded
 workflow:
   version: 2
   inputsMode: enforce
@@ -30,6 +30,21 @@ workflow:
   defaultBaseBranch: main
   workItemRoot: singularity/work-items
   idPattern: ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$
+  auto:
+    enabled: false
+    defaultPace: phase
+    defaultUntil: first-human-boundary
+    workIdAllocator: ulid
+    planTtlMinutes: 30
+    execution:
+      allowedHosts:
+        - copilot-cli
+      requireManagedWorktree: true
+      automaticResume: false
+      allowPolicyWaivers: false
+      allowClarificationAnswers: false
+      allowSequenceOverrides: false
+      allowScopeExpansion: false
   git:
     remote: origin
     publish: required
@@ -1880,7 +1895,7 @@ assets:
   singularity/templates/bugfix/reproduction.md:
     sha256: 083e0361f6ffe9e84905b21558554c8335ab1a036719cb37f104e03f255f3567
   singularity/templates/chore/intake.md:
-    sha256: 6e84e6cee5c5c25c7bad11809f245126b646ad9e4c76503876bd77cfaf08112d
+    sha256: d4632690fa411f3926eee1bfd474f5907aae5efdd31313576acdac04e8934441
   singularity/templates/common/conformance.md:
     sha256: dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada
   singularity/templates/common/implementation.md:
