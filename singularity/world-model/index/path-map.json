@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "mode": "bounded-light-index",
+  "totalPaths": 23,
+  "representativePaths": [
+    "README.md",
+    "pom.xml",
+    "src/main/java/org/example/Main.java",
+    "src/main/java/org/example/RuleEngineApplication.java",
+    "src/main/java/org/example/api/GlobalExceptionHandler.java",
+    "src/main/java/org/example/api/RuleEngineController.java",
+    "src/main/java/org/example/api/dto/EvaluateRequest.java",
+    "src/main/java/org/example/api/dto/EvaluateResponse.java",
+    "src/main/java/org/example/rules/Operator.java",
+    "src/main/java/org/example/rules/RuleEngineService.java",
+    "src/test/java/org/example/api/RuleEngineControllerTest.java",
+    "src/test/java/org/example/rules/RuleEngineServiceTest.java"
+  ],
+  "omittedPathCount": 11
+}
