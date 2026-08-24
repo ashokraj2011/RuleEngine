@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "epicId": null,
+  "planId": null,
+  "jiraIssueId": "WRk-2020",
+  "initialJiraKey": null,
+  "currentJiraKey": null,
+  "canonicalBranch": "WRk-2020",
+  "submittedBranch": "WRk-2020",
+  "submissionCommit": "62247f7ff8e5ff7638ee4db2120469888c93942f",
+  "sourceCommit": "62247f7ff8e5ff7638ee4db2120469888c93942f",
+  "sourceTreeSha256": "sha256:ac003603f83172dbab43ec6f1d6ee3f28e25d931a312c1d6e5dbc72d77b50470",
+  "phase": "implementation",
+  "generation": 1,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "human",
+    "channel": "manual-in-place",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "developer"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "implementation-summary.md",
+      "mediaType": "text/markdown",
+      "sha256": "cd33eb01aee2a715c5f966c669c9b9a0f273b2b043d18a5395bed97c9a1d8598",
+      "bytes": 1454
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T15:20:40.965Z"
+  },
+  "artifacts": [
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+      "kind": "document",
+      "sha256": "0d825836f156b6ff5fec90054d90c4e075a262fee6a7f622c11e1a8c1079e5c3",
+      "size": 8243,
+      "reference": {
+        "handle": "sfref:v1:story:WRk-2020:932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+        "recordHash": "932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3"
+      }
+    },
+    {
+      "path": "src/main/java/org/example/rules/Operator.java",
+      "kind": "code",
+      "sha256": "e19aeaef10bee49184f42c428f9c24498994be3d7b606fb2dbd1307ae526e134",
+      "size": 306
+    },
+    {
+      "path": "src/main/java/org/example/rules/RuleEngineService.java",
+      "kind": "code",
+      "sha256": "7ced1379ae6c8a6ab6ef3681fb9a46a5d8f2ebf01fb3b372ea908e69de911acc",
+      "size": 11991
+    },
+    {
+      "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "kind": "test",
+      "sha256": "aa56deffeae9e2af3fdb2bab881d136818f8fccbf1fe4f94f20b77df8ed0d3d0",
+      "size": 8776
+    }
+  ],
+  "references": [
+    {
+      "handle": "sfref:v1:story:WRk-2020:932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+      "recordHash": "932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+      "purpose": "review-evidence",
+      "required": true
+    }
+  ],
+  "agentBriefs": [],
+  "checks": [],
+  "usage": [],
+  "approvals": [],
+  "visualAssurance": null,
+  "submissionEvidence": null,
+  "submittedAt": "2026-08-24T15:56:37.998Z",
+  "submittedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "status": "awaiting_review",
+  "packetSha256": "19202b67d22625758512932fad6e843dde5acd3a791490866dc40704494af9ac"
+}

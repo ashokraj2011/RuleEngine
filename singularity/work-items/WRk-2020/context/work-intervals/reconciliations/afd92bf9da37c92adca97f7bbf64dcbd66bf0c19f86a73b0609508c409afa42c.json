@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "work-reconciliation",
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "intervalId": "INT-implementation-G1-001",
+  "phaseId": "implementation",
+  "generation": 1,
+  "baselineSha256": "e4c4078992e7d77546dffc2963856853d579f5a84446e8c9c5b9404a7bc773e1",
+  "baseline": {
+    "path": "singularity/work-items/WRk-2020/context/work-intervals/implementation-gen1-baseline.json",
+    "sha256": "e4c4078992e7d77546dffc2963856853d579f5a84446e8c9c5b9404a7bc773e1",
+    "verified": true,
+    "sourceBaseCommit": "310c94675cad9bfb530c9911c58a8c355867e1ec"
+  },
+  "sourceBaseCommit": "310c94675cad9bfb530c9911c58a8c355867e1ec",
+  "target": {
+    "branch": "WRk-2020",
+    "head": "62247f7ff8e5ff7638ee4db2120469888c93942f",
+    "includesWorktree": false,
+    "cleanApplicationTree": true,
+    "uncommittedApplicationPaths": []
+  },
+  "findings": [
+    {
+      "path": "src/main/java/org/example/rules/Operator.java",
+      "status": "present",
+      "sha256": "e19aeaef10bee49184f42c428f9c24498994be3d7b606fb2dbd1307ae526e134",
+      "bytes": 306,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/main/java/org/example/rules/RuleEngineService.java",
+      "status": "present",
+      "sha256": "7ced1379ae6c8a6ab6ef3681fb9a46a5d8f2ebf01fb3b372ea908e69de911acc",
+      "bytes": 11991,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    },
+    {
+      "path": "src/test/java/org/example/rules/RuleEngineServiceTest.java",
+      "status": "present",
+      "sha256": "aa56deffeae9e2af3fdb2bab881d136818f8fccbf1fe4f94f20b77df8ed0d3d0",
+      "bytes": 8776,
+      "verdict": "unplanned",
+      "clauseIds": [],
+      "protected": false
+    }
+  ],
+  "summary": {
+    "changedPaths": 3,
+    "planned": 0,
+    "unplanned": 3,
+    "protected": 0
+  },
+  "decision": {
+    "status": "review",
+    "summaryStatus": "attention",
+    "eligibleForSubmission": true,
+    "reasons": [],
+    "escalationTarget": null
+  },
+  "reconciliationSha256": "afd92bf9da37c92adca97f7bbf64dcbd66bf0c19f86a73b0609508c409afa42c",
+  "reconciledAt": "2026-08-24T15:56:37.997Z",
+  "final": true,
+  "recordedAt": "2026-08-24T15:56:37.998Z",
+  "path": "singularity/work-items/WRk-2020/context/work-intervals/reconciliations/afd92bf9da37c92adca97f7bbf64dcbd66bf0c19f86a73b0609508c409afa42c.json"
+}
