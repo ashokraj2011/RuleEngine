@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 3,
+  "workId": "work-2030",
+  "phase": "specification",
+  "generation": 1,
+  "agent": "product-owner",
+  "modelCommit": "2c28e2e037810b278258387de7d7d13422a08ff8",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "business"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "brief",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "business",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [],
+  "modelSourceTreeSha256": "sha256:05ef7a5504f8d545aef9a3f07741840349c4026d2ff93761e3c895e1ef616e3f",
+  "composedSourceTreeSha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "worldModelCommit": "2c28e2e037810b278258387de7d7d13422a08ff8",
+  "manifestSha256": "139223047371d18809c82aca0612b306a2c50571a9e0c28f887b9fb8032025a8",
+  "fresh": false,
+  "renderedSha256": "05072c5666aede2fa6ef1c45bff8666acae26d32a0c8fb10cb787e32d0d36acd",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/work-2030/context/prompts/specification-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.brief.md",
+      "sha256": "4e4154d4ce580b86e8a942327147405265805190dec830d28210a32edabc2ac7",
+      "bytes": 581,
+      "injectedBytes": 581,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (brief)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/business.md",
+      "sha256": "e56ba70700c174cf1c4ca37b61d9b4852397ecceb9c8a54d3e1665a908288510",
+      "bytes": 777,
+      "injectedBytes": 777,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "specification view: business (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    }
+  ],
+  "injectedAt": "2026-08-24T00:09:49.085Z"
+}

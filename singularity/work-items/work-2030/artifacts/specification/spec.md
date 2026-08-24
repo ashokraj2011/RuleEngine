@@ -4,27 +4,48 @@
   "workId": "work-2030",
   "workType": "spec-driven-standard",
   "phase": "specification",
-  "generation": 0,
+  "generation": 1,
   "status": "in_progress",
-  "generatedBy": null,
-  "generatedAgent": null,
+  "generatedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "generatedAgent": "product-owner",
   "authorship": {
     "schemaVersion": 1,
-    "producer": "legacy-unspecified",
-    "channel": "legacy",
-    "governedAgentContext": null,
+    "producer": "governed-agent",
+    "channel": "copilot-host",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
     "kernelModel": {
       "invoked": false,
-      "status": "unavailable",
+      "status": "exact",
       "invocationIds": []
     },
     "externalAiUse": {
       "value": "unknown",
       "status": "unavailable"
     },
-    "source": null
+    "source": {
+      "kind": "in-place",
+      "filename": "spec.md",
+      "mediaType": "text/markdown",
+      "sha256": "779f5851e9ece6aab29b1d46d2f2490c139e758659f6545c2d588e172da0960a",
+      "bytes": 3861
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T00:14:30.850Z"
   },
-  "sourceCommit": null,
+  "sourceCommit": "57e8322e167481c3e804cd2137af0cd2e77cd70d",
   "generationCommit": null,
   "publicationCommit": null,
   "configSha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
@@ -39,10 +60,55 @@
     "approved": null
   },
   "remoteAgent": null,
-  "clarification": null,
-  "telemetry": [],
+  "clarification": {
+    "generation": 1,
+    "path": "singularity/work-items/work-2030/context/clarifications-specification-gen1.json",
+    "sha256": "446b95bc31835deb79b33820fe9a554c989f3764559dfce673a5d28637782f3a",
+    "promptSha256": "05072c5666aede2fa6ef1c45bff8666acae26d32a0c8fb10cb787e32d0d36acd",
+    "responses": 3,
+    "markers": [],
+    "recordedAt": "2026-08-24T00:13:53.513Z",
+    "recordedBy": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    }
+  },
+  "telemetry": [
+    {
+      "generation": 1,
+      "path": "singularity/work-items/work-2030/telemetry/specification-gen1.json",
+      "sha256": "377afbb6cc00c4f6b223624dc4bcf4e4f52a39076b22dfef5104faf4cb3a11ce",
+      "status": "pending",
+      "models": [],
+      "providerCost": null
+    }
+  ],
   "remoteOutputs": [],
-  "usage": [],
+  "usage": [
+    {
+      "status": "unavailable",
+      "source": "copilot-otel-unavailable",
+      "provider": null,
+      "model": null,
+      "requestedModel": null,
+      "resolvedModel": null,
+      "resolvedModelAssurance": "unavailable",
+      "inputTokens": null,
+      "outputTokens": null,
+      "cachedInputTokens": null,
+      "cacheWriteInputTokens": null,
+      "totalTokens": null,
+      "providerCost": null,
+      "costStatus": "unavailable",
+      "spans": null,
+      "startedAt": "2026-08-24T00:14:30.850Z",
+      "completedAt": "2026-08-24T00:14:30.850Z",
+      "agent": "product-owner",
+      "generation": 1
+    }
+  ],
   "sequenceOverrides": [],
   "approvals": [],
   "selfApproval": false,
@@ -52,102 +118,84 @@
 
 # Specification — work-2030
 
-<!--
-Scenarios come first, and general requirements come after them `[SPK:REQ-068]`. That ordering is the
-template's opinion: a requirement written before anyone has described the situation it serves tends
-to describe the system instead of the need, and nobody notices until verification.
-
-Where the current Story evidence leaves something material unknown, say so with a marker rather
-than guessing. Use this syntax:
-
-    [NEEDS CLARIFICATION: <one question grounded in the current Story evidence>]
-
-Replace the angle-bracketed placeholder; never copy or ask it as written. The question must be one
-non-empty line and must arise from the pinned sources, approved upstream artifacts, repository world
-model, or a contradiction among them. Markers are extracted the same way clauses are, so a marker
-inside fenced or inline code is ignored `[SPK:REQ-063]`. This phase blocks publication while any
-marker is unresolved, and a marker is only resolved when a later generation removes it *and* records
-the answer `[SPK:REQ-067]` — deleting the text alone is an integrity failure, not an answer.
--->
-
 ## Agent brief
 
-<!--
-Summarize the approved intent for downstream agents in a compact, standalone form. Include the
-problem, intended outcome, principal actors, most important scenarios, hard constraints, and major
-exclusions. Do not introduce claims that are absent from the sections below. Exact requirements and
-boundary conditions are preserved separately by the governed projection.
--->
+The implementation shall provide an operator that evaluates whether every non-empty string supplied in an input list exists in a reference list. The behavior is defined by the clarified story intent and must be deterministic for the same inputs. The feature is limited to the operator behavior and does not introduce a user interface or external service contract.
 
 ## Actors
 
-Who uses this, and what authority does each hold?
+- **Caller** — supplies the input list and reference list to the operator and receives the boolean result. The caller has no special administrative authority.
 
 ## User scenarios
 
-Prioritized. Each scenario leads with the situation, then its acceptance cases.
-
-### S1 — <the most important situation, in the user's words>
+### S1 — Determine whether all requested values are present
 
 **Priority:** P1
-**Actor:** <role>
-**Context:** <what is true before this begins>
+**Actor:** Caller
+**Context:** The caller has two collections of strings and wants to know whether each requested value exists in the reference collection.
 
-- **Given** <the starting state>
-  **When** <the actor does this>
-  **Then** <the observable outcome>
+- **Given** an input list containing non-empty strings and a reference list containing strings
+  **When** the operator evaluates the two lists
+  **Then** it returns true only when every non-empty input value is present in the reference list.
 
-- **Given** <a variation worth stating>
-  **When** <…>
-  **Then** <…>
+- **Given** an input list that includes a value missing from the reference list
+  **When** the operator evaluates the two lists
+  **Then** it returns false.
 
-### S2 — <the next situation>
+### S2 — Handle empty and null entries safely
 
 **Priority:** P2
+**Actor:** Caller
+**Context:** The input or reference list may contain empty strings or null values.
 
-- **Given** … **When** … **Then** …
+- **Given** either list contains empty strings or null values
+  **When** the operator evaluates the lists
+  **Then** those entries are ignored and do not affect the boolean result.
 
 ## Failure and empty states
 
-What happens the first time, with nothing there yet, and when each step fails. These are where
-specifications are usually silent and implementations usually improvise.
-
-- **Empty:** <no records yet>
-- **Failure:** <the dependency is unavailable>
-- **Partial:** <some of it worked>
+- **Empty:** If both lists contain no non-empty values after filtering, the operator returns true because there are no required values to find.
+- **Failure:** If the operator cannot process the supplied values because the input is not a valid list of strings, it must fail clearly rather than silently returning a misleading result.
+- **Partial:** If some values are found and others are missing, the operator returns false.
 
 ## Permissions
 
-Who may do each thing, and what a reader without that authority sees instead.
+- **Caller** — may supply input and receive the result.
+- **Reader without caller authority** — may inspect the documented behavior but may not alter the operator contract.
 
 ## Boundary conditions
 
-Limits, sizes, counts, timeouts, and what happens exactly at and beyond each one.
+- The operator operates on collections of strings only.
+- Comparison is exact and case-sensitive.
+- Values are treated as UTF-8 text strings.
+- Empty strings and null entries are ignored.
+- The operator does not perform substring matching, normalization, or fuzzy matching.
 
 ## Requirements
 
-Numbered, testable, one obligation each. Cite the scenario each serves.
-
-- **REQ-001** — <requirement>. *(S1)*
-- **REQ-002** — <requirement>. *(S1, S2)*
+- **REQ-001** — The operator shall accept two collections of strings and return a boolean result. *(S1)*
+- **REQ-002** — The operator shall return true only when every non-empty value in the input list is present in the reference list. *(S1)*
+- **REQ-003** — The operator shall return false when any non-empty input value is not present in the reference list. *(S1)*
+- **REQ-004** — The operator shall ignore empty strings and null entries when evaluating the lists. *(S2)*
+- **REQ-005** — The operator shall compare values as exact UTF-8 strings without case folding or normalization. *(S1, S2)*
 
 ## Non-functional requirements
 
-Latency, throughput, availability, accessibility, privacy, retention. State the number and how it
-will be measured; "fast" is not a requirement.
+- **NFR-001** — The operator shall return a deterministic result for the same input values and ordering. *(S1, S2)*
+- **NFR-002** — The operator shall not mutate the supplied input or reference collections. *(S1, S2)*
 
 ## Constitution articles
 
-Cite the article IDs this specification is bound by `[SPK:REQ-100]`. The kernel validates that each
-cited ID exists at the pinned revision before publication `[SPK:REQ-101]`.
-
-- <ART-…>
+- None applicable to this Story-specific implementation contract.
 
 ## Assumptions
 
-What this specification takes as true without proving. An assumption that turns out false is a
-change request, not a defect — which is only true if it was written down.
+- The operator is implemented in the repository codebase and exercised by unit tests in a later phase.
+- The caller provides values as strings rather than other data types.
 
 ## Out of scope
 
-Named explicitly, so the boundary is reviewable rather than inferred.
+- Locale-specific case conversion.
+- Substring or regex matching.
+- User interface or external API changes.
+- Support for non-string values.

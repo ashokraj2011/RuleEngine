@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "workId": "work-2030",
+  "phase": "specification",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/work-2030/context/prompts/specification-gen1.md",
+  "promptSha256": "05072c5666aede2fa6ef1c45bff8666acae26d32a0c8fb10cb787e32d0d36acd",
+  "groundingRecordPath": "singularity/work-items/work-2030/context/specification-gen1.json",
+  "groundingRecordSha256": "5e83506fd6293c5affbb903e33ae6161eff1bf6aa6d248f43fd8f6bf9b2dde65",
+  "responses": [
+    {
+      "id": "behavior",
+      "question": "Should the operator return true when every item in the input list is found in the reference list, and false otherwise?",
+      "answer": "Yes, return true when every input item is present in the reference list",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "caseHandling",
+      "question": "Should the comparison be case-insensitive for both lists and treat input as UTF-8 text strings?",
+      "answer": "No, preserve case and use exact string matching",
+      "status": "answered",
+      "blocking": false
+    },
+    {
+      "id": "nulls",
+      "question": "How should empty or null entries be handled if they appear in either list?",
+      "answer": "Ignore empty or null entries and compare only non-empty values",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-24T00:13:53.513Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}

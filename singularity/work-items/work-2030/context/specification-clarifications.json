@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "id": "behavior",
+      "question": "Should the operator return true when every item in the input list is found in the reference list, and false otherwise?",
+      "answer": "Yes, return true when every input item is present in the reference list"
+    },
+    {
+      "id": "caseHandling",
+      "question": "Should the comparison be case-insensitive for both lists and treat input as UTF-8 text strings?",
+      "answer": "No, preserve case and use exact string matching"
+    },
+    {
+      "id": "nulls",
+      "question": "How should empty or null entries be handled if they appear in either list?",
+      "answer": "Ignore empty or null entries and compare only non-empty values"
+    }
+  ]
+}
