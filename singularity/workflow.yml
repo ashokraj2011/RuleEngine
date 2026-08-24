@@ -59,6 +59,21 @@ ast:
     maxFiles: 500
     maxBytes: 20971520
     maxFileBytes: 2097152
+auto:
+  enabled: false
+  defaultPace: phase
+  defaultUntil: first-human-boundary
+  workIdAllocator: ulid
+  planTtlMinutes: 30
+  execution:
+    allowedHosts:
+      - copilot-cli
+    requireManagedWorktree: true
+    automaticResume: false
+    allowPolicyWaivers: false
+    allowClarificationAnswers: false
+    allowSequenceOverrides: false
+    allowScopeExpansion: false
 codeDelivery:
   schemaVersion: 2
   mode: enforce
