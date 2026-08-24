@@ -17,7 +17,3 @@ Implemented a new boolean operator, `contains_all`, in the rule engine. It evalu
 ## Tests and operational notes
 
 Verified with `mvn test -q` from the repository root. The suite passed with the new regression test covering the operator semantics and existing rule-engine behavior.
-
-
-
-# Approved phase inputs
