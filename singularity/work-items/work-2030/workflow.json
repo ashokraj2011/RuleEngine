@@ -1893,8 +1893,8 @@
       }
     ]
   },
-  "status": "in_progress",
-  "currentPhase": "implementation",
+  "status": "cancelled",
+  "currentPhase": null,
   "phaseOrder": [
     "specification",
     "planning",
@@ -2578,7 +2578,7 @@
       "label": "Implementation",
       "order": 2,
       "defaultAgent": "developer",
-      "status": "in_progress",
+      "status": "cancelled",
       "requiredArtifact": {
         "path": "artifacts/implementation/implementation-summary.md",
         "kind": "implementation-summary",
@@ -2706,10 +2706,18 @@
       "inputContext": {
         "generation": 1,
         "path": "singularity/work-items/work-2030/context/inputs-implementation-gen1.json",
-        "sha256": "4388f292608567cdc05613e5de9e7895f4a9beac2020942983eb7b7f08d1c549",
+        "sha256": "a27190cf299293c6e89b11c00ce726e8a72704172ae4bcfe28770d046a94b398",
         "renderedSha256": "2622a4836d534dc9e0ef507e55dea0f5861dc35a2c340df887306845e7878556",
         "mode": "enforce"
-      }
+      },
+      "cancelledAt": "2026-08-24T00:57:46.213Z",
+      "cancelledBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "cancellationReason": "Work was abandoned during implementation and no further progress is intended."
     },
     "convergence": {
       "id": "convergence",
@@ -3175,6 +3183,14 @@
       "event": "work_interval_started",
       "phase": "implementation",
       "detail": "baseline 0e2a8d031684 at 7887c8c5d0c5"
+    },
+    {
+      "at": "2026-08-24T00:57:46.213Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "work_cancelled",
+      "phase": "implementation",
+      "detail": "Work was abandoned during implementation and no further progress is intended."
     }
   ],
   "measurement": {
@@ -3412,6 +3428,39 @@
         "createdAt": "2026-08-24T00:34:09.090Z"
       },
       "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "68e9fd88-844e-45bf-bdeb-7ce382146d78",
+        "type": "work-cancelled",
+        "subject": {
+          "kind": "story",
+          "id": "work-2030",
+          "branch": "work-2030"
+        },
+        "phaseId": "implementation",
+        "generation": 0,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "developer",
+        "authorityGroup": null,
+        "payload": {
+          "reason": "Work was abandoned during implementation and no further progress is intended.",
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-24T00:57:46.148Z"
+      },
+      "ledgerIntent": null
     }
   ],
   "repairBudgets": {},
@@ -3440,5 +3489,21 @@
       }
     ],
     "escalations": []
+  },
+  "cancellation": {
+    "schemaVersion": 1,
+    "status": "cancelled",
+    "phase": "implementation",
+    "generation": 0,
+    "reason": "Work was abandoned during implementation and no further progress is intended.",
+    "cancelledAt": "2026-08-24T00:57:46.213Z",
+    "cancelledBy": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "agent": "developer",
+    "channel": "terminal"
   }
 }
