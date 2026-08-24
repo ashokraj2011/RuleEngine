@@ -1,13 +1,13 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-24T00:27:29.011Z",
+  "generated_at": "2026-08-24T15:19:03.740Z",
   "generated_date": "24 August 2026",
   "builder_version": "2.1-light",
   "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
-  "repository_commit": "f35796de20a233ecf3d4efa15873b7f79be2a06c",
-  "repository_branch": "work-2030",
-  "working_tree_clean": true,
-  "generated_for_phase": "planning",
+  "repository_commit": "214e7f279211a265fd3061dd86a359ae9864906a",
+  "repository_branch": "WRk-2020",
+  "working_tree_clean": false,
+  "generated_for_phase": "implementation",
   "analysis_depth": "light",
   "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
   "generator": {
@@ -58,13 +58,53 @@
           "sha256": "c87525fb61b30f2113a839c15e26157b02ad9b9d85f66320aaac6336b74799da"
         }
       }
+    },
+    "development": {
+      "tiers": {
+        "brief": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/development.md",
+          "bytes": 1292,
+          "sha256": "d24115f53741f0f51f80310e0843cad50bfd7545072c5b9d4fbc1ef8b7319e34"
+        }
+      },
+      "brief_path": null,
+      "path": "views/development.md",
+      "generated": true
+    },
+    "testing": {
+      "tiers": {
+        "brief": {
+          "status": "ready",
+          "path": "views/testing.brief.md",
+          "bytes": 352,
+          "sha256": "c786c5cb7526ec42606c3334c46f51722f48617bf9f14cdaca3c7a185a7636b3"
+        },
+        "full": {
+          "status": "missing",
+          "path": null,
+          "bytes": 0,
+          "sha256": null
+        }
+      },
+      "brief_path": "views/testing.brief.md",
+      "path": null,
+      "generated": true
     }
   },
   "views_generated": [
-    "architecture"
+    "development",
+    "testing"
   ],
   "requested_views": [
-    "architecture"
+    "development",
+    "testing"
   ],
   "domains": [],
   "task_guides": [],
@@ -95,6 +135,40 @@
         "core/brief"
       ],
       "reused": []
+    },
+    {
+      "id": "light-1787531249942",
+      "generated_at": "2026-08-24T00:27:29.011Z",
+      "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+      "provider": null,
+      "requested": [
+        "architecture/full",
+        "core/brief"
+      ],
+      "produced": [
+        "architecture/full",
+        "core/brief"
+      ],
+      "reused": []
+    },
+    {
+      "id": "light-1787584743845",
+      "generated_at": "2026-08-24T15:19:03.740Z",
+      "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+      "provider": null,
+      "requested": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "produced": [
+        "core/brief",
+        "development/full",
+        "testing/brief"
+      ],
+      "reused": [
+        "core/brief"
+      ]
     }
   ]
 }
