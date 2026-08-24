@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "bytes": 13207,
+    "path": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+    "role": "document",
+    "sha256": "7950b6f303fe3dc614f0a488c0ae8a1d2d32a9e0a1b35cecfad476dc670436d4"
+  },
+  "configuration": {
+    "revision": "9137584faa780b8f406277253b4b512a154270b7",
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/implementation/implementation-summary.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "01b657be1cb603408cf6d99ba0814bb241abf493cbf13c4d37a3ab22c5161512",
+  "phase": "verification",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": null,
+    "kind": "human"
+  },
+  "publication": {
+    "branch": "WRk-2020",
+    "commit": null,
+    "publishedAt": "2026-08-24T16:02:51.136Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRk-2020",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/common/verification.md",
+    "sha256": "46a93cccc0edf7b3d878f05f212ed68350c26cedb33d96b3c447ac38bde20c40"
+  }
+}

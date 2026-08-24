@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "phase": "verification",
+  "generation": 1,
+  "capturedAt": "2026-08-24T16:02:51.142Z",
+  "source": "not-invoked",
+  "rawTraceCommitted": false,
+  "spanCount": 0,
+  "rawBytesRead": 0,
+  "startedAt": null,
+  "completedAt": null,
+  "pending": false,
+  "warnings": [],
+  "privacyDiagnostics": [],
+  "launches": [],
+  "usage": []
+}

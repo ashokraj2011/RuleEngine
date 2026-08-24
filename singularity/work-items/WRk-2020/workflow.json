@@ -2080,17 +2080,96 @@
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
-      "generation": 0,
-      "generatedBy": null,
+      "generation": 1,
+      "generatedBy": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
       "generatedAgent": null,
-      "authorship": [],
+      "authorship": [
+        {
+          "schemaVersion": 1,
+          "producer": "human",
+          "channel": "manual-in-place",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "governedAgentContext": {
+            "agentId": "developer"
+          },
+          "kernelModel": {
+            "invoked": false,
+            "status": "exact",
+            "invocationIds": []
+          },
+          "externalAiUse": {
+            "value": "unknown",
+            "status": "unavailable"
+          },
+          "source": {
+            "kind": "in-place",
+            "filename": "test-evidence.md",
+            "mediaType": "text/markdown",
+            "sha256": "6201ec07bbb89e87198f299aec73aab6c1f756dc45178639f42b535f9bf2ed26",
+            "bytes": 1559
+          },
+          "generation": 1,
+          "publishedAt": "2026-08-24T16:02:51.136Z"
+        }
+      ],
       "usage": [],
-      "telemetry": [],
+      "telemetry": [
+        {
+          "generation": 1,
+          "path": "singularity/work-items/WRk-2020/telemetry/verification-gen1.json",
+          "sha256": "6bd9bff3e6f73bd41fcbd3c9a945869a1ba0b2626c7252401f87203008e45b62",
+          "status": "not-invoked",
+          "models": [],
+          "providerCost": null
+        }
+      ],
       "approvals": [],
       "designSourceSets": [],
-      "artifacts": [],
+      "artifacts": [
+        {
+          "path": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+          "kind": "document",
+          "status": "pending",
+          "exists": true,
+          "size": 14151,
+          "sha256": "563d3dd66af62b4959a1dc9452c130722e6dfe5e1d2eb040a0ec5c5f633ea99a",
+          "registeredAt": "2026-08-24T16:02:50.988Z",
+          "updatedAt": "2026-08-24T16:02:51.172Z"
+        }
+      ],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "authoringBaseline": {
+        "generation": 1,
+        "path": "artifacts/verification/test-evidence.md",
+        "fingerprint": "sha256:1afcf6a4eeaa87d1e4b5660928cd4f0c1bc6a9678b4e98516f420f6acf8641b1",
+        "bytes": 626
+      },
+      "inputContext": {
+        "generation": 1,
+        "path": "singularity/work-items/WRk-2020/context/inputs-verification-gen1.json",
+        "sha256": "46e916dd5b1e39f6ab41172699066492e2485d4739af7ae9296e0e381948c0ba",
+        "renderedSha256": "a68e30c130e786b9c36697649f1c8b92e7d5113f007c96dcc7a732a495974094",
+        "mode": "enforce"
+      },
+      "sidecars": [
+        {
+          "path": "singularity/work-items/WRk-2020/context/sidecars/verification-gen1-singularity-work-items-WRk-2020-artifacts-verification-test-evidence.md.json",
+          "artifact": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+          "integritySha256": "01b657be1cb603408cf6d99ba0814bb241abf493cbf13c4d37a3ab22c5161512"
+        }
+      ],
+      "sourceCommit": "da7673fe9c98f8fed7103cd56fae7d7cfb6bbbe8"
     },
     "conformance": {
       "id": "conformance",
@@ -2317,6 +2396,14 @@
       "event": "work_interval_started",
       "phase": "verification",
       "detail": "baseline f4e7a1f92c5d at 436f01a9812a"
+    },
+    {
+      "at": "2026-08-24T16:02:51.172Z",
+      "actor": "ashokraj2011",
+      "agent": "developer",
+      "event": "phase_generated",
+      "phase": "verification",
+      "detail": "generation 1"
     }
   ],
   "measurement": {
@@ -2552,6 +2639,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-24T16:02:08.357Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "3db210eb-15dd-48a8-8499-931b764b9b2f",
+        "type": "artifact-generated",
+        "subject": {
+          "kind": "story",
+          "id": "WRk-2020",
+          "branch": "WRk-2020"
+        },
+        "phaseId": "verification",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-24T16:02:51.015Z"
       },
       "ledgerIntent": null
     }

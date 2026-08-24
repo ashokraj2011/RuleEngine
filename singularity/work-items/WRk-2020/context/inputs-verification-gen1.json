@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "workType": "chore",
+  "phase": "verification",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-24T16:02:51.100Z",
+  "renderedSha256": "a68e30c130e786b9c36697649f1c8b92e7d5113f007c96dcc7a732a495974094",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "implementation",
+      "path": "artifacts/implementation/implementation-summary.md",
+      "repositoryPath": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-24T16:02:08.421Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "be657efe568800c991b0c93c3185eac6c1e5a84af8c8ab2e65dafdd8bc088050",
+      "sha256": "be657efe568800c991b0c93c3185eac6c1e5a84af8c8ab2e65dafdd8bc088050",
+      "bytes": 9715,
+      "injectedBytes": 9713,
+      "truncated": false,
+      "projection": {
+        "kind": "full"
+      }
+    }
+  ]
+}
