@@ -1,0 +1,35 @@
+{
+  "artifact": {
+    "bytes": 2098,
+    "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+    "role": "document",
+    "sha256": "3ff4df603edfe741aa46f020468766fbc8d56fad6581161d504c9aafd30fe33c"
+  },
+  "configuration": {
+    "revision": "9137584faa780b8f406277253b4b512a154270b7",
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8"
+  },
+  "generation": 1,
+  "inputs": [],
+  "integritySha256": "b24d039f331d1dce8b75f2a7062473cbaa0d75d96ba46ffeac1e0068f08fe1e9",
+  "phase": "intake",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": null,
+    "kind": "human"
+  },
+  "publication": {
+    "branch": "WRk-2020",
+    "commit": null,
+    "publishedAt": "2026-08-24T12:48:22.007Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRk-2020",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/chore/intake.md",
+    "sha256": "6e84e6cee5c5c25c7bad11809f245126b646ad9e4c76503876bd77cfaf08112d"
+  }
+}
