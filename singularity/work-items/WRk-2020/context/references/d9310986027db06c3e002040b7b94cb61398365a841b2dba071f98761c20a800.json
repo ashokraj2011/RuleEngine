@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+    "phaseId": "intake"
+  },
+  "createdAt": "2026-08-24T12:49:09.153Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 3032,
+    "commitSha": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+    "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "WRk-2020",
+    "id": "WRk-2020",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}

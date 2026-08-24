@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "epicId": null,
+  "planId": null,
+  "jiraIssueId": "WRk-2020",
+  "initialJiraKey": null,
+  "currentJiraKey": null,
+  "canonicalBranch": "WRk-2020",
+  "submittedBranch": "WRk-2020",
+  "submissionCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+  "sourceCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+  "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+  "phase": "intake",
+  "generation": 1,
+  "authorship": {
+    "schemaVersion": 1,
+    "producer": "human",
+    "channel": "manual-in-place",
+    "actor": {
+      "name": "Ashok Raj",
+      "email": "88361104+ashokraj2011@users.noreply.github.com",
+      "login": "ashokraj2011",
+      "githubLookup": "resolved"
+    },
+    "governedAgentContext": {
+      "agentId": "product-owner"
+    },
+    "kernelModel": {
+      "invoked": false,
+      "status": "exact",
+      "invocationIds": []
+    },
+    "externalAiUse": {
+      "value": "unknown",
+      "status": "unavailable"
+    },
+    "source": {
+      "kind": "in-place",
+      "filename": "intake.md",
+      "mediaType": "text/markdown",
+      "sha256": "7f02bbea0ff18adff3e3096d9e7cb544e326d1c65a14c7a814212514dc80b6f6",
+      "bytes": 824
+    },
+    "generation": 1,
+    "publishedAt": "2026-08-24T12:48:22.007Z"
+  },
+  "artifacts": [
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "kind": "document",
+      "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+      "size": 3032,
+      "reference": {
+        "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+        "recordHash": "d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800"
+      }
+    }
+  ],
+  "references": [
+    {
+      "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "recordHash": "d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "purpose": "review-evidence",
+      "required": true
+    }
+  ],
+  "agentBriefs": [],
+  "checks": [],
+  "usage": [],
+  "approvals": [],
+  "visualAssurance": null,
+  "submissionEvidence": null,
+  "submittedAt": "2026-08-24T12:49:09.120Z",
+  "submittedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "status": "awaiting_review",
+  "packetSha256": "6e5b916b5338bf00931b9795037ca211e6f47e7321cd65efae53acb081e6f11d"
+}

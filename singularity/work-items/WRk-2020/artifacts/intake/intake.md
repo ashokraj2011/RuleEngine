@@ -5,7 +5,7 @@
   "workType": "chore",
   "phase": "intake",
   "generation": 1,
-  "status": "in_progress",
+  "status": "awaiting_approval",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -46,8 +46,8 @@
     "publishedAt": "2026-08-24T12:48:22.007Z"
   },
   "sourceCommit": "0a9b810353620129aacc8f95e736bc58616b7a14",
-  "generationCommit": null,
-  "publicationCommit": null,
+  "generationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+  "publicationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
   "configSha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
   "sourceSha256": "ca1996d6033e835a0511ddf9ad433aaf360260dbcceef251d676d7589047449a",
   "template": {

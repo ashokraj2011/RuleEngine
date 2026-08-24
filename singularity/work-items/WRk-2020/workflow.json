@@ -48,7 +48,100 @@
     "currentJiraKey": null,
     "branchCompletionPolicy": "pr",
     "requiredChecks": [],
-    "childBranches": []
+    "childBranches": [],
+    "submissions": [
+      {
+        "packetSha256": "6e5b916b5338bf00931b9795037ca211e6f47e7321cd65efae53acb081e6f11d",
+        "phase": "intake",
+        "generation": 1,
+        "branch": "WRk-2020",
+        "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+        "path": "singularity/work-items/WRk-2020/submissions/intake/6e5b916b5338bf00931b9795037ca211e6f47e7321cd65efae53acb081e6f11d.json",
+        "submittedAt": "2026-08-24T12:49:09.120Z",
+        "projection": {
+          "schemaVersion": 1,
+          "workId": "WRk-2020",
+          "epicId": null,
+          "planId": null,
+          "jiraIssueId": "WRk-2020",
+          "initialJiraKey": null,
+          "currentJiraKey": null,
+          "canonicalBranch": "WRk-2020",
+          "submittedBranch": "WRk-2020",
+          "submissionCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+          "sourceCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+          "sourceTreeSha256": "sha256:6522e98f6b9e587608f109fbb8beada89425972e92baa941230b855b88403ec9",
+          "phase": "intake",
+          "generation": 1,
+          "authorship": {
+            "schemaVersion": 1,
+            "producer": "human",
+            "channel": "manual-in-place",
+            "actor": {
+              "name": "Ashok Raj",
+              "email": "88361104+ashokraj2011@users.noreply.github.com",
+              "login": "ashokraj2011",
+              "githubLookup": "resolved"
+            },
+            "governedAgentContext": {
+              "agentId": "product-owner"
+            },
+            "kernelModel": {
+              "invoked": false,
+              "status": "exact",
+              "invocationIds": []
+            },
+            "externalAiUse": {
+              "value": "unknown",
+              "status": "unavailable"
+            },
+            "source": {
+              "kind": "in-place",
+              "filename": "intake.md",
+              "mediaType": "text/markdown",
+              "sha256": "7f02bbea0ff18adff3e3096d9e7cb544e326d1c65a14c7a814212514dc80b6f6",
+              "bytes": 824
+            },
+            "generation": 1,
+            "publishedAt": "2026-08-24T12:48:22.007Z"
+          },
+          "artifacts": [
+            {
+              "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+              "kind": "document",
+              "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+              "size": 3032,
+              "reference": {
+                "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+                "recordHash": "d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800"
+              }
+            }
+          ],
+          "references": [
+            {
+              "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+              "recordHash": "d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+              "purpose": "review-evidence",
+              "required": true
+            }
+          ],
+          "agentBriefs": [],
+          "checks": [],
+          "usage": [],
+          "approvals": [],
+          "visualAssurance": null,
+          "submissionEvidence": null,
+          "submittedAt": "2026-08-24T12:49:09.120Z",
+          "submittedBy": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "status": "awaiting_review"
+        }
+      }
+    ]
   },
   "resolution": {
     "configSha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8",
@@ -1359,7 +1452,7 @@
       "label": "Intake",
       "order": 0,
       "defaultAgent": "product-owner",
-      "status": "in_progress",
+      "status": "awaiting_approval",
       "requiredArtifact": {
         "path": "artifacts/intake/intake.md",
         "kind": "intake",
@@ -1412,7 +1505,7 @@
       },
       "qualityCommands": [],
       "startedAt": "2026-08-24T03:08:01.907Z",
-      "submittedAt": null,
+      "submittedAt": "2026-08-24T12:49:09.120Z",
       "approvedAt": null,
       "approvedBy": null,
       "rejectedAt": null,
@@ -1479,10 +1572,10 @@
           "kind": "document",
           "status": "pending",
           "exists": true,
-          "size": 3032,
-          "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+          "size": 3114,
+          "sha256": "a0eba54450ca2f46950eaba7e584606df32f993f970a4039c12b0854618da4b4",
           "registeredAt": "2026-08-24T12:48:21.283Z",
-          "updatedAt": "2026-08-24T12:48:22.043Z"
+          "updatedAt": "2026-08-24T12:49:09.121Z"
         }
       ],
       "checks": [],
@@ -1494,7 +1587,10 @@
           "integritySha256": "b24d039f331d1dce8b75f2a7062473cbaa0d75d96ba46ffeac1e0068f08fe1e9"
         }
       ],
-      "sourceCommit": "0a9b810353620129aacc8f95e736bc58616b7a14"
+      "sourceCommit": "0a9b810353620129aacc8f95e736bc58616b7a14",
+      "generationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+      "publicationCommit": "aee819bb7cc957fb74c685b4062f35815ae564b4",
+      "validationVerdict": "passed"
     },
     "implementation": {
       "id": "implementation",
@@ -1820,6 +1916,14 @@
       "event": "phase_generated",
       "phase": "intake",
       "detail": "generation 1"
+    },
+    {
+      "at": "2026-08-24T12:49:09.120Z",
+      "actor": "ashokraj2011",
+      "agent": "product-owner",
+      "event": "phase_submitted",
+      "phase": "intake",
+      "detail": "1 artifacts"
     }
   ],
   "measurement": {
@@ -1895,6 +1999,38 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-24T12:48:21.866Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "d87f29d4-3034-437c-ad9d-3aed2b49f94a",
+        "type": "approval-requested",
+        "subject": {
+          "kind": "story",
+          "id": "WRk-2020",
+          "branch": "WRk-2020"
+        },
+        "phaseId": "intake",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": null,
+        "authorityGroup": null,
+        "payload": {
+          "decision": null,
+          "reviewPacketSha256": null
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-24T12:49:09.014Z"
       },
       "ledgerIntent": null
     }
