@@ -161,6 +161,37 @@ public class RuleEngineService {
                     return right != null && s.contains(String.valueOf(right));
                 }
                 return false;
+            case contains_all:
+                if (left == null) return false;
+                if (!(left instanceof Collection<?> inputCollection)) {
+                    return false;
+                }
+                if (valueNode == null || !valueNode.isArray()) {
+                    throw new IllegalArgumentException("contains_all requires an array of values");
+                }
+                Set<String> referenceValues = new LinkedHashSet<>();
+                for (JsonNode item : valueNode) {
+                    if (item == null || item.isNull()) {
+                        continue;
+                    }
+                    String value = item.isTextual() ? item.asText() : String.valueOf(jsonToJava(item));
+                    if (value != null && !value.isEmpty()) {
+                        referenceValues.add(value);
+                    }
+                }
+                for (Object item : inputCollection) {
+                    if (item == null) {
+                        continue;
+                    }
+                    String candidate = item instanceof String s ? s : String.valueOf(item);
+                    if (candidate.isEmpty()) {
+                        continue;
+                    }
+                    if (!referenceValues.contains(candidate)) {
+                        return false;
+                    }
+                }
+                return true;
             case regex:
                 if (!(left instanceof String)) return false;
                 String pattern = valueNode != null && valueNode.isTextual() ? valueNode.asText() : null;

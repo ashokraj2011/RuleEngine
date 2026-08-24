@@ -199,6 +199,35 @@ public class RuleEngineServiceTest {
     }
 
     @Test
+    void testContainsAllOperatorChecksEveryNonEmptyInputString() {
+        Map<String, Object> data = new HashMap<>();
+        List<String> inputValues = new java.util.ArrayList<>(java.util.Arrays.asList("alpha", "", null, "beta"));
+        List<String> referenceValues = new java.util.ArrayList<>(java.util.Arrays.asList("alpha", "beta", "gamma"));
+        data.put("inputValues", inputValues);
+        data.put("referenceValues", referenceValues);
+
+        ObjectNode rule = mapper.createObjectNode();
+        rule.put("field", "inputValues");
+        rule.put("op", "contains_all");
+        ArrayNode reference = mapper.createArrayNode();
+        reference.add("alpha").add("beta").add("gamma");
+        rule.set("value", reference);
+
+        assertTrue(service.evaluate(data, rule));
+
+        ObjectNode missingRule = mapper.createObjectNode();
+        missingRule.put("field", "inputValues");
+        missingRule.put("op", "contains_all");
+        ArrayNode missing = mapper.createArrayNode();
+        missing.add("alpha").add("delta");
+        missingRule.set("value", missing);
+        assertFalse(service.evaluate(data, missingRule));
+
+        assertEquals(java.util.Arrays.asList("alpha", "", null, "beta"), inputValues);
+        assertEquals(java.util.Arrays.asList("alpha", "beta", "gamma"), referenceValues);
+    }
+
+    @Test
     /* @ac:ANU-2018:AC-001 */
     void testCircleAreaOperatorReturnsComputedValueForNumericRadius() {
         Map<String, Object> data = Map.of("radius", 3);

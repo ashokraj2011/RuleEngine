@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "workId": "work-2030",
+  "workType": "spec-driven-standard",
+  "phase": "implementation",
+  "generation": 1,
+  "mode": "enforce",
+  "recordedAt": "2026-08-24T00:46:48.400Z",
+  "renderedSha256": "2622a4836d534dc9e0ef507e55dea0f5861dc35a2c340df887306845e7878556",
+  "warnings": [],
+  "inputs": [
+    {
+      "phase": "specification",
+      "path": "artifacts/specification/spec.md",
+      "repositoryPath": "singularity/work-items/work-2030/artifacts/specification/spec.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-24T00:22:30.212Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "ef9e7b0d65be2ce830c7a7cbe54c03c4070f90e7990367479c3c04b5f6da688d",
+      "sha256": "ef9e7b0d65be2ce830c7a7cbe54c03c4070f90e7990367479c3c04b5f6da688d",
+      "bytes": 9023,
+      "injectedBytes": 2048,
+      "truncated": false,
+      "projection": {
+        "kind": "approved-summary",
+        "preserve": [
+          "Requirements",
+          "Non-functional requirements",
+          "Boundary conditions"
+        ],
+        "maximumSummaryBytes": 32768,
+        "expansion": "hash-bound-reference",
+        "fallback": "whole",
+        "briefPath": "singularity/work-items/work-2030/context/briefs/specification-gen1-for-implementation.md",
+        "briefSha256": "5b8df8dfd4cc992a929dd464a38e26653c6ea82c144bdc1d0bf6ea39bf49eb51",
+        "expansionHandle": "sfref:v1:story:work-2030:632612e4d859f73dc0742e5283318b49005625d5df4af105aeb127c4537c9584"
+      }
+    },
+    {
+      "phase": "planning",
+      "path": "artifacts/planning/plan.md",
+      "repositoryPath": "singularity/work-items/work-2030/artifacts/planning/plan.md",
+      "optional": false,
+      "maxBytes": null,
+      "status": "captured",
+      "producerStatus": "approved",
+      "producerGeneration": 1,
+      "approvedAt": "2026-08-24T00:34:09.085Z",
+      "approvedBy": "ashokraj2011",
+      "approvedSha256": "d422f9a443bea7496f98d7642e913dfb0c1e3f08a41be508d56d09471de25c57",
+      "sha256": "d422f9a443bea7496f98d7642e913dfb0c1e3f08a41be508d56d09471de25c57",
+      "bytes": 10286,
+      "injectedBytes": 10284,
+      "truncated": false,
+      "projection": {
+        "kind": "fallback-whole",
+        "preserve": [
+          "Test strategy",
+          "Risks and rollback"
+        ],
+        "maximumSummaryBytes": 24576,
+        "expansion": "hash-bound-reference",
+        "fallback": "whole",
+        "briefPath": null,
+        "briefSha256": null,
+        "expansionHandle": "sfref:v1:story:work-2030:b41a4e6b7ff8eb9d03008a938270f6daa5896ef72ecc9ffdfe67e4dcad2501fb"
+      }
+    }
+  ]
+}

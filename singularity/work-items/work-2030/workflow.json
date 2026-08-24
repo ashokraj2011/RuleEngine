@@ -2678,7 +2678,38 @@
       "designSourceSets": [],
       "artifacts": [],
       "checks": [],
-      "remoteOutputs": []
+      "remoteOutputs": [],
+      "generationIntent": {
+        "id": "344b8cf8-46ad-4022-a0d7-89930a06ccdd",
+        "generation": 1,
+        "status": "open",
+        "path": "singularity/work-items/work-2030/context/generation-start/implementation-gen1.json",
+        "receiptSha256": "sha256:3cdea3fc6ec1d5c39699cec71f2e4ad46f70fef7c77dd3bc580652e9fe44b7e7",
+        "baseline": {
+          "commit": "7887c8c5d0c580e2460e29b14dc1e5d596a4f818",
+          "tree": "a7edc5ae3206bb24f54d1d8c361c7e06be0c10b9",
+          "initialChangeSetDigest": "sha256:7dd9f8425d514040e3bc7538bc64ee2404d657f06a287b93a94aa07c4252b684",
+          "mode": "clean"
+        },
+        "startedAt": "2026-08-24T00:35:58.303Z",
+        "startedBy": {
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "architect"
+        },
+        "publication": null
+      },
+      "inputContext": {
+        "generation": 1,
+        "path": "singularity/work-items/work-2030/context/inputs-implementation-gen1.json",
+        "sha256": "4388f292608567cdc05613e5de9e7895f4a9beac2020942983eb7b7f08d1c549",
+        "renderedSha256": "2622a4836d534dc9e0ef507e55dea0f5861dc35a2c340df887306845e7878556",
+        "mode": "enforce"
+      }
     },
     "convergence": {
       "id": "convergence",
