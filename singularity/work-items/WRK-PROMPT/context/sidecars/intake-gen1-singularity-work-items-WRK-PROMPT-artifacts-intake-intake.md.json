@@ -1,0 +1,35 @@
+{
+  "artifact": {
+    "bytes": 2401,
+    "path": "singularity/work-items/WRK-PROMPT/artifacts/intake/intake.md",
+    "role": "document",
+    "sha256": "21a435d3a80c4a004c18276a12d5fa89a76c18d1f657e3ef0c87fbbf648fdff0"
+  },
+  "configuration": {
+    "revision": "f9bcdb2dea1cc82191d11bebb578783c6cfffc3d",
+    "sha256": "1ea6f00db44b552caa91f3539c344c4bb7d2a14afe13fa08fa692c8526940064"
+  },
+  "generation": 1,
+  "inputs": [],
+  "integritySha256": "1de19f479605d48e2554054d4207705e28f454714c88fb27522481a513225f2f",
+  "phase": "intake",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "product-owner",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "WRK-PROMPT",
+    "commit": null,
+    "publishedAt": "2026-08-25T02:46:15.497Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRK-PROMPT",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/feature/intake.md",
+    "sha256": "eb53814f46f12ea3d93d1629164bd7ff22a3a54feceff7f7dd55670caeb5dbab"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRK-PROMPT",
+  "phase": "intake",
+  "generation": 1,
+  "mode": "required",
+  "promptPath": "singularity/work-items/WRK-PROMPT/context/prompts/intake-gen1.md",
+  "promptSha256": "45422fcfbc0118e86206f827b8e897b1ee1e3e01a15cb68e1a927e2bcf1b919b",
+  "groundingRecordPath": "singularity/work-items/WRK-PROMPT/context/intake-gen1.json",
+  "groundingRecordSha256": "53a51459870ad6fec73bf8863a748bbfee649cf15581dc6026aab2a5b95eb10c",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "What exact capability should the intake describe for this feature?",
+      "answer": "Support a \"has none of\" operator in the rule engine so rules can express that an entity does not contain any of the specified values. The intake scope covers parser, evaluator, and regression-test support, while leaving unrelated operators and UX changes out of scope.",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-25T02:46:11.353Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "product-owner"
+}
