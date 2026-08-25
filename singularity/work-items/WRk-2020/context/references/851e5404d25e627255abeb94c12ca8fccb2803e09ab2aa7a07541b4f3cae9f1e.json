@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+    "phaseId": "verification"
+  },
+  "createdAt": "2026-08-25T01:00:38.426Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 14151,
+    "commitSha": "09a5a609c5401acadd94706b7f1ea4badf6eaab2",
+    "sha256": "563d3dd66af62b4959a1dc9452c130722e6dfe5e1d2eb040a0ec5c5f633ea99a"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "WRk-2020",
+    "id": "WRk-2020",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
