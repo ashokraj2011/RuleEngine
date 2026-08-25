@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "rule-engine",
+  "capabilityPath": [
+    "enterprise",
+    "product",
+    "rule-engine"
+  ],
+  "capabilityMapSha256": "6223ee3399e680a6ba243ff61e8f0e09be3e0ef6680774b6c5a62893f936b0eb",
+  "requiredViews": [
+    "business",
+    "architecture",
+    "security",
+    "development",
+    "testing"
+  ],
+  "maxBytes": 262144,
+  "bytes": 0,
+  "repositories": [
+    {
+      "id": "ruleengine",
+      "status": "local-grounding"
+    }
+  ],
+  "files": [],
+  "warnings": [],
+  "recordedAt": "2026-08-25T02:27:15.648Z"
+}

@@ -1,24 +1,26 @@
 approvalAuthorities:
   product-approvers:
     label: Product approvers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   architecture-reviewers:
     label: Architecture reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   engineering-reviewers:
     label: Engineering reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   quality-reviewers:
     label: Quality reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   design-reviewers:
     label: Design reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
+approvalSecurity:
+  profile: team
 artifactSets:
   spec-driven-specification:
     primary: spec.md
@@ -59,6 +61,21 @@ ast:
     maxFiles: 500
     maxBytes: 20971520
     maxFileBytes: 2097152
+auto:
+  enabled: false
+  defaultPace: phase
+  defaultUntil: first-human-boundary
+  workIdAllocator: ulid
+  planTtlMinutes: 30
+  execution:
+    allowedHosts:
+      - copilot-cli
+    requireManagedWorktree: true
+    automaticResume: false
+    allowPolicyWaivers: false
+    allowClarificationAnswers: false
+    allowSequenceOverrides: false
+    allowScopeExpansion: false
 codeDelivery:
   schemaVersion: 2
   mode: enforce
@@ -75,6 +92,7 @@ codeDelivery:
   tests:
     requireExecutableSource: true
     minimumDiscovered: 1
+    minimumPassed: 1
     executionAssurance: module
     stringCommands: reject
     unknownModelPolicy: block
@@ -91,7 +109,7 @@ codeDelivery:
     previewBytes: 4096
     fullDocumentMaximumBytes: 65536
   model:
-    minimumAssurance: observed
+    minimumAssurance: unavailable
 collaboration:
   assignmentMode: suggested
   approvalReminderAfterHours: 24
@@ -1469,7 +1487,7 @@ workTypes:
       - conformance
     intelligence:
       worldModel: required
-      ast: required-context
+      ast: optional-context
       agentBriefs: required
     templateOverrides:
       intake: benchmark/intake.md

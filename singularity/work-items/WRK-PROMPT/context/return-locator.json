@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "return-locator",
+  "workId": "WRK-PROMPT",
+  "capabilityId": "rule-engine",
+  "originRepositoryId": "ruleengine",
+  "repositories": [
+    {
+      "id": "ruleengine",
+      "remote": "origin",
+      "required": true,
+      "url": "https://github.com/ashokraj2011/RuleEngine.git",
+      "fingerprint": "8041d3ac0c10317a28a4194f74beb81598d75b36fe05d03ee3f82bf6598312d7",
+      "portability": "portable"
+    }
+  ],
+  "lifecycleRef": "refs/heads/WRK-PROMPT",
+  "workBranchRef": "refs/heads/WRK-PROMPT",
+  "configuration": {
+    "sha256": "1ea6f00db44b552caa91f3539c344c4bb7d2a14afe13fa08fa692c8526940064",
+    "branch": "sflow/config",
+    "commit": "f9bcdb2dea1cc82191d11bebb578783c6cfffc3d"
+  },
+  "cloneStrategy": "existing-or-clone",
+  "integritySha256": "a34ff0ebafc486887995e65806049d1872b09a376252587a200473a7805c8101"
+}
