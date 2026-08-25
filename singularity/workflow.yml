@@ -21,6 +21,8 @@ approvalAuthorities:
     members: []
 approvalSecurity:
   profile: team
+  allowSelfApproval: true
+  autoEnrollNewIdentities: true
 artifactSets:
   spec-driven-specification:
     primary: spec.md
@@ -1256,7 +1258,7 @@ tokenEconomy:
   profile: standard
   profiles:
     standard:
-      maxInputTokens: 18000
+      maximumEstimatedPromptTokens: 18000
       reservedOutputTokens: 6000
       maxExpansionTokens: 8000
       observationCapsuleTokens: 3000
@@ -1827,6 +1829,9 @@ worldModel:
     parallel: true
     maxWorkers: 4
     strategy: view
+    maximumDiscoveryPacketBytes: 24576
+    maximumSynthesisInputTokens: 24000
+    synthesisOverflow: summarize-or-refuse
   materialization:
     mode: explicit
     publish: governed
