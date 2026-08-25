@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: d32660c3997d0777de1504feede674cfab284083
+  revision: 7d20ddde6e1a029d6794bc81da44598e9c554e52
 workflow:
   version: 2
   inputsMode: enforce
@@ -117,6 +117,9 @@ workflow:
       parallel: true
       maxWorkers: 4
       strategy: view
+      maximumDiscoveryPacketBytes: 24576
+      maximumSynthesisInputTokens: 24000
+      synthesisOverflow: summarize-or-refuse
     materialization:
       mode: explicit
       publish: governed
@@ -155,7 +158,7 @@ workflow:
     profile: standard
     profiles:
       standard:
-        maxInputTokens: 18000
+        maximumEstimatedPromptTokens: 18000
         reservedOutputTokens: 6000
         maxExpansionTokens: 8000
         observationCapsuleTokens: 3000
@@ -274,6 +277,8 @@ workflow:
         captureResults: true
   approvalSecurity:
     profile: team
+    allowSelfApproval: true
+    autoEnrollNewIdentities: true
   approvalAuthorities:
     product-approvers:
       label: Product approvers
