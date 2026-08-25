@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "conformance-report",
+    "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+    "phaseId": "conformance"
+  },
+  "createdAt": "2026-08-25T01:23:21.395Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 32020,
+    "commitSha": "5f33c8600ca87f5f42b0795a1bc9a0920ad8ff5b",
+    "sha256": "d78d4f8194d42b02256685f963711b8fe3901703e5957ccabd543c2a8ae69043"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "WRk-2020",
+    "id": "WRk-2020",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
