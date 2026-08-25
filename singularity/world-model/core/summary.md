@@ -1,6 +1,6 @@
 # ruleengine — deterministic light world model
 
-> Generated 25 August 2026 (2026-08-25T01:18:06.098Z) · source `ba3c7fe293e6493aa320eefac39a0a0438f40bcb` · branch `WRk-2020`
+> Generated 25 August 2026 (2026-08-25T02:45:42.335Z) · source `e687cf950441ad4ed99f1f490136c3bc4e942005` · branch `WRK-PROMPT`
 
 ## Repository shape
 
@@ -22,10 +22,10 @@ languages_scanned: 0
 frameworks: [none identified]
 # Commits touching each file in the last year, from Git history.
 most_changed:
-  - { path: src/test/java/org/example/rules/RuleEngineServiceTest.java, commits: 9 }
-  - { path: src/main/java/org/example/rules/RuleEngineService.java, commits: 6 }
-  - { path: src/main/java/org/example/rules/Operator.java, commits: 5 }
+  - { path: src/test/java/org/example/rules/RuleEngineServiceTest.java, commits: 8 }
+  - { path: src/main/java/org/example/rules/RuleEngineService.java, commits: 5 }
   - { path: README.md, commits: 4 }
+  - { path: src/main/java/org/example/rules/Operator.java, commits: 4 }
   - { path: .idea/misc.xml, commits: 3 }
   - { path: 1.txt, commits: 3 }
   - { path: .idea/codeStyles/codeStyleConfig.xml, commits: 2 }
