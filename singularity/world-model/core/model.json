@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "mode": "deterministic-light",
+  "title": "ruleengine",
+  "repository": {
+    "commit": "e687cf950441ad4ed99f1f490136c3bc4e942005",
+    "branch": "WRK-PROMPT"
+  },
+  "counts": {
+    "files": 23,
+    "source": 10,
+    "tests": 2,
+    "manifests": 1,
+    "deployment": 0
+  },
+  "languages": {
+    "Java": 10
+  },
+  "topDirectories": {
+    "src": 10,
+    ".idea": 9,
+    "(root)": 4
+  },
+  "packages": [],
+  "commands": []
+}
