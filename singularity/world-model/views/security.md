@@ -1,10 +1,10 @@
-# architecture — light repository view
+# security — light repository view
 
 > Generated 25 August 2026 (2026-08-25T01:18:06.098Z) · deterministic light mode · source `ba3c7fe293e6493aa320eefac39a0a0438f40bcb`
 
 ## Observed
 
-3 top-level area(s) and 1 likely entry point(s) were found from path structure. Runtime boundaries are not inferred.
+0 configuration path(s) and 0 deployment path(s) were indexed. No vulnerability or secret scan was performed.
 
 - `pom.xml`
 - `src/main/java/org/example/Main.java`
