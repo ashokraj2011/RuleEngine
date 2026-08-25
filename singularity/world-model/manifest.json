@@ -1,15 +1,15 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-24T15:19:03.740Z",
-  "generated_date": "24 August 2026",
+  "generated_at": "2026-08-25T01:18:06.098Z",
+  "generated_date": "25 August 2026",
   "builder_version": "2.1-light",
   "builder_prompt_sha256": "511654826223e40b93c54f48f9b773f155e3364326d41aa98108dea7217d75cd",
-  "repository_commit": "214e7f279211a265fd3061dd86a359ae9864906a",
+  "repository_commit": "ba3c7fe293e6493aa320eefac39a0a0438f40bcb",
   "repository_branch": "WRk-2020",
   "working_tree_clean": false,
-  "generated_for_phase": "implementation",
+  "generated_for_phase": "conformance",
   "analysis_depth": "light",
-  "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+  "source_tree_sha256": "sha256:96d165cac325ea31769c88f975557dc318f8859a571b95623a58acd6a82b45a6",
   "generator": {
     "type": "deterministic-local",
     "model": null,
@@ -26,13 +26,13 @@
         "status": "ready",
         "path": "core/summary.brief.md",
         "bytes": 581,
-        "sha256": "52ccfe522fcb7f8404af79015b7ebe7e3763b418dd242994a2d935949dcfa4c7"
+        "sha256": "72a9aaeb92ddd7c692827cdd976a65f5d2763ff6afd8811e24944d6d833a4da6"
       },
       "full": {
         "status": "ready",
         "path": "core/summary.md",
-        "bytes": 1790,
-        "sha256": "aa0d62a5591b34459302964bc4dbe47e5cc92a16e57e95468c7d5993175616e7"
+        "bytes": 1789,
+        "sha256": "335246b4ca7d19b5ea5e0e3c7324d213687eb79bf612c138ac3cca36657ce40b"
       }
     }
   },
@@ -55,15 +55,18 @@
           "status": "ready",
           "path": "views/architecture.md",
           "bytes": 763,
-          "sha256": "c87525fb61b30f2113a839c15e26157b02ad9b9d85f66320aaac6336b74799da"
+          "sha256": "21bce8efd289df741ccd3d94ffc16db5f19f4ab2580f17e5fe57e0a276cae07f"
         }
       }
     },
     "development": {
+      "path": "views/development.md",
+      "brief_path": "views/development.brief.md",
+      "generated": true,
       "tiers": {
         "brief": {
           "status": "missing",
-          "path": null,
+          "path": "views/development.brief.md",
           "bytes": 0,
           "sha256": null
         },
@@ -71,40 +74,60 @@
           "status": "ready",
           "path": "views/development.md",
           "bytes": 1292,
-          "sha256": "d24115f53741f0f51f80310e0843cad50bfd7545072c5b9d4fbc1ef8b7319e34"
+          "sha256": "e7043471b4a7dbde26121c89134cee39be38ddbb7b1e85b54b8c04c07e64bac2"
         }
-      },
-      "brief_path": null,
-      "path": "views/development.md",
-      "generated": true
+      }
     },
     "testing": {
+      "path": "views/testing.md",
+      "brief_path": "views/testing.brief.md",
+      "generated": true,
       "tiers": {
         "brief": {
-          "status": "ready",
-          "path": "views/testing.brief.md",
-          "bytes": 352,
-          "sha256": "c786c5cb7526ec42606c3334c46f51722f48617bf9f14cdaca3c7a185a7636b3"
-        },
-        "full": {
           "status": "missing",
-          "path": null,
+          "path": "views/testing.brief.md",
           "bytes": 0,
           "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/testing.md",
+          "bytes": 884,
+          "sha256": "99306875f10aee4666495356f845a7237ca270c88e779f59f5580d3c8e117009"
         }
-      },
-      "brief_path": "views/testing.brief.md",
-      "path": null,
-      "generated": true
+      }
+    },
+    "security": {
+      "path": "views/security.md",
+      "brief_path": "views/security.brief.md",
+      "generated": true,
+      "tiers": {
+        "brief": {
+          "status": "missing",
+          "path": "views/security.brief.md",
+          "bytes": 0,
+          "sha256": null
+        },
+        "full": {
+          "status": "ready",
+          "path": "views/security.md",
+          "bytes": 752,
+          "sha256": "4ce87e33d7f829c7d93c461ff2b50f7456fdaa239382ab667a4446129e16f634"
+        }
+      }
     }
   },
   "views_generated": [
+    "architecture",
     "development",
-    "testing"
+    "testing",
+    "security"
   ],
   "requested_views": [
+    "architecture",
     "development",
-    "testing"
+    "testing",
+    "security"
   ],
   "domains": [],
   "task_guides": [],
@@ -122,53 +145,25 @@
   },
   "materializations": [
     {
-      "id": "light-1787531249942",
-      "generated_at": "2026-08-24T00:27:29.011Z",
-      "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
+      "id": "light-1787620687024",
+      "generated_at": "2026-08-25T01:18:06.098Z",
+      "source_tree_sha256": "sha256:96d165cac325ea31769c88f975557dc318f8859a571b95623a58acd6a82b45a6",
       "provider": null,
       "requested": [
         "architecture/full",
-        "core/brief"
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
       ],
       "produced": [
         "architecture/full",
-        "core/brief"
+        "core/full",
+        "development/full",
+        "security/full",
+        "testing/full"
       ],
       "reused": []
-    },
-    {
-      "id": "light-1787531249942",
-      "generated_at": "2026-08-24T00:27:29.011Z",
-      "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
-      "provider": null,
-      "requested": [
-        "architecture/full",
-        "core/brief"
-      ],
-      "produced": [
-        "architecture/full",
-        "core/brief"
-      ],
-      "reused": []
-    },
-    {
-      "id": "light-1787584743845",
-      "generated_at": "2026-08-24T15:19:03.740Z",
-      "source_tree_sha256": "sha256:78d341c27c52bb97ad311f6ed88ffb2e24e3e80c0292b830429b84d839c69cee",
-      "provider": null,
-      "requested": [
-        "core/brief",
-        "development/full",
-        "testing/brief"
-      ],
-      "produced": [
-        "core/brief",
-        "development/full",
-        "testing/brief"
-      ],
-      "reused": [
-        "core/brief"
-      ]
     }
   ]
 }
