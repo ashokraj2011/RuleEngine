@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 3,
+  "workId": "WRk-2020",
+  "phase": "conformance",
+  "generation": 1,
+  "agent": "qa",
+  "modelCommit": "9eeb754c2359ed5e8e1b9b9e143c9b0996adff98",
+  "matchedRules": 0,
+  "mode": "append",
+  "applied": false,
+  "depth": "standard",
+  "evidence": false,
+  "requiredViews": [
+    "architecture",
+    "development",
+    "testing",
+    "security"
+  ],
+  "requiredSelections": [
+    {
+      "kind": "core",
+      "tier": "full",
+      "required": true
+    },
+    {
+      "kind": "view",
+      "view": "architecture",
+      "tier": "full",
+      "required": true,
+      "origin": "phase"
+    },
+    {
+      "kind": "view",
+      "view": "development",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    },
+    {
+      "kind": "view",
+      "view": "testing",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    },
+    {
+      "kind": "view",
+      "view": "security",
+      "tier": "full",
+      "required": true,
+      "origin": "phase+agent"
+    }
+  ],
+  "task": null,
+  "supportingEvidence": [],
+  "references": [
+    {
+      "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "phase": "intake",
+      "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "rawSha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+      "rawBytes": 3032,
+      "previewSha256": "1b6fba732b36a12c4036d9c71a4d6c9b2294ba95f3f5ee83bcf8dc1841704d79",
+      "previewBytes": 3157,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    },
+    {
+      "handle": "sfref:v1:story:WRk-2020:932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+      "phase": "implementation",
+      "path": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+      "rawSha256": "0d825836f156b6ff5fec90054d90c4e075a262fee6a7f622c11e1a8c1079e5c3",
+      "rawBytes": 8243,
+      "previewSha256": "eb0aa295f7655019c53c3c82b115a69da7a2e580364e99fa5c5ad782e72b42a9",
+      "previewBytes": 8368,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    },
+    {
+      "handle": "sfref:v1:story:WRk-2020:851e5404d25e627255abeb94c12ca8fccb2803e09ab2aa7a07541b4f3cae9f1e",
+      "phase": "verification",
+      "path": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+      "rawSha256": "563d3dd66af62b4959a1dc9452c130722e6dfe5e1d2eb040a0ec5c5f633ea99a",
+      "rawBytes": 14151,
+      "previewSha256": "6446ccad9fbb18ca50ef22143d57a3703e6601fbc06f8c6b832864d3c85177e3",
+      "previewBytes": 14276,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      },
+      "truncated": false
+    }
+  ],
+  "modelSourceTreeSha256": "sha256:96d165cac325ea31769c88f975557dc318f8859a571b95623a58acd6a82b45a6",
+  "composedSourceTreeSha256": "sha256:96d165cac325ea31769c88f975557dc318f8859a571b95623a58acd6a82b45a6",
+  "worldModelCommit": "9eeb754c2359ed5e8e1b9b9e143c9b0996adff98",
+  "manifestSha256": "8a6945b142a88aa7cb8f69f7650e0344b7c3e6290c3e886101f6ce2f23d690a8",
+  "fresh": true,
+  "renderedSha256": "d4686132eb27592633e315c6ec8e2e7d9515cff0d99bbebc5b2f055998342b99",
+  "promptStudy": null,
+  "promptDefinition": null,
+  "structuralContext": null,
+  "remoteSkills": [],
+  "promptPath": "singularity/work-items/WRk-2020/context/prompts/conformance-gen1.md",
+  "files": [
+    {
+      "path": "singularity/world-model/core/summary.md",
+      "sha256": "335246b4ca7d19b5ea5e0e3c7324d213687eb79bf612c138ac3cca36657ce40b",
+      "bytes": 1789,
+      "injectedBytes": 1789,
+      "truncated": false,
+      "category": "required",
+      "level": 0,
+      "reason": "shared repository core (full)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/architecture.md",
+      "sha256": "21bce8efd289df741ccd3d94ffc16db5f19f4ab2580f17e5fe57e0a276cae07f",
+      "bytes": 763,
+      "injectedBytes": 763,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "conformance view: architecture (full; phase)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/development.md",
+      "sha256": "e7043471b4a7dbde26121c89134cee39be38ddbb7b1e85b54b8c04c07e64bac2",
+      "bytes": 1292,
+      "injectedBytes": 1292,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "conformance view: development (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/testing.md",
+      "sha256": "99306875f10aee4666495356f845a7237ca270c88e779f59f5580d3c8e117009",
+      "bytes": 884,
+      "injectedBytes": 884,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "conformance view: testing (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/views/security.md",
+      "sha256": "4ce87e33d7f829c7d93c461ff2b50f7456fdaa239382ab667a4446129e16f634",
+      "bytes": 752,
+      "injectedBytes": 752,
+      "truncated": false,
+      "category": "required",
+      "level": 1,
+      "reason": "conformance view: security (full; phase+agent)",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/world-model/evidence/evidence.jsonl",
+      "sha256": "86e65ea69335f88d34b2edd905e4bc59dc9b9c5f1e68bb40f3de3f127b181626",
+      "bytes": 398,
+      "injectedBytes": 398,
+      "truncated": false,
+      "category": "required",
+      "level": 3,
+      "reason": "evidence ledger",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": null,
+      "previewSha256": null,
+      "previewBytes": null,
+      "renderer": null
+    },
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/intake/intake.md",
+      "sha256": "be49e5a059f662a4336a3a65137c9c8feff9d76996887f0d0b9931445edc1fbf",
+      "bytes": 3032,
+      "injectedBytes": 3157,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "intake:sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:WRk-2020:d9310986027db06c3e002040b7b94cb61398365a841b2dba071f98761c20a800",
+      "previewSha256": "1b6fba732b36a12c4036d9c71a4d6c9b2294ba95f3f5ee83bcf8dc1841704d79",
+      "previewBytes": 3157,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    },
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/implementation/implementation-summary.md",
+      "sha256": "0d825836f156b6ff5fec90054d90c4e075a262fee6a7f622c11e1a8c1079e5c3",
+      "bytes": 8243,
+      "injectedBytes": 8368,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "implementation:sfref:v1:story:WRk-2020:932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:WRk-2020:932c97784a4871c0a8af66a7fe73b96c774f39b7b4e8b37a1a2691195184c9c3",
+      "previewSha256": "eb0aa295f7655019c53c3c82b115a69da7a2e580364e99fa5c5ad782e72b42a9",
+      "previewBytes": 8368,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    },
+    {
+      "path": "singularity/work-items/WRk-2020/artifacts/verification/test-evidence.md",
+      "sha256": "563d3dd66af62b4959a1dc9452c130722e6dfe5e1d2eb040a0ec5c5f633ea99a",
+      "bytes": 14151,
+      "injectedBytes": 14276,
+      "truncated": false,
+      "category": "reference",
+      "level": null,
+      "reason": "verification:sfref:v1:story:WRk-2020:851e5404d25e627255abeb94c12ca8fccb2803e09ab2aa7a07541b4f3cae9f1e",
+      "evidenceId": null,
+      "mimeType": null,
+      "packageId": null,
+      "handle": "sfref:v1:story:WRk-2020:851e5404d25e627255abeb94c12ca8fccb2803e09ab2aa7a07541b4f3cae9f1e",
+      "previewSha256": "6446ccad9fbb18ca50ef22143d57a3703e6601fbc06f8c6b832864d3c85177e3",
+      "previewBytes": 14276,
+      "renderer": {
+        "id": "markdown-outline",
+        "version": 1
+      }
+    }
+  ],
+  "injectedAt": "2026-08-25T01:18:18.225Z"
+}

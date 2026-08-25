@@ -1,0 +1,13 @@
+{
+  "clauses": [],
+  "generation": 1,
+  "indexSha256": "4ee2c3a199ca7da98e56d5b730f5461f8ba9bc0f552096b6f698da4afbce876c",
+  "phase": "conformance",
+  "schemaVersion": 1,
+  "source": {
+    "bytes": 32020,
+    "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+    "sha256": "d78d4f8194d42b02256685f963711b8fe3901703e5957ccabd543c2a8ae69043"
+  },
+  "workId": "WRk-2020"
+}

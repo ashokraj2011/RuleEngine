@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "workId": "WRk-2020",
+  "phase": "conformance",
+  "generation": 1,
+  "mode": "when-needed",
+  "promptPath": "singularity/work-items/WRk-2020/context/prompts/conformance-gen1.md",
+  "promptSha256": "d4686132eb27592633e315c6ec8e2e7d9515cff0d99bbebc5b2f055998342b99",
+  "groundingRecordPath": "singularity/work-items/WRk-2020/context/conformance-gen1.json",
+  "groundingRecordSha256": "fe64d7f22eff8e39124c45a98ddb743d653e1e5be52d32493cdd4521e9f7de27",
+  "responses": [
+    {
+      "id": "Q-001",
+      "question": "Any material deviation or unplanned work to call out?",
+      "answer": "No",
+      "status": "answered",
+      "blocking": false
+    }
+  ],
+  "completed": true,
+  "recordedAt": "2026-08-25T01:21:58.861Z",
+  "recordedBy": {
+    "name": "Ashok Raj",
+    "email": "88361104+ashokraj2011@users.noreply.github.com",
+    "login": "ashokraj2011",
+    "githubLookup": "resolved"
+  },
+  "agent": "qa"
+}

@@ -1,0 +1,46 @@
+{
+  "artifact": {
+    "bytes": 4447,
+    "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+    "role": "conformance-report",
+    "sha256": "fa60dea580ee7be896de8b39a2f6fe7392379ccbbaf92586776d03dfc0229417"
+  },
+  "configuration": {
+    "revision": "9137584faa780b8f406277253b4b512a154270b7",
+    "sha256": "eedf45d3dc2293fb9d7c9fcff51a0b99bc9704f352df44b8d34ac7d727e556e8"
+  },
+  "generation": 1,
+  "inputs": [
+    {
+      "kind": null,
+      "path": "artifacts/implementation/implementation-summary.md",
+      "sha256": null
+    },
+    {
+      "kind": null,
+      "path": "artifacts/verification/test-evidence.md",
+      "sha256": null
+    }
+  ],
+  "integritySha256": "cf2ded3c917aaa6a8c05ffb2d9d387a1ca17098d9f2384c18bc959dc7ab06d1b",
+  "phase": "conformance",
+  "producer": {
+    "actor": "88361104+ashokraj2011@users.noreply.github.com",
+    "agent": "qa",
+    "kind": "governed-agent"
+  },
+  "publication": {
+    "branch": "WRk-2020",
+    "commit": null,
+    "publishedAt": "2026-08-25T01:22:43.894Z"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "id": "WRk-2020",
+    "kind": "story"
+  },
+  "template": {
+    "path": "singularity/templates/common/conformance.md",
+    "sha256": "dcb95249d8fef0dcdb87a6f012f09c481a47813e50f4e8dd96be207c81c15ada"
+  }
+}
