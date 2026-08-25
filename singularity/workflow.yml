@@ -1,24 +1,26 @@
 approvalAuthorities:
   product-approvers:
     label: Product approvers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   architecture-reviewers:
     label: Architecture reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   engineering-reviewers:
     label: Engineering reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   quality-reviewers:
     label: Quality reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
   design-reviewers:
     label: Design reviewers
-    allowAnyGitIdentity: true
+    allowAnyGitIdentity: false
     members: []
+approvalSecurity:
+  profile: team
 artifactSets:
   spec-driven-specification:
     primary: spec.md
