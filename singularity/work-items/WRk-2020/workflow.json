@@ -1759,8 +1759,8 @@
       }
     ]
   },
-  "status": "in_progress",
-  "currentPhase": "conformance",
+  "status": "complete",
+  "currentPhase": null,
   "phaseOrder": [
     "intake",
     "implementation",
@@ -2463,7 +2463,7 @@
       "label": "Spec-to-code conformance",
       "order": 3,
       "defaultAgent": "qa",
-      "status": "awaiting_approval",
+      "status": "approved",
       "requiredArtifact": {
         "path": "artifacts/conformance/spec-code-comparison.md",
         "kind": "conformance-report",
@@ -2552,8 +2552,8 @@
       "qualityCommands": [],
       "startedAt": "2026-08-25T01:15:30.175Z",
       "submittedAt": "2026-08-25T01:23:21.362Z",
-      "approvedAt": null,
-      "approvedBy": null,
+      "approvedAt": "2026-08-25T01:27:50.065Z",
+      "approvedBy": "ashokraj2011",
       "rejectedAt": null,
       "rejectedBy": null,
       "rejectionReason": null,
@@ -2632,18 +2632,63 @@
           "providerCost": null
         }
       ],
-      "approvals": [],
+      "approvals": [
+        {
+          "decision": "approved",
+          "phase": "conformance",
+          "at": "2026-08-25T01:27:50.065Z",
+          "actor": {
+            "name": "Ashok Raj",
+            "email": "88361104+ashokraj2011@users.noreply.github.com",
+            "login": "ashokraj2011",
+            "githubLookup": "resolved"
+          },
+          "agent": "qa",
+          "authorityGroup": "quality-reviewers",
+          "identityAssurance": "configured-local",
+          "channel": "copilot-selection-receipt",
+          "generation": 1,
+          "artifactSha256": [
+            {
+              "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+              "sha256": "84379f06cd52cf8fa4e9799edb97cc284a5334be5a258c6a003555b2fd93abcb"
+            }
+          ],
+          "reviewPacketSha256": "de54a2ab012e0f31af2a76f3770b7abaf68e8e6f5af3c093aac01f062106048b",
+          "evidenceCommit": "ab285fb080504ddcf408c54d1dc296e947c400f7",
+          "artifactSetSha256": "2b4522e6e6f0c0faa8ad26558af5649d5e9ede59ddbbc75d233239b5f320cc20",
+          "actionContext": {
+            "phase": "conformance",
+            "label": "Spec-to-code conformance",
+            "generation": 1,
+            "submittedAt": "2026-08-25T01:23:21.362Z",
+            "artifacts": [
+              {
+                "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+                "sha256": "84379f06cd52cf8fa4e9799edb97cc284a5334be5a258c6a003555b2fd93abcb"
+              }
+            ],
+            "agentBriefs": [],
+            "reviewPacketSha256": "de54a2ab012e0f31af2a76f3770b7abaf68e8e6f5af3c093aac01f062106048b",
+            "submittedSourceCommit": "5f33c8600ca87f5f42b0795a1bc9a0920ad8ff5b",
+            "planId": "9e15e5162425ade31dc340c3"
+          },
+          "selfApproval": true
+        }
+      ],
       "designSourceSets": [],
       "artifacts": [
         {
           "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
           "kind": "conformance-report",
-          "status": "pending",
+          "status": "approved",
           "exists": true,
-          "size": 32102,
-          "sha256": "84379f06cd52cf8fa4e9799edb97cc284a5334be5a258c6a003555b2fd93abcb",
+          "size": 33788,
+          "sha256": "ae1f5fc0555d9510ed29c3f54a94f892c1191b1c51b7ee612f39aa73cedac9b9",
           "registeredAt": "2026-08-25T01:22:43.631Z",
-          "updatedAt": "2026-08-25T01:23:21.363Z"
+          "updatedAt": "2026-08-25T01:23:21.363Z",
+          "approvedAt": "2026-08-25T01:27:50.065Z",
+          "approvedBy": "ashokraj2011"
         }
       ],
       "checks": [],
@@ -2896,6 +2941,14 @@
       "event": "phase_submitted",
       "phase": "conformance",
       "detail": "1 artifacts"
+    },
+    {
+      "at": "2026-08-25T01:27:50.065Z",
+      "actor": "ashokraj2011",
+      "agent": "qa",
+      "event": "phase_self_approved",
+      "phase": "conformance",
+      "detail": "threshold reached; complete"
     }
   ],
   "measurement": {
@@ -3293,6 +3346,40 @@
         "idempotencyKey": null,
         "idempotencyHash": null,
         "createdAt": "2026-08-25T01:23:21.253Z"
+      },
+      "ledgerIntent": null
+    },
+    {
+      "schemaVersion": 1,
+      "event": {
+        "schemaVersion": 1,
+        "eventId": "a0b1ba93-787b-4066-ae08-b41c78f1f37e",
+        "type": "phase-approved",
+        "subject": {
+          "kind": "story",
+          "id": "WRk-2020",
+          "branch": "WRk-2020"
+        },
+        "phaseId": "conformance",
+        "generation": 1,
+        "actor": {
+          "name": "Ashok Raj",
+          "email": "88361104+ashokraj2011@users.noreply.github.com",
+          "login": "ashokraj2011",
+          "githubLookup": "resolved"
+        },
+        "agent": "qa",
+        "authorityGroup": "quality-reviewers",
+        "payload": {
+          "decision": "approved",
+          "reviewPacketSha256": "de54a2ab012e0f31af2a76f3770b7abaf68e8e6f5af3c093aac01f062106048b",
+          "evidenceCommit": "ab285fb080504ddcf408c54d1dc296e947c400f7",
+          "artifactSetSha256": "2b4522e6e6f0c0faa8ad26558af5649d5e9ede59ddbbc75d233239b5f320cc20"
+        },
+        "sourceCommit": null,
+        "idempotencyKey": null,
+        "idempotencyHash": null,
+        "createdAt": "2026-08-25T01:27:49.966Z"
       },
       "ledgerIntent": null
     }

@@ -5,7 +5,7 @@
   "workType": "chore",
   "phase": "conformance",
   "generation": 1,
-  "status": "awaiting_approval",
+  "status": "approved",
   "generatedBy": {
     "name": "Ashok Raj",
     "email": "88361104+ashokraj2011@users.noreply.github.com",
@@ -116,8 +116,51 @@
     }
   ],
   "sequenceOverrides": [],
-  "approvals": [],
-  "selfApproval": false,
+  "approvals": [
+    {
+      "decision": "approved",
+      "phase": "conformance",
+      "at": "2026-08-25T01:27:50.065Z",
+      "actor": {
+        "name": "Ashok Raj",
+        "email": "88361104+ashokraj2011@users.noreply.github.com",
+        "login": "ashokraj2011",
+        "githubLookup": "resolved"
+      },
+      "agent": "qa",
+      "authorityGroup": "quality-reviewers",
+      "identityAssurance": "configured-local",
+      "channel": "copilot-selection-receipt",
+      "generation": 1,
+      "artifactSha256": [
+        {
+          "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+          "sha256": "84379f06cd52cf8fa4e9799edb97cc284a5334be5a258c6a003555b2fd93abcb"
+        }
+      ],
+      "reviewPacketSha256": "de54a2ab012e0f31af2a76f3770b7abaf68e8e6f5af3c093aac01f062106048b",
+      "evidenceCommit": "ab285fb080504ddcf408c54d1dc296e947c400f7",
+      "artifactSetSha256": "2b4522e6e6f0c0faa8ad26558af5649d5e9ede59ddbbc75d233239b5f320cc20",
+      "actionContext": {
+        "phase": "conformance",
+        "label": "Spec-to-code conformance",
+        "generation": 1,
+        "submittedAt": "2026-08-25T01:23:21.362Z",
+        "artifacts": [
+          {
+            "path": "singularity/work-items/WRk-2020/artifacts/conformance/spec-code-comparison.md",
+            "sha256": "84379f06cd52cf8fa4e9799edb97cc284a5334be5a258c6a003555b2fd93abcb"
+          }
+        ],
+        "agentBriefs": [],
+        "reviewPacketSha256": "de54a2ab012e0f31af2a76f3770b7abaf68e8e6f5af3c093aac01f062106048b",
+        "submittedSourceCommit": "5f33c8600ca87f5f42b0795a1bc9a0920ad8ff5b",
+        "planId": "9e15e5162425ade31dc340c3"
+      },
+      "selfApproval": true
+    }
+  ],
+  "selfApproval": true,
   "conformanceTree": "sha256:ac003603f83172dbab43ec6f1d6ee3f28e25d931a312c1d6e5dbc72d77b50470"
 }
 -->
