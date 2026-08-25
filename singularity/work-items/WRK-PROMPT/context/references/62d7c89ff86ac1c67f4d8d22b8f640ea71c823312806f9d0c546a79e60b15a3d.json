@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "generation": 1,
+    "mediaType": "text/markdown",
+    "outputId": "document",
+    "path": "singularity/work-items/WRK-PROMPT/artifacts/intake/intake.md",
+    "phaseId": "intake"
+  },
+  "createdAt": "2026-08-25T02:47:06.513Z",
+  "kind": "governed-reference",
+  "repository": {
+    "id": "ruleengine",
+    "origin": "https://github.com/ashokraj2011/RuleEngine.git"
+  },
+  "revision": {
+    "bytes": 4526,
+    "commitSha": "b1c13ff72466df3758a60e416494586565998f0e",
+    "sha256": "9c67af347f4f152308a4433c1e685948298e8df50c81a4e35c5989309da3aeac"
+  },
+  "schemaVersion": 1,
+  "subject": {
+    "branch": "WRK-PROMPT",
+    "id": "WRK-PROMPT",
+    "kind": "story",
+    "subjectRevision": 1
+  },
+  "visibility": "model"
+}
