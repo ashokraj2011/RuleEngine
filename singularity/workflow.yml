@@ -1693,6 +1693,8 @@ workTypes:
           - poc-validation
   spec-driven-standard:
     label: Spec-Driven Standard
+    spec:
+      mode: enforce
     phases:
       - specification
       - planning
