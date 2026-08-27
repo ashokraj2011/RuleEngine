@@ -260,6 +260,7 @@ models:
     copilot-cli:
       type: copilot-cli
       executable: copilot
+      promptTransport: auto
       arguments: []
 noModel:
   unknownExternalCommands: warn
