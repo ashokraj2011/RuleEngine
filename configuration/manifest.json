@@ -3,15 +3,15 @@
   "layout": "canonical-paths",
   "source": {
     "branch": "sflow/config",
-    "commit": "69d7fb7ffbf880c27c6a5683c765db0575261ac9"
+    "commit": "ae44f02f970e3bac79116d70eddfd1d86a695152"
   },
   "product": {
     "version": "0.9.0",
-    "revision": "5a5c8062a6df32d3b1fd54d9cf5b4955bc9112cd"
+    "revision": "70e005c66b247f62c4afa89222527686c1d3d191"
   },
   "files": {
     ".github/agents/architect.agent.md": "28dceea24f5990cb48decf09cff11b29071febdf58a64f9253a09ec19e99d58b",
-    ".github/agents/developer.agent.md": "274adbcae64ecb9896bd9f53ef8c21a3109918fb7015496e0a8d8b5f57cc143b",
+    ".github/agents/developer.agent.md": "b3ecdcba0c9ebe4cb31eb30232471111822392bf960aa6a67ac92178691dcaf5",
     ".github/agents/mobile-architect.agent.md": "c0d882e1b6a6a946e4573756aa156e4ca918b578634baa35e6fccb74a595b698",
     ".github/agents/poc-analyst.agent.md": "1d4e071363256e214a58ab810819218cff8f4d288d571487eb6f18d2bca8b1d2",
     ".github/agents/poc-automation.agent.md": "23adcbd69ceef94dba9fc035273cbfa2d878bd72c33c9c3a89ebd1d085a39cd1",
@@ -114,9 +114,9 @@
     "singularity/templates/quick-fix/implement.md": "dff093133a1be4c93115cfbbb0d994c8ce391fc19279caee30b441ec27a05c0a",
     "singularity/templates/quick-fix/verify.md": "a21900d99d044d35de501f0e43888a8a3ebcfe860e702a5d1b3eec61fdd06f27",
     "singularity/templates/spec-driven/convergence.md": "eb257477afca0229ed858875499736c57498015aaee0a527b714356819a9dde2",
-    "singularity/templates/spec-driven/plan.md": "3e0676d5a5c384fbc3bf3f3320f495017254c349fca42ef5f5c3c93ea94b2ec0",
-    "singularity/templates/spec-driven/release.md": "f091ec3cec891f0236a3a51a798dd43c401c992dfbcdc05b592eb119ebd2f692",
-    "singularity/templates/spec-driven/spec.md": "37c4fb807258773b3944399e2cf8dca7cc375dfcb2d906e0e72a9cae54efd8cf",
-    "singularity/workflow.yml": "7b6f1a42e386ee2c49370094ab72894fbf64140ec52b789aae7109b0a24c4426"
+    "singularity/templates/spec-driven/plan.md": "069190d022b9423a996c7c8a88de3d7ef457336398a8e3d5bb639115eb6d674a",
+    "singularity/templates/spec-driven/release.md": "ce6e1d1995c68158f4209063b3cb954eceab8576e1c8db76bfaed27a805a8908",
+    "singularity/templates/spec-driven/spec.md": "27424a624b1dab57323fd7482ac62708bd42d11ba42e41c102f94e15182fe485",
+    "singularity/workflow.yml": "8ee3e2a50aa72fbe640e44f2f0911a6db6ac840142c435fcaad61cd5c4779ffc"
   }
 }
