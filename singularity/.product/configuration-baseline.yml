@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: a46448c50b94a39722a429cd89ba7ad1ba8fbcc5
+  revision: version-0.9.0
 workflow:
   version: 2
   inputsMode: enforce
@@ -616,10 +616,47 @@ workflow:
         verify:
           inputs:
             - implement
+    poc-lite:
+      label: POC Lite — local governed change
+      description: A model-free four-checkpoint demonstration with repository-native
+        validation and one explicit human finish decision; it imposes no MCP,
+        tracker, or hosted-service dependency.
+      phases:
+        - poc-lite-plan
+        - poc-lite-act
+        - poc-lite-verify
+        - poc-lite-finalize
+      plannedClaims:
+        mode: opt-out
+        reason: This deliberately small demonstration records a bounded plan but does
+          not establish a specification-clause contract.
+      intelligence:
+        worldModel: off
+        ast: off
+        agentBriefs: off
+      templateOverrides:
+        poc-lite-plan: poc-lite/plan.md
+        poc-lite-act: poc-lite/act.md
+        poc-lite-verify: poc-lite/verify.md
+        poc-lite-finalize: poc-lite/finalize.md
+      phaseOverrides:
+        poc-lite-act:
+          inputs:
+            - poc-lite-plan
+        poc-lite-verify:
+          inputs:
+            - poc-lite-plan
+            - poc-lite-act
+        poc-lite-finalize:
+          inputs:
+            - poc-lite-plan
+            - poc-lite-act
+            - poc-lite-verify
     benchmarking-a:
       label: Benchmark A — governed intelligence
-      description: Requires governed world-model, bounded AST, and approval-bound
-        agent-brief context.
+      description: Measures governed world-model, bounded AST, and approval-bound
+        agent-brief context; unavailable intelligence is a degraded benchmark
+        run, not a lifecycle refusal.
       phases:
         - intake
         - design
@@ -804,7 +841,9 @@ workflow:
               - testing
               - conformance
     poc-workflow:
-      label: POC workflow
+      label: POC workflow — enterprise Playwright
+      description: The existing enterprise browser-regression profile with governed
+        Playwright MCP evidence and independent publication review.
       phases:
         - poc-intake
         - poc-impact-analysis
@@ -1802,6 +1841,114 @@ workflow:
           - poc-test-generation
           - poc-validation
           - poc-publication-review
+    poc-lite-plan:
+      label: PLAN — bound the local change
+      defaultTemplate: poc-lite/plan.md
+      artifact:
+        path: artifacts/poc-lite-plan/plan.md
+        kind: delivery-plan
+        minimumBytes: 200
+        validation:
+          requiredHeadings:
+            - Work item
+            - Changed paths
+            - Configured checks
+            - Specification claims
+      generation:
+        requirement: required
+        producer: deterministic
+        task: reason
+      worldModel:
+        views: []
+      writeScope: artifact-only
+      approval: none
+    poc-lite-act:
+      label: ACT — make the bounded change
+      defaultTemplate: poc-lite/act.md
+      artifact:
+        path: artifacts/poc-lite-act/implementation-summary.md
+        kind: implementation-summary
+        minimumBytes: 200
+        validation:
+          requiredHeadings:
+            - Work item
+            - Changed paths
+            - Configured checks
+            - Specification claims
+      generation:
+        requirement: required
+        producer: deterministic
+        task: code
+      worldModel:
+        views: []
+      writeScope: source-and-artifact
+      approval: none
+      qualityCommands:
+        - id: git-diff-check
+          argv:
+            - git
+            - diff
+            - --check
+          modelPolicy: never
+    poc-lite-verify:
+      label: VERIFY — run repository checks
+      defaultTemplate: poc-lite/verify.md
+      artifact:
+        path: artifacts/poc-lite-verify/verification.md
+        kind: test-evidence
+        minimumBytes: 200
+        validation:
+          requiredHeadings:
+            - Work item
+            - Changed paths
+            - Configured checks
+            - Specification claims
+      generation:
+        requirement: required
+        producer: deterministic
+        task: analyze
+      worldModel:
+        views: []
+      writeScope: artifact-only
+      approval: none
+      qualityCommands:
+        - id: git-diff-check
+          argv:
+            - git
+            - diff
+            - --check
+          modelPolicy: never
+    poc-lite-finalize:
+      label: FINALIZE — human finish decision
+      defaultTemplate: poc-lite/finalize.md
+      artifact:
+        path: artifacts/poc-lite-finalize/finalize.md
+        kind: publication-review
+        minimumBytes: 200
+        validation:
+          requiredHeadings:
+            - Work item
+            - Changed paths
+            - Configured checks
+            - Specification claims
+      generation:
+        requirement: required
+        producer: deterministic
+        task: summarize
+      worldModel:
+        views: []
+      writeScope: artifact-only
+      approval:
+        authorities:
+          - quality-reviewers
+        requiredAuthorities:
+          - quality-reviewers
+        minimum: 1
+        rejectTo:
+          - poc-lite-plan
+          - poc-lite-act
+          - poc-lite-verify
+          - poc-lite-finalize
     specification:
       label: Specification
       defaultTemplate: spec-driven/spec.md
@@ -1978,6 +2125,12 @@ assets:
     sha256: 23adcbd69ceef94dba9fc035273cbfa2d878bd72c33c9c3a89ebd1d085a39cd1
   .github/agents/poc-explorer.agent.md:
     sha256: 6c471ac9d6bf14f865e73cd1a39a3cef635e3bdc7c4f455d182ae9b0845b7277
+  .github/agents/poc-lite-implementer.agent.md:
+    sha256: 8fa2344494618a1200b987aec80600b8d05cde24c3dee57e7ef6934fdd42e064
+  .github/agents/poc-lite-planner.agent.md:
+    sha256: 85b821ac88fb52eb7972f1026f605f04144fb27df5afc2e42fc0c06212562a9b
+  .github/agents/poc-lite-verifier.agent.md:
+    sha256: d2a01fd1beebae0b2399d0a2908d4ac0db5ad8cbc803020f40697914a2b7ee60
   .github/agents/poc-test-developer.agent.md:
     sha256: 4c82f12e6642c42e60ef6b0e4a19b9c37b70a73c2089b8dfd2c525858d7a4681
   .github/agents/poc-validator.agent.md:
@@ -2069,7 +2222,7 @@ assets:
   singularity/templates/initiatives/epic-record.yml:
     sha256: 9ca4bdb695a7cd07633746cbe8245a2e170315e09b3dd10a252684a25671ad94
   singularity/templates/initiatives/epic/impact-analysis.yml:
-    sha256: b8f435bbc0bcab91cc1af9e32966600a8c9ccb84ca7a325baeeb3aadbc14e3f9
+    sha256: 25a9ebf19c65ea0144ff23a0c2222380f0e61ef9c97c0b3cd4fde66ab9c46ca2
   singularity/templates/initiatives/epic/jira-write-plan.yml:
     sha256: 176c8c177d77e61df465472bdb5b9bfb67a9a3183e13e4704aafa1f4931e48e9
   singularity/templates/initiatives/epic/materialization-report.md:
@@ -2077,7 +2230,7 @@ assets:
   singularity/templates/initiatives/epic/parent-spec.md:
     sha256: 4c80b3cb91962fd1b1fe64f01bd7dc4b0ed14ec7fb889750cabf1522eaabfa72
   singularity/templates/initiatives/epic/repository-map.yml:
-    sha256: cb60767c53bc9bd0c6439e2b74310c050fef821a57183d15425c73cb55b25584
+    sha256: d87a27fb71918827adbb9cbbcbc58efcf9e00689e24154215c021e217cb75b6b
   singularity/templates/initiatives/epic/requirements-traceability.yml:
     sha256: 672a8ccb13f2945e9043e325f7fe0538bddfe8a43d3bf07864bee7937b680b73
   singularity/templates/initiatives/epic/requirements.md:
@@ -2152,6 +2305,14 @@ assets:
     sha256: 3377bd930d736890c16ecff4c1f1ec81ee83636e609aa61e95d29a5449793419
   singularity/templates/initiatives/ux-concept.md:
     sha256: d12e90b0412fcf41cf07fec6bcfe8c83d80949fc01fec2973d23a24a62e73b89
+  singularity/templates/poc-lite/act.md:
+    sha256: f9c3c015c593a51b7d3fd11ba5ec9fc104eaf00f45e2c78ea50a9b78d061c383
+  singularity/templates/poc-lite/finalize.md:
+    sha256: 6e46b121db6e48206916719e66b927c19e3db86bb829c661bff89db74e814940
+  singularity/templates/poc-lite/plan.md:
+    sha256: cac46909b752b8d14cb4bab3399dd9d57da540e5ba443f171b4c1fb4695882c6
+  singularity/templates/poc-lite/verify.md:
+    sha256: c31624345a1b3803f1cfe267b670e570e1ad1ae3742e88898d123f962b913a58
   singularity/templates/poc-workflow/impact-analysis.md:
     sha256: 16b58133b53c74c225f9e0a10b36301678d3ae5cd1a2686f23d1cbe414ec6c93
   singularity/templates/poc-workflow/intake.md:
