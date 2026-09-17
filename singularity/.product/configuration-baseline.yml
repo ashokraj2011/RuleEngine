@@ -1,7 +1,7 @@
 format: singularity-flow-configuration-baseline/v1
 product:
   version: 0.9.0
-  revision: version-0.9.0
+  revision: ac50cd041dd840927b776aea7ff45b510fb4c708
 workflow:
   version: 2
   inputsMode: enforce
@@ -118,6 +118,13 @@ workflow:
   templatesRoot: singularity/templates
   noModel:
     unknownExternalCommands: warn
+  repositoryReadiness:
+    requiredBeforeStory: false
+    dependencyHydration: when-detected
+    build: when-detected
+    structuredTests: required-for-code
+    applicationStart: when-detected
+    receiptScope: git-private-exact-base
   codeDelivery:
     schemaVersion: 2
     mode: enforce
@@ -165,7 +172,21 @@ workflow:
       - release
       - operations
       - security
+    projections:
+      arch.calm:
+        enabled: false
+        required: false
+        contract: arch.calm@1
+        calm:
+          schemaRelease: "1.2"
+          strict: true
+        profile:
+          includeGovernanceActors: true
+          includeControls: true
+          includeFlows: true
+          includeExternalDependencies: direct-architecture-only
     outputDir: singularity/world-model
+    historyDir: singularity/world-model-history
     promptSource: singularity/prompts/worldmodel-builder.md
     stateFetchTimeoutMs: 10000
     generation:
@@ -188,6 +209,14 @@ workflow:
       mode: append
       maxBytes: 32768
       rules: []
+  architectureIntent:
+    enabled: false
+    allowedPhases:
+      - design
+      - planning
+    blockRequiredUnfulfilledAt:
+      - verification
+      - release
   ast:
     mode: auto
     fallback: host-and-text
@@ -214,6 +243,7 @@ workflow:
   tokenEconomy:
     enabled: true
     mode: observe
+    composer: legacy-v1
     profile: standard
     profiles:
       standard:
@@ -892,6 +922,52 @@ workflow:
             - poc-ui-exploration
             - poc-test-generation
             - poc-validation
+    reference-driven-build:
+      label: Reference-driven build
+      description: Creates a new implementation in the delivery repository from one or
+        more immutable, read-only repository branches pinned at Story intake.
+      references:
+        mode: required
+      phases:
+        - specification
+        - planning
+        - implementation
+        - convergence
+        - verification
+        - release
+      spec:
+        mode: enforce
+      plannedClaims:
+        mode: required
+        clausePhases:
+          - specification
+        owners:
+          implementation: planning
+      templateOverrides:
+        specification: spec-driven/spec.md
+        planning: spec-driven/plan.md
+        convergence: spec-driven/convergence.md
+      phaseOverrides:
+        planning:
+          inputs:
+            - specification
+        implementation:
+          inputs:
+            - specification
+            - planning
+        convergence:
+          inputs:
+            - specification
+            - planning
+            - implementation
+        verification:
+          inputs:
+            - specification
+            - planning
+            - implementation
+        release:
+          inputs:
+            - verification
     spec-driven-standard:
       label: Spec-Driven Standard
       spec:
@@ -919,7 +995,10 @@ workflow:
         converge:
           milestone: convergence-advanced
         verify:
-          milestone: verification-approved
+          milestone: release-approved
+          phases:
+            - verification
+            - release
       constitution:
         path: singularity/constitution.md
         mode: warn
@@ -938,7 +1017,7 @@ workflow:
                 - Boundary conditions
               maximumSummaryBytes: 32768
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
         implementation:
           inputs:
             - phase: specification
@@ -949,7 +1028,7 @@ workflow:
                 - Boundary conditions
               maximumSummaryBytes: 32768
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
             - phase: planning
               projection: approved-summary
               preserve:
@@ -957,7 +1036,7 @@ workflow:
                 - Risks and rollback
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
         convergence:
           inputs:
             - phase: specification
@@ -968,7 +1047,7 @@ workflow:
                 - Boundary conditions
               maximumSummaryBytes: 32768
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
             - phase: planning
               projection: approved-summary
               preserve:
@@ -976,7 +1055,7 @@ workflow:
                 - Risks and rollback
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
             - phase: implementation
               projection: approved-summary
               preserve:
@@ -984,7 +1063,7 @@ workflow:
                 - Tests and operational notes
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
         verification:
           inputs:
             - phase: specification
@@ -995,7 +1074,7 @@ workflow:
                 - Boundary conditions
               maximumSummaryBytes: 32768
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
             - phase: planning
               projection: approved-summary
               preserve:
@@ -1003,7 +1082,7 @@ workflow:
                 - Risks and rollback
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
             - phase: implementation
               projection: approved-summary
               preserve:
@@ -1011,20 +1090,18 @@ workflow:
                 - Tests and operational notes
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
         release:
           inputs:
+            - phase: convergence
             - phase: verification
               projection: approved-summary
               preserve:
                 - Acceptance and specification results
-                - Negative
-                - regression
-                - security
-                - and non-functional checks
+                - Negative, regression, security, and non-functional checks
               maximumSummaryBytes: 24576
               expansion: hash-bound-reference
-              fallback: whole
+              fallback: block
   phases:
     intake:
       label: Intake
@@ -1994,6 +2071,8 @@ workflow:
         views:
           - architecture
         depth: standard
+      clarification:
+        mode: off
       writeScope: artifact-only
       approval:
         authorities:
@@ -2114,15 +2193,15 @@ workflow:
       - .github/skills
 assets:
   .github/agents/architect.agent.md:
-    sha256: 28dceea24f5990cb48decf09cff11b29071febdf58a64f9253a09ec19e99d58b
+    sha256: c17746841c5afad787e9a33c8a97aa6de15bf44a798d541f1d4c61659485d872
   .github/agents/developer.agent.md:
-    sha256: b3ecdcba0c9ebe4cb31eb30232471111822392bf960aa6a67ac92178691dcaf5
+    sha256: edfba1ce014ba9a5cf379303efa3841eb4345dd1602f2b2566c8e5001d4c99d1
   .github/agents/mobile-architect.agent.md:
-    sha256: c0d882e1b6a6a946e4573756aa156e4ca918b578634baa35e6fccb74a595b698
+    sha256: 830219deadfb61f600397ae9c63402b7954fbc4c21f4a893058a4a138df24903
   .github/agents/poc-analyst.agent.md:
-    sha256: 1d4e071363256e214a58ab810819218cff8f4d288d571487eb6f18d2bca8b1d2
+    sha256: 7b7690a834615919f4a4417a60783359965a848f8775dfa67acadb818684411d
   .github/agents/poc-automation.agent.md:
-    sha256: 23adcbd69ceef94dba9fc035273cbfa2d878bd72c33c9c3a89ebd1d085a39cd1
+    sha256: ec5709c720d979d389ebb20cb73977f0efc485d87781b62135857c622c625a7c
   .github/agents/poc-explorer.agent.md:
     sha256: 6c471ac9d6bf14f865e73cd1a39a3cef635e3bdc7c4f455d182ae9b0845b7277
   .github/agents/poc-lite-implementer.agent.md:
@@ -2136,11 +2215,11 @@ assets:
   .github/agents/poc-validator.agent.md:
     sha256: 904954066c83b071fc03c8077733027bb5741b8f870c869e8754a896eeca8714
   .github/agents/product-designer.agent.md:
-    sha256: 90a2cf69c295d0062c95a42adb7ff6f40601286641776f077f19922efeeea864
+    sha256: b08909068f12c3caa816fa6fab8855428e40902797a1e78316ff38a367574f16
   .github/agents/product-owner.agent.md:
-    sha256: 5e134b783407788f9c5f42f20bbe8b43fef252a4105f04aa18868a611a2922fd
+    sha256: 86fc702216b2e84cd7ed65ff7ea05b569af345180e9cac6ac14fa5d8bf8526ce
   .github/agents/qa.agent.md:
-    sha256: 5c8131eb79b2cade08aadb05794e7647d22a717c6e966bd11050ee060a050989
+    sha256: e4b50c0b7fa8c2cc84d9cfd5794a9406d91216a024e4b44200b276032d1822ad
   singularity/agent-mappings.yml:
     sha256: 1b39a4f4caa3242749889a291e2259a361c815712bd762abde3db3cbe9f8a688
   singularity/impact.yml:
