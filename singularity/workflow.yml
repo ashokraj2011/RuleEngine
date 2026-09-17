@@ -71,6 +71,14 @@ approvalSecurity:
   profile: team
   allowSelfApproval: true
   autoEnrollNewIdentities: true
+architectureIntent:
+  enabled: false
+  allowedPhases:
+    - design
+    - planning
+  blockRequiredUnfulfilledAt:
+    - verification
+    - release
 artifactSets:
   spec-driven-specification:
     primary: spec.md
@@ -1291,6 +1299,8 @@ phases:
       views:
         - architecture
       depth: standard
+    clarification:
+      mode: off
     writeScope: artifact-only
     approval:
       authorities:
@@ -1399,6 +1409,13 @@ planning:
   enabled: true
   promptSource: singularity/prompts/copilot-planning.md
   maxContextBytes: 1048576
+repositoryReadiness:
+  requiredBeforeStory: false
+  dependencyHydration: when-detected
+  build: when-detected
+  structuredTests: required-for-code
+  applicationStart: when-detected
+  receiptScope: git-private-exact-base
 sequenceGates:
   default: soft
   completion: hard
@@ -1421,6 +1438,7 @@ templatesRoot: singularity/templates
 tokenEconomy:
   enabled: true
   mode: observe
+  composer: legacy-v1
   profile: standard
   profiles:
     standard:
@@ -1942,6 +1960,52 @@ workTypes:
           - poc-ui-exploration
           - poc-test-generation
           - poc-validation
+  reference-driven-build:
+    label: Reference-driven build
+    description: Creates a new implementation in the delivery repository from one or
+      more immutable, read-only repository branches pinned at Story intake.
+    references:
+      mode: required
+    phases:
+      - specification
+      - planning
+      - implementation
+      - convergence
+      - verification
+      - release
+    spec:
+      mode: enforce
+    plannedClaims:
+      mode: required
+      clausePhases:
+        - specification
+      owners:
+        implementation: planning
+    templateOverrides:
+      specification: spec-driven/spec.md
+      planning: spec-driven/plan.md
+      convergence: spec-driven/convergence.md
+    phaseOverrides:
+      planning:
+        inputs:
+          - specification
+      implementation:
+        inputs:
+          - specification
+          - planning
+      convergence:
+        inputs:
+          - specification
+          - planning
+          - implementation
+      verification:
+        inputs:
+          - specification
+          - planning
+          - implementation
+      release:
+        inputs:
+          - verification
   spec-driven-standard:
     label: Spec-Driven Standard
     spec:
@@ -1969,7 +2033,10 @@ workTypes:
       converge:
         milestone: convergence-advanced
       verify:
-        milestone: verification-approved
+        milestone: release-approved
+        phases:
+          - verification
+          - release
     constitution:
       path: singularity/constitution.md
       mode: warn
@@ -1988,7 +2055,7 @@ workTypes:
               - Boundary conditions
             maximumSummaryBytes: 32768
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
       implementation:
         inputs:
           - phase: specification
@@ -1999,7 +2066,7 @@ workTypes:
               - Boundary conditions
             maximumSummaryBytes: 32768
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
           - phase: planning
             projection: approved-summary
             preserve:
@@ -2007,7 +2074,7 @@ workTypes:
               - Risks and rollback
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
       convergence:
         inputs:
           - phase: specification
@@ -2018,7 +2085,7 @@ workTypes:
               - Boundary conditions
             maximumSummaryBytes: 32768
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
           - phase: planning
             projection: approved-summary
             preserve:
@@ -2026,7 +2093,7 @@ workTypes:
               - Risks and rollback
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
           - phase: implementation
             projection: approved-summary
             preserve:
@@ -2034,7 +2101,7 @@ workTypes:
               - Tests and operational notes
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
       verification:
         inputs:
           - phase: specification
@@ -2045,7 +2112,7 @@ workTypes:
               - Boundary conditions
             maximumSummaryBytes: 32768
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
           - phase: planning
             projection: approved-summary
             preserve:
@@ -2053,7 +2120,7 @@ workTypes:
               - Risks and rollback
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
           - phase: implementation
             projection: approved-summary
             preserve:
@@ -2061,20 +2128,18 @@ workTypes:
               - Tests and operational notes
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
       release:
         inputs:
+          - phase: convergence
           - phase: verification
             projection: approved-summary
             preserve:
               - Acceptance and specification results
-              - Negative
-              - regression
-              - security
-              - and non-functional checks
+              - Negative, regression, security, and non-functional checks
             maximumSummaryBytes: 24576
             expansion: hash-bound-reference
-            fallback: whole
+            fallback: block
 worldModel:
   views:
     - business
@@ -2084,7 +2149,21 @@ worldModel:
     - release
     - operations
     - security
+  projections:
+    arch.calm:
+      enabled: false
+      required: false
+      contract: arch.calm@1
+      calm:
+        schemaRelease: "1.2"
+        strict: true
+      profile:
+        includeGovernanceActors: true
+        includeControls: true
+        includeFlows: true
+        includeExternalDependencies: direct-architecture-only
   outputDir: singularity/world-model
+  historyDir: singularity/world-model-history
   promptSource: singularity/prompts/worldmodel-builder.md
   stateFetchTimeoutMs: 10000
   generation:
