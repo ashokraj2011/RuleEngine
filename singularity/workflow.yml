@@ -2212,6 +2212,10 @@ workTypes:
       release:
         inputs:
           - verification
+    documents:
+      allowedPhases:
+        - specification
+        - planning
   spec-driven-standard:
     label: Spec-Driven Standard
     spec:
@@ -2377,6 +2381,10 @@ workTypes:
         - specification
         - planning
       reviewerAgent: sflow-source-reviewer
+    documents:
+      allowedPhases:
+        - specification
+        - planning
 worldModel:
   views:
     - business
