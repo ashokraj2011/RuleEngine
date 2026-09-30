@@ -1507,6 +1507,12 @@ workTypes:
           - implementation-spec
           - implementation
           - verification
+        approval:
+          rejectTo:
+            - implementation-spec
+            - implementation
+            - verification
+            - conformance
   bugfix:
     label: Bug fix
     phases:
@@ -1551,6 +1557,12 @@ workTypes:
           - fix-spec
           - implementation
           - verification
+        approval:
+          rejectTo:
+            - fix-spec
+            - implementation
+            - verification
+            - conformance
   chore:
     label: Chore
     phases:
@@ -1573,6 +1585,11 @@ workTypes:
         inputs:
           - implementation
           - verification
+        approval:
+          rejectTo:
+            - implementation
+            - verification
+            - conformance
   figma-mobile:
     label: Figma export to mobile app
     phases:
